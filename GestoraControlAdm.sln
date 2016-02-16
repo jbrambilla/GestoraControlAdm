@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{7615B984-D777-4975-A5E3-C11D067F64FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{5EDEBE6C-F1F8-4DB1-82E3-AEB9A8ADA548}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{B52302C7-D848-48AB-96A4-FFE8455E82B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{A5AA9382-069E-485B-AB83-F63714B609BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{0812DD16-0745-427D-AB7B-136D383DF6EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{1FE55AB9-74CD-49DD-9779-6362B7B91887}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Domain", "src\EGestora.GestoraControlAdm.Domain\EGestora.GestoraControlAdm.Domain.csproj", "{88B37913-0211-4043-B99E-6A7F7412D5BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Infra.Data", "src\EGestora.GestoraControlAdm.Infra.Data\EGestora.GestoraControlAdm.Infra.Data.csproj", "{2B398F2D-52DE-4C99-BBA6-73BEF877DFC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Domain.Tests", "tests\EGestora.GestoraControlAdm.Domain.Tests\EGestora.GestoraControlAdm.Domain.Tests.csproj", "{58D49119-1E9A-459C-9EAB-FA9A940BB750}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Infra.CrossCutting.IoC", "src\EGestora.GestoraControlAdm.Infra.CrossCutting.IoC\EGestora.GestoraControlAdm.Infra.CrossCutting.IoC.csproj", "{C2047188-BC21-405C-BF07-BFA5AE6A7B2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Application", "src\EGestora.GestoraControlAdm.Application\EGestora.GestoraControlAdm.Application.csproj", "{B761CB35-F189-4CF5-8457-1C34C07CD8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.UI.Site", "src\EGestora.GestoraControlAdm.UI.Site\EGestora.GestoraControlAdm.UI.Site.csproj", "{69677EB1-3A80-4F58-A464-3E114FE1655D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88B37913-0211-4043-B99E-6A7F7412D5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B37913-0211-4043-B99E-6A7F7412D5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B37913-0211-4043-B99E-6A7F7412D5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B37913-0211-4043-B99E-6A7F7412D5BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B398F2D-52DE-4C99-BBA6-73BEF877DFC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B398F2D-52DE-4C99-BBA6-73BEF877DFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B398F2D-52DE-4C99-BBA6-73BEF877DFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B398F2D-52DE-4C99-BBA6-73BEF877DFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D49119-1E9A-459C-9EAB-FA9A940BB750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D49119-1E9A-459C-9EAB-FA9A940BB750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D49119-1E9A-459C-9EAB-FA9A940BB750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D49119-1E9A-459C-9EAB-FA9A940BB750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2047188-BC21-405C-BF07-BFA5AE6A7B2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2047188-BC21-405C-BF07-BFA5AE6A7B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2047188-BC21-405C-BF07-BFA5AE6A7B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2047188-BC21-405C-BF07-BFA5AE6A7B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B761CB35-F189-4CF5-8457-1C34C07CD8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B761CB35-F189-4CF5-8457-1C34C07CD8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B761CB35-F189-4CF5-8457-1C34C07CD8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B761CB35-F189-4CF5-8457-1C34C07CD8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69677EB1-3A80-4F58-A464-3E114FE1655D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69677EB1-3A80-4F58-A464-3E114FE1655D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69677EB1-3A80-4F58-A464-3E114FE1655D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69677EB1-3A80-4F58-A464-3E114FE1655D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FE55AB9-74CD-49DD-9779-6362B7B91887} = {0812DD16-0745-427D-AB7B-136D383DF6EE}
+		{F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91} = {0812DD16-0745-427D-AB7B-136D383DF6EE}
+		{88B37913-0211-4043-B99E-6A7F7412D5BF} = {A5AA9382-069E-485B-AB83-F63714B609BD}
+		{2B398F2D-52DE-4C99-BBA6-73BEF877DFC3} = {1FE55AB9-74CD-49DD-9779-6362B7B91887}
+		{58D49119-1E9A-459C-9EAB-FA9A940BB750} = {A5AA9382-069E-485B-AB83-F63714B609BD}
+		{C2047188-BC21-405C-BF07-BFA5AE6A7B2A} = {F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91}
+		{B761CB35-F189-4CF5-8457-1C34C07CD8CA} = {B52302C7-D848-48AB-96A4-FFE8455E82B7}
+		{69677EB1-3A80-4F58-A464-3E114FE1655D} = {7615B984-D777-4975-A5E3-C11D067F64FC}
+	EndGlobalSection
+EndGlobal

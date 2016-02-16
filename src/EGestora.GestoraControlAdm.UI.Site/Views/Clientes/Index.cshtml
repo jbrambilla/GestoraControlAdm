@@ -1,0 +1,86 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaJuridica.RazaoSocial)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaJuridica.NomeFantasia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaJuridica.Cnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoEstadual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoMunicipal)
+        </th>
+
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComNota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VencimentoBoleto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComNota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ClienteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ClienteId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ClienteId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -32,9 +32,13 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(p => p.Ativo)
                 .IsRequired();
 
-            HasRequired(c => c.PessoaJuridica)
-                .WithMany()
-                .HasForeignKey(c => c.PessoaJuridicaId);
+            HasOptional(x => x.PessoaJuridica)
+            .WithMany()
+            .HasForeignKey(x => x.PessoaJuridicaId);
+
+            HasOptional(x => x.PessoaFisica)
+            .WithMany()
+            .HasForeignKey(x => x.PessoaFisicaId);
 
             Ignore(c => c.ValidationResult);
 

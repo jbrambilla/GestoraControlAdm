@@ -13,11 +13,13 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public Guid ClienteId { get; set; }
         public Guid PessoaJuridicaId { get; set; }
+        public Guid PessoaFisicaId { get; set; }
         public bool Ativo { get; set; }
         public string Email { get; set; }
         public bool ComNota { get; set; }
         public DateTime VencimentoBoleto { get; set; }
         public virtual PessoaJuridica PessoaJuridica { get; set; }
+        public virtual PessoaFisica PessoaFisica { get; set; }
 
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }

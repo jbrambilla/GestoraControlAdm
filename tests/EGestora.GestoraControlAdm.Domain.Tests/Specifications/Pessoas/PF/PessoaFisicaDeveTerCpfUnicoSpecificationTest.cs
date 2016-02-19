@@ -1,13 +1,13 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
-using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas;
+using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 
-namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas
+namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PF
 {
     [TestClass]
-    public class PessoaDeveTerCpfUnicoSpecificationTest
+    public class PessoaFisicaDeveTerCpfUnicoSpecificationTest
     {
         public Pessoa Pessoa { get; set; }
 

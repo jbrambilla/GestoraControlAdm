@@ -1,9 +1,8 @@
-﻿
-
-using EGestora.GestoraControlAdm.Domain.Entities;
-using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas;
+﻿using EGestora.GestoraControlAdm.Domain.Entities;
+using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas
+
+namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PJ
 {
     [TestClass]
     public class PessoaJuridicaDeveTerCnpjValidoSpecificationTest

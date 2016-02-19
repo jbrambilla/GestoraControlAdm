@@ -2,7 +2,7 @@
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Validations.Documentos;
 
-namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas
+namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
 {
     public class PessoaJuridicaDeveTerCnpjValidoSpecification : ISpecification<Pessoa>
     {

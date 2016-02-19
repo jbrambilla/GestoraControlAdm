@@ -4,7 +4,7 @@ using DomainValidation.Interfaces.Specification;
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 
-namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas
+namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
 {
     public class PessoaJuridicaDevePossuirCnpjUnicoSpecification<TEntity> : ISpecification<Pessoa> where TEntity : class
     {

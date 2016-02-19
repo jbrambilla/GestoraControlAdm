@@ -1,7 +1,8 @@
 ﻿using DomainValidation.Validation;
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
-using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas;
+using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF;
+using EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ;
 
 namespace EGestora.GestoraControlAdm.Domain.Validations.Pessoas
 {

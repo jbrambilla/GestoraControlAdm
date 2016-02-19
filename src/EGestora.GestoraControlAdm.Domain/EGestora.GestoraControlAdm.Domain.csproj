@@ -52,10 +52,13 @@
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaFisicaDeveTerCpfValidoSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaJuridicaDevePossuirCnpjUnicoSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaJuridicaDeveTerCnpjValidoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerCpfValidoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerNomeObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDevePossuirCnpjUnicoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerCnpjValidoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecification.cs" />
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidation.cs" />

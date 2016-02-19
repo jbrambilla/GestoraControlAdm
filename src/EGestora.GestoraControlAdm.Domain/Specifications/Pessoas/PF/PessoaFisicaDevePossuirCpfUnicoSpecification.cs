@@ -2,7 +2,7 @@
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 
-namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas
+namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF
 {
     public class PessoaFisicaDevePossuirCpfUnicoSpecification<TEntity> : ISpecification<Pessoa> where TEntity : class
     {

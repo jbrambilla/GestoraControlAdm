@@ -11,7 +11,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         [TestMethod]
         public void Pessoa_PessoaFisicaNull_PessoaJuridicaNotNull_Consistente_True()
         {
-            var Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192" } };
+            var Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192", RazaoSocial = "DOLEMAR ABRANTES", NomeFantasia = "FUnilaria" } };
             Pessoa.EnderecoList.Add(new Endereco());
 
             var validation = new PessoaEstaConsistenteValidation();
@@ -31,12 +31,15 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
+            Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Razão Social é obrigatório."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Nome Fantasia é obrigatório."));
         }
 
         [TestMethod]
         public void Pessoa_PessoaFisicaNotNull_PessoaJuridicaNull_Consistente_True()
         {
-            var Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "52967264644" } };
+            var Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "52967264644", Nome = "Mathias" } };
             Pessoa.EnderecoList.Add(new Endereco());
 
             var validation = new PessoaEstaConsistenteValidation();
@@ -56,10 +59,13 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
+            Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Razão Social é obrigatório."));
+            Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Nome Fantasia é obrigatório."));
         }
 
         [TestMethod]
-        public void Pessoa_PessoaFisicatNull_PessoaJuridicaNull_Consistente_False()
+        public void Pessoa_PessoaFisicaNull_PessoaJuridicaNull_Consistente_False()
         {
             var Pessoa = new Pessoa();
 
@@ -71,6 +77,9 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Razão Social é obrigatório."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Nome Fantasia é obrigatório."));
         }
 
         [TestMethod]
@@ -86,6 +95,9 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
+            Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
+            Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Razão Social é obrigatório."));
+            Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Nome Fantasia é obrigatório."));
         }
     }
 }

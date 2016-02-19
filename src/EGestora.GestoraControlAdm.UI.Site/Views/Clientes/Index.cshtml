@@ -1,177 +1,183 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Clientes";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+        <h2 class="page-header">Index</h2>
 
-
-
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#pjList" data-toggle="tab" aria-expanded="true">Clientes como Pessoa Jurídica</a></li>
-    <li class=""><a href="#pfList" data-toggle="tab" aria-expanded="false">Clientes como Pessoa Física</a></li>
-</ul>
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="pjList">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaJuridica.RazaoSocial)
-                </th>
-
-
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaJuridica.NomeFantasia)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaJuridica.Cnpj)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoEstadual)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoMunicipal)
-                </th>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
 
 
 
-                <th>
-                    @Html.DisplayNameFor(model => model.Ativo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ComNota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VencimentoBoleto)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                if (item.PessoaFisica == null) 
-                { 
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#pjList" data-toggle="tab" aria-expanded="true">Clientes como Pessoa Jurídica</a></li>
+            <li class=""><a href="#pfList" data-toggle="tab" aria-expanded="false">Clientes como Pessoa Física</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="pjList">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ativo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ComNota)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.PessoaId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.PessoaId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.PessoaId })
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaJuridica.RazaoSocial)
+                        </th>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaJuridica.NomeFantasia)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaJuridica.Cnpj)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoEstadual)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoMunicipal)
+                        </th>
+
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ativo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ComNota)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.VencimentoBoleto)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            }
 
-        </table>
-    </div>
-    <div class="tab-pane fade" id="pfList">
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaFisica.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaFisica.Rg)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaFisica.Cpf)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaFisica.Genero)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.PessoaFisica.Nascimento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Ativo)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ComNota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VencimentoBoleto)
-                </th>
-                <th></th>
-            </tr>
+                    @foreach (var item in Model)
+                    {
+                        if (item.PessoaFisica == null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ativo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ComNota)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.PessoaId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.PessoaId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.PessoaId })
+                                </td>
+                            </tr>
+                        }
+                    }
 
-            @foreach (var item in Model)
-            {
-                if (item.PessoaJuridica == null)
-                {
+                </table>
+            </div>
+            <div class="tab-pane fade" id="pfList">
+                <table class="table">
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaFisica.Rg)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaFisica.Genero)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PessoaFisica.Nascimento)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Ativo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ComNota)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.PessoaId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.PessoaId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.PessoaId })
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaFisica.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaFisica.Rg)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaFisica.Cpf)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaFisica.Genero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PessoaFisica.Nascimento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Ativo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ComNota)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.VencimentoBoleto)
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            }
-        </table>
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.PessoaJuridica == null)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Rg)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Genero)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Nascimento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ativo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ComNota)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.PessoaId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.PessoaId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.PessoaId })
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+
+            </div>
+        </div>
 
     </div>
 </div>

@@ -9,7 +9,9 @@ namespace EGestora.GestoraControlAdm.UI.Site
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/sb-admin-2.js",
+                        "~/Scripts/metisMenu.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +27,9 @@ namespace EGestora.GestoraControlAdm.UI.Site
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/sb-admin-2.css",
+                      "~/Content/metisMenu.css",
+                      "~/Content/font-awesome/css/font-awesome.css"));
         }
     }
 }

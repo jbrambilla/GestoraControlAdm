@@ -19,15 +19,17 @@ namespace EGestora.GestoraControlAdm.Application
             _clienteService = clienteService;
         }
 
+        //Rever maneira de atribuição de PF e PJ
+        //flag talvez?
         public ClienteEnderecoViewModel Add(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             var cliente = Mapper.Map<ClienteEnderecoViewModel, Cliente>(clienteEnderecoViewModel);
 
             var pf = Mapper.Map<ClienteEnderecoViewModel, PessoaFisica>(clienteEnderecoViewModel);
-            pf = pf.Nome == null ? null : pf;
+            pf = pf.Cpf == null ? null : pf;
 
             var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
-            pj = pj.RazaoSocial == null ? null : pj;
+            pj = pj.Cnpj == null ? null : pj;
 
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
 

@@ -30,14 +30,14 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             return ValidationResult.IsValid;
         }
 
-        public bool IsPessoaFisica()
+        public bool IsPessoaFisica 
         {
-            return PessoaJuridica == null && PessoaFisica != null;
+            get { return PessoaJuridica == null && PessoaFisica != null;  } 
         }
 
-        public bool IsPessoaJuridica()
+        public bool IsPessoaJuridica
         {
-            return PessoaJuridica != null && PessoaFisica == null;
+            get { return PessoaJuridica != null && PessoaFisica == null; }
         }
     }
 }

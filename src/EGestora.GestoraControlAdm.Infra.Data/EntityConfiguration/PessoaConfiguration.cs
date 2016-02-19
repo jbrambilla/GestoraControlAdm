@@ -33,6 +33,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(p => p.ValidationResult);
 
+            Ignore(p => p.IsPessoaFisica);
+
+            Ignore(p => p.IsPessoaJuridica);
+
             ToTable("Pessoa");
         }
     }

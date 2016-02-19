@@ -11,8 +11,8 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
         {
             var Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() };
 
-            Assert.IsTrue(Pessoa.IsPessoaJuridica());
-            Assert.IsFalse(Pessoa.IsPessoaFisica());
+            Assert.IsTrue(Pessoa.IsPessoaJuridica);
+            Assert.IsFalse(Pessoa.IsPessoaFisica);
         }
 
         [TestMethod]
@@ -20,8 +20,8 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
         {
             var Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica(), PessoaFisica = new PessoaFisica() };
 
-            Assert.IsFalse(Pessoa.IsPessoaJuridica());
-            Assert.IsFalse(Pessoa.IsPessoaFisica());
+            Assert.IsFalse(Pessoa.IsPessoaJuridica);
+            Assert.IsFalse(Pessoa.IsPessoaFisica);
         }
 
         [TestMethod]
@@ -29,8 +29,8 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
         {
             var Pessoa = new Pessoa();
 
-            Assert.IsFalse(Pessoa.IsPessoaJuridica());
-            Assert.IsFalse(Pessoa.IsPessoaFisica());
+            Assert.IsFalse(Pessoa.IsPessoaJuridica);
+            Assert.IsFalse(Pessoa.IsPessoaFisica);
         }
 
         [TestMethod]
@@ -38,8 +38,8 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
         {
             var Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() };
 
-            Assert.IsFalse(Pessoa.IsPessoaJuridica());
-            Assert.IsTrue(Pessoa.IsPessoaFisica());
+            Assert.IsFalse(Pessoa.IsPessoaJuridica);
+            Assert.IsTrue(Pessoa.IsPessoaFisica);
         }
 
         

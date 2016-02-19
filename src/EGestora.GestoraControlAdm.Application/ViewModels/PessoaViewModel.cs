@@ -25,6 +25,12 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public string Email { get; set; }
 
         [ScaffoldColumn(false)]
+        public bool IsPessoaJuridica { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool IsPessoaFisica { get; set; }
+
+        [ScaffoldColumn(false)]
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]

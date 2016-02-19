@@ -44,5 +44,29 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PF
             var validation = new PessoaFisicaDeveTerCpfValidoSpecification();
             Assert.IsFalse(validation.IsSatisfiedBy(Pessoa));
         }
+
+        [TestMethod]
+        public void Pessoa_Cpf_Valido_FalseWhenEmpty()
+        {
+            Pessoa = new Pessoa()
+            {
+                PessoaFisica = new PessoaFisica() { Cpf = "" }
+            };
+
+            var validation = new PessoaFisicaDeveTerCpfValidoSpecification();
+            Assert.IsFalse(validation.IsSatisfiedBy(Pessoa));
+        }
+
+        [TestMethod]
+        public void Pessoa_Cpf_Valido_FalseWhenNull()
+        {
+            Pessoa = new Pessoa()
+            {
+                PessoaFisica = new PessoaFisica()
+            };
+
+            var validation = new PessoaFisicaDeveTerCpfValidoSpecification();
+            Assert.IsFalse(validation.IsSatisfiedBy(Pessoa));
+        }
     }
 }

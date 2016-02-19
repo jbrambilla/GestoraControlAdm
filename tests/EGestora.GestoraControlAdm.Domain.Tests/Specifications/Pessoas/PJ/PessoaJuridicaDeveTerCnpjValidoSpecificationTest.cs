@@ -44,5 +44,29 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PJ
             var validation = new PessoaJuridicaDeveTerCnpjValidoSpecification();
             Assert.IsFalse(validation.IsSatisfiedBy(Pessoa));
         }
+
+        [TestMethod]
+        public void Pessoa_Cnpj_Valido_FalseWhenEmpty()
+        {
+            Pessoa = new Pessoa()
+            {
+                PessoaJuridica = new PessoaJuridica() { Cnpj = "" }
+            };
+
+            var validation = new PessoaJuridicaDeveTerCnpjValidoSpecification();
+            Assert.IsFalse(validation.IsSatisfiedBy(Pessoa));
+        }
+
+        [TestMethod]
+        public void Pessoa_Cnpj_Valido_FalseWhenNull()
+        {
+            Pessoa = new Pessoa()
+            {
+                PessoaJuridica = new PessoaJuridica()
+            };
+
+            var validation = new PessoaJuridicaDeveTerCnpjValidoSpecification();
+            Assert.IsFalse(validation.IsSatisfiedBy(Pessoa));
+        }
     }
 }

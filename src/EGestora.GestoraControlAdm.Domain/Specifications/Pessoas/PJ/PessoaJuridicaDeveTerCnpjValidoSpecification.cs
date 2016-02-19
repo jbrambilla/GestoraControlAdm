@@ -1,6 +1,7 @@
 ﻿using DomainValidation.Interfaces.Specification;
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Validations.Documentos;
+using System;
 
 namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
 {
@@ -12,7 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
             {
                 return true;
             }
-            return pessoa.PessoaJuridica != null && CnpjValidation.Validar(pessoa.PessoaJuridica.Cnpj);
+            return pessoa.PessoaJuridica != null && !String.IsNullOrEmpty(pessoa.PessoaJuridica.Cnpj) && CnpjValidation.Validar(pessoa.PessoaJuridica.Cnpj);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DomainValidation.Interfaces.Specification;
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Validations.Documentos;
+using System;
 
 namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF
 {
@@ -11,7 +12,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF
             if (pessoa.PessoaJuridica != null) {
                 return true;
             }
-            return pessoa.PessoaFisica != null && CpfValidation.Validar(pessoa.PessoaFisica.Cpf);
+            return pessoa.PessoaFisica != null && !String.IsNullOrEmpty(pessoa.PessoaFisica.Cpf) && CpfValidation.Validar(pessoa.PessoaFisica.Cpf);
         }
     }
 }

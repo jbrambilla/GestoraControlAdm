@@ -296,6 +296,8 @@
     <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Shared\Pessoa\_CreatePessoaJuridica.cshtml" />
     <Content Include="Views\Shared\Pessoa\_CreatePessoaFisica.cshtml" />
+    <Content Include="Views\Shared\Pessoa\_DetailsPessoaJuridica.cshtml" />
+    <Content Include="Views\Shared\Pessoa\_DetailsPessoaFisica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

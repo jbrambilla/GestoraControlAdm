@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
-    public interface IClienteRepository : IRepositoryBase<Cliente>
+    public interface IClienteRepository : IPessoaRepository<Cliente>
     {
-        Cliente GetByCnpj(string cnpj);
     }
 } 

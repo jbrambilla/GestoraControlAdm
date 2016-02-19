@@ -16,7 +16,15 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
 
         public Cliente GetByCnpj(string cnpj)
         {
+
             return Search(c => c.PessoaJuridica.Cnpj == cnpj).FirstOrDefault();
+        }
+
+
+
+        public Cliente GetByCpf(string cpf)
+        {
+            return Search(c => c.PessoaFisica.Cpf == cpf).FirstOrDefault();
         }
     }
 }

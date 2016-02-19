@@ -57,7 +57,10 @@
     <Compile Include="ViewModels\ClienteEnderecoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
+    <Compile Include="ViewModels\PessoaEnderecoViewModel.cs" />
+    <Compile Include="ViewModels\PessoaFisicaViewModel.cs" />
     <Compile Include="ViewModels\PessoaJuridicaViewModel.cs" />
+    <Compile Include="ViewModels\PessoaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EGestora.GestoraControlAdm.Domain\EGestora.GestoraControlAdm.Domain.csproj">

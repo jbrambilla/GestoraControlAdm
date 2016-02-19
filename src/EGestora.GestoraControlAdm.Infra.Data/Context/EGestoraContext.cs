@@ -38,6 +38,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
                 .Configure(p => p.HasMaxLength(100));
 
             modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new PessoaConfiguration());
             modelBuilder.Configurations.Add(new PessoaFisicaConfiguration());
             modelBuilder.Configurations.Add(new PessoaJuridicaConfiguration());
             modelBuilder.Configurations.Add(new EnderecoConfiguration());

@@ -38,27 +38,36 @@
   <ItemGroup>
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Endereco.cs" />
+    <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPessoaJuridicaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClienteService.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDevePossuirCnpjUnicoSpecification.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDeveTerCnpjValidoSpecification.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDeveTerUmaPessoaJuridicaSpecification.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDeveTerUmEnderecoSpecification.cs" />
-    <Compile Include="Validations\Clientes\ClienteEstaAptoParaCadastroValidation.cs" />
-    <Compile Include="Validations\Clientes\ClienteEstaConsistenteValidation.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaFisicaDeveTerCpfValidoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaJuridicaDevePossuirCnpjUnicoSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaJuridicaDeveTerCnpjValidoSpecification.cs" />
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
+    <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidation.cs" />
+    <Compile Include="Validations\Pessoas\PessoaEstaConsistenteValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Specifications\Clientes\" />
+    <Folder Include="Validations\Clientes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

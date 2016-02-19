@@ -8,7 +8,6 @@ using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using EGestora.GestoraControlAdm.Infra.Data.Repository;
 using EGestora.GestoraControlAdm.Infra.Data.UoW;
 using SimpleInjector;
-using System;
 
 namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
 {
@@ -30,6 +29,8 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             // Infra Dados
             container.RegisterPerWebRequest<IClienteRepository, ClienteRepository>();
             container.RegisterPerWebRequest<IEnderecoRepository, EnderecoRepository>();
+            container.RegisterPerWebRequest<IPessoaFisicaRepository, PessoaFisicaRepository>();
+            container.RegisterPerWebRequest<IPessoaJuridicaRepository, PessoaJuridicaRepository>();
             container.RegisterPerWebRequest<IUnitOfWork, UnitOfWork>();
             container.RegisterPerWebRequest<EGestoraContext>();
         }

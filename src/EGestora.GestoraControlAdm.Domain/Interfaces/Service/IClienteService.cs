@@ -9,6 +9,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Cliente Add(Cliente cliente);
         Cliente GetById(Guid id);
         Cliente GetByCnpj(string cnpj);
+        Cliente GetByCpf(string cpf);
         IEnumerable<Cliente> GetAll();
         Cliente Update(Cliente cliente);
         void Remove(Guid id);
@@ -17,6 +18,9 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Endereco UpdateEndereco(Endereco endereco);
         Endereco GetEnderecoById(Guid id);
         void RemoveEndereco(Guid id);
+
+        PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica);
+        PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica);
 
     }
 }

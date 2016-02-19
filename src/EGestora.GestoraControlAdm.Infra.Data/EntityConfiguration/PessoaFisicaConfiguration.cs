@@ -10,23 +10,13 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
     {
         public PessoaFisicaConfiguration()
         {
-            HasKey(p => p.PessoaFisicaId);
+            HasKey(p => p.PessoaId);
 
             Property(c => c.Cpf)
                 .HasMaxLength(11);
 
             Property(c => c.Nome)
                 .HasMaxLength(100);
-
-            // MAPEAMENTO DE MUITOS PARA MUITOS
-            HasMany(f => f.EnderecoList)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaFisicaId");
-                    me.MapRightKey("EnderecoId");
-                    me.ToTable("PessoaFisicaEndereco");
-                });
 
         }
     }

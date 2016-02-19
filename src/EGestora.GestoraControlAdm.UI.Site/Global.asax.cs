@@ -19,7 +19,7 @@ namespace EGestora.GestoraControlAdm.UI.Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.RegisterMappings();
-            //ViewEngines.Engines.Add(new GestoraControlAdmViewEngine());
+            ViewEngines.Engines.Add(new GestoraControlAdmViewEngine());
         }
     }
 }

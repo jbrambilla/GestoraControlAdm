@@ -12,28 +12,13 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
     {
         public PessoaJuridicaConfiguration()
         {
-            HasKey(p => p.PessoaJuridicaId);
+            HasKey(p => p.PessoaId);
 
             Property(c => c.Cnpj)
                 .HasMaxLength(14);
 
             Property(c => c.RazaoSocial)
                  .HasMaxLength(100);
-
-            // MAPEAMENTO DE UM PARA MUITOS
-            //HasRequired(p => p.Pessoa)
-            //    .WithMany(p => p.PessoaJuridicaList)
-            //    .HasForeignKey(p => p.PessoaId);
-
-            // MAPEAMENTO DE MUITOS PARA MUITOS
-            HasMany(f => f.EnderecoList)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaJuridicaId");
-                    me.MapRightKey("EnderecoId");
-                    me.ToTable("PessoaJuridicaEndereco");
-                });
 
         }
     }

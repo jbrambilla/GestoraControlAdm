@@ -22,14 +22,21 @@ namespace EGestora.GestoraControlAdm.Application
         public ClienteEnderecoViewModel Add(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             var cliente = Mapper.Map<ClienteEnderecoViewModel, Cliente>(clienteEnderecoViewModel);
-            var pessoaJuridica = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
+
+            var pf = Mapper.Map<ClienteEnderecoViewModel, PessoaFisica>(clienteEnderecoViewModel);
+            pf = pf.Nome == null ? null : pf;
+
+            var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
+            pj = pj.RazaoSocial == null ? null : pj;
+
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
 
             BeginTransaction();
 
-            pessoaJuridica.EnderecoList.Add(endereco);
-            cliente.PessoaJuridica = pessoaJuridica;
-            
+            cliente.PessoaFisica = pf;
+            cliente.PessoaJuridica = pj;
+            cliente.EnderecoList.Add(endereco);
+
             var clienteReturn = _clienteService.Add(cliente);
             clienteEnderecoViewModel = Mapper.Map<Cliente, ClienteEnderecoViewModel>(clienteReturn);
 
@@ -52,6 +59,11 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Cliente, ClienteViewModel>(_clienteService.GetByCnpj(cnpj));
         }
 
+        public ClienteViewModel GetByCpf(string cpf)
+        {
+            return Mapper.Map<Cliente, ClienteViewModel>(_clienteService.GetByCpf(cpf));
+        }
+
         public IEnumerable<ClienteViewModel> GetAll()
         {
             return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_clienteService.GetAll());
@@ -62,7 +74,7 @@ namespace EGestora.GestoraControlAdm.Application
             var cliente = Mapper.Map<ClienteViewModel, Cliente>(clienteViewModel);
 
             BeginTransaction();
-
+            //atualizar pessoa
             var clienteResult = _clienteService.Update(cliente);
             clienteViewModel = Mapper.Map<Cliente, ClienteViewModel>(clienteResult);
 
@@ -72,7 +84,13 @@ namespace EGestora.GestoraControlAdm.Application
 
         public void Remove(Guid id)
         {
+            var cliente = GetById(id);
+            //remover logicamente
             BeginTransaction();
+            foreach (var endereco in cliente.EnderecoList)
+            {
+                RemoveEndereco(endereco.EnderecoId);
+            }
             _clienteService.Remove(id);
             Commit();
         }
@@ -116,5 +134,6 @@ namespace EGestora.GestoraControlAdm.Application
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

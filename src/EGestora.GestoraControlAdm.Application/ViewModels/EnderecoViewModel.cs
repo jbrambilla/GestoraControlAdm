@@ -25,6 +25,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         public string Numero { get; set; }
 
+        [Required(ErrorMessage = "Preencha o campo Complemento")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         public string Complemento { get; set; }

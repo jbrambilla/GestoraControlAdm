@@ -41,6 +41,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                 .IsRequired()
                 .HasMaxLength(100);
 
+            HasRequired(e => e.Pessoa)
+                .WithMany(p => p.EnderecoList)
+                .HasForeignKey(e => e.PessoaId);
+
             ToTable("Enderecos");
         }
     }

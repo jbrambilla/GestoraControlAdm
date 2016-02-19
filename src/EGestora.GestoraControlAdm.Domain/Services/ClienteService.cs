@@ -1,12 +1,9 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
-using EGestora.GestoraControlAdm.Domain.Validations.Clientes;
+using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
 {
@@ -14,11 +11,19 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     {
         private readonly IClienteRepository _clienteRepository;
         private readonly IEnderecoRepository _enderecoRepository;
+        private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
+        private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
 
-        public ClienteService(IClienteRepository clienteRepository, IEnderecoRepository enderecoRepository)
+        public ClienteService(
+            IClienteRepository clienteRepository, 
+            IEnderecoRepository enderecoRepository, 
+            IPessoaFisicaRepository pessoaFisicaRepository, 
+            IPessoaJuridicaRepository pessoaJuridicaRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
+            _pessoaFisicaRepository = pessoaFisicaRepository;
+            _pessoaJuridicaRepository = pessoaJuridicaRepository;
         }
 
         public Cliente Add(Cliente cliente)
@@ -28,7 +33,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return cliente;
             }
 
-            cliente.ValidationResult = new ClienteEstaAptoParaCadastroValidation(_clienteRepository).Validate(cliente);
+            cliente.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Cliente>(_clienteRepository).Validate(cliente);
             if (!cliente.ValidationResult.IsValid)
             {
                 return cliente;
@@ -47,6 +52,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _clienteRepository.GetByCnpj(cnpj);
         }
 
+        public Cliente GetByCpf(string cpf)
+        {
+            return _clienteRepository.GetByCpf(cpf);
+        }
+
         public IEnumerable<Cliente> GetAll()
         {
             return _clienteRepository.GetAll();
@@ -54,6 +64,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Cliente Update(Cliente cliente)
         {
+            UpdatePessoaFisica(cliente.PessoaFisica);
+            UpdatePessoaJuridica(cliente.PessoaJuridica);
             return _clienteRepository.Update(cliente);
         }
 
@@ -82,12 +94,29 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _enderecoRepository.Remove(id);
         }
 
+        public PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica)
+        {
+            if (pessoaFisica == null)
+            {
+                return null;
+            }
+            return _pessoaFisicaRepository.Update(pessoaFisica);
+        }
+
+        public PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica)
+        {
+            if (pessoaJuridica == null)
+            {
+                return null;
+            }
+            return _pessoaJuridicaRepository.Update(pessoaJuridica);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
 
     }
 }

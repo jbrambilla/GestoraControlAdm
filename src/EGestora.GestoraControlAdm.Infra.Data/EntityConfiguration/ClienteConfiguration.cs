@@ -12,35 +12,11 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
     {
         public ClienteConfiguration()
         {
-            HasKey(p => p.ClienteId);
-
-            Property(p => p.CriadoEm)
-                .IsRequired();
-
-            Property(p => p.AlteradoEm)
-                .IsRequired();
-
             Property(p => p.VencimentoBoleto)
                 .IsRequired();
 
             Property(p => p.ComNota)
                 .IsRequired();
-
-            Property(p => p.Email)
-                .IsRequired();
-
-            Property(p => p.Ativo)
-                .IsRequired();
-
-            HasOptional(x => x.PessoaJuridica)
-            .WithMany()
-            .HasForeignKey(x => x.PessoaJuridicaId);
-
-            HasOptional(x => x.PessoaFisica)
-            .WithMany()
-            .HasForeignKey(x => x.PessoaFisicaId);
-
-            Ignore(c => c.ValidationResult);
 
             ToTable("Clientes");
         }

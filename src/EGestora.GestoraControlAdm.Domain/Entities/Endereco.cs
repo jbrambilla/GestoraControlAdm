@@ -14,6 +14,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         }
 
         public Guid EnderecoId { get; set; }
+        public Guid PessoaId { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
         public string Complemento { get; set; }
@@ -21,5 +22,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string Cep { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
     }
 }

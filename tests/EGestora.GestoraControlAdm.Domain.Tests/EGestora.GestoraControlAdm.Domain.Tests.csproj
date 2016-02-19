@@ -56,15 +56,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Entities\PessoaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDevePossuirCnpjUnicoSpecificationTest.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDeveTerCnpjValidoSpecificationTest.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDeveTerUmaPessoaJuridicaSpecificationTest.cs" />
-    <Compile Include="Specifications\Clientes\ClienteDeveTerUmEnderecoSpecificationTest.cs" />
-    <Compile Include="Validations\Clientes\ClienteEstaAptoParaCadastroValidationTest.cs" />
-    <Compile Include="Validations\Clientes\ClienteEstaConsistenteValidationTest.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDevePossuirCnpjUnicoSpecificationTest.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecificationTest.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecificationTest.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaFisicaDeveTerCpfValidoSpecificationTest.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaJuridicaDeveTerCnpjValidoSpecificationTest.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDeveTerCpfUnicoSpecificationTest.cs" />
     <Compile Include="Validations\Documentos\CnpjValidationTest.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
+    <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidationTest.cs" />
+    <Compile Include="Validations\Pessoas\PessoaEstaConsistenteValidationTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

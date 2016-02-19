@@ -57,7 +57,18 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                _clienteAppService.Add(clienteEnderecoViewModel);
+                clienteEnderecoViewModel = _clienteAppService.Add(clienteEnderecoViewModel);
+
+                if (!clienteEnderecoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in clienteEnderecoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+
+                    return View(clienteEnderecoViewModel);
+                }
+
                 return RedirectToAction("Index");
             }
             return View(clienteEnderecoViewModel);

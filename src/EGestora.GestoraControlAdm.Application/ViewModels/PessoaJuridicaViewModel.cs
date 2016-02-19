@@ -7,14 +7,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
     public class PessoaJuridicaViewModel
     {
-        public PessoaJuridicaViewModel()
-        {
-            PessoaJuridicaId = Guid.NewGuid();
-            EnderecoList = new List<EnderecoViewModel>();
-        }
-
         [Key]
-        public Guid PessoaJuridicaId { get; set; }
+        public Guid PessoaId { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Razão Social")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
@@ -51,6 +45,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataFundacao { get; set; }
 
-        public virtual ICollection<EnderecoViewModel> EnderecoList { get; set; }
+        [ScaffoldColumn(false)]
+        public PessoaViewModel Pessoa;
     }
 }

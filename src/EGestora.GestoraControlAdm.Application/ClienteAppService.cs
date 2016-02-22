@@ -19,19 +19,21 @@ namespace EGestora.GestoraControlAdm.Application
             _clienteService = clienteService;
         }
 
-        //Rever maneira de atribuição de PF e PJ
-        //flag talvez?
         public ClienteEnderecoViewModel Add(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             var cliente = Mapper.Map<ClienteEnderecoViewModel, Cliente>(clienteEnderecoViewModel);
-
             var pf = Mapper.Map<ClienteEnderecoViewModel, PessoaFisica>(clienteEnderecoViewModel);
-            pf = pf.Cpf == null ? null : pf;
-
             var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
-            pj = pj.Cnpj == null ? null : pj;
-
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
+
+            if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
+            {
+                pf = null;
+            }
+            else
+            {
+                pj = null;
+            }
 
             BeginTransaction();
 
@@ -76,23 +78,15 @@ namespace EGestora.GestoraControlAdm.Application
             var cliente = Mapper.Map<ClienteViewModel, Cliente>(clienteViewModel);
 
             BeginTransaction();
-            //atualizar pessoa
             var clienteResult = _clienteService.Update(cliente);
             clienteViewModel = Mapper.Map<Cliente, ClienteViewModel>(clienteResult);
-
             Commit();
             return clienteViewModel;
         }
 
         public void Remove(Guid id)
         {
-            var cliente = GetById(id);
-            //remover logicamente
             BeginTransaction();
-            foreach (var endereco in cliente.EnderecoList)
-            {
-                RemoveEndereco(endereco.EnderecoId);
-            }
             _clienteService.Remove(id);
             Commit();
         }

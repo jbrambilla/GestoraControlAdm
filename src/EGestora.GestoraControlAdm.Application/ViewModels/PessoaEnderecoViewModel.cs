@@ -143,5 +143,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MaxLength(100, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         public string Estado { get; set; }
+
+        //extra not in database
+        public bool FlagIsPessoaJuridica { get; set; }
     }
 }

@@ -23,5 +23,12 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
         {
             return Search(c => c.PessoaFisica.Cpf == cpf).FirstOrDefault();
         }
+
+        public override void Remove(Guid id)
+        {
+            var cliente = GetById(id);
+            cliente.Ativo = false;
+            Update(cliente);
+        }
     }
 }

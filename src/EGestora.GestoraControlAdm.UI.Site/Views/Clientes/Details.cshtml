@@ -20,7 +20,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 col-lg-3 " align="center"> <img src="http://www.imarca.com.br/_easyweb/logomarcas/logomarca-logotipo-logo-mercado-pires-268.gif" alt="..." class="img-circle img-responsive"> </div>
+                                <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemCliente", "Clientes", new { id = Model.PessoaId })" alt="@Titulo" class="img-circle img-responsive"> </div>
 
                                 <ul class="nav nav-tabs col-md-9 col-lg-9 ">
                                     <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>

@@ -7,3 +7,4 @@
 /// <reference path="jquery.validate.unobtrusive.js" />
 /// <reference path="sb-admin-2.js" />
 /// <reference path="metismenu.js" />
+/// <reference path="bootstrap-filestyle.min.js" />

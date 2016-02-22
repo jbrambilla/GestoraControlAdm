@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using EGestora.GestoraControlAdm.Application.ViewModels;
 using EGestora.GestoraControlAdm.UI.Site.Models;
 using EGestora.GestoraControlAdm.Application.Interfaces;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters.FilePath;
 
 namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 {
@@ -208,6 +210,18 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             string url = Url.Action("ListarEnderecos", "Clientes", new { id = pessoaId });
             return Json(new { success = true, url = url });
+        }
+
+        public ActionResult ObterImagemCliente(Guid id)
+        {
+            var foto = ImagemUtil.ObterImagem(id, FilePathConstants.CLIENTES_IMAGE_PATH);
+
+            if (foto == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return File(foto, "image/jpeg");
         }
 
         protected override void Dispose(bool disposing)

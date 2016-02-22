@@ -23,11 +23,10 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <tr>
+                                    <th></th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.PessoaJuridica.RazaoSocial)
                                     </th>
-
-
                                     <th>
                                         @Html.DisplayNameFor(model => model.PessoaJuridica.NomeFantasia)
                                     </th>
@@ -40,9 +39,6 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoMunicipal)
                                     </th>
-
-
-
                                     <th>
                                         @Html.DisplayNameFor(model => model.Ativo)
                                     </th>
@@ -63,6 +59,7 @@
                                     if (item.PessoaFisica == null)
                                     {
                                         <tr>
+                                            <td><img src="@Url.Action("ObterImagemCliente", "Clientes", new { id = item.PessoaId })" alt="@item.PessoaJuridica.RazaoSocial" class="img-circle" height="34" width="34" /></td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
                                             </td>
@@ -106,6 +103,7 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
+                                        <th></th>
                                         <th>
                                             @Html.DisplayNameFor(model => model.PessoaFisica.Nome)
                                         </th>
@@ -141,6 +139,7 @@
                                         if (item.PessoaJuridica == null)
                                         {
                                             <tr>
+                                                <td><img src="@Url.Action("ObterImagemCliente", "Clientes", new { id = item.PessoaId })" alt="@item.PessoaFisica.Nome" class="img-circle" height="34" width="34" /></td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
                                                 </td>

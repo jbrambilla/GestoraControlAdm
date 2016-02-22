@@ -203,6 +203,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-filestyle.js" />
+    <Content Include="Scripts\bootstrap-filestyle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome\.bower.json" />
@@ -240,6 +242,7 @@
     <Content Include="Content\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Config\ConnectionStrings.config" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -323,6 +326,14 @@
     <ProjectReference Include="..\EGestora.GestoraControlAdm.Infra.CrossCutting.IoC\EGestora.GestoraControlAdm.Infra.CrossCutting.IoC.csproj">
       <Project>{c2047188-bc21-405c-bf07-bfa5ae6a7b2a}</Project>
       <Name>EGestora.GestoraControlAdm.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters\EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters.csproj">
+      <Project>{93a82149-bd5a-4872-bdf2-6d3f5b765f42}</Project>
+      <Name>EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.Infra.CrossCutting.Utils\EGestora.GestoraControlAdm.Infra.CrossCutting.Utils.csproj">
+      <Project>{adc32618-75e6-498d-9537-ed8130f66a9e}</Project>
+      <Name>EGestora.GestoraControlAdm.Infra.CrossCutting.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

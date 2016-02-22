@@ -1,6 +1,8 @@
-﻿using System;
+﻿using EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
@@ -26,6 +28,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("E-mail")]
         public string Email { get; set; }
+
+        [FileSize(10240)]
+        [FileTypes("jpg,jpeg,png")]
+        public HttpPostedFileBase Foto { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime CriadoEm { get; set; }

@@ -3,6 +3,8 @@ using EGestora.GestoraControlAdm.Application.Interfaces;
 using EGestora.GestoraControlAdm.Application.ViewModels;
 using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters.FilePath;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,6 +27,7 @@ namespace EGestora.GestoraControlAdm.Application
             var pf = Mapper.Map<ClienteEnderecoViewModel, PessoaFisica>(clienteEnderecoViewModel);
             var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
+            var foto = clienteEnderecoViewModel.Foto;
 
             if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
             {
@@ -47,6 +50,12 @@ namespace EGestora.GestoraControlAdm.Application
             if (!clienteEnderecoViewModel.ValidationResult.IsValid)
             {
                 return clienteEnderecoViewModel;
+            }
+
+            if (!ImagemUtil.SalvarImagem(foto, clienteEnderecoViewModel.PessoaId, FilePathConstants.CLIENTES_IMAGE_PATH))
+            {
+                // Tomada de decisão caso a imagem não seja gravada.
+                clienteEnderecoViewModel.ValidationResult.Message = "Cliente salvo sem foto";
             }
 
             Commit();

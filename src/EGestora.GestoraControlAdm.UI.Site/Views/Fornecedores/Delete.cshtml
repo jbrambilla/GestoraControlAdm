@@ -1,0 +1,75 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.FornecedorViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="container">
+            <h2>Deletar Fornecedor</h2>
+            <h3>Você tem certeza que deseja realizar esta ação?</h3>
+            <div class="row">
+                <div class="">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">@Model.PessoaJuridica.RazaoSocial</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3 col-lg-3 " align="center"> <img src="http://www.imarca.com.br/_easyweb/logomarcas/logomarca-logotipo-logo-mercado-pires-268.gif" alt="@Model.PessoaJuridica.NomeFantasia" class="img-circle img-responsive"> </div>
+
+                                <div class=" col-md-9 col-lg-9 ">
+                                    <table class="table table-user-information">
+                                        <tbody>
+
+                                            @if (Model.IsPessoaJuridica)
+                                            {
+                                                @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
+                                            }
+                                            else
+                                            {
+                                                @Html.Partial("_DetailsPessoaFisica", Model.PessoaJuridica)
+                                            }
+
+                                            <tr>
+                                                <td>E-mail:</td>
+                                                <td><a href="mailto:@Model.Email">@Model.Email</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Data de Cadastro</td>
+                                                <td>@Model.CriadoEm.ToString("d")</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Ativo</td>
+                                                <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <button value="Delete" class="btn btn-danger" data-modal="">
+                                        <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

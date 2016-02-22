@@ -29,5 +29,9 @@ namespace EGestora.GestoraControlAdm.UI.Site.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<EGestora.GestoraControlAdm.Application.ViewModels.PessoaViewModel> PessoaViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<EGestora.GestoraControlAdm.Application.ViewModels.FornecedorViewModel> FornecedorViewModels { get; set; }
     }
 }

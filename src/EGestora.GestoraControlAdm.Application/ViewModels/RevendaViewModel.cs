@@ -1,8 +1,8 @@
 ﻿namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
-    public class FornecedorViewModel : PessoaViewModel
+    public class RevendaViewModel : PessoaViewModel
     {
-        public FornecedorViewModel()
+        public RevendaViewModel()
             : base()
         {
         }

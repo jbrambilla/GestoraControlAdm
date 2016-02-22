@@ -42,6 +42,7 @@
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
+    <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
@@ -49,11 +50,14 @@
     <Compile Include="Interfaces\Repository\IPessoaJuridicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repository\IRevendaRepository.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
+    <Compile Include="Interfaces\Service\IRevendaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
+    <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />

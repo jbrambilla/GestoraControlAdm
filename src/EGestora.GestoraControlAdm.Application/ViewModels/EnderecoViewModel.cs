@@ -15,6 +15,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Key]
         public Guid EnderecoId { get; set; }
 
+        [ScaffoldColumn(false)]
+        public Guid PessoaId { get; set; }
+
         [Required(ErrorMessage = "Preencha o campo Logradouro")]
         [MaxLength(100, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]

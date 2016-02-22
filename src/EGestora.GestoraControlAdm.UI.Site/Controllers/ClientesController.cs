@@ -39,6 +39,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.PessoaId = id.Value;
             return View(clienteViewModel);
         }
 
@@ -126,6 +127,87 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             _clienteAppService.Remove(id);
             return RedirectToAction("Index");
+        }
+
+
+        //Endereço
+
+
+        public ActionResult ListarEnderecos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            ViewData["_controller"] = "Clientes";
+            return PartialView("_EnderecoList", _clienteAppService.GetById(id).EnderecoList);
+        }
+
+        [Route("adicionar-endereco")]
+        public ActionResult AdicionarEndereco(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_AdicionarEndereco");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarEndereco(EnderecoViewModel enderecoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.AddEndereco(enderecoViewModel);
+
+                string url = Url.Action("ListarEnderecos", "Clientes", new { id = enderecoViewModel.PessoaId });
+                return Json(new { success = true, url = url });
+            }
+
+            return PartialView("_AdicionarEndereco", enderecoViewModel);
+        }
+
+        public ActionResult AtualizarEndereco(Guid id)
+        {
+            return PartialView("_AtualizarEndereco", _clienteAppService.GetEnderecoById(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizarEndereco(EnderecoViewModel enderecoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.UpdateEndereco(enderecoViewModel);
+
+                string url = Url.Action("ListarEnderecos", "Clientes", new { id = enderecoViewModel.PessoaId });
+                return Json(new { success = true, url = url });
+            }
+
+            return PartialView("_AtualizarEndereco", enderecoViewModel);
+        }
+
+        public ActionResult DeletarEndereco(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var enderecoViewModel = _clienteAppService.GetEnderecoById(id.Value);
+            if (enderecoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DeletarEndereco", enderecoViewModel);
+        }
+
+        // POST: Clientes/Delete/5
+
+        [HttpPost, ActionName("DeletarEndereco")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarEnderecoConfirmed(Guid id)
+        {
+            var pessoaId = _clienteAppService.GetEnderecoById(id).PessoaId;
+            _clienteAppService.RemoveEndereco(id);
+
+            string url = Url.Action("ListarEnderecos", "Clientes", new { id = pessoaId });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

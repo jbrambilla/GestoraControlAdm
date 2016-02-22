@@ -1,9 +1,9 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel
 
 @{
-   ViewBag.Title = "Detalhes de Cliente";
+    ViewBag.Title = "Detalhes de Cliente";
 
-   var Titulo = Model.IsPessoaFisica ? Model.PessoaFisica.Nome : Model.PessoaJuridica.RazaoSocial; 
+    var Titulo = Model.IsPessoaFisica ? Model.PessoaFisica.Nome : Model.PessoaJuridica.RazaoSocial;
 }
 
 <div class="row">
@@ -22,52 +22,71 @@
                             <div class="row">
                                 <div class="col-md-3 col-lg-3 " align="center"> <img src="http://www.imarca.com.br/_easyweb/logomarcas/logomarca-logotipo-logo-mercado-pires-268.gif" alt="..." class="img-circle img-responsive"> </div>
 
-                                <div class=" col-md-9 col-lg-9 ">
-                                    <table class="table table-user-information">
-                                        <tbody>
+                                <ul class="nav nav-tabs col-md-9 col-lg-9 ">
+                                    <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
+                                    <li class=""><a href="#servico" data-toggle="tab" aria-expanded="false">Serviços</a></li>
+                                    <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
+                                    <li class=""><a href="#revenda" data-toggle="tab" aria-expanded="false">Revenda</a></li>
+                                </ul>
+                                <div class="tab-content col-md-9 col-lg-9 ">
+                                    <div class="tab-pane fade in active " id="infoBasica">
+                                        <div class="">
+                                            <table class="table table-user-information">
+                                                <tbody>
 
-                                            @if (Model.IsPessoaJuridica) 
-                                            {
-                                                @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
-                                            } else {
-                                                @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
-                                            }
+                                                    @if (Model.IsPessoaJuridica)
+                                                    {
+                                                        @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
+                                                    }
 
-                                            <tr>
-                                                <td>E-mail:</td>
-                                                <td><a href="mailto:@Model.Email">@Model.Email</a></td>
-                                            </tr>
+                                                    <tr>
+                                                        <td>E-mail:</td>
+                                                        <td><a href="mailto:@Model.Email">@Model.Email</a></td>
+                                                    </tr>
 
-                                            <tr>
-                                                <td>Ativo</td>
-                                                <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
-                                            </tr>
+                                                    <tr>
+                                                        <td>Ativo</td>
+                                                        <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
+                                                    </tr>
 
-                                            <tr>
-                                                <td>Cliente com nota?</td>
-                                                <td>@Model.ComNota</td>
-                                            </tr>
+                                                    <tr>
+                                                        <td>Cliente com nota?</td>
+                                                        <td>@Model.ComNota</td>
+                                                    </tr>
 
-                                            <tr>
-                                                <td>Vencimento do Boleto</td>
-                                                <td>@Model.VencimentoBoleto.ToString("d")</td>
-                                            </tr>
+                                                    <tr>
+                                                        <td>Vencimento do Boleto</td>
+                                                        <td>@Model.VencimentoBoleto.ToString("d")</td>
+                                                    </tr>
 
-                                            <tr>
-                                                <td>Data de Cadastro</td>
-                                                <td>@Model.CriadoEm.ToString("d")</td>
-                                            </tr>
+                                                    <tr>
+                                                        <td>Data de Cadastro</td>
+                                                        <td>@Model.CriadoEm.ToString("d")</td>
+                                                    </tr>
 
-                                        </tbody>
-                                    </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade in active " id="servico">
+                                    </div>
+                                    <div class="tab-pane fade in active " id="cnae">
+                                    </div>
+                                    <div class="tab-pane fade in active " id="revenda">
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <a href="@Url.Action("Edit", "Clientes", new {id = Model.PessoaId})" data-modal="" class="btn btn-primary">
+                            <a href="@Url.Action("Edit", "Clientes", new {id = Model.PessoaId})" class="btn btn-primary">
                                 <span title="Editar" class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="@Url.Action("Delete", "Clientes", new { id = Model.PessoaId })" data-modal="" class="btn btn-danger">
+                            <a href="@Url.Action("Delete", "Clientes", new { id = Model.PessoaId })" class="btn btn-danger">
                                 <span title="Excluir" class="glyphicon glyphicon-trash"></span>
                             </a>
                             @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
@@ -76,6 +95,18 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div id="replacetarget">
+                @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId.ToString() } })
+            </div>
+        </div>
+    </div>
+</div>
 
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
     </div>
 </div>

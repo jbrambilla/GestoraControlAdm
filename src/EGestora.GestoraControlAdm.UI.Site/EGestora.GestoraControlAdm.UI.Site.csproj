@@ -298,6 +298,12 @@
     <Content Include="Views\Shared\Pessoa\_CreatePessoaFisica.cshtml" />
     <Content Include="Views\Shared\Pessoa\_DetailsPessoaJuridica.cshtml" />
     <Content Include="Views\Shared\Pessoa\_DetailsPessoaFisica.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_EnderecoList.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_Endereco.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_DeletarEndereco.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_DadosEndereco.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_AtualizarEndereco.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_AdicionarEndereco.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

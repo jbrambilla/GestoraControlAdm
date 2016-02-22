@@ -1,7 +1,9 @@
-﻿using System;
+﻿using EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
@@ -17,6 +19,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [Required]
         public bool Ativo { get; set; }
+
+        [FileSize(10240)]
+        [FileTypes("jpg,jpeg,png")]
+        public HttpPostedFileBase Foto { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo E-mail")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]

@@ -308,6 +308,7 @@
     <Content Include="Views\Shared\Pessoa\Endereco\_DadosEndereco.cshtml" />
     <Content Include="Views\Shared\Pessoa\Endereco\_AtualizarEndereco.cshtml" />
     <Content Include="Views\Shared\Pessoa\Endereco\_AdicionarEndereco.cshtml" />
+    <Content Include="Views\Shared\Pessoa\_CreatePessoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,6 +16,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<PessoaFisica> PessoasFisicas { get; set; }
         public DbSet<PessoaJuridica> PessoasJuridicas { get; set; }
@@ -38,6 +39,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
                 .Configure(p => p.HasMaxLength(100));
 
             modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new FornecedorConfiguration());
             modelBuilder.Configurations.Add(new PessoaConfiguration());
             modelBuilder.Configurations.Add(new PessoaFisicaConfiguration());
             modelBuilder.Configurations.Add(new PessoaJuridicaConfiguration());

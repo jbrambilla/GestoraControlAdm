@@ -25,9 +25,11 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
 
             // Domain
             container.RegisterPerWebRequest<IClienteService, ClienteService>();
+            container.RegisterPerWebRequest<IFornecedorService, FornecedorService>();
 
             // Infra Dados
             container.RegisterPerWebRequest<IClienteRepository, ClienteRepository>();
+            container.RegisterPerWebRequest<IFornecedorRepository, FornecedorRepository>();
             container.RegisterPerWebRequest<IEnderecoRepository, EnderecoRepository>();
             container.RegisterPerWebRequest<IPessoaFisicaRepository, PessoaFisicaRepository>();
             container.RegisterPerWebRequest<IPessoaJuridicaRepository, PessoaJuridicaRepository>();

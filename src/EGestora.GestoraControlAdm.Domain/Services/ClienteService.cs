@@ -125,11 +125,24 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _cnaeRepository.GetById(id);
         }
 
+        public void AddCnae(Guid id, Guid pessoaId)
+        {
+            var cliente = _clienteRepository.GetById(pessoaId);
+            var cnae = _cnaeRepository.GetById(id);
+            cliente.CnaeList.Add(cnae);
+        }
+
+        public void RemoveCnae(Guid id, Guid pessoaId)
+        {
+            var cliente = _clienteRepository.GetById(pessoaId);
+            var cnae = _cnaeRepository.GetById(id);
+            cliente.CnaeList.Remove(cnae);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

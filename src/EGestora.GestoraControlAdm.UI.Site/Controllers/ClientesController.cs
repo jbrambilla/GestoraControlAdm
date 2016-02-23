@@ -214,6 +214,65 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url });
         }
 
+        //CNAE
+
+        public ActionResult ListarCnaes(Guid id)
+        {
+            ViewBag.PessoaId = id;
+
+            return PartialView("_CnaeList", _clienteAppService.GetById(id).CnaeList);
+        }
+
+        //[Route("adicionar-cnae")]
+        //public ActionResult AdicionarCnae(Guid id)
+        //{
+        //    ViewBag.PessoaId = id;
+        //    return PartialView("_AdicionarCnae");
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult AdicionarCnae(Guid? id, Guid? pessoaId)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _clienteAppService.AddEndereco(enderecoViewModel);
+
+        //        string url = Url.Action("ListarEnderecos", "Clientes", new { id = enderecoViewModel.PessoaId });
+        //        return Json(new { success = true, url = url });
+        //    }
+
+        //    return PartialView("_AdicionarEndereco", enderecoViewModel);
+        //}
+
+        public ActionResult DeletarCnae(Guid? id, Guid? pessoaId)
+        {
+            if (id == null || pessoaId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var cnaeViewModel = _clienteAppService.GetCnaeById(id.Value);
+            if (cnaeViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = pessoaId;
+            return PartialView("_DeletarCnae", cnaeViewModel);
+        }
+
+        // POST: Clientes/Delete/5
+
+        [HttpPost, ActionName("DeletarCnae")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarCnaeConfirmed(Guid id, Guid pessoaId)
+        {
+            _clienteAppService.RemoveCnae(id, pessoaId);
+
+            string url = Url.Action("ListarCnaes", "Clientes", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "cnae" });
+        }
+
         public ActionResult ObterImagemCliente(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.CLIENTES_IMAGE_PATH);

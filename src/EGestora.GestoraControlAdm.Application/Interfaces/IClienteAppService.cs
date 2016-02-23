@@ -20,5 +20,8 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void RemoveEndereco(Guid id);
 
         IEnumerable<CnaeViewModel> GetAllCnae();
+        CnaeViewModel GetCnaeById(Guid id);
+        void AddCnae(Guid cnaeId, Guid pessoaId);
+        void RemoveCnae(Guid cnaeId, Guid pessoaId);
     }
 }

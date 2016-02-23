@@ -1,0 +1,20 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.CnaeViewModel>
+
+<table class="table table-user-information">
+    <tbody>
+
+        @foreach(var item in Model)
+        { 
+            <tr>
+                <td>@item.Codigo</td>
+                <td>@item.Descricao</td>
+                <td><a href="@Url.Action("DeletarCnae", new { id = item.CnaeId, pessoaId = ViewBag.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+        }
+        <tr>
+            <td><a href="" class="btn btn-success btn-circle" data-modal=""><i title="Adicionar" class="fa fa-plus"></i></a></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

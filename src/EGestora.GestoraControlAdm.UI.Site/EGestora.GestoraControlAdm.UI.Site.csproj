@@ -329,6 +329,10 @@
     <Content Include="Views\Cnaes\Details.cshtml" />
     <Content Include="Views\Cnaes\Edit.cshtml" />
     <Content Include="Views\Cnaes\Index.cshtml" />
+    <Content Include="Views\Clientes\_CnaeList.cshtml" />
+    <Content Include="Views\Clientes\_DeletarCnae.cshtml" />
+    <Content Include="Views\Clientes\_DadosCnae.cshtml" />
+    <Content Include="Views\Clientes\_AdicionarCnae.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

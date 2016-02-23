@@ -28,15 +28,6 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             HasOptional(p => p.PessoaJuridica)
                     .WithRequired(pf => pf.Pessoa);
 
-            HasMany(f => f.CnaeList)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaId");
-                    me.MapRightKey("CnaeId");
-                    me.ToTable("PessoaCnae");
-                });
-
             Ignore(p => p.ValidationResult);
 
             Ignore(p => p.IsPessoaFisica);

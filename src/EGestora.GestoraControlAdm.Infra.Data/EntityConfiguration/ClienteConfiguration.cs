@@ -18,6 +18,15 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(p => p.ComNota)
                 .IsRequired();
 
+            HasMany(f => f.CnaeList)
+                .WithMany()
+                .Map(me =>
+                {
+                    me.MapLeftKey("PessoaId");
+                    me.MapRightKey("CnaeId");
+                    me.ToTable("ClienteCnae");
+                });
+
             ToTable("Clientes");
         }
     }

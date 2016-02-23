@@ -15,37 +15,32 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _cnaeRepository = cnaeRepository;
         }
 
-        Cnae Add(Cnae cnae)
+        public Cnae Add(Cnae cnae)
         {
             return _cnaeRepository.Add(cnae);
         }
 
-        Cnae GetById(Guid id)
+        public Cnae GetById(Guid id)
         {
             return _cnaeRepository.GetById(id);
         }
 
-        IEnumerable<Cnae> GetAll()
+        public IEnumerable<Cnae> GetAll()
         {
             return _cnaeRepository.GetAll();
         }
 
-        IEnumerable<Cnae> GetByPessoaId(Guid id)
-        {
-            return _cnaeRepository.GetByPessoaId(id);
-        }
-
-        Cnae Update(Cnae cnae)
+        public Cnae Update(Cnae cnae)
         {
             return _cnaeRepository.Update(cnae);
         }
 
-        void Remove(Guid id)
+        public void Remove(Guid id)
         {
             _cnaeRepository.Remove(id);
         }
 
-        void System.IDisposable.Dispose()
+        public void Dispose()
         {
             _cnaeRepository.Dispose();
             GC.SuppressFinalize(this);

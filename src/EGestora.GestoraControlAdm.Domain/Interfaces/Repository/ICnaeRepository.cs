@@ -6,6 +6,5 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
     public interface ICnaeRepository : IRepositoryBase<Cnae>
     {
-        IEnumerable<Cnae> GetByPessoaId(Guid id);
     }
 }

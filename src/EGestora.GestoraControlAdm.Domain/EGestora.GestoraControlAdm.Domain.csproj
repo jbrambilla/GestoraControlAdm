@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Cnae.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
     <Compile Include="Entities\Pessoa.cs" />
@@ -44,6 +45,7 @@
     <Compile Include="Entities\PessoaJuridica.cs" />
     <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
@@ -52,10 +54,12 @@
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repository\IRevendaRepository.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
+    <Compile Include="Interfaces\Service\ICnaeService.cs" />
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
     <Compile Include="Interfaces\Service\IRevendaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\CnaeService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />

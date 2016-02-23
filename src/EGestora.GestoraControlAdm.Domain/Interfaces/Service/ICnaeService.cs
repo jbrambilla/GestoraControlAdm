@@ -9,7 +9,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Cnae Add(Cnae cnae);
         Cnae GetById(Guid id);
         IEnumerable<Cnae> GetAll();
-        IEnumerable<Cnae> GetByPessoaId(Guid id);
         Cnae Update(Cnae cnae);
         void Remove(Guid id);
     }

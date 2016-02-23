@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Context\EGestoraContext.cs" />
     <Compile Include="EntityConfiguration\ClienteConfiguration.cs" />
+    <Compile Include="EntityConfiguration\CnaeConfiguration.cs" />
     <Compile Include="EntityConfiguration\EnderecoConfiguration.cs" />
     <Compile Include="EntityConfiguration\FornecedorConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaConfiguration.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\CnaeRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\FornecedorRepository.cs" />
     <Compile Include="Repository\PessoaFisicaRepository.cs" />

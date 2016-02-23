@@ -49,7 +49,7 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
-            var cnaeResult = _cnaeService.Add(cnae);
+            var cnaeResult = _cnaeService.Update(cnae);
             cnaeViewModel = Mapper.Map<Cnae, CnaeViewModel>(cnaeResult);
 
             Commit();

@@ -50,7 +50,5 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<EnderecoViewModel> EnderecoList { get; set; }
-
-
     }
 }

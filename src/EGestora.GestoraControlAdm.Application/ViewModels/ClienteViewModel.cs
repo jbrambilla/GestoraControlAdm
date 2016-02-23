@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public ClienteViewModel()
             : base()
         {
+            CnaeList = new List<CnaeViewModel>();
         }
        
         [Required]
@@ -19,5 +21,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime VencimentoBoleto { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<CnaeViewModel> CnaeList { get; set; }
     }
 }

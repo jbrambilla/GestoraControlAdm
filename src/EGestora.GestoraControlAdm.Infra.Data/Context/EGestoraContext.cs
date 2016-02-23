@@ -19,6 +19,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<Revenda> Revendas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<PessoaFisica> PessoasFisicas { get; set; }
         public DbSet<PessoaJuridica> PessoasJuridicas { get; set; }
         public DbSet<Cnae> Cnaes { get; set; }

@@ -18,5 +18,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         EnderecoViewModel UpdateEndereco(EnderecoViewModel enderecoViewModel);
         EnderecoViewModel GetEnderecoById(Guid id);
         void RemoveEndereco(Guid id);
+
+        IEnumerable<CnaeViewModel> GetAllCnae();
     }
 }

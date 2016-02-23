@@ -48,6 +48,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: Clientes/Create
         public ActionResult Create()
         {
+            loadVierBags();
             return View();
         }
 
@@ -68,12 +69,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     {
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
-
+                    loadVierBags();
                     return View(clienteEnderecoViewModel);
                 }
 
                 return RedirectToAction("Index");
             }
+            loadVierBags();
             return View(clienteEnderecoViewModel);
         }
 
@@ -222,6 +224,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             }
 
             return File(foto, "image/jpeg");
+        }
+
+        private void loadVierBags()
+        {
+            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");
         }
 
         protected override void Dispose(bool disposing)

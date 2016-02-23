@@ -27,6 +27,7 @@ namespace EGestora.GestoraControlAdm.Application
             var pf = Mapper.Map<ClienteEnderecoViewModel, PessoaFisica>(clienteEnderecoViewModel);
             var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
+            var selectedCnaeList = clienteEnderecoViewModel.SelectedCnaeList;
             var foto = clienteEnderecoViewModel.Foto;
 
             if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
@@ -40,9 +41,19 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
+            /** Adicionando PF, PJ e ENDEREÇO **/
             cliente.PessoaFisica = pf;
             cliente.PessoaJuridica = pj;
             cliente.EnderecoList.Add(endereco);
+            /** FIM Adicionando PF, PJ e ENDEREÇO **/
+
+            /** Adicionando CNAES **/
+            foreach (var CnaeId in selectedCnaeList)
+            {
+                var cnae = _clienteService.GetCnaeById(CnaeId);
+                cliente.CnaeList.Add(cnae);
+            }
+            /** FIM Adicionando CNAES **/
 
             var clienteReturn = _clienteService.Add(cliente);
             clienteEnderecoViewModel = Mapper.Map<Cliente, ClienteEnderecoViewModel>(clienteReturn);
@@ -134,11 +145,15 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<CnaeViewModel> GetAllCnae()
+        {
+            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_clienteService.GetAllCnae());
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

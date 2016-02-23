@@ -13,17 +13,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
+        private readonly ICnaeRepository _cnaeRepository;
 
         public ClienteService(
             IClienteRepository clienteRepository, 
             IEnderecoRepository enderecoRepository, 
             IPessoaFisicaRepository pessoaFisicaRepository, 
-            IPessoaJuridicaRepository pessoaJuridicaRepository)
+            IPessoaJuridicaRepository pessoaJuridicaRepository,
+            ICnaeRepository cnaeRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
+            _cnaeRepository = cnaeRepository;
         }
 
         public Cliente Add(Cliente cliente)
@@ -110,6 +113,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return null;
             }
             return _pessoaJuridicaRepository.Update(pessoaJuridica);
+        }
+
+        public IEnumerable<Cnae> GetAllCnae()
+        {
+            return _cnaeRepository.GetAll();
+        }
+
+        public Cnae GetCnaeById(Guid id)
+        {
+            return _cnaeRepository.GetById(id);
         }
 
         public void Dispose()

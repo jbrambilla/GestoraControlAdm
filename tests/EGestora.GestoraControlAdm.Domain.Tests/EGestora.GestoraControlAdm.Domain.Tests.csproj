@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Entities\PessoaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecificationTeste.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerNomeObrigatorioSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDevePossuirCnpjUnicoSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecificationTest.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerCpfUnicoSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecificationTest.cs" />
+    <Compile Include="Validations\ClienteServicos\ClienteServicoEstaConsistenteValidationTest.cs" />
     <Compile Include="Validations\Documentos\CnpjValidationTest.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidationTest.cs" />

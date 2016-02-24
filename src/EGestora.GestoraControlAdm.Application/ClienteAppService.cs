@@ -155,10 +155,10 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Cnae, CnaeViewModel>(_clienteService.GetCnaeById(id));
         }
 
-        public void AddCnae(Guid cnaeId, Guid pessoaId)
+        public void AddCnae(Guid id, Guid pessoaId)
         {
             BeginTransaction();
-            _clienteService.AddCnae(cnaeId, pessoaId);
+            _clienteService.AddCnae(id, pessoaId);
             Commit();
         }
 
@@ -169,10 +169,18 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id)
+        {
+            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_clienteService.GetAllCnaeOutPessoa(id));
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
+
+
+        
     }
 }

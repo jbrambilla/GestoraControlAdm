@@ -21,7 +21,8 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         IEnumerable<CnaeViewModel> GetAllCnae();
         CnaeViewModel GetCnaeById(Guid id);
-        void AddCnae(Guid cnaeId, Guid pessoaId);
+        void AddCnae(Guid id, Guid pessoaId);
         void RemoveCnae(Guid cnaeId, Guid pessoaId);
+        IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id);
     }
 }

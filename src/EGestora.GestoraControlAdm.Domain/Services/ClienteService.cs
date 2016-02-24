@@ -3,6 +3,7 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
@@ -139,10 +140,19 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             cliente.CnaeList.Remove(cnae);
         }
 
+        public IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id)
+        {
+            var cliente = _clienteRepository.GetById(id);
+            var allCnaes = _cnaeRepository.GetAll();
+
+            return allCnaes.Except(cliente.CnaeList);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+       
     }
 }

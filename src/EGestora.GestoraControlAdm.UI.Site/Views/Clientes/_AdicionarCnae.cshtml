@@ -1,5 +1,4 @@
-﻿
-<div class="modal-header">
+﻿<div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">
         <span aria-hidden="true">×</span><span class="sr-only">Close</span>
     </button>
@@ -19,7 +18,7 @@
             <div class="form-group">
                 <label class="control-label col-md-2">Códigos Cnae</label>
                 <div class="col-md-10">
-                    @Html.DropDownList("SelectedCnaeList", (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control", multiple = "multiple" })
+                    @Html.DropDownList("CnaeId", (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control" })
                 </div>
             </div>
 

@@ -223,27 +223,33 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return PartialView("_CnaeList", _clienteAppService.GetById(id).CnaeList);
         }
 
-        //[Route("adicionar-cnae")]
-        //public ActionResult AdicionarCnae(Guid id)
-        //{
-        //    ViewBag.PessoaId = id;
-        //    return PartialView("_AdicionarCnae");
-        //}
+        [Route("adicionar-cnae")]
+        public ActionResult AdicionarCnae(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+            return PartialView("_AdicionarCnae");
+        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult AdicionarCnae(Guid? id, Guid? pessoaId)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _clienteAppService.AddEndereco(enderecoViewModel);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarCnae(Guid PessoaId, Guid CnaeId)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.AddCnae(CnaeId, PessoaId);
 
-        //        string url = Url.Action("ListarEnderecos", "Clientes", new { id = enderecoViewModel.PessoaId });
-        //        return Json(new { success = true, url = url });
-        //    }
-
-        //    return PartialView("_AdicionarEndereco", enderecoViewModel);
-        //}
+                string url = Url.Action("ListarCnaes", "Clientes", new { id = PessoaId});
+                return Json(new { success = true, url = url, replaceTarget = "cnae" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+            return PartialView("_AdicionarCnae");
+        }
 
         public ActionResult DeletarCnae(Guid? id, Guid? pessoaId)
         {

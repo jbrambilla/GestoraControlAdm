@@ -1,0 +1,23 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteServicoViewModel>
+
+<table class="table table-user-information">
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Servico.Descricao</td>
+                <td>@Html.DisplayFor(model => item.Valor)</td>
+                <td>@(item.Faturar ? "Faturar" : "Não Faturar")</td>
+                <td><a href="@Url.Action("DeletarServico", new { id = item.ClienteServicoId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+        }
+        <tr>
+            <td><a href="@Url.Action("AdicionarServico", new { id = ViewBag.PessoaId })" class="btn btn-success btn-circle" data-modal=""><i title="Adicionar" class="fa fa-plus"></i></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+

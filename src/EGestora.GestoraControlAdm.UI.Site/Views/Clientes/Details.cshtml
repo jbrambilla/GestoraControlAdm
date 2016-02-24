@@ -73,6 +73,9 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="servico">
+                                        <div id="replacetargetServico">
+                                            @Html.Partial("_ServicoList", Model.ClienteServicoList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade in" id="cnae">
                                         <div id="replacetargetCnae">

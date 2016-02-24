@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public ServicoViewModel()
         {
             ServicoId = Guid.NewGuid();
+            ClienteServicoList = new List<ClienteServicoViewModel>();
         }
 
         [Key]
@@ -29,5 +31,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DateTime AlteradoEm { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<ClienteServicoViewModel> ClienteServicoList { get; set; }
     }
 }

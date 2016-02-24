@@ -64,6 +64,7 @@
     <Compile Include="RevendaAppService.cs" />
     <Compile Include="ServicoAppService.cs" />
     <Compile Include="ViewModels\ClienteEnderecoViewModel.cs" />
+    <Compile Include="ViewModels\ClienteServicoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />

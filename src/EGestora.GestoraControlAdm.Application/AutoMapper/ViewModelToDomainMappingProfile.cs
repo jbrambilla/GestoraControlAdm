@@ -45,6 +45,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<CnaeViewModel, Cnae>();
 
             Mapper.CreateMap<ServicoViewModel, Servico>();
+
+            Mapper.CreateMap<ClienteServicoViewModel, ClienteServico>();
         }
     }
 }

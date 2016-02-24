@@ -11,6 +11,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             : base()
         {
             CnaeList = new List<CnaeViewModel>();
+            ClienteServicoList = new List<ClienteServicoViewModel>();
         }
        
         [Required]
@@ -24,5 +25,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<CnaeViewModel> CnaeList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<ClienteServicoViewModel> ClienteServicoList { get; set; }
     }
 }

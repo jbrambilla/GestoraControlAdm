@@ -339,6 +339,7 @@
     <Content Include="Views\Servicos\Details.cshtml" />
     <Content Include="Views\Servicos\Edit.cshtml" />
     <Content Include="Views\Servicos\Index.cshtml" />
+    <Content Include="Views\Clientes\_ServicoList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

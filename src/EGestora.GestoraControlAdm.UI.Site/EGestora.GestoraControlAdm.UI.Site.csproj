@@ -330,16 +330,16 @@
     <Content Include="Views\Cnaes\Details.cshtml" />
     <Content Include="Views\Cnaes\Edit.cshtml" />
     <Content Include="Views\Cnaes\Index.cshtml" />
-    <Content Include="Views\Clientes\_CnaeList.cshtml" />
-    <Content Include="Views\Clientes\_DeletarCnae.cshtml" />
-    <Content Include="Views\Clientes\_DadosCnae.cshtml" />
-    <Content Include="Views\Clientes\_AdicionarCnae.cshtml" />
+    <Content Include="Views\Clientes\Cnaes\_CnaeList.cshtml" />
+    <Content Include="Views\Clientes\Cnaes\_DeletarCnae.cshtml" />
+    <Content Include="Views\Clientes\Cnaes\_DadosCnae.cshtml" />
+    <Content Include="Views\Clientes\Cnaes\_AdicionarCnae.cshtml" />
     <Content Include="Views\Servicos\Create.cshtml" />
     <Content Include="Views\Servicos\Delete.cshtml" />
     <Content Include="Views\Servicos\Details.cshtml" />
     <Content Include="Views\Servicos\Edit.cshtml" />
     <Content Include="Views\Servicos\Index.cshtml" />
-    <Content Include="Views\Clientes\_ServicoList.cshtml" />
+    <Content Include="Views\Clientes\Servicos\_ServicoList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,19 +15,25 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
         private readonly ICnaeRepository _cnaeRepository;
+        private readonly IServicoRepository _servicoRepository;
+        private readonly IClienteServicoRepository _clienteServicoRepository;
 
         public ClienteService(
             IClienteRepository clienteRepository, 
             IEnderecoRepository enderecoRepository, 
             IPessoaFisicaRepository pessoaFisicaRepository, 
             IPessoaJuridicaRepository pessoaJuridicaRepository,
-            ICnaeRepository cnaeRepository)
+            ICnaeRepository cnaeRepository,
+            IServicoRepository servicoRepository,
+            IClienteServicoRepository clienteServicoRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
             _cnaeRepository = cnaeRepository;
+            _servicoRepository = servicoRepository;
+            _clienteServicoRepository = clienteServicoRepository;
         }
 
         public Cliente Add(Cliente cliente)
@@ -148,11 +154,25 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return allCnaes.Except(cliente.CnaeList);
         }
 
+        public Servico GetServicoById(Guid id)
+        {
+            return _servicoRepository.GetById(id);
+        }
+
+        public ClienteServico AddClienteServico(ClienteServico clienteServico)
+        {
+            if (!clienteServico.IsValid())
+            {
+                return clienteServico;
+            }
+
+            return _clienteServicoRepository.Add(clienteServico);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-       
     }
 }

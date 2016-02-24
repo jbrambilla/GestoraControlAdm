@@ -27,5 +27,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public Guid[] SelectedCnaeList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public Guid[] SelectedServicoList { get; set; }
     }
 }

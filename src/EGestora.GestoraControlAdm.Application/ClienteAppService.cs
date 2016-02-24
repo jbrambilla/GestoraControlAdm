@@ -28,6 +28,7 @@ namespace EGestora.GestoraControlAdm.Application
             var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
             var selectedCnaeList = clienteEnderecoViewModel.SelectedCnaeList;
+            var selectedServicoList = clienteEnderecoViewModel.SelectedServicoList;
             var foto = clienteEnderecoViewModel.Foto;
 
             if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
@@ -54,6 +55,19 @@ namespace EGestora.GestoraControlAdm.Application
                 cliente.CnaeList.Add(cnae);
             }
             /** FIM Adicionando CNAES **/
+
+            /** Adicionando SERVIÇOS **/
+            foreach (var ServicoId in selectedServicoList)
+            {
+                var servico = _clienteService.GetServicoById(ServicoId);
+                var clienteServico = new ClienteServico();
+
+                clienteServico.Cliente = cliente;
+                clienteServico.Servico = servico;
+
+                cliente.ClienteServicoList.Add(clienteServico);
+            }
+            /** FIM Adicionando SERVIÇOS **/
 
             var clienteReturn = _clienteService.Add(cliente);
             clienteEnderecoViewModel = Mapper.Map<Cliente, ClienteEnderecoViewModel>(clienteReturn);

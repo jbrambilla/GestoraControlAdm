@@ -267,8 +267,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return PartialView("_DeletarCnae", cnaeViewModel);
         }
 
-        // POST: Clientes/Delete/5
-
         [HttpPost, ActionName("DeletarCnae")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletarCnaeConfirmed(Guid id, Guid pessoaId)
@@ -277,6 +275,72 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             string url = Url.Action("ListarCnaes", "Clientes", new { id = pessoaId });
             return Json(new { success = true, url = url, replaceTarget = "cnae" });
+        }
+
+        //SERVIÇOS
+
+        public ActionResult ListarServicos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+
+            return PartialView("_ServicoList", _clienteAppService.GetById(id).ClienteServicoList);
+        }
+
+        [Route("adicionar-servico")]
+        public ActionResult AdicionarServico(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewBag.ServicoList = new SelectList(_clienteAppService.GetAllServicosOutPessoa(id.Value).OrderBy(s => s.Descricao), "ServicoId", "Descricao");
+            return PartialView("_AdicionarServico");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarServico(Guid PessoaId, Guid ServicoId)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.AddServico(PessoaId, ServicoId);
+
+                string url = Url.Action("ListarServicos", "Clientes", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "servico" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            ViewBag.ServicoList = new SelectList(_clienteAppService.GetAllServicosOutPessoa(PessoaId).OrderBy(s => s.Descricao), "ServicoId", "Descricao");
+            return PartialView("_AdicionarServico");
+        }
+
+        public ActionResult DeletarServico(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var clienteServicoViewModel = _clienteAppService.GetClienteServicoById(id.Value);
+            if (clienteServicoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            return PartialView("_DeletarServico", clienteServicoViewModel);
+        }
+
+        // POST: Clientes/Delete/5
+
+        [HttpPost, ActionName("DeletarServico")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarServicoConfirmed(Guid id)
+        {
+            var pessoaId = _clienteAppService.GetClienteServicoById(id).PessoaId;
+            _clienteAppService.RemoveClienteServico(id);
+
+            string url = Url.Action("ListarServicos", "Clientes", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "servico" });
         }
 
         public ActionResult ObterImagemCliente(Guid id)

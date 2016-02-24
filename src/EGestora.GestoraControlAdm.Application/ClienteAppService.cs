@@ -188,10 +188,33 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_clienteService.GetAllCnaeOutPessoa(id));
         }
 
-
         public IEnumerable<ServicoViewModel> GetAllServicos()
         {
             return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(_clienteService.GetAllServicos());
+        }
+
+        public IEnumerable<ServicoViewModel> GetAllServicosOutPessoa(Guid id)
+        {
+            return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(_clienteService.GetAllServicosOutPessoa(id));
+        }
+
+        public void AddServico(Guid pessoaId, Guid servicoId)
+        {
+            BeginTransaction();
+            _clienteService.AddServico(pessoaId, servicoId);
+            Commit();
+        }
+
+        public ClienteServicoViewModel GetClienteServicoById(Guid id)
+        {
+            return Mapper.Map<ClienteServico, ClienteServicoViewModel>(_clienteService.GetClienteServicoById(id));
+        }
+
+        public void RemoveClienteServico(Guid id)
+        {
+            BeginTransaction();
+            _clienteService.RemoveClienteServico(id);
+            Commit();
         }
 
         public void Dispose()
@@ -199,6 +222,6 @@ namespace EGestora.GestoraControlAdm.Application
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
-
+        
     }
 }

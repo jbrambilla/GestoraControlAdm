@@ -340,6 +340,9 @@
     <Content Include="Views\Servicos\Edit.cshtml" />
     <Content Include="Views\Servicos\Index.cshtml" />
     <Content Include="Views\Clientes\Servicos\_ServicoList.cshtml" />
+    <Content Include="Views\Clientes\Servicos\_AdicionarServico.cshtml" />
+    <Content Include="Views\Clientes\Servicos\_DadosServico.cshtml" />
+    <Content Include="Views\Clientes\Servicos\_DeletarServico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

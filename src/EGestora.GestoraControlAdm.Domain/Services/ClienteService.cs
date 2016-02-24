@@ -164,14 +164,47 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _servicoRepository.GetAll();
         }
 
-        public ClienteServico AddClienteServico(ClienteServico clienteServico)
+        public IEnumerable<Servico> GetAllServicosOutPessoa(Guid id)
         {
-            if (!clienteServico.IsValid())
+            var cliente = _clienteRepository.GetById(id);
+            var clienteServicoList = GetAllServicosDoCliente(cliente);
+            var allServicos = _servicoRepository.GetAll();
+
+            return allServicos.Except(clienteServicoList);
+        }
+
+        public void AddServico(Guid pessoaId, Guid servicoId)
+        {
+            var cliente = _clienteRepository.GetById(pessoaId);
+            var servico = _servicoRepository.GetById(servicoId);
+
+            var ClienteServico = new ClienteServico();
+            ClienteServico.Servico = servico;
+            ClienteServico.Cliente = cliente;
+
+            _clienteServicoRepository.Add(ClienteServico);
+        }
+
+        private IEnumerable<Servico> GetAllServicosDoCliente(Cliente cliente)
+        {
+            var clienteServicoList = new List<Servico>();
+
+            foreach (var clienteServico in cliente.ClienteServicoList)
             {
-                return clienteServico;
+                clienteServicoList.Add(clienteServico.Servico);
             }
 
-            return _clienteServicoRepository.Add(clienteServico);
+            return clienteServicoList;
+        }
+
+        public ClienteServico GetClienteServicoById(Guid id)
+        {
+            return _clienteServicoRepository.GetById(id);
+        }
+
+        public void RemoveClienteServico(Guid id)
+        {
+            _clienteServicoRepository.Remove(id);
         }
 
         public void Dispose()
@@ -179,5 +212,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

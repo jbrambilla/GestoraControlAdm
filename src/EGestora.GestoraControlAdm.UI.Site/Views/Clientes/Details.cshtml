@@ -147,6 +147,8 @@
                             $('#myModal').modal('hide');
                             if (result.replaceTarget == "cnae") {
                                 $('#replacetargetCnae').load(result.url);
+                            } else if (result.replaceTarget == "servico") {
+                                $('#replacetargetServico').load(result.url);
                             } else {
                                 $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                             }

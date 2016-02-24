@@ -182,6 +182,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RevendasController.cs" />
+    <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -333,6 +334,11 @@
     <Content Include="Views\Clientes\_DeletarCnae.cshtml" />
     <Content Include="Views\Clientes\_DadosCnae.cshtml" />
     <Content Include="Views\Clientes\_AdicionarCnae.cshtml" />
+    <Content Include="Views\Servicos\Create.cshtml" />
+    <Content Include="Views\Servicos\Delete.cshtml" />
+    <Content Include="Views\Servicos\Details.cshtml" />
+    <Content Include="Views\Servicos\Edit.cshtml" />
+    <Content Include="Views\Servicos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

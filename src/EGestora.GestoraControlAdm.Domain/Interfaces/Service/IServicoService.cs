@@ -9,7 +9,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Servico Add(Servico servico);
         Servico GetById(Guid id);
         IEnumerable<Servico> GetAll();
-        Cnae Update(Servico servico);
+        Servico Update(Servico servico);
         void Remove(Guid id);
     }
 }

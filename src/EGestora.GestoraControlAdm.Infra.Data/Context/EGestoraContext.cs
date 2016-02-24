@@ -23,6 +23,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<PessoaFisica> PessoasFisicas { get; set; }
         public DbSet<PessoaJuridica> PessoasJuridicas { get; set; }
         public DbSet<Cnae> Cnaes { get; set; }
+        public DbSet<Servico> Servicos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,6 +50,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new PessoaJuridicaConfiguration());
             modelBuilder.Configurations.Add(new EnderecoConfiguration());
             modelBuilder.Configurations.Add(new CnaeConfiguration());
+            modelBuilder.Configurations.Add(new ServicoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

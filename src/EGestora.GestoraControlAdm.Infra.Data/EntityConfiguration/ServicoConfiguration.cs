@@ -9,6 +9,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(s => s.ServicoId);
 
+            HasMany(c => c.ClienteServicoList)
+                .WithRequired(cs => cs.Servico)
+                .HasForeignKey(cs => cs.ServicoId);
+
             ToTable("Servicos");
         }
     }

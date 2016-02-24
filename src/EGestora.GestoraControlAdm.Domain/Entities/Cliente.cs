@@ -10,10 +10,12 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             : base()
         {
             CnaeList = new List<Cnae>();
+            ClienteServicoList = new List<ClienteServico>();
         }
 
         public bool ComNota { get; set; }
         public DateTime VencimentoBoleto { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
+        public virtual ICollection<ClienteServico> ClienteServicoList { get; set; }
     }
 }

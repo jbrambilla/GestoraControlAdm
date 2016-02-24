@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
@@ -7,6 +8,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Servico()
         {
             ServicoId = Guid.NewGuid();
+            ClienteServicoList = new List<ClienteServico>();
         }
 
         public Guid ServicoId { get; set; }
@@ -14,5 +16,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public decimal Valor { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
+
+        public virtual ICollection<ClienteServico> ClienteServicoList { get; set; }
     }
 }

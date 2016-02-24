@@ -29,6 +29,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                     me.ToTable("ClienteCnae");
                 });
 
+            HasMany(c => c.ClienteServicoList)
+                .WithRequired(cs => cs.Cliente)
+                .HasForeignKey(cs => cs.PessoaId);
+
             ToTable("Clientes");
         }
     }

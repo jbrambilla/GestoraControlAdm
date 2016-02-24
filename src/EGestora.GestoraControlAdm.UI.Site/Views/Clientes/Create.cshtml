@@ -97,6 +97,12 @@
                                             @Html.DropDownListFor(m => m.SelectedCnaeList, (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control", multiple = "multiple" })
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Serviços</label>
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(m => m.SelectedServicoList, (IEnumerable<SelectListItem>)ViewBag.ServicoList, new { @class = "form-control", multiple = "multiple" })
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,5 +139,6 @@
     <script src="~/Scripts/select2.full.min.js"></script>
     <script>
         $('#SelectedCnaeList').select2();
+        $('#SelectedServicoList').select2();
     </script>
 }

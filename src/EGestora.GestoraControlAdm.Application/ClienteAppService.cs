@@ -188,13 +188,17 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_clienteService.GetAllCnaeOutPessoa(id));
         }
 
+
+        public IEnumerable<ServicoViewModel> GetAllServicos()
+        {
+            return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(_clienteService.GetAllServicos());
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
 
-
-        
     }
 }

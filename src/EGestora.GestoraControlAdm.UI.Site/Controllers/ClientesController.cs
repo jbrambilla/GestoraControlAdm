@@ -294,6 +294,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         private void loadVierBags()
         {
             ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+            ViewBag.ServicoList = new SelectList(_clienteAppService.GetAllServicos().OrderBy(c => c.Descricao), "ServicoId", "Descricao");
         }
 
         protected override void Dispose(bool disposing)

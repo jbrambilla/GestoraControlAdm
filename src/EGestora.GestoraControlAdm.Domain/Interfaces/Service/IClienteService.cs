@@ -29,6 +29,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
 
         Servico GetServicoById(Guid id);
+        IEnumerable<Servico> GetAllServicos();
 
         ClienteServico AddClienteServico(ClienteServico clienteServico);
     }

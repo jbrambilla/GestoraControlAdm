@@ -159,6 +159,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _servicoRepository.GetById(id);
         }
 
+        public IEnumerable<Servico> GetAllServicos()
+        {
+            return _servicoRepository.GetAll();
+        }
+
         public ClienteServico AddClienteServico(ClienteServico clienteServico)
         {
             if (!clienteServico.IsValid())

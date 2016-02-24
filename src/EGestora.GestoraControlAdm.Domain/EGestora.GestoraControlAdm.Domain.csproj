@@ -44,6 +44,7 @@
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
     <Compile Include="Entities\Revenda.cs" />
+    <Compile Include="Entities\Servico.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />

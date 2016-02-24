@@ -120,7 +120,7 @@
         $(function () {
             $.ajaxSetup({ cache: false });
 
-            $("a[data-modal]").on("click", function (e) {
+            $(document).on('click', 'a[data-modal]', function (e) {
                 $('#myModalContent').load(this.href, function () {
                     $('#myModal').modal({
                         /*backdrop: 'static',*/
@@ -129,6 +129,7 @@
                     bindForm(this);
                 });
                 return false;
+
             });
         });
 

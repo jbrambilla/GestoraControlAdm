@@ -209,11 +209,36 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<RevendaViewModel> GetAllRevendas()
+        {
+            return Mapper.Map<IEnumerable<Revenda>, IEnumerable<RevendaViewModel>>(_clienteService.GetAllRevendas());
+        }
+
+        public IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridicaDeRevendas()
+        {
+            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_clienteService.GetAllPessoaJuridicaDeRevendas());
+        }
+
+        public RevendaViewModel GetRevendaById(Guid id)
+        {
+            return Mapper.Map<Revenda, RevendaViewModel>(_clienteService.GetRevendaById(id));
+        }
+
+        public void RemoveRevenda(Guid pessoaId)
+        {
+            _clienteService.RemoveRevenda(pessoaId);
+        }
+
+        public void AddRevenda(Guid pessoaId, Guid revendaId)
+        {
+            _clienteService.AddRevenda(pessoaId, revendaId);
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
-        
+
     }
 }

@@ -36,5 +36,27 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             revenda.Ativo = false;
             Update(revenda);
         }
+
+        public IEnumerable<PessoaJuridica> GetAllPessoaJuridica()
+        {
+            var pjList = new List<PessoaJuridica>();
+            var revendasPj = Search(c => c.PessoaJuridica != null).ToList();
+            foreach (var revenda in revendasPj)
+            {
+                pjList.Add(revenda.PessoaJuridica);
+            }
+            return pjList;
+        }
+
+        public IEnumerable<PessoaFisica> GetAllPessoaFisica()
+        {
+            var pfList = new List<PessoaFisica>();
+            var revendasPf = Search(c => c.PessoaFisica != null).ToList();
+            foreach (var revenda in revendasPf)
+            {
+                pfList.Add(revenda.PessoaFisica);
+            }
+            return pfList;
+        }
     }
 }

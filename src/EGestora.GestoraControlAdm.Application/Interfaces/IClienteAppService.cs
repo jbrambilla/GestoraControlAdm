@@ -31,5 +31,11 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         ClienteServicoViewModel GetClienteServicoById(Guid id);
         void RemoveClienteServico(Guid id);
+
+        IEnumerable<RevendaViewModel> GetAllRevendas();
+        IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridicaDeRevendas();
+        RevendaViewModel GetRevendaById(Guid id);
+        void RemoveRevenda(Guid pessoaId);
+        void AddRevenda(Guid pessoaId, Guid revendaId);
     }
 }

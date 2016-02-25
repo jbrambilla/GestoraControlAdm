@@ -17,6 +17,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly ICnaeRepository _cnaeRepository;
         private readonly IServicoRepository _servicoRepository;
         private readonly IClienteServicoRepository _clienteServicoRepository;
+        private readonly IRevendaRepository _revendaRepository;
 
         public ClienteService(
             IClienteRepository clienteRepository, 
@@ -25,7 +26,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IPessoaJuridicaRepository pessoaJuridicaRepository,
             ICnaeRepository cnaeRepository,
             IServicoRepository servicoRepository,
-            IClienteServicoRepository clienteServicoRepository)
+            IClienteServicoRepository clienteServicoRepository,
+            IRevendaRepository revendaRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
@@ -34,6 +36,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _cnaeRepository = cnaeRepository;
             _servicoRepository = servicoRepository;
             _clienteServicoRepository = clienteServicoRepository;
+            _revendaRepository = revendaRepository;
         }
 
         public Cliente Add(Cliente cliente)
@@ -198,6 +201,36 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void RemoveClienteServico(Guid id)
         {
             _clienteServicoRepository.Remove(id);
+        }
+
+        public IEnumerable<Revenda> GetAllRevendas()
+        {
+            return _revendaRepository.GetAll();
+        }
+
+        public IEnumerable<PessoaJuridica> GetAllPessoaJuridicaDeRevendas()
+        {
+            return _revendaRepository.GetAllPessoaJuridica();
+        }
+
+        public Revenda GetRevendaById(Guid id)
+        {
+            return _revendaRepository.GetById(id);
+        }
+
+        public void RemoveRevenda(Guid pessoaId)
+        {
+            var cliente = _clienteRepository.GetById(pessoaId);
+            cliente.Revenda = null;
+            cliente.RevendaId = null;
+            _clienteRepository.Update(cliente);
+        }
+
+        public void AddRevenda(Guid pessoaId, Guid revendaId)
+        {
+            var cliente = _clienteRepository.GetById(pessoaId);
+            cliente.RevendaId = revendaId;
+            _clienteRepository.Update(cliente);
         }
 
         public void Dispose()

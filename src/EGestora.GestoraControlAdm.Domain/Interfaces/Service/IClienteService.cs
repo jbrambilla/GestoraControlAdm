@@ -35,5 +35,11 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         ClienteServico GetClienteServicoById(Guid id);
         void RemoveClienteServico(Guid id);
+
+        IEnumerable<Revenda> GetAllRevendas();
+        IEnumerable<PessoaJuridica> GetAllPessoaJuridicaDeRevendas();
+        Revenda GetRevendaById(Guid id);
+        void RemoveRevenda(Guid pessoaId);
+        void AddRevenda(Guid pessoaId, Guid revendaId);
     }
 }

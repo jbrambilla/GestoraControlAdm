@@ -13,7 +13,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             CnaeList = new List<CnaeViewModel>();
             ClienteServicoList = new List<ClienteServicoViewModel>();
         }
-       
+
+        [DisplayName("Revenda")]
+        public Guid? RevendaId { get; set; }
+
         [Required]
         [DisplayName("Com Nota")]
         public bool ComNota { get; set; }
@@ -28,5 +31,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<ClienteServicoViewModel> ClienteServicoList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public RevendaViewModel Revenda { get; set; }
     }
 }

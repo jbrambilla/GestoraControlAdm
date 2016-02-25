@@ -11,6 +11,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             : base()
         {
             CnaeList = new List<CnaeViewModel>();
+            SelectedCnaeList = new List<Guid>();
         }
 
         [Required]
@@ -26,7 +27,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public ICollection<CnaeViewModel> CnaeList { get; set; }
 
         [ScaffoldColumn(false)]
-        public Guid[] SelectedCnaeList { get; set; }
+        public IEnumerable<Guid> SelectedCnaeList { get; set; }
 
+        [DisplayName("Revenda")]
+        public Guid? RevendaId { get; set; }
     }
 }

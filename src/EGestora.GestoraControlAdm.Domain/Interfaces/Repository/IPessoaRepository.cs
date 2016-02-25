@@ -1,4 +1,5 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
+using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
@@ -6,5 +7,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
     {
         TEntity GetByCnpj(string cnpj);
         TEntity GetByCpf(string cpf);
+        IEnumerable<PessoaJuridica> GetAllPessoaJuridica();
+        IEnumerable<PessoaFisica> GetAllPessoaFisica();
     }
 }

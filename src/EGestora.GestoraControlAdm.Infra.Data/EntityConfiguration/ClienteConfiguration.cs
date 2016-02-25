@@ -33,6 +33,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                 .WithRequired(cs => cs.Cliente)
                 .HasForeignKey(cs => cs.PessoaId);
 
+            HasOptional(c => c.Revenda)
+                .WithMany(r => r.ClienteList)
+                .HasForeignKey(c => c.RevendaId);
+
             ToTable("Clientes");
         }
     }

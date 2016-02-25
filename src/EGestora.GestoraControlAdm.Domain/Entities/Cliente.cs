@@ -13,8 +13,10 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             ClienteServicoList = new List<ClienteServico>();
         }
 
+        public Guid? RevendaId { get; set; }
         public bool ComNota { get; set; }
         public DateTime VencimentoBoleto { get; set; }
+        public virtual Revenda Revenda { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
         public virtual ICollection<ClienteServico> ClienteServicoList { get; set; }
     }

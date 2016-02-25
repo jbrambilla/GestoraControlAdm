@@ -1,4 +1,6 @@
-﻿namespace EGestora.GestoraControlAdm.Application.ViewModels
+﻿using System.Collections.Generic;
+
+namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
     public class RevendaViewModel : PessoaViewModel
     {
@@ -6,5 +8,7 @@
             : base()
         {
         }
+
+        public ICollection<ClienteViewModel> ClienteList { get; set; }
     }
 }

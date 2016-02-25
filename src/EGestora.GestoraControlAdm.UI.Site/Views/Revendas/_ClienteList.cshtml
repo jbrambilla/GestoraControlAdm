@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel>
+
+<table class="table table-user-information">
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            if (item.IsPessoaJuridica)
+            {
+                <tr>
+                    <td>@item.PessoaJuridica.RazaoSocial</td>
+                    <td>@item.PessoaJuridica.NomeFantasia</td>
+                    <td>@item.PessoaJuridica.Cnpj</td>
+                    @*<td><a href="#" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>*@
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@item.PessoaFisica.Nome</td>
+                    <td>@item.PessoaFisica.Rg</td>
+                    <td>@item.PessoaFisica.Cpf</td>
+                    @*<td><a href="#" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>*@
+                </tr>
+            }
+
+        }
+        @*<tr>
+            <td><a href="#" class="btn btn-success btn-circle" data-modal=""><i title="Adicionar" class="fa fa-plus"></i></a></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>*@
+    </tbody>
+</table>
+

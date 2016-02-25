@@ -40,7 +40,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
         public IEnumerable<PessoaJuridica> GetAllPessoaJuridica()
         {
             var pjList = new List<PessoaJuridica>();
-            var fornecedoresPj = Search(c => c.PessoaJuridica != null).ToList();
+            var fornecedoresPj = Search(c => c.PessoaJuridica != null && c.Ativo).ToList();
             foreach (var fornecedor in fornecedoresPj)
             {
                 pjList.Add(fornecedor.PessoaJuridica);
@@ -51,7 +51,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
         public IEnumerable<PessoaFisica> GetAllPessoaFisica()
         {
             var pfList = new List<PessoaFisica>();
-            var fornecedoresPf = Search(c => c.PessoaFisica != null).ToList();
+            var fornecedoresPf = Search(c => c.PessoaFisica != null && c.Ativo).ToList();
             foreach (var fornecedor in fornecedoresPf)
             {
                 pfList.Add(fornecedor.PessoaFisica);

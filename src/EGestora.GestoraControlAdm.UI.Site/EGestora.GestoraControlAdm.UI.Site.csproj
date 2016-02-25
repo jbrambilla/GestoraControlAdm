@@ -347,6 +347,7 @@
     <Content Include="Views\Clientes\Revendas\_AdicionarRevenda.cshtml" />
     <Content Include="Views\Clientes\Revendas\_DeletarRevenda.cshtml" />
     <Content Include="Views\Clientes\Revendas\_DadosRevenda.cshtml" />
+    <Content Include="Views\Revendas\_ClienteList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -300,11 +300,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AdicionarServico(Guid PessoaId, Guid ServicoId)
+        public ActionResult AdicionarServico(ClienteServicoViewModel clienteServicoViewModel)
         {
+            var PessoaId = clienteServicoViewModel.PessoaId;
+
             if (ModelState.IsValid)
             {
-                _clienteAppService.AddServico(PessoaId, ServicoId);
+                _clienteAppService.AddServico(clienteServicoViewModel);
 
                 string url = Url.Action("ListarServicos", "Clientes", new { id = PessoaId });
                 return Json(new { success = true, url = url, replaceTarget = "servico" });

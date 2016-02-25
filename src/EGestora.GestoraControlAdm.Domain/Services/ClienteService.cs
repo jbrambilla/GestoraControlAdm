@@ -173,16 +173,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return allServicos.Except(clienteServicoList);
         }
 
-        public void AddServico(Guid pessoaId, Guid servicoId)
+        public ClienteServico AddServico(ClienteServico clienteServico)
         {
-            var cliente = _clienteRepository.GetById(pessoaId);
-            var servico = _servicoRepository.GetById(servicoId);
-
-            var ClienteServico = new ClienteServico();
-            ClienteServico.Servico = servico;
-            ClienteServico.Cliente = cliente;
-
-            _clienteServicoRepository.Add(ClienteServico);
+            return _clienteServicoRepository.Add(clienteServico);
         }
 
         private IEnumerable<Servico> GetAllServicosDoCliente(Cliente cliente)

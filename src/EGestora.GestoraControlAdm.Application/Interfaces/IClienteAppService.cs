@@ -27,7 +27,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         IEnumerable<ServicoViewModel> GetAllServicos();
         IEnumerable<ServicoViewModel> GetAllServicosOutPessoa(Guid id);
-        void AddServico(Guid pessoaId, Guid servicoId);
+        ClienteServicoViewModel AddServico(ClienteServicoViewModel clienteServicoViewModel);
 
         ClienteServicoViewModel GetClienteServicoById(Guid id);
         void RemoveClienteServico(Guid id);

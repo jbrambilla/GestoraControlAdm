@@ -198,11 +198,17 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Servico>, IEnumerable<ServicoViewModel>>(_clienteService.GetAllServicosOutPessoa(id));
         }
 
-        public void AddServico(Guid pessoaId, Guid servicoId)
+        public ClienteServicoViewModel AddServico(ClienteServicoViewModel clienteServicoViewModel)
         {
+            var clienteServico = Mapper.Map<ClienteServicoViewModel, ClienteServico>(clienteServicoViewModel);
+
             BeginTransaction();
-            _clienteService.AddServico(pessoaId, servicoId);
+
+            var clienteServicoResult = _clienteService.AddServico(clienteServico);
+            clienteServicoViewModel = Mapper.Map<ClienteServico, ClienteServicoViewModel>(clienteServicoResult);
+
             Commit();
+            return clienteServicoViewModel;
         }
 
         public ClienteServicoViewModel GetClienteServicoById(Guid id)

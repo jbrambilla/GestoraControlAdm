@@ -1,4 +1,6 @@
-﻿<div class="modal-header">
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ClienteServicoViewModel
+
+<div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">
         <span aria-hidden="true">×</span><span class="sr-only">Close</span>
     </button>
@@ -16,9 +18,27 @@
             @Html.Hidden("PessoaId", (Guid?)ViewBag.PessoaId)
 
             <div class="form-group">
-                <label class="control-label col-md-2">Serviços</label>
+                @Html.LabelFor(model => model.ServicoId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.DropDownList("ServicoId", (IEnumerable<SelectListItem>)ViewBag.ServicoList, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Faturar, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Faturar)
+                        @Html.ValidationMessageFor(model => model.Faturar, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
 

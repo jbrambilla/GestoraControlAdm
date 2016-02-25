@@ -31,7 +31,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Servico GetServicoById(Guid id);
         IEnumerable<Servico> GetAllServicos();
         IEnumerable<Servico> GetAllServicosOutPessoa(Guid id);
-        void AddServico(Guid pessoaId, Guid servicoId);
+        ClienteServico AddServico(ClienteServico clienteServico);
 
         ClienteServico GetClienteServicoById(Guid id);
         void RemoveClienteServico(Guid id);

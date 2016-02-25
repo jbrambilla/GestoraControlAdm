@@ -20,10 +20,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         public bool Faturar { get; set; }
 
-        [ScaffoldColumn(false)]
         public Guid PessoaId { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Required(ErrorMessage = "Selecione um Serviço")]
+        [DisplayName("Serviço")]
         public Guid ServicoId { get; set; }
 
         [ScaffoldColumn(false)]

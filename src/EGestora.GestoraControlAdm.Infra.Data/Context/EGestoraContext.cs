@@ -25,6 +25,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<Cnae> Cnaes { get; set; }
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<ClienteServico> ClienteServico { get; set; }
+        public DbSet<Empresa> Empresas { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -53,6 +55,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new CnaeConfiguration());
             modelBuilder.Configurations.Add(new ServicoConfiguration());
             modelBuilder.Configurations.Add(new ClienteServicoConfiguration());
+            modelBuilder.Configurations.Add(new EmpresaConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -39,6 +39,7 @@
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
+    <Compile Include="Entities\Empresa.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
     <Compile Include="Entities\Pessoa.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />
+    <Compile Include="Interfaces\Repository\IEmpresaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClienteServicoService.cs" />
     <Compile Include="Interfaces\Service\ICnaeService.cs" />
+    <Compile Include="Interfaces\Service\IEmpresaService.cs" />
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
     <Compile Include="Interfaces\Service\IRevendaService.cs" />
     <Compile Include="Interfaces\Service\IServicoService.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ClienteServicoService.cs" />
     <Compile Include="Services\CnaeService.cs" />
+    <Compile Include="Services\EmpresaService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />

@@ -18,5 +18,14 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Endereco UpdateEndereco(Endereco endereco);
         Endereco GetEnderecoById(Guid id);
         void RemoveEndereco(Guid id);
+
+        PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica);
+        PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica);
+
+        IEnumerable<Cnae> GetAllCnae();
+        Cnae GetCnaeById(Guid id);
+        void RemoveCnae(Guid id, Guid pessoaId);
+        void AddCnae(Guid id, Guid pessoaId);
+        IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
     }
 }

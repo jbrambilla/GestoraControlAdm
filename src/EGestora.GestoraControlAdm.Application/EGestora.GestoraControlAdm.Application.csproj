@@ -54,9 +54,11 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="ClienteAppService.cs" />
     <Compile Include="CnaeAppService.cs" />
+    <Compile Include="EmpresaAppService.cs" />
     <Compile Include="FornecedorAppService.cs" />
     <Compile Include="Interfaces\IClienteAppService.cs" />
     <Compile Include="Interfaces\ICnaeAppService.cs" />
+    <Compile Include="Interfaces\IEmpresaAppService.cs" />
     <Compile Include="Interfaces\IFornecedorAppService.cs" />
     <Compile Include="Interfaces\IRevendaAppService.cs" />
     <Compile Include="Interfaces\IServicoAppService.cs" />
@@ -67,6 +69,8 @@
     <Compile Include="ViewModels\ClienteServicoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
+    <Compile Include="ViewModels\EmpresaEnderecoViewModel.cs" />
+    <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
     <Compile Include="ViewModels\FornecedorEnderecoViewModel.cs" />
     <Compile Include="ViewModels\FornecedorViewModel.cs" />

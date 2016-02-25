@@ -3,6 +3,7 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
@@ -13,17 +14,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
+        private readonly ICnaeRepository _cnaeRepository;
 
         public EmpresaService(
             IEmpresaRepository empresaRepository, 
             IEnderecoRepository enderecoRepository, 
             IPessoaFisicaRepository pessoaFisicaRepository, 
-            IPessoaJuridicaRepository pessoaJuridicaRepository)
+            IPessoaJuridicaRepository pessoaJuridicaRepository,
+            ICnaeRepository cnaeRepository)
         {
             _empresaRepository = empresaRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
+            _cnaeRepository = cnaeRepository;
         }
 
         public Empresa Add(Empresa empresa)
@@ -110,6 +114,38 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return null;
             }
             return _pessoaJuridicaRepository.Update(pessoaJuridica);
+        }
+
+        public IEnumerable<Cnae> GetAllCnae()
+        {
+            return _cnaeRepository.GetAll();
+        }
+
+        public Cnae GetCnaeById(Guid id)
+        {
+            return _cnaeRepository.GetById(id);
+        }
+
+        public void AddCnae(Guid id, Guid pessoaId)
+        {
+            var cliente = _empresaRepository.GetById(pessoaId);
+            var cnae = _cnaeRepository.GetById(id);
+            cliente.CnaeList.Add(cnae);
+        }
+
+        public void RemoveCnae(Guid id, Guid pessoaId)
+        {
+            var cliente = _empresaRepository.GetById(pessoaId);
+            var cnae = _cnaeRepository.GetById(id);
+            cliente.CnaeList.Remove(cnae);
+        }
+
+        public IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id)
+        {
+            var cliente = _empresaRepository.GetById(id);
+            var allCnaes = _cnaeRepository.GetAll();
+
+            return allCnaes.Except(cliente.CnaeList);
         }
 
         public void Dispose()

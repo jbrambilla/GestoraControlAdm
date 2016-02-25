@@ -83,6 +83,9 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="revenda">
+                                        <div id="replacetargetRevenda">
+                                            @Html.Partial("_RevendaList", Model.Revenda, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
+                                        </div>
                                     </div>
                                 </div>
 
@@ -149,6 +152,8 @@
                                 $('#replacetargetCnae').load(result.url);
                             } else if (result.replaceTarget == "servico") {
                                 $('#replacetargetServico').load(result.url);
+                            } else if (result.replaceTarget == "revenda") {
+                                $('#replacetargetRevenda').load(result.url);
                             } else {
                                 $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                             }

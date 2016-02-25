@@ -345,6 +345,71 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "servico" });
         }
 
+        //REVENDA
+
+        public ActionResult ListarRevenda(Guid id)
+        {
+            ViewBag.PessoaId = id;
+
+            return PartialView("_RevendaList", _clienteAppService.GetById(id).Revenda);
+        }
+
+        [Route("adicionar-revenda")]
+        public ActionResult AdicionarRevenda(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewBag.RevendaList = new SelectList(_clienteAppService.GetAllPessoaJuridicaDeRevendas().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            return PartialView("_AdicionarRevenda");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarRevenda(Guid PessoaId, Guid RevendaId)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.AddRevenda(PessoaId, RevendaId);
+
+                string url = Url.Action("ListarRevenda", "Clientes", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "revenda" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            ViewBag.RevendaList = new SelectList(_clienteAppService.GetAllPessoaJuridicaDeRevendas().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            return PartialView("_AdicionarRevenda");
+        }
+
+        public ActionResult DeletarRevenda(Guid? PessoaId, Guid? RevendaId)
+        {
+            if (RevendaId == null || PessoaId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var revendaViewModel = _clienteAppService.GetRevendaById(RevendaId.Value);
+            if (revendaViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = PessoaId;
+            return PartialView("_DeletarRevenda", revendaViewModel);
+        }
+
+        // POST: Clientes/Delete/5
+
+        [HttpPost, ActionName("DeletarRevenda")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarRevendaConfirmed(Guid PessoaId)
+        {
+            _clienteAppService.RemoveRevenda(PessoaId);
+
+            string url = Url.Action("ListarRevenda", "Clientes", new { id = PessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "revenda" });
+        }
+
         public ActionResult ObterImagemCliente(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.CLIENTES_IMAGE_PATH);

@@ -226,12 +226,16 @@ namespace EGestora.GestoraControlAdm.Application
 
         public void RemoveRevenda(Guid pessoaId)
         {
+            BeginTransaction();
             _clienteService.RemoveRevenda(pessoaId);
+            Commit();
         }
 
         public void AddRevenda(Guid pessoaId, Guid revendaId)
         {
+            BeginTransaction();
             _clienteService.AddRevenda(pessoaId, revendaId);
+            Commit();
         }
 
         public void Dispose()

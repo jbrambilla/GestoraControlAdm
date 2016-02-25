@@ -1,0 +1,23 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.RevendaViewModel
+
+
+<table class="table table-user-information">
+    <tbody>
+        @if (Model != null)
+        { 
+            <tr>
+                <td>@Model.PessoaJuridica.RazaoSocial</td>
+                <td>@Model.PessoaJuridica.NomeFantasia</td>
+                <td><a href="@Url.Action("DeletarRevenda", new { pessoaId = @ViewBag.PessoaId, revendaId = @Model.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td><a href="@Url.Action("AdicionarRevenda", new { id = ViewBag.PessoaId })" class="btn btn-success btn-circle" data-modal=""><i title="Adicionar" class="fa fa-plus"></i></a></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

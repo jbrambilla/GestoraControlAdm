@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CnaesController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -330,10 +331,6 @@
     <Content Include="Views\Cnaes\Details.cshtml" />
     <Content Include="Views\Cnaes\Edit.cshtml" />
     <Content Include="Views\Cnaes\Index.cshtml" />
-    <Content Include="Views\Clientes\Cnaes\_CnaeList.cshtml" />
-    <Content Include="Views\Clientes\Cnaes\_DeletarCnae.cshtml" />
-    <Content Include="Views\Clientes\Cnaes\_DadosCnae.cshtml" />
-    <Content Include="Views\Clientes\Cnaes\_AdicionarCnae.cshtml" />
     <Content Include="Views\Servicos\Create.cshtml" />
     <Content Include="Views\Servicos\Delete.cshtml" />
     <Content Include="Views\Servicos\Details.cshtml" />
@@ -348,6 +345,15 @@
     <Content Include="Views\Clientes\Revendas\_DeletarRevenda.cshtml" />
     <Content Include="Views\Clientes\Revendas\_DadosRevenda.cshtml" />
     <Content Include="Views\Revendas\_ClienteList.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Cnae\_AdicionarCnae.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Cnae\_CnaeList.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Cnae\_DadosCnae.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Cnae\_DeletarCnae.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

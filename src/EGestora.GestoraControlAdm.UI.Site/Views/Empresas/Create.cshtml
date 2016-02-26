@@ -1,0 +1,172 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.EmpresaEnderecoViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<link href="~/Content/select2.min.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1 class="page-header">Cadastro de Empresas</h1>
+
+            @using (Html.BeginForm("Create", "Empresas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="panel panel-default" id="panelRadioGroup">
+                        <div class="panel-heading">Tipo do Cadastro</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group" id="radioGroup">
+                                        <label class="col-lg-2 control-label"></label>
+                                        <div class="col-lg-10">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="FlagIsPessoaJuridica" id="fisica" value="false" checked="">
+                                                    Pessoa Física
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="FlagIsPessoaJuridica" id="juridica" value="true">
+                                                    Pessoa Jurídica
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formPessoaJuridica">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Pessoa Jurídica</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        @Html.Partial("_CreatePessoaJuridica")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="formPessoaFisica">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Pessoa Física</div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        @Html.Partial("_CreatePessoaFisica")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Empresa</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @Html.Partial("_CreatePessoa")
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Aliquota, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Aliquota, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Aliquota, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.LoginIss, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.LoginIss, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LoginIss, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.SenhaIss, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.SenhaIss, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.SenhaIss, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.WebServiceHomologacao, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.WebServiceHomologacao, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WebServiceHomologacao, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.WebServiceProducao, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.WebServiceProducao, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.WebServiceProducao, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OptanteSimplesNacional, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox">
+                                                @Html.EditorFor(model => model.OptanteSimplesNacional)
+                                                @Html.ValidationMessageFor(model => model.OptanteSimplesNacional, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Códigos Cnae</label>
+                                        <div class="col-md-10">
+                                            @Html.DropDownListFor(m => m.SelectedCnaeList, (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control", multiple = "multiple" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Endereço</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    @Html.Partial("_Endereco")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" value="Cadastrar" class="btn btn-success" />
+                            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/radioButtonPfPj.js"></script>
+    <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
+    <script src="~/Scripts/select2.full.min.js"></script>
+    <script>
+        $('#SelectedCnaeList').select2();
+    </script>
+}

@@ -8,10 +8,10 @@ namespace EGestora.GestoraControlAdm.UI.Site.ViewEngine
     {
         private static string[] NewPartialViewFormats = new[] { 
             "~/Views/{1}/Partials/{0}.cshtml",
-            "~/Views/Clientes/Cnaes/{0}.cshtml",
             "~/Views/Clientes/Servicos/{0}.cshtml",
             "~/Views/Clientes/Revendas/{0}.cshtml",
             "~/Views/Shared/Pessoa/{0}.cshtml",
+            "~/Views/Shared/Pessoa/Cnae/{0}.cshtml",
             "~/Views/Shared/Pessoa/Endereco/{0}.cshtml"
         };
 

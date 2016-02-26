@@ -30,5 +30,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<EGestora.GestoraControlAdm.Application.ViewModels.EmpresaViewModel> EmpresaViewModels { get; set; }
+
     }
 }

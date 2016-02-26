@@ -1,0 +1,238 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.EmpresaViewModel>
+
+@{
+    ViewBag.Title = "Lista de Empresas";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+
+        <h2 class="page-header">Gestão de Empresa</h2>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista de Empresas
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#pjList" data-toggle="tab" aria-expanded="true">Pessoa Jurídica</a></li>
+                    <li class=""><a href="#pfList" data-toggle="tab" aria-expanded="false">Pessoa Física</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active " id="pjList">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaJuridica.RazaoSocial)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaJuridica.NomeFantasia)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaJuridica.Cnpj)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoEstadual)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoMunicipal)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Ativo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Aliquota)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LoginIss)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SenhaIss)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WebServiceHomologacao)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WebServiceProducao)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OptanteSimplesNacional)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    if (item.PessoaFisica == null)
+                                    {
+                                        <tr>
+                                            <td><img src="@Url.Action("ObterImagemEmpresa", "Empresas", new { id = item.PessoaId })" alt="@item.PessoaJuridica.RazaoSocial" class="img-circle" height="34" width="34" /></td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Ativo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Aliquota)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LoginIss)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SenhaIss)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WebServiceHomologacao)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WebServiceProducao)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OptanteSimplesNacional)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit", "Empresas", new {id = item.PessoaId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                <a href="@Url.Action("Details", "Empresas", new { id = item.PessoaId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                <a href="@Url.Action("Delete", "Empresas", new { id = item.PessoaId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pfList">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tr>
+                                    <th></th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaFisica.Nome)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaFisica.Rg)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaFisica.Cpf)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaFisica.Genero)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PessoaFisica.Nascimento)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Ativo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Aliquota)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LoginIss)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SenhaIss)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WebServiceHomologacao)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.WebServiceProducao)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OptanteSimplesNacional)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    if (item.PessoaJuridica == null)
+                                    {
+                                        <tr>
+                                            <td><img src="@Url.Action("ObterImagemEmpresa", "Empresas", new { id = item.PessoaId })" alt="@item.PessoaFisica.Nome" class="img-circle" height="34" width="34" /></td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaFisica.Rg)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaFisica.Genero)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PessoaFisica.Nascimento)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Ativo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Aliquota)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LoginIss)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.SenhaIss)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WebServiceHomologacao)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.WebServiceProducao)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OptanteSimplesNacional)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit", "Empresas", new {id = item.PessoaId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                <a href="@Url.Action("Details", "Empresas", new { id = item.PessoaId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                <a href="@Url.Action("Delete", "Empresas", new { id = item.PessoaId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                @Html.ActionLink("Nova Empresa", "Create", "Empresas", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>

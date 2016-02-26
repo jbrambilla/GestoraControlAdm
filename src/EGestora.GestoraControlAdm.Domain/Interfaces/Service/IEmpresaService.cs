@@ -27,5 +27,10 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         void RemoveCnae(Guid id, Guid pessoaId);
         void AddCnae(Guid id, Guid pessoaId);
         IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
+
+        Funcionario AddFuncionario(Funcionario funcionario);
+        Funcionario UpdateFuncionario(Funcionario funcionario);
+        Funcionario GetFuncionarioById(Guid id);
+        void RemoveFuncionario(Guid id);
     }
 }

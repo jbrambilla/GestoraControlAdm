@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
@@ -8,6 +9,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             : base()
         {
             CnaeList = new List<Cnae>();
+            FuncionarioList = new List<Funcionario>();
         }
 
         public decimal Aliquota { get; set; }
@@ -17,6 +19,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string WebServiceProducao { get; set; }
         public bool OptanteSimplesNacional { get; set; }
 
+        public virtual ICollection<Funcionario> FuncionarioList { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
     }
 }

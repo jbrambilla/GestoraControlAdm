@@ -16,19 +16,22 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
         private readonly ICnaeRepository _cnaeRepository;
+        private readonly IFuncionarioRepository _funcionarioRepository;
 
         public EmpresaService(
             IEmpresaRepository empresaRepository, 
             IEnderecoRepository enderecoRepository, 
             IPessoaFisicaRepository pessoaFisicaRepository, 
             IPessoaJuridicaRepository pessoaJuridicaRepository,
-            ICnaeRepository cnaeRepository)
+            ICnaeRepository cnaeRepository,
+            IFuncionarioRepository funcionarioRepository)
         {
             _empresaRepository = empresaRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
             _cnaeRepository = cnaeRepository;
+            _funcionarioRepository = funcionarioRepository;
         }
 
         public Empresa Add(Empresa empresa)
@@ -155,10 +158,42 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return allCnaes.Except(cliente.CnaeList);
         }
 
+        public Funcionario AddFuncionario(Funcionario funcionario)
+        {
+            if (!funcionario.IsValid())
+            {
+                return funcionario;
+            }
+
+            funcionario.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Funcionario>(_funcionarioRepository).Validate(funcionario);
+            if (!funcionario.ValidationResult.IsValid)
+            {
+                return funcionario;
+            }
+
+            return _funcionarioRepository.Add(funcionario);
+        }
+
+        public Funcionario UpdateFuncionario(Funcionario funcionario)
+        {
+            return _funcionarioRepository.Update(funcionario);
+        }
+
+        public Funcionario GetFuncionarioById(Guid id)
+        {
+            return _funcionarioRepository.GetById(id);
+        }
+
+        public void RemoveFuncionario(Guid id)
+        {
+            _funcionarioRepository.Remove(id);
+        }
+
         public void Dispose()
         {
             _empresaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

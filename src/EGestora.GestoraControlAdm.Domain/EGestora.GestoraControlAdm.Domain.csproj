@@ -42,6 +42,7 @@
     <Compile Include="Entities\Empresa.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
+    <Compile Include="Entities\Funcionario.cs" />
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Interfaces\Repository\IEmpresaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
+    <Compile Include="Interfaces\Repository\IFuncionarioRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaJuridicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />

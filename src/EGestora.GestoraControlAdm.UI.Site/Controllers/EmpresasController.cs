@@ -25,7 +25,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: Empresas
         public ActionResult Index()
         {
-            return View(_empresaAppService.GetAll());
+            var empresas = _empresaAppService.GetAll();
+            if (empresas.Any(e => e.Ativo))
+            {
+                return RedirectToAction("Details", new { id = empresas.First(e => e.Ativo).PessoaId });
+            }
+            return View();
         }
 
         // GET: Empresas/Details/5

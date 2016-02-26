@@ -2,6 +2,7 @@
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
+using EGestora.GestoraControlAdm.Domain.Validations.Empresas;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -38,6 +39,12 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             }
 
             empresa.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Empresa>(_empresaRepository).Validate(empresa);
+            if (!empresa.ValidationResult.IsValid)
+            {
+                return empresa;
+            }
+
+            empresa.ValidationResult = new EmpresaEstaAptaParaCadastroValidation(_empresaRepository).Validate(empresa);
             if (!empresa.ValidationResult.IsValid)
             {
                 return empresa;

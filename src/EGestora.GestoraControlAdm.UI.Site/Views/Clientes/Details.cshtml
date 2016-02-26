@@ -26,6 +26,7 @@
                                     <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
                                     <li class=""><a href="#servico" data-toggle="tab" aria-expanded="false">Serviços</a></li>
                                     <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
+                                    <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
                                     <li class=""><a href="#revenda" data-toggle="tab" aria-expanded="false">Revenda</a></li>
                                 </ul>
                                 <div class="tab-content col-md-9 col-lg-9 ">
@@ -82,6 +83,11 @@
                                             @Html.Partial("_CnaeList", Model.CnaeList, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
+                                    <div class="tab-pane fade in" id="enderecos">
+                                        <div id="replacetarget">
+                                            @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                        </div>
+                                    </div>
                                     <div class="tab-pane fade in" id="revenda">
                                         <div id="replacetargetRevenda">
                                             @Html.Partial("_RevendaList", Model.Revenda, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
@@ -102,11 +108,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div id="replacetarget">
-                @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId.ToString() } })
             </div>
         </div>
     </div>

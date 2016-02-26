@@ -26,6 +26,7 @@
                                     <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
                                     <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
                                     <li class=""><a href="#clientes" data-toggle="tab" aria-expanded="false">Clientes</a></li>
+                                    <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
                                 </ul>
                                 <div class="tab-content col-md-9 col-lg-9 ">
                                     <div class="tab-pane fade in active " id="infoBasica">
@@ -61,10 +62,15 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade in active " id="anexos">
+                                    <div class="tab-pane fade in" id="anexos">
                                     </div>
-                                    <div class="tab-pane fade in active " id="clientes">
+                                    <div class="tab-pane fade in"  id="clientes">
                                         @Html.Partial("_ClienteList", Model.ClienteList)
+                                    </div>
+                                    <div class="tab-pane fade in" id="enderecos">
+                                        <div id="replacetarget">
+                                            @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Revendas" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                        </div>
                                     </div>
                                 </div>
 
@@ -81,11 +87,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="container">
-            <div id="replacetarget">
-                @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Revendas" }, { "PessoaId", Model.PessoaId.ToString() } })
             </div>
         </div>
     </div>

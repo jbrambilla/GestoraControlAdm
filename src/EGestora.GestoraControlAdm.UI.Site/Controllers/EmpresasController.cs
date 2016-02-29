@@ -51,7 +51,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: Empresas/Create
         public ActionResult Create()
         {
-            loadVierBags();
+            loadViewBags();
             return View();
         }
 
@@ -72,13 +72,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     {
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
-                    loadVierBags();
+                    loadViewBags();
                     return View(empresaEnderecoViewModel);
                 }
 
                 return RedirectToAction("Index");
             }
-            loadVierBags();
+            loadViewBags();
             return View(empresaEnderecoViewModel);
         }
 
@@ -279,6 +279,108 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "cnae" });
         }
 
+        //FUNCIONÁRIOS
+
+        public ActionResult ListarFuncionarios(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_FuncionarioList", _empresaAppService.GetById(id).FuncionarioList.Where(f => f.Ativo).ToList());
+        }
+
+        [Route("adicionar-funcionario")]
+        public ActionResult AdicionarFuncionario(Guid id)
+        {
+            ViewBag.EmpresaId = id;
+            return PartialView("_AdicionarFuncionario");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarFuncionario(FuncionarioEnderecoViewModel funcionarioEnderecoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                funcionarioEnderecoViewModel = _empresaAppService.AddFuncionario(funcionarioEnderecoViewModel);
+
+                if (!funcionarioEnderecoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in funcionarioEnderecoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+                    return PartialView("_AdicionarFuncionario", funcionarioEnderecoViewModel);
+                }
+
+                string url = Url.Action("ListarFuncionarios", "Empresas", new { id = funcionarioEnderecoViewModel.EmpresaId });
+                return Json(new { success = true, url = url, replaceTarget = "funcionario" });
+            }
+
+            return PartialView("_AdicionarFuncionario", funcionarioEnderecoViewModel);
+        }
+
+        public ActionResult AtualizarFuncionario(Guid id)
+        {
+            return PartialView("_AtualizarFuncionario", _empresaAppService.GetFuncionarioById(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizarFuncionario(FuncionarioViewModel funcionarioViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                funcionarioViewModel = _empresaAppService.UpdateFuncionario(funcionarioViewModel);
+
+                string url = Url.Action("ListarFuncionarios", "Empresas", new { id = funcionarioViewModel.EmpresaId });
+                return Json(new { success = true, url = url, replaceTarget = "funcionario" });
+            }
+
+            return PartialView("_AtualizarFuncionario", funcionarioViewModel);
+        }
+
+        public ActionResult DeletarFuncionario(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var funcionarioViewModel = _empresaAppService.GetFuncionarioById(id.Value);
+            if (funcionarioViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DeletarFuncionario", funcionarioViewModel);
+        }
+
+        // POST: Empresas/Delete/5
+
+        [HttpPost, ActionName("DeletarFuncionario")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarFuncionarioConfirmed(Guid id)
+        {
+            var empresaId = _empresaAppService.GetFuncionarioById(id).EmpresaId;
+            _empresaAppService.RemoveFuncionario(id);
+
+            string url = Url.Action("ListarFuncionarios", "Empresas", new { id = empresaId });
+            return Json(new { success = true, url = url, replaceTarget = "funcionario" });
+        }
+
+        public ActionResult DetalhesFuncionario(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var funcionarioViewModel = _empresaAppService.GetFuncionarioById(id.Value);
+            if (funcionarioViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DetalhesFuncionario", funcionarioViewModel);
+        }
+
         public ActionResult ObterImagemEmpresa(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.EMPRESAS_IMAGE_PATH);
@@ -291,9 +393,21 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return File(foto, "image/jpeg");
         }
 
-        private void loadVierBags()
+        private void loadViewBags()
         {
             ViewBag.CnaeList = new SelectList(_empresaAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+        }
+
+        public ActionResult ObterImagemFuncionario(Guid id)
+        {
+            var foto = ImagemUtil.ObterImagem(id, FilePathConstants.FUNCIONARIOS_IMAGE_PATH);
+
+            if (foto == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return File(foto, "image/jpeg");
         }
 
         protected override void Dispose(bool disposing)

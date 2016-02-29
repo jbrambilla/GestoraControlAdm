@@ -354,6 +354,14 @@
     <Content Include="Views\Empresas\Details.cshtml" />
     <Content Include="Views\Empresas\Edit.cshtml" />
     <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_AdicionarFuncionario.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_AtualizarFuncionario.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_DadosFuncionario.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_DeletarFuncionario.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_Funcionario.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_FuncionarioList.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_FuncionarioEndereco.cshtml" />
+    <Content Include="Views\Empresas\Funcionarios\_DetalhesFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

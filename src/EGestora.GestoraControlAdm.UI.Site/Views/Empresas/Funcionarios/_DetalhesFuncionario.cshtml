@@ -1,0 +1,128 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel
+
+@{int i = 0;}
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title">Detalhes</h4>
+</div>
+
+<div class="modal-body">
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="container">
+                <h2>Detalhes do Funcionário</h2>
+
+                <div class="row">
+                    <div class="">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> @Model.PessoaFisica.Nome </h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemFuncionario", "Empresas", new { id = Model.PessoaId })" alt="@Model.PessoaFisica.Nome" class="img-circle img-responsive"> </div>
+
+                                    <ul class="nav nav-tabs col-md-9 col-lg-9 ">
+                                        <li class="active"><a href="#infoBasicaFunc" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
+                                        <li class=""><a href="#enderecosFunc" data-toggle="tab" aria-expanded="false">Endereços</a></li>
+                                    </ul>
+                                    <div class="tab-content col-md-9 col-lg-9 ">
+                                        <div class="tab-pane fade in active " id="infoBasicaFunc">
+                                            <div class="">
+                                                <table class="table table-user-information">
+                                                    <tbody>
+
+                                                        @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
+
+                                                        <tr>
+                                                            <td>E-mail:</td>
+                                                            <td><a href="mailto:@Model.Email">@Model.Email</a></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Ativo</td>
+                                                            <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>Data de Cadastro</td>
+                                                            <td>@Model.CriadoEm.ToString("d")</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade in" id="enderecosFunc">
+                                            <div id="replacetarget">
+                                                @foreach (var endereco in Model.EnderecoList)
+                                                {
+                                                    i++;
+                                                    <h4>Endereço @i</h4>
+                                                    <table class="table table-user-information ">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Logradouro</td>
+                                                                <td>@endereco.Logradouro</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Número</td>
+                                                                <td>@endereco.Numero</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Complemento</td>
+                                                                <td>@endereco.Complemento</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Bairro</td>
+                                                                <td>@endereco.Bairro</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>CEP</td>
+                                                                <td>@endereco.CEP</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Codade</td>
+                                                                <td>@endereco.Cidade</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Estado</td>
+                                                                <td>@endereco.Estado</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                }
+                                           </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            @*<div class="panel-footer">
+                                    <a href="@Url.Action("Edit", "Clientes", new {id = Model.PessoaId})" class="btn btn-primary">
+                                        <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    <a href="@Url.Action("Delete", "Clientes", new { id = Model.PessoaId })" class="btn btn-danger">
+                                        <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

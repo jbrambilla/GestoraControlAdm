@@ -210,7 +210,7 @@ namespace EGestora.GestoraControlAdm.Application
             if (!ImagemUtil.SalvarImagem(foto, funcionarioEnderecoViewModel.PessoaId, FilePathConstants.FUNCIONARIOS_IMAGE_PATH))
             {
                 // Tomada de decisão caso a imagem não seja gravada.
-                funcionarioEnderecoViewModel.ValidationResult.Message = "Empresa salva sem foto";
+                funcionarioEnderecoViewModel.ValidationResult.Message = "Funcionario salvo sem foto";
             }
 
             Commit();

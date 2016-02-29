@@ -176,6 +176,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Funcionario UpdateFuncionario(Funcionario funcionario)
         {
+            UpdatePessoaFisica(funcionario.PessoaFisica);
+            UpdatePessoaJuridica(funcionario.PessoaJuridica);
             return _funcionarioRepository.Update(funcionario);
         }
 

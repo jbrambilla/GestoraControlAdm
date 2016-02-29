@@ -47,5 +47,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<CnaeViewModel> CnaeList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual ICollection<FuncionarioViewModel> FuncionarioList { get; set; }
     }
 }

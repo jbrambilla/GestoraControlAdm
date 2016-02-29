@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PessoaFisica.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PessoaFisica.Rg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PessoaFisica.Cpf)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><img src="@Url.Action("ObterImagemFuncionario", "Empresas", new { id = item.PessoaId })" alt="@item.PessoaFisica.Nome" class="img-circle" height="34" width="34" /></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PessoaFisica.Rg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AtualizarFuncionario", "Empresas", new { id = item.PessoaId })" data-modal="" class="btn btn-default btn-circle">
+                            <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="@Url.Action("DetalhesFuncionario", "Empresas", new { id = item.PessoaId })" data-modal="" class="btn btn-default btn-circle">
+                            <span title="Editar" class="glyphicon glyphicon-search"></span>
+                        </a>
+                        <a href="@Url.Action("DeletarFuncionario", "Empresas", new { id = item.PessoaId })" data-modal="" class="btn btn-danger btn-circle">
+                            <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum Funcionário Cadastrado.
+            </th>
+        </tr>
+    </table>
+}
+
+<div>
+    <div class="form-group">
+        <a href="@Url.Action("AdicionarFuncionario", "Empresas", new { id = ViewBag.PessoaId }, "")" class="btn btn-success btn-circle" data-modal="">
+            <i title="Adicionar" class="fa fa-plus"></i>
+        </a>
+    </div>
+</div>
+
+
+

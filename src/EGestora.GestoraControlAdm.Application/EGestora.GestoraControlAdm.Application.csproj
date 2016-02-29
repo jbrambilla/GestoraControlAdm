@@ -74,6 +74,8 @@
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
     <Compile Include="ViewModels\FornecedorEnderecoViewModel.cs" />
     <Compile Include="ViewModels\FornecedorViewModel.cs" />
+    <Compile Include="ViewModels\FuncionarioEnderecoViewModel.cs" />
+    <Compile Include="ViewModels\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\PessoaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\PessoaFisicaViewModel.cs" />
     <Compile Include="ViewModels\PessoaJuridicaViewModel.cs" />

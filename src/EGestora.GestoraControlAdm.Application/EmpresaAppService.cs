@@ -174,10 +174,77 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_empresaService.GetAllCnaeOutPessoa(id));
         }
 
+        public FuncionarioEnderecoViewModel AddFuncionario(FuncionarioEnderecoViewModel funcionarioEnderecoViewModel)
+        {
+            var funcionario = Mapper.Map<FuncionarioEnderecoViewModel, Funcionario>(funcionarioEnderecoViewModel);
+            var pf = Mapper.Map<FuncionarioEnderecoViewModel, PessoaFisica>(funcionarioEnderecoViewModel);
+            var pj = Mapper.Map<FuncionarioEnderecoViewModel, PessoaJuridica>(funcionarioEnderecoViewModel);
+            var endereco = Mapper.Map<FuncionarioEnderecoViewModel, Endereco>(funcionarioEnderecoViewModel);
+            var foto = funcionarioEnderecoViewModel.Foto;
+
+            if (funcionarioEnderecoViewModel.FlagIsPessoaJuridica)
+            {
+                pf = null;
+            }
+            else
+            {
+                pj = null;
+            }
+
+            BeginTransaction();
+
+            /** Adicionando PF, PJ e ENDEREÇO **/
+            funcionario.PessoaFisica = pf;
+            funcionario.PessoaJuridica = pj;
+            funcionario.EnderecoList.Add(endereco);
+            /** FIM Adicionando PF, PJ e ENDEREÇO **/
+
+            var funcionarioReturn = _empresaService.AddFuncionario(funcionario);
+            funcionarioEnderecoViewModel = Mapper.Map<Funcionario, FuncionarioEnderecoViewModel>(funcionarioReturn);
+
+            if (!funcionarioEnderecoViewModel.ValidationResult.IsValid)
+            {
+                return funcionarioEnderecoViewModel;
+            }
+
+            if (!ImagemUtil.SalvarImagem(foto, funcionarioEnderecoViewModel.PessoaId, FilePathConstants.FUNCIONARIOS_IMAGE_PATH))
+            {
+                // Tomada de decisão caso a imagem não seja gravada.
+                funcionarioEnderecoViewModel.ValidationResult.Message = "Empresa salva sem foto";
+            }
+
+            Commit();
+            return funcionarioEnderecoViewModel;
+        }
+
+        public FuncionarioViewModel UpdateFuncionario(FuncionarioViewModel funcionarioViewModel)
+        {
+            var funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
+
+            BeginTransaction();
+            var funcionarioResult = _empresaService.UpdateFuncionario(funcionario);
+            funcionarioViewModel = Mapper.Map<Funcionario, FuncionarioViewModel>(funcionarioResult);
+            Commit();
+            return funcionarioViewModel;
+        }
+
+        public FuncionarioViewModel GetFuncionarioById(Guid id)
+        {
+            return Mapper.Map<Funcionario, FuncionarioViewModel>(_empresaService.GetFuncionarioById(id));
+        }
+
+        public void RemoveFuncionario(Guid id)
+        {
+            BeginTransaction();
+            _empresaService.RemoveFuncionario(id);
+            Commit();
+        }
+
         public void Dispose()
         {
             _empresaService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

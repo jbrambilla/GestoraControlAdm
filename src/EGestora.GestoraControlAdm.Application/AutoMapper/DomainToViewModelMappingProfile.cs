@@ -25,10 +25,16 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Empresa, PessoaViewModel>();
             Mapper.CreateMap<Empresa, EmpresaEnderecoViewModel>();
 
+            Mapper.CreateMap<Funcionario, FuncionarioViewModel>();
+            Mapper.CreateMap<Funcionario, PessoaViewModel>();
+            Mapper.CreateMap<Funcionario, FuncionarioEnderecoViewModel>();
+
             Mapper.CreateMap<Endereco, EnderecoViewModel>();
             Mapper.CreateMap<Endereco, ClienteEnderecoViewModel>();
             Mapper.CreateMap<Endereco, FornecedorEnderecoViewModel>();
             Mapper.CreateMap<Endereco, RevendaEnderecoViewModel>();
+            Mapper.CreateMap<Endereco, EmpresaEnderecoViewModel>();
+            Mapper.CreateMap<Endereco, FuncionarioEnderecoViewModel>();
 
             Mapper.CreateMap<PessoaJuridica, PessoaJuridicaViewModel>();
             Mapper.CreateMap<PessoaJuridica, ClienteEnderecoViewModel>();
@@ -39,6 +45,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<PessoaJuridica, RevendaViewModel>();
             Mapper.CreateMap<PessoaJuridica, EmpresaEnderecoViewModel>();
             Mapper.CreateMap<PessoaJuridica, EmpresaViewModel>();
+            Mapper.CreateMap<PessoaJuridica, FuncionarioEnderecoViewModel>();
+            Mapper.CreateMap<PessoaJuridica, FuncionarioViewModel>();
 
             Mapper.CreateMap<PessoaFisica, PessoaFisicaViewModel>();
             Mapper.CreateMap<PessoaFisica, ClienteEnderecoViewModel>();
@@ -49,6 +57,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<PessoaFisica, RevendaViewModel>();
             Mapper.CreateMap<PessoaFisica, EmpresaEnderecoViewModel>();
             Mapper.CreateMap<PessoaFisica, EmpresaViewModel>();
+            Mapper.CreateMap<PessoaFisica, FuncionarioEnderecoViewModel>();
+            Mapper.CreateMap<PessoaFisica, FuncionarioViewModel>();
 
             Mapper.CreateMap<Cnae, CnaeViewModel>();
 

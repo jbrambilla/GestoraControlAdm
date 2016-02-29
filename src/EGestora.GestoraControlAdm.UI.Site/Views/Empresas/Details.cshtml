@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="tab-pane fade in" id="funcionarios">
                                         <div id="replacetargetFuncionario">
-                                            @Html.Partial("_FuncionarioList", Model.FuncionarioList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
+                                            @Html.Partial("_FuncionarioList", Model.FuncionarioList.Where(f => f.Ativo).ToList(), new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="enderecos">
@@ -159,7 +159,10 @@
                 $.ajax({
                     url: this.action,
                     type: this.method,
-                    data: $(this).serialize(),
+                    //data: $(this).serialize(),
+                    data: new FormData( this ),
+                    processData: false,
+                    contentType: false,
                     success: function (result) {
                         if (result.success) {
                             $('#myModal').modal('hide');

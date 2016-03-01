@@ -31,5 +31,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [DisplayName("Revenda")]
         public Guid? RevendaId { get; set; }
+
+        [Required(ErrorMessage = "Selecione um Regime de Apuração.")]
+        [DisplayName("Regime de Apuração")]
+        public Guid RegimeApuracaoId { get; set; }
     }
 }

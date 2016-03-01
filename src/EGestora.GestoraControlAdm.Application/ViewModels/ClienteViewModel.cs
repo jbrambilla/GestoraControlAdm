@@ -17,6 +17,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Revenda")]
         public Guid? RevendaId { get; set; }
 
+        [Required(ErrorMessage = "Selecione um Regime de Apuração.")]
+        [DisplayName("Regime de Apuração")]
+        public Guid RegimeApuracaoId { get; set; }
+
         [Required]
         [DisplayName("Com Nota")]
         public bool ComNota { get; set; }
@@ -34,5 +38,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public RevendaViewModel Revenda { get; set; }
+
+        [ScaffoldColumn(false)]
+        public RegimeApuracaoViewModel RegimeApuracao { get; set; }
     }
 }

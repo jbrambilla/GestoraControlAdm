@@ -80,6 +80,7 @@
     <Compile Include="ViewModels\PessoaFisicaViewModel.cs" />
     <Compile Include="ViewModels\PessoaJuridicaViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
+    <Compile Include="ViewModels\RegimeApuracaoViewModel.cs" />
     <Compile Include="ViewModels\RevendaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\RevendaViewModel.cs" />
     <Compile Include="ViewModels\ServicoViewModel.cs" />

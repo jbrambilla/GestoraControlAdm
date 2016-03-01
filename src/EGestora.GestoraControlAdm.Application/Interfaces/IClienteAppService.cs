@@ -37,5 +37,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         RevendaViewModel GetRevendaById(Guid id);
         void RemoveRevenda(Guid pessoaId);
         void AddRevenda(Guid pessoaId, Guid revendaId);
+
+        IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao();
     }
 }

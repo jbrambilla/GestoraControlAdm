@@ -238,6 +238,11 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao()
+        {
+            return Mapper.Map<IEnumerable<RegimeApuracao>, IEnumerable<RegimeApuracaoViewModel>>(_clienteService.GetAllRegimeApuracao());
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();

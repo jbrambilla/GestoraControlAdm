@@ -7,6 +7,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public RegimeApuracao()
         {
             RegimeApuracaoId = Guid.NewGuid();
+            ClienteList = new List<Cliente>();
         }
 
         public Guid RegimeApuracaoId { get; set; }

@@ -28,7 +28,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             ICnaeRepository cnaeRepository,
             IServicoRepository servicoRepository,
             IClienteServicoRepository clienteServicoRepository,
-            IRevendaRepository revendaRepository)
+            IRevendaRepository revendaRepository,
+            IRegimeApuracaoRepository regimeApuracaoRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
@@ -38,6 +39,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _servicoRepository = servicoRepository;
             _clienteServicoRepository = clienteServicoRepository;
             _revendaRepository = revendaRepository;
+            _regimeApuracaoRepository = regimeApuracaoRepository;
         }
 
         public Cliente Add(Cliente cliente)

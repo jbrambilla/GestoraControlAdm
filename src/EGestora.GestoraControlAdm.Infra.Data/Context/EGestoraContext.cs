@@ -27,6 +27,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<ClienteServico> ClienteServico { get; set; }
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<RegimeApuracao> RegimeApuracao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -57,6 +58,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new ClienteServicoConfiguration());
             modelBuilder.Configurations.Add(new EmpresaConfiguration());
             modelBuilder.Configurations.Add(new FuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new RegimeApuracaoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

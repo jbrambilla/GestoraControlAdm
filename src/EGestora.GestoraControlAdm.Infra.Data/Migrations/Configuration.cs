@@ -1,5 +1,6 @@
 namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
 {
+    using EGestora.GestoraControlAdm.Domain.Entities;
     using EGestora.GestoraControlAdm.Infra.Data.Context;
     using System;
     using System.Data.Entity;
@@ -15,18 +16,19 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
 
         protected override void Seed(EGestoraContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.RegimeApuracao.AddOrUpdate (
+                new RegimeApuracao() { Codigo = 1, Descricao = "Regime 1"},
+                new RegimeApuracao() { Codigo = 2, Descricao = "Regime 2" },
+                new RegimeApuracao() { Codigo = 3, Descricao = "Regime 3" }
+            );
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Servicos.AddOrUpdate(
+                new Servico() { Descricao = "Servico 1", Valor = 25.50M },
+                new Servico() { Descricao = "Servico 2", Valor = 33.60M},
+                new Servico() { Descricao = "Servico 3", Valor = 125.30M },
+                new Servico() { Descricao = "Servico 4", Valor = 50 },
+                new Servico() { Descricao = "Servico 5", Valor = 700 }
+            );
         }
     }
 }

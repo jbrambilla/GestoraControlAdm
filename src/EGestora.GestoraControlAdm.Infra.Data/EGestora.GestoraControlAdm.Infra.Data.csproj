@@ -61,6 +61,7 @@
     <Compile Include="EntityConfiguration\PessoaConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaFisicaConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaJuridicaConfiguration.cs" />
+    <Compile Include="EntityConfiguration\RegimeApuracaoConfiguration.cs" />
     <Compile Include="EntityConfiguration\RevendaConfiguration.cs" />
     <Compile Include="EntityConfiguration\ServicoConfiguration.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repository\FuncionarioRepository.cs" />
     <Compile Include="Repository\PessoaFisicaRepository.cs" />
     <Compile Include="Repository\PessoaJuridicaRepository.cs" />
+    <Compile Include="Repository\RegimeApuracaoRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\RevendaRepository.cs" />
     <Compile Include="Repository\ServicoRepository.cs" />

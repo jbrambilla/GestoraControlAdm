@@ -34,6 +34,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [FileTypes("jpg,jpeg,png")]
         public HttpPostedFileBase Foto { get; set; }
 
+        [DisplayName("Lista de Anexos")]
+        public IEnumerable<HttpPostedFileBase> AnexoList { get; set; }
+
         [ScaffoldColumn(false)]
         public DateTime CriadoEm { get; set; }
 

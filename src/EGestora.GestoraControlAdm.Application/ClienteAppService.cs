@@ -8,6 +8,8 @@ using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application
 {
@@ -29,6 +31,7 @@ namespace EGestora.GestoraControlAdm.Application
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
             var selectedCnaeList = clienteEnderecoViewModel.SelectedCnaeList;
             var foto = clienteEnderecoViewModel.Foto;
+            var anexoList = clienteEnderecoViewModel.AnexoList;
 
             if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
             {
@@ -47,13 +50,9 @@ namespace EGestora.GestoraControlAdm.Application
             cliente.EnderecoList.Add(endereco);
             /** FIM Adicionando PF, PJ e ENDEREÇO **/
 
-            /** Adicionando CNAES **/
-            foreach (var CnaeId in selectedCnaeList)
-            {
-                var cnae = _clienteService.GetCnaeById(CnaeId);
-                cliente.CnaeList.Add(cnae);
-            }
-            /** FIM Adicionando CNAES **/
+            AddCnaeList(cliente, selectedCnaeList);
+
+            AddAnexoList(cliente, anexoList);
 
             var clienteReturn = _clienteService.Add(cliente);
             clienteEnderecoViewModel = Mapper.Map<Cliente, ClienteEnderecoViewModel>(clienteReturn);
@@ -71,6 +70,31 @@ namespace EGestora.GestoraControlAdm.Application
 
             Commit();
             return clienteEnderecoViewModel;
+        }
+
+        private static void AddAnexoList(Cliente cliente, IEnumerable<HttpPostedFileBase> anexoList)
+        {
+            /** Adicionando ANEXOS **/
+            foreach (var anexo in anexoList)
+            {
+                var anexoEntity = AnexoUtil.GetEntityFromHttpPostedFileBase(anexo);
+                if (anexoEntity != null)
+                {
+                    cliente.AnexoList.Add(anexoEntity);
+                }
+            }
+            /** FIM Adicionando ANEXOS **/
+        }
+
+        private void AddCnaeList(Cliente cliente, IEnumerable<Guid> selectedCnaeList)
+        {
+            /** Adicionando CNAES **/
+            foreach (var CnaeId in selectedCnaeList)
+            {
+                var cnae = _clienteService.GetCnaeById(CnaeId);
+                cliente.CnaeList.Add(cnae);
+            }
+            /** FIM Adicionando CNAES **/
         }
 
         public ClienteViewModel GetById(Guid id)

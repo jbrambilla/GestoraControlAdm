@@ -73,6 +73,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<NaturezaOperacaoViewModel, NaturezaOperacao>();
 
             Mapper.CreateMap<EnquadramentoServicoViewModel, EnquadramentoServico>();
+
+            Mapper.CreateMap<AnexoViewModel, Anexo>();
         }
     }
 }

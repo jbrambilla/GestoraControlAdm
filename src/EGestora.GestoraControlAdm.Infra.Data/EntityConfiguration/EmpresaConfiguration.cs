@@ -18,6 +18,22 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                     me.ToTable("EmpresaCnae");
                 });
 
+            HasRequired(e => e.EnquadramentoServico)
+                .WithMany(enq => enq.EmpresaList)
+                .HasForeignKey(e => e.EnquadramentoServicoId);
+
+            HasRequired(e => e.NaturezaOperacao)
+                .WithMany(enq => enq.EmpresaList)
+                .HasForeignKey(e => e.NaturezaOperacaoId);
+
+            HasRequired(e => e.RegimeApuracao)
+                .WithMany(enq => enq.EmpresaList)
+                .HasForeignKey(e => e.RegimeApuracaoId);
+
+            HasRequired(e => e.RegimeTributacao)
+                .WithMany(enq => enq.EmpresaList)
+                .HasForeignKey(e => e.RegimeTributacaoId);
+
             ToTable("Empresas");
         }
     }

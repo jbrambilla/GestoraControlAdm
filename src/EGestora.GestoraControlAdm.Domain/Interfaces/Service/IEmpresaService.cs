@@ -32,5 +32,13 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Funcionario UpdateFuncionario(Funcionario funcionario);
         Funcionario GetFuncionarioById(Guid id);
         void RemoveFuncionario(Guid id);
+
+        IEnumerable<RegimeApuracao> GetAllRegimeApuracao();
+
+        IEnumerable<NaturezaOperacao> GetAllNaturezaOperacao();
+
+        IEnumerable<RegimeTributacao> GetAllRegimeTributacao();
+
+        IEnumerable<EnquadramentoServico> GetAllEnquadramentoServico();
     }
 }

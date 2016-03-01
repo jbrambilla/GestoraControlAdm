@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
-    public class RegimeApuracao
+    public class RegimeTributacao
     {
-        public RegimeApuracao()
+        public RegimeTributacao()
         {
-            RegimeApuracaoId = Guid.NewGuid();
-            ClienteList = new List<Cliente>();
+            RegimeTributacaoId = Guid.NewGuid();
             EmpresaList = new List<Empresa>();
         }
 
-        public Guid RegimeApuracaoId { get; set; }
+        public Guid RegimeTributacaoId { get; set; }
         public int Codigo { get; set; }
         public string Descricao { get; set; }
-        public virtual ICollection<Cliente> ClienteList { get; set; }
+
         public virtual ICollection<Empresa> EmpresaList { get; set; }
     }
 }

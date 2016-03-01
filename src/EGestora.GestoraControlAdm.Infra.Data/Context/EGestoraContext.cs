@@ -28,6 +28,9 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<RegimeApuracao> RegimeApuracao { get; set; }
+        public DbSet<RegimeTributacao> RegimeTributacao { get; set; }
+        public DbSet<NaturezaOperacao> NaturezaOperacao { get; set; }
+        public DbSet<EnquadramentoServico> EnquadramentoServico { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -59,6 +62,9 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new EmpresaConfiguration());
             modelBuilder.Configurations.Add(new FuncionarioConfiguration());
             modelBuilder.Configurations.Add(new RegimeApuracaoConfiguration());
+            modelBuilder.Configurations.Add(new RegimeTributacaoConfiguration());
+            modelBuilder.Configurations.Add(new EnquadramentoServicoConfiguration());
+            modelBuilder.Configurations.Add(new NaturezaOperacaoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

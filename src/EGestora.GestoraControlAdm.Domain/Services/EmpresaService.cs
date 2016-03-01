@@ -17,6 +17,10 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
         private readonly ICnaeRepository _cnaeRepository;
         private readonly IFuncionarioRepository _funcionarioRepository;
+        private readonly IRegimeApuracaoRepository _regimeApuracaoRepository;
+        private readonly IRegimeTributacaoRepository _regimeTributacaoRepository;
+        private readonly INaturezaOperacaoRepository _naturezaOperacaoRepository;
+        private readonly IEnquadramentoServicoRepository _enquadramentoServicoRepository;
 
         public EmpresaService(
             IEmpresaRepository empresaRepository, 
@@ -24,7 +28,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IPessoaFisicaRepository pessoaFisicaRepository, 
             IPessoaJuridicaRepository pessoaJuridicaRepository,
             ICnaeRepository cnaeRepository,
-            IFuncionarioRepository funcionarioRepository)
+            IFuncionarioRepository funcionarioRepository,
+            IRegimeApuracaoRepository regimeApuracaoRepository,
+            IRegimeTributacaoRepository regimeTributacaoRepository,
+            INaturezaOperacaoRepository naturezaOperacaoRepository,
+            IEnquadramentoServicoRepository enquadramentoServicoRepository)
         {
             _empresaRepository = empresaRepository;
             _enderecoRepository = enderecoRepository;
@@ -32,6 +40,10 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
             _cnaeRepository = cnaeRepository;
             _funcionarioRepository = funcionarioRepository;
+            _regimeApuracaoRepository = regimeApuracaoRepository;
+            _regimeTributacaoRepository = regimeTributacaoRepository;
+            _naturezaOperacaoRepository = naturezaOperacaoRepository;
+            _enquadramentoServicoRepository = enquadramentoServicoRepository;
         }
 
         public Empresa Add(Empresa empresa)
@@ -191,11 +203,30 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _funcionarioRepository.Remove(id);
         }
 
+        public IEnumerable<RegimeApuracao> GetAllRegimeApuracao()
+        {
+            return _regimeApuracaoRepository.GetAll();
+        }
+
+        public IEnumerable<NaturezaOperacao> GetAllNaturezaOperacao()
+        {
+            return _naturezaOperacaoRepository.GetAll();
+        }
+
+        public IEnumerable<RegimeTributacao> GetAllRegimeTributacao()
+        {
+            return _regimeTributacaoRepository.GetAll();
+        }
+
+        public IEnumerable<EnquadramentoServico> GetAllEnquadramentoServico()
+        {
+            return _enquadramentoServicoRepository.GetAll();
+        }
+
         public void Dispose()
         {
             _empresaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

@@ -25,5 +25,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string Display { get; set; }
     }
 }

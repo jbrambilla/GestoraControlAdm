@@ -240,6 +240,26 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao()
+        {
+            return Mapper.Map<IEnumerable<RegimeApuracao>, IEnumerable<RegimeApuracaoViewModel>>(_empresaService.GetAllRegimeApuracao());
+        }
+
+        public IEnumerable<NaturezaOperacaoViewModel> GetAllNaturezaOperacao()
+        {
+            return Mapper.Map<IEnumerable<NaturezaOperacao>, IEnumerable<NaturezaOperacaoViewModel>>(_empresaService.GetAllNaturezaOperacao());
+        }
+
+        public IEnumerable<RegimeTributacaoViewModel> GetAllRegimeTributacao()
+        {
+            return Mapper.Map<IEnumerable<RegimeTributacao>, IEnumerable<RegimeTributacaoViewModel>>(_empresaService.GetAllRegimeTributacao());
+        }
+
+        public IEnumerable<EnquadramentoServicoViewModel> GetAllEnquadramentoServico()
+        {
+            return Mapper.Map<IEnumerable<EnquadramentoServico>, IEnumerable<EnquadramentoServicoViewModel>>(_empresaService.GetAllEnquadramentoServico());
+        }
+
         public void Dispose()
         {
             _empresaService.Dispose();

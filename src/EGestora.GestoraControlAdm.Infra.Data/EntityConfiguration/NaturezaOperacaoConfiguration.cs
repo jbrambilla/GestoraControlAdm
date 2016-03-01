@@ -8,6 +8,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         public NaturezaOperacaoConfiguration()
         {
             HasKey(n => n.NaturezaOperacaoId);
+
+            Ignore(m => m.Display);
         }
     }
 }

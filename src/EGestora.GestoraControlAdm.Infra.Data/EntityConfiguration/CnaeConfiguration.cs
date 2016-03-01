@@ -9,6 +9,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(c => c.CnaeId);
 
+            Ignore(m => m.Display);
+
             ToTable("Cnaes");
         }
     }

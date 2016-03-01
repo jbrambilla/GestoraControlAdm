@@ -64,6 +64,26 @@
                                                     </tr>
 
                                                     <tr>
+                                                        <td>Regime de Apuração</td>
+                                                        <td>@Html.DisplayFor(model => model.RegimeApuracao.Display)</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Regime de Tributação</td>
+                                                        <td>@Html.DisplayFor(model => model.RegimeTributacao.Display)</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Natureza da Operação</td>
+                                                        <td>@Html.DisplayFor(model => model.NaturezaOperacao.Display)</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Enquadramento de Serviço</td>
+                                                        <td>@Html.DisplayFor(model => model.EnquadramentoServico.Display)</td>
+                                                    </tr>
+
+                                                    <tr>
                                                         <td>Login ISS</td>
                                                         <td>@Html.DisplayFor(model => model.LoginIss)</td>
                                                     </tr>
@@ -170,7 +190,7 @@
                                 $('#replacetargetCnae').load(result.url);
                             } if (result.replaceTarget == "funcionario") {
                                 $('#replacetargetFuncionario').load(result.url);
-                            } else {
+                            } else if (result.replaceTarget == "endereco") {
                                 $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                             }
                         } else {

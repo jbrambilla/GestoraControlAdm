@@ -8,6 +8,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         public EnquadramentoServicoConfiguration()
         {
             HasKey(e => e.EnquadramentoServicoId);
+
+            Ignore(m => m.Display);
         }
     }
 }

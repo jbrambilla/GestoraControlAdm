@@ -179,6 +179,22 @@
                                             @Html.ValidationMessageFor(model => model.VencimentoBoleto, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RevendaId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("RevendaId", (IEnumerable<SelectListItem>)ViewBag.RevendaList, String.Empty, new { @class = "form-control" })
+                                            <p class="help-block">Se o cliente não possuir Revenda, deixe em branco.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.RegimeApuracaoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("RegimeApuracaoId", (IEnumerable<SelectListItem>)ViewBag.RegimeApuracaoList, String.Empty, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.RegimeApuracaoId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

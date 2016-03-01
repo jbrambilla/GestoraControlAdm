@@ -162,7 +162,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _empresaAppService.AddEndereco(enderecoViewModel);
 
                 string url = Url.Action("ListarEnderecos", "Empresas", new { id = enderecoViewModel.PessoaId });
-                return Json(new { success = true, url = url });
+                return Json(new { success = true, url = url, replaceTarget = "endereco" });
             }
 
             return PartialView("_AdicionarEndereco", enderecoViewModel);
@@ -182,7 +182,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _empresaAppService.UpdateEndereco(enderecoViewModel);
 
                 string url = Url.Action("ListarEnderecos", "Empresas", new { id = enderecoViewModel.PessoaId });
-                return Json(new { success = true, url = url });
+                return Json(new { success = true, url = url, replaceTarget = "endereco" });
             }
 
             return PartialView("_AtualizarEndereco", enderecoViewModel);
@@ -213,7 +213,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             _empresaAppService.RemoveEndereco(id);
 
             string url = Url.Action("ListarEnderecos", "Empresas", new { id = pessoaId });
-            return Json(new { success = true, url = url });
+            return Json(new { success = true, url = url, replaceTarget = "endereco" });
         }
 
         //CNAE
@@ -395,7 +395,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         private void loadViewBags()
         {
-            ViewBag.CnaeList = new SelectList(_empresaAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+            ViewBag.CnaeList = new SelectList(_empresaAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Display");
+            ViewBag.RegimeApuracaoList = new SelectList(_empresaAppService.GetAllRegimeApuracao().OrderBy(c => c.Codigo), "RegimeApuracaoId", "Display");
+            ViewBag.RegimeTributacaoList = new SelectList(_empresaAppService.GetAllRegimeTributacao().OrderBy(c => c.Codigo), "RegimeTributacaoId", "Display");
+            ViewBag.NaturezaOperacaoList = new SelectList(_empresaAppService.GetAllNaturezaOperacao().OrderBy(c => c.Codigo), "NaturezaOperacaoId", "Display");
+            ViewBag.EnquadramentoServicoList = new SelectList(_empresaAppService.GetAllEnquadramentoServico().OrderBy(c => c.Codigo), "EnquadramentoServicoId", "Display");
         }
 
         public ActionResult ObterImagemFuncionario(Guid id)

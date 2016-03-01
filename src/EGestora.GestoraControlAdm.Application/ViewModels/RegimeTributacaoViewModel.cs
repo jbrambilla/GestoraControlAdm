@@ -28,5 +28,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<EmpresaViewModel> EmpresaList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string Display { get; set; }
     }
 }

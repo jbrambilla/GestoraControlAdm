@@ -16,5 +16,10 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string Descricao { get; set; }
         public virtual ICollection<Cliente> ClienteList { get; set; }
         public virtual ICollection<Empresa> EmpresaList { get; set; }
+
+        public string Display
+        {
+            get { return Codigo + " - " + Descricao; }
+        }
     }
 }

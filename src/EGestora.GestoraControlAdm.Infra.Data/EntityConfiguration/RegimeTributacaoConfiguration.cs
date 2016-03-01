@@ -7,6 +7,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         public RegimeTributacaoConfiguration()
         {
             HasKey(r => r.RegimeTributacaoId);
+
+            Ignore(m => m.Display);
         }
     }
 }

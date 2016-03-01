@@ -8,6 +8,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         public RegimeApuracaoConfiguration()
         {
             HasKey(r => r.RegimeApuracaoId);
+
+            Ignore(m => m.Display);
         }
     }
 }

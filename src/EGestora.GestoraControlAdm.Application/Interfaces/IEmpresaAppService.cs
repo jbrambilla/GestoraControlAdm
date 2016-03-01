@@ -29,5 +29,13 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         FuncionarioViewModel UpdateFuncionario(FuncionarioViewModel funcionarioViewModel);
         FuncionarioViewModel GetFuncionarioById(Guid id);
         void RemoveFuncionario(Guid id);
+
+        IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao();
+
+        IEnumerable<NaturezaOperacaoViewModel> GetAllNaturezaOperacao();
+
+        IEnumerable<RegimeTributacaoViewModel> GetAllRegimeTributacao();
+
+        IEnumerable<EnquadramentoServicoViewModel> GetAllEnquadramentoServico();
     }
 }

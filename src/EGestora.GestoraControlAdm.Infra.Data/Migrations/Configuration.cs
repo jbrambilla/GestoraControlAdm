@@ -1,5 +1,6 @@
 namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
 {
+    using EGestora.GestoraControlAdm.Infra.Data.Context;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -12,7 +13,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(EGestora.GestoraControlAdm.Infra.Data.Context.EGestoraContext context)
+        protected override void Seed(EGestoraContext context)
         {
             //  This method will be called after migrating to the latest version.
 

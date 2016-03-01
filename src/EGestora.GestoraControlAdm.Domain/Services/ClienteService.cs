@@ -18,6 +18,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IServicoRepository _servicoRepository;
         private readonly IClienteServicoRepository _clienteServicoRepository;
         private readonly IRevendaRepository _revendaRepository;
+        private readonly IRegimeApuracaoRepository _regimeApuracaoRepository;
 
         public ClienteService(
             IClienteRepository clienteRepository, 
@@ -233,11 +234,15 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _clienteRepository.Update(cliente);
         }
 
+        public IEnumerable<RegimeApuracao> GetAllRegimeApuracao()
+        {
+            return _regimeApuracaoRepository.GetAll();
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

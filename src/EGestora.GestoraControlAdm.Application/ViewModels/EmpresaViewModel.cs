@@ -13,6 +13,22 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             CnaeList = new List<CnaeViewModel>();
         }
 
+        [Required(ErrorMessage = "Seleciona o Regime de Apuração.")]
+        [DisplayName("Regime de Apuração")]
+        public Guid RegimeApuracaoId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona o Regime de Tributação.")]
+        [DisplayName("Regime de Tributação")]
+        public Guid RegimeTributacaoId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona a Natureza da Operação.")]
+        [DisplayName("Natureza da Operação")]
+        public Guid NaturezaOperacaoId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona o Enquadramento de Serviço.")]
+        [DisplayName("Enquadramento de Serviço")]
+        public Guid EnquadramentoServicoId { get; set; }
+
         [DataType(DataType.Currency, ErrorMessage = "Preencha um valor monetário.")]
         [DisplayName("Valor")]
         public decimal Aliquota { get; set; }
@@ -44,6 +60,18 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Required]
         [DisplayName("Optante Simples Nacional")]
         public bool OptanteSimplesNacional { get; set; }
+
+        [ScaffoldColumn(false)]
+        public RegimeApuracaoViewModel RegimeApuracao { get; set; }
+
+        [ScaffoldColumn(false)]
+        public RegimeTributacaoViewModel RegimeTributacao { get; set; }
+
+        [ScaffoldColumn(false)]
+        public NaturezaOperacaoViewModel NaturezaOperacao { get; set; }
+
+        [ScaffoldColumn(false)]
+        public EnquadramentoServicoViewModel EnquadramentoServico { get; set; }
 
         [ScaffoldColumn(false)]
         public ICollection<CnaeViewModel> CnaeList { get; set; }

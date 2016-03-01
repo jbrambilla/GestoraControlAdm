@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
 namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
-    public class RegimeApuracaoViewModel
+    public class NaturezaOperacaoViewModel
     {
-        public RegimeApuracaoViewModel()
+        public NaturezaOperacaoViewModel()
         {
-            RegimeApuracaoId = Guid.NewGuid();
-            ClienteList = new List<ClienteViewModel>();
+            NaturezaOperacaoId = Guid.NewGuid();
             EmpresaList = new List<EmpresaViewModel>();
         }
 
         [Key]
-        public Guid RegimeApuracaoId { get; set; }
+        public Guid NaturezaOperacaoId { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Código")]
         [DisplayName("Código")]
@@ -26,9 +24,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
-
-        [ScaffoldColumn(false)]
-        public ICollection<ClienteViewModel> ClienteList { get; set; }
 
         [ScaffoldColumn(false)]
         public ICollection<EmpresaViewModel> EmpresaList { get; set; }

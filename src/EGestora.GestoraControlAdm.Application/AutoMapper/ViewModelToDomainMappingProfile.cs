@@ -67,6 +67,12 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<ClienteServicoViewModel, ClienteServico>();
 
             Mapper.CreateMap<RegimeApuracaoViewModel, RegimeApuracao>();
+
+            Mapper.CreateMap<RegimeTributacaoViewModel, RegimeTributacao>();
+
+            Mapper.CreateMap<NaturezaOperacaoViewModel, NaturezaOperacao>();
+
+            Mapper.CreateMap<EnquadramentoServicoViewModel, EnquadramentoServico>();
         }
     }
 }

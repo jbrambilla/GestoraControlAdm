@@ -14,6 +14,22 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             SelectedCnaeList = new List<Guid>();
         }
 
+        [Required(ErrorMessage = "Seleciona o Regime de Apuração.")]
+        [DisplayName("Regime de Apuração")]
+        public Guid RegimeApuracaoId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona o Regime de Tributação.")]
+        [DisplayName("Regime de Tributação")]
+        public Guid RegimeTributacaoId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona a Natureza da Operação.")]
+        [DisplayName("Natureza da Operação")]
+        public Guid NaturezaOperacaoId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona o Enquadramento de Serviço.")]
+        [DisplayName("Enquadramento de Serviço")]
+        public Guid EnquadramentoServicoId { get; set; }
+
         [DataType(DataType.Currency, ErrorMessage = "Preencha um valor monetário.")]
         [DisplayName("Valor")]
         public decimal Aliquota { get; set; }

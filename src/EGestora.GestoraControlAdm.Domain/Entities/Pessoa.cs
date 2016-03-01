@@ -11,6 +11,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         {
             PessoaId = Guid.NewGuid();
             EnderecoList = new List<Endereco>();
+            AnexoList = new List<Anexo>();
         }
 
         public Guid PessoaId { get; set; }
@@ -22,6 +23,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual PessoaJuridica PessoaJuridica { get; set; }
         public virtual PessoaFisica PessoaFisica { get; set; }
         public virtual ICollection<Endereco> EnderecoList { get; set; }
+        public virtual ICollection<Anexo> AnexoList { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
         public bool IsValid()

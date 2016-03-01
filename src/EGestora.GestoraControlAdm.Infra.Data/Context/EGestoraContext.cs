@@ -31,6 +31,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<RegimeTributacao> RegimeTributacao { get; set; }
         public DbSet<NaturezaOperacao> NaturezaOperacao { get; set; }
         public DbSet<EnquadramentoServico> EnquadramentoServico { get; set; }
+        public DbSet<Anexo> Anexos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -65,6 +66,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new RegimeTributacaoConfiguration());
             modelBuilder.Configurations.Add(new EnquadramentoServicoConfiguration());
             modelBuilder.Configurations.Add(new NaturezaOperacaoConfiguration());
+            modelBuilder.Configurations.Add(new AnexoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

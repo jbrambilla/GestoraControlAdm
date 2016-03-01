@@ -36,6 +36,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Anexo.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Entities\RegimeTributacao.cs" />
     <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Entities\Servico.cs" />
+    <Compile Include="Interfaces\Repository\IAnexoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />

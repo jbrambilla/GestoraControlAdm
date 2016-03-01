@@ -31,7 +31,7 @@ namespace EGestora.GestoraControlAdm.Application
             var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
             var selectedCnaeList = clienteEnderecoViewModel.SelectedCnaeList;
             var foto = clienteEnderecoViewModel.Foto;
-            var anexoList = clienteEnderecoViewModel.AnexoList;
+            var anexoList = clienteEnderecoViewModel.Anexos;
 
             if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
             {
@@ -44,11 +44,9 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
-            /** Adicionando PF, PJ e ENDEREÇO **/
             cliente.PessoaFisica = pf;
             cliente.PessoaJuridica = pj;
             cliente.EnderecoList.Add(endereco);
-            /** FIM Adicionando PF, PJ e ENDEREÇO **/
 
             AddCnaeList(cliente, selectedCnaeList);
 
@@ -64,7 +62,6 @@ namespace EGestora.GestoraControlAdm.Application
 
             if (!ImagemUtil.SalvarImagem(foto, clienteEnderecoViewModel.PessoaId, FilePathConstants.CLIENTES_IMAGE_PATH))
             {
-                // Tomada de decisão caso a imagem não seja gravada.
                 clienteEnderecoViewModel.ValidationResult.Message = "Cliente salvo sem foto";
             }
 

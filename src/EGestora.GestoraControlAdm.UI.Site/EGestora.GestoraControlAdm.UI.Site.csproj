@@ -362,6 +362,7 @@
     <Content Include="Views\Empresas\Funcionarios\_FuncionarioList.cshtml" />
     <Content Include="Views\Empresas\Funcionarios\_FuncionarioEndereco.cshtml" />
     <Content Include="Views\Empresas\Funcionarios\_DetalhesFuncionario.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Anexo\_AnexoList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

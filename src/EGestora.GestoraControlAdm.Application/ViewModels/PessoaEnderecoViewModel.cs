@@ -35,7 +35,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public HttpPostedFileBase Foto { get; set; }
 
         [DisplayName("Lista de Anexos")]
-        public IEnumerable<HttpPostedFileBase> AnexoList { get; set; }
+        public IEnumerable<HttpPostedFileBase> Anexos { get; set; }
 
         [ScaffoldColumn(false)]
         public DateTime CriadoEm { get; set; }

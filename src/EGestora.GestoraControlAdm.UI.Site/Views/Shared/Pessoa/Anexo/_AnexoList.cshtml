@@ -1,0 +1,25 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.AnexoViewModel>
+
+<table class="table table-user-information">
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.FileName <a href="#" class="text-muted"><span title="Baixar" class="fa fa-arrow-circle-o-down"></span></a></td>
+                <td>@item.ContentType</td>
+                <td><a href="@Url.Action("DeletarAnexo", new { id = item.AnexoId, pessoaId = ViewBag.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <a href="@Url.Action("AdicionarAnexo", new { id = ViewBag.PessoaId })" class="btn btn-success btn-circle" data-modal="">
+                    <i title="Adicionar" class="fa fa-plus"></i>
+                </a>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+

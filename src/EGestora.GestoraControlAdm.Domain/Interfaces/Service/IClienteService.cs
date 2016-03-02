@@ -43,5 +43,9 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         void AddRevenda(Guid pessoaId, Guid revendaId);
 
         IEnumerable<RegimeApuracao> GetAllRegimeApuracao();
+
+        Anexo AddAnexo(Anexo anexo);
+        Anexo GetAnexoById(Guid id);
+        void RemoveAnexo(Guid id);
     }
 }

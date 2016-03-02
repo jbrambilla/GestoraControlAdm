@@ -264,6 +264,31 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<RegimeApuracao>, IEnumerable<RegimeApuracaoViewModel>>(_clienteService.GetAllRegimeApuracao());
         }
 
+        public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            BeginTransaction();
+
+            var cliente = _clienteService.GetById(PessoaId);
+            cliente.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
+            _clienteService.Update(cliente);
+
+            Commit();
+
+
+        }
+
+        public AnexoViewModel GetAnexoById(Guid id)
+        {
+            return Mapper.Map<Anexo, AnexoViewModel>(_clienteService.GetAnexoById(id));
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            BeginTransaction();
+            _clienteService.RemoveAnexo(id);
+            Commit();
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();

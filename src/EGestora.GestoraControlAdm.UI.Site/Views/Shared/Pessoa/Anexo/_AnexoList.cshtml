@@ -2,13 +2,12 @@
 
 <table class="table table-user-information">
     <tbody>
-
         @foreach (var item in Model)
         {
             <tr>
                 <td>@item.FileName <a href="#" class="text-muted"><span title="Baixar" class="fa fa-arrow-circle-o-down"></span></a></td>
                 <td>@item.ContentType</td>
-                <td><a href="@Url.Action("DeletarAnexo", new { id = item.AnexoId, pessoaId = ViewBag.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a href="@Url.Action("DeletarAnexo", new { id = item.AnexoId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
         }
         <tr>
@@ -22,4 +21,3 @@
         </tr>
     </tbody>
 </table>
-

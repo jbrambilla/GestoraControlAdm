@@ -422,6 +422,68 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return File(foto, "image/jpeg");
         }
 
+        //ANEXOS
+
+        public ActionResult ListarAnexos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+
+            return PartialView("_AnexoList", _clienteAppService.GetById(id).AnexoList);
+        }
+
+        [Route("adicionar-anexo")]
+        public ActionResult AdicionarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            return PartialView("_AdicionarAnexo");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.AddAnexo(PessoaId, Arquivo);
+
+                string url = Url.Action("ListarAnexos", "Clientes", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "anexo" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            return PartialView("_AdicionarAnexo");
+        }
+
+        public ActionResult DeletarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var anexoViewModel = _clienteAppService.GetAnexoById(id.Value);
+            if (anexoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = anexoViewModel.PessoaId;
+            return PartialView("_DeletarAnexo", anexoViewModel);
+        }
+
+        [HttpPost, ActionName("DeletarAnexo")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarAnexoConfirmed(Guid id)
+        {
+            var pessoaId = _clienteAppService.GetAnexoById(id).PessoaId;
+            _clienteAppService.RemoveAnexo(id);
+
+            string url = Url.Action("ListarAnexos", "Clientes", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "anexo" });
+        }
+
         private void loadVierBags()
         {
             ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");

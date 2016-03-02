@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="anexos">
-                                        <div id="replacetargetRevenda">
+                                        <div id="replacetargetAnexo">
                                             @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
@@ -150,8 +150,9 @@
                 $.ajax({
                     url: this.action,
                     type: this.method,
-                    data: $(this).serialize(),
-                    enctype: 'multipart/form-data',
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
                     success: function (result) {
                         if (result.success) {
                             $('#myModal').modal('hide');
@@ -161,6 +162,8 @@
                                 $('#replacetargetServico').load(result.url);
                             } else if (result.replaceTarget == "revenda") {
                                 $('#replacetargetRevenda').load(result.url);
+                            } else if (result.replaceTarget == "anexo") {
+                                $('#replacetargetAnexo').load(result.url);
                             } else {
                                 $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                             }

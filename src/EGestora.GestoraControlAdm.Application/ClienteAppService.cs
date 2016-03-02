@@ -273,8 +273,6 @@ namespace EGestora.GestoraControlAdm.Application
             _clienteService.Update(cliente);
 
             Commit();
-
-
         }
 
         public AnexoViewModel GetAnexoById(Guid id)

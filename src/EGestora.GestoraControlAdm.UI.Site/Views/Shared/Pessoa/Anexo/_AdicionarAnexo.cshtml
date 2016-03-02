@@ -1,4 +1,9 @@
-﻿<div class="modal-header">
+﻿
+@{
+    var Controller = @ViewData["_controller"].ToString();
+}
+
+<div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">
         <span aria-hidden="true">×</span><span class="sr-only">Close</span>
     </button>
@@ -6,7 +11,7 @@
 </div>
 
 
-@using (Html.BeginForm("AdicionarAnexo", "Clientes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AdicionarAnexo", Controller, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="modal-body">
         @Html.AntiForgeryToken()

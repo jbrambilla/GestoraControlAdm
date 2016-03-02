@@ -40,5 +40,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<RegimeTributacao> GetAllRegimeTributacao();
 
         IEnumerable<EnquadramentoServico> GetAllEnquadramentoServico();
+
+        Anexo GetAnexoById(Guid id);
+        void RemoveAnexo(Guid id);
     }
 }

@@ -21,6 +21,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IRegimeTributacaoRepository _regimeTributacaoRepository;
         private readonly INaturezaOperacaoRepository _naturezaOperacaoRepository;
         private readonly IEnquadramentoServicoRepository _enquadramentoServicoRepository;
+        private readonly IAnexoRepository _anexoRepository;
 
         public EmpresaService(
             IEmpresaRepository empresaRepository, 
@@ -32,7 +33,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IRegimeApuracaoRepository regimeApuracaoRepository,
             IRegimeTributacaoRepository regimeTributacaoRepository,
             INaturezaOperacaoRepository naturezaOperacaoRepository,
-            IEnquadramentoServicoRepository enquadramentoServicoRepository)
+            IEnquadramentoServicoRepository enquadramentoServicoRepository,
+            IAnexoRepository anexoRepository)
         {
             _empresaRepository = empresaRepository;
             _enderecoRepository = enderecoRepository;
@@ -44,6 +46,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _regimeTributacaoRepository = regimeTributacaoRepository;
             _naturezaOperacaoRepository = naturezaOperacaoRepository;
             _enquadramentoServicoRepository = enquadramentoServicoRepository;
+            _anexoRepository = anexoRepository;
         }
 
         public Empresa Add(Empresa empresa)
@@ -223,10 +226,21 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _enquadramentoServicoRepository.GetAll();
         }
 
+        public Anexo GetAnexoById(Guid id)
+        {
+            return _anexoRepository.GetById(id);
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            _anexoRepository.Remove(id);
+        }
+
         public void Dispose()
         {
             _empresaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

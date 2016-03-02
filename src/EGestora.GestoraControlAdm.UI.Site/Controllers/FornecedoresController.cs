@@ -210,6 +210,75 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url });
         }
 
+        //ANEXOS
+
+        public ActionResult ListarAnexos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            ViewData["_controller"] = "Fornecedores";
+            return PartialView("_AnexoList", _fornecedorAppService.GetById(id).AnexoList);
+        }
+
+        [Route("adicionar-anexo")]
+        public ActionResult AdicionarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewData["_controller"] = "Fornecedores";
+            return PartialView("_AdicionarAnexo");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            if (ModelState.IsValid)
+            {
+                _fornecedorAppService.AddAnexo(PessoaId, Arquivo);
+
+                string url = Url.Action("ListarAnexos", "Fornecedores", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "anexo" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            return PartialView("_AdicionarAnexo");
+        }
+
+        public ActionResult DeletarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var anexoViewModel = _fornecedorAppService.GetAnexoById(id.Value);
+            if (anexoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = anexoViewModel.PessoaId;
+            return PartialView("_DeletarAnexo", anexoViewModel);
+        }
+
+        [HttpPost, ActionName("DeletarAnexo")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarAnexoConfirmed(Guid id)
+        {
+            var pessoaId = _fornecedorAppService.GetAnexoById(id).PessoaId;
+            _fornecedorAppService.RemoveAnexo(id);
+
+            string url = Url.Action("ListarAnexos", "Fornecedores", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "anexo" });
+        }
+
+        public ActionResult BaixarAnexo(Guid id)
+        {
+            var anexo = _fornecedorAppService.GetAnexoById(id);
+            return File(anexo.Content, anexo.ContentType, anexo.FileName);
+        }
+
         public ActionResult ObterImagemFornecedor(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.FORNECEDORES_IMAGE_PATH);

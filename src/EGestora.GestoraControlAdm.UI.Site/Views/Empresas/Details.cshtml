@@ -27,6 +27,7 @@
                                     <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
                                     <li class=""><a href="#funcionarios" data-toggle="tab" aria-expanded="false">Funcionários</a></li>
                                     <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
+                                    <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
                                 </ul>
                                 <div class="tab-content col-md-9 col-lg-9 ">
                                     <div class="tab-pane fade in active " id="infoBasica">
@@ -127,6 +128,11 @@
                                             @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Empresas" }, { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
+                                    <div class="tab-pane fade in" id="anexos">
+                                        <div id="replacetargetAnexo">
+                                            @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "_controller", "Empresas" }, { "PessoaId", Model.PessoaId } })
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
@@ -190,7 +196,9 @@
                                 $('#replacetargetCnae').load(result.url);
                             } if (result.replaceTarget == "funcionario") {
                                 $('#replacetargetFuncionario').load(result.url);
-                            } else if (result.replaceTarget == "endereco") {
+                            } else if (result.replaceTarget == "anexo") {
+                                $('#replacetargetAnexo').load(result.url);
+                            } else {
                                 $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                             }
                         } else {

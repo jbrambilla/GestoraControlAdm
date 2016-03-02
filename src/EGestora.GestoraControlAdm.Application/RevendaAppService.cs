@@ -8,6 +8,7 @@ using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application
 {
@@ -131,6 +132,29 @@ namespace EGestora.GestoraControlAdm.Application
         {
             BeginTransaction();
             _revendaService.RemoveEndereco(id);
+            Commit();
+        }
+
+        public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            BeginTransaction();
+
+            var revenda = _revendaService.GetById(PessoaId);
+            revenda.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
+            _revendaService.Update(revenda);
+
+            Commit();
+        }
+
+        public AnexoViewModel GetAnexoById(Guid id)
+        {
+            return Mapper.Map<Anexo, AnexoViewModel>(_revendaService.GetAnexoById(id));
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            BeginTransaction();
+            _revendaService.RemoveAnexo(id);
             Commit();
         }
 

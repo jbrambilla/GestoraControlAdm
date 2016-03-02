@@ -208,6 +208,75 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url });
         }
 
+        //ANEXOS
+
+        public ActionResult ListarAnexos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            ViewData["_controller"] = "Revendas";
+            return PartialView("_AnexoList", _revendaAppService.GetById(id).AnexoList);
+        }
+
+        [Route("adicionar-anexo")]
+        public ActionResult AdicionarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewData["_controller"] = "Revendas";
+            return PartialView("_AdicionarAnexo");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            if (ModelState.IsValid)
+            {
+                _revendaAppService.AddAnexo(PessoaId, Arquivo);
+
+                string url = Url.Action("ListarAnexos", "Revendas", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "anexo" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            return PartialView("_AdicionarAnexo");
+        }
+
+        public ActionResult DeletarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var anexoViewModel = _revendaAppService.GetAnexoById(id.Value);
+            if (anexoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = anexoViewModel.PessoaId;
+            return PartialView("_DeletarAnexo", anexoViewModel);
+        }
+
+        [HttpPost, ActionName("DeletarAnexo")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarAnexoConfirmed(Guid id)
+        {
+            var pessoaId = _revendaAppService.GetAnexoById(id).PessoaId;
+            _revendaAppService.RemoveAnexo(id);
+
+            string url = Url.Action("ListarAnexos", "Revendas", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "anexo" });
+        }
+
+        public ActionResult BaixarAnexo(Guid id)
+        {
+            var anexo = _revendaAppService.GetAnexoById(id);
+            return File(anexo.Content, anexo.ContentType, anexo.FileName);
+        }
+
         public ActionResult ObterImagemRevenda(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.REVENDAS_IMAGE_PATH);

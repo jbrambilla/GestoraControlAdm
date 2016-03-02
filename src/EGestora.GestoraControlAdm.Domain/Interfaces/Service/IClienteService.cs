@@ -44,7 +44,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         IEnumerable<RegimeApuracao> GetAllRegimeApuracao();
 
-        Anexo AddAnexo(Anexo anexo);
         Anexo GetAnexoById(Guid id);
         void RemoveAnexo(Guid id);
     }

@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="tab-pane fade in" id="anexos">
                                         <div id="replacetargetAnexo">
-                                            @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
+                                            @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
                                 </div>

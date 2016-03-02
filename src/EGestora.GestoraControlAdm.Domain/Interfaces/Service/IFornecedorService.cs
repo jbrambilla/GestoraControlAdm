@@ -22,5 +22,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica);
         PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica);
 
+        Anexo GetAnexoById(Guid id);
+        void RemoveAnexo(Guid id);
     }
 }

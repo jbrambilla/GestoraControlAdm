@@ -1,6 +1,7 @@
 ﻿using EGestora.GestoraControlAdm.Application.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application.Interfaces
 {
@@ -37,5 +38,9 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         IEnumerable<RegimeTributacaoViewModel> GetAllRegimeTributacao();
 
         IEnumerable<EnquadramentoServicoViewModel> GetAllEnquadramentoServico();
+
+        void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo);
+        AnexoViewModel GetAnexoById(Guid id);
+        void RemoveAnexo(Guid id);
     }
 }

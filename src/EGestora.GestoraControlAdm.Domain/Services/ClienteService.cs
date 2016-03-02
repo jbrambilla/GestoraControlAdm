@@ -244,11 +244,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _regimeApuracaoRepository.GetAll();
         }
 
-        public Anexo AddAnexo(Anexo anexo)
-        {
-            return _anexoRepository.Add(anexo);
-        }
-
         public Anexo GetAnexoById(Guid id)
         {
             return _anexoRepository.GetById(id);

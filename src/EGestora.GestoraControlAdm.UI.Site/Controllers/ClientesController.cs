@@ -427,7 +427,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         public ActionResult ListarAnexos(Guid id)
         {
             ViewBag.PessoaId = id;
-
+            ViewData["_controller"] = "Clientes";
             return PartialView("_AnexoList", _clienteAppService.GetById(id).AnexoList);
         }
 
@@ -439,6 +439,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ViewBag.PessoaId = id.Value;
+            ViewData["_controller"] = "Clientes";
             return PartialView("_AdicionarAnexo");
         }
 

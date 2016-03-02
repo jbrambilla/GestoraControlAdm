@@ -13,17 +13,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
+        private readonly IAnexoRepository _anexoRepository;
 
         public RevendaService(
             IRevendaRepository revendaRepository, 
             IEnderecoRepository enderecoRepository, 
             IPessoaFisicaRepository pessoaFisicaRepository, 
-            IPessoaJuridicaRepository pessoaJuridicaRepository)
+            IPessoaJuridicaRepository pessoaJuridicaRepository,
+            IAnexoRepository anexoRepository)
         {
             _revendaRepository = revendaRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
+            _anexoRepository = anexoRepository;
         }
 
         public Revenda Add(Revenda revenda)
@@ -112,10 +115,21 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _pessoaJuridicaRepository.Update(pessoaJuridica);
         }
 
+        public Anexo GetAnexoById(Guid id)
+        {
+            return _anexoRepository.GetById(id);
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            _anexoRepository.Remove(id);
+        }
+
         public void Dispose()
         {
             _revendaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

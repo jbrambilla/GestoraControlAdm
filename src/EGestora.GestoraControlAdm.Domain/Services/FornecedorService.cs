@@ -16,17 +16,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
+        private readonly IAnexoRepository _anexoRepository;
 
         public FornecedorService(
             IFornecedorRepository fornecedorRepository, 
             IEnderecoRepository enderecoRepository, 
-            IPessoaFisicaRepository pessoaFisicaRepository, 
-            IPessoaJuridicaRepository pessoaJuridicaRepository)
+            IPessoaFisicaRepository pessoaFisicaRepository,
+            IPessoaJuridicaRepository pessoaJuridicaRepository,
+            IAnexoRepository anexoRepository)
         {
             _fornecedorRepository = fornecedorRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
+            _anexoRepository = anexoRepository;
         }
 
         public Fornecedor Add(Fornecedor fornecedor)
@@ -112,6 +115,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return null;
             }
             return _pessoaJuridicaRepository.Update(pessoaJuridica);
+        }
+
+        public Anexo GetAnexoById(Guid id)
+        {
+            return _anexoRepository.GetById(id);
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            _anexoRepository.Remove(id);
         }
 
         public void Dispose()

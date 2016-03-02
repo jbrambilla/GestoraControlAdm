@@ -8,6 +8,7 @@ using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application
 {
@@ -258,6 +259,29 @@ namespace EGestora.GestoraControlAdm.Application
         public IEnumerable<EnquadramentoServicoViewModel> GetAllEnquadramentoServico()
         {
             return Mapper.Map<IEnumerable<EnquadramentoServico>, IEnumerable<EnquadramentoServicoViewModel>>(_empresaService.GetAllEnquadramentoServico());
+        }
+
+        public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            BeginTransaction();
+
+            var empresa = _empresaService.GetById(PessoaId);
+            empresa.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
+            _empresaService.Update(empresa);
+
+            Commit();
+        }
+
+        public AnexoViewModel GetAnexoById(Guid id)
+        {
+            return Mapper.Map<Anexo, AnexoViewModel>(_empresaService.GetAnexoById(id));
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            BeginTransaction();
+            _empresaService.RemoveAnexo(id);
+            Commit();
         }
 
         public void Dispose()

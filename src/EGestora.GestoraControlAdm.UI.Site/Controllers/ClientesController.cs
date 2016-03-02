@@ -484,6 +484,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "anexo" });
         }
 
+        public ActionResult BaixarAnexo(Guid id)
+        {
+            var anexo = _clienteAppService.GetAnexoById(id);
+            return File(anexo.Content, anexo.ContentType, anexo.FileName);
+        }
+
         private void loadVierBags()
         {
             ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");

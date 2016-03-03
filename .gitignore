@@ -239,4 +239,4 @@ _Pvt_Extensions
 # GESTORA IGNORES
 src/contents/
 src/EGestora.GestoraControlAdm.UI.Site/Config/
-src/EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters/FilePath
+

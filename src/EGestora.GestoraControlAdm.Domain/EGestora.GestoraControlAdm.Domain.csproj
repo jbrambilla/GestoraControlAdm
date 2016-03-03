@@ -46,6 +46,7 @@
     <Compile Include="Entities\Fornecedor.cs" />
     <Compile Include="Entities\Funcionario.cs" />
     <Compile Include="Entities\NaturezaOperacao.cs" />
+    <Compile Include="Entities\NotaServico.cs" />
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repository\IFuncionarioRepository.cs" />
     <Compile Include="Interfaces\Repository\INaturezaOperacaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\INotaServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaJuridicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Interfaces\Service\ICnaeService.cs" />
     <Compile Include="Interfaces\Service\IEmpresaService.cs" />
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
+    <Compile Include="Interfaces\Service\INotaServicoService.cs" />
     <Compile Include="Interfaces\Service\IRevendaService.cs" />
     <Compile Include="Interfaces\Service\IServicoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,10 +87,12 @@
     <Compile Include="Services\CnaeService.cs" />
     <Compile Include="Services\EmpresaService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
+    <Compile Include="Services\NotaServicoService.cs" />
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
+    <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />
@@ -101,16 +106,14 @@
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Empresas\EmpresaEstaAptaParaCadastroValidation.cs" />
+    <Compile Include="Validations\NotaServicos\NotaServicoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaConsistenteValidation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Specifications\Clientes\" />
-    <Folder Include="Validations\Clientes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

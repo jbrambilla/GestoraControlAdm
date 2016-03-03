@@ -10,3 +10,4 @@
 /// <reference path="bootstrap-filestyle.min.js" />
 /// <reference path="radiobuttonpfpj.js" />
 /// <reference path="select2.full.min.js" />
+/// <reference path="pessoaajaxmodal.js" />

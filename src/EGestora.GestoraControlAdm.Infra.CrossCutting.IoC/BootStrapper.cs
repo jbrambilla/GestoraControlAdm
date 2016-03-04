@@ -27,6 +27,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<ICnaeAppService, CnaeAppService>();
             container.RegisterPerWebRequest<IServicoAppService, ServicoAppService>();
             container.RegisterPerWebRequest<IEmpresaAppService, EmpresaAppService>();
+            container.RegisterPerWebRequest<INotaServicoAppService, NotaServicoAppService>();
 
             // Domain
             container.RegisterPerWebRequest<IClienteService, ClienteService>();
@@ -36,6 +37,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<IServicoService, ServicoService>();
             container.RegisterPerWebRequest<IClienteServicoService, ClienteServicoService>();
             container.RegisterPerWebRequest<IEmpresaService, EmpresaService>();
+            container.RegisterPerWebRequest<INotaServicoService, NotaServicoService>();
 
             // Infra Dados
             container.RegisterPerWebRequest<IClienteRepository, ClienteRepository>();
@@ -54,6 +56,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<INaturezaOperacaoRepository, NaturezaOperacaoRepository>();
             container.RegisterPerWebRequest<IEnquadramentoServicoRepository, EnquadramentoServicoRepository>();
             container.RegisterPerWebRequest<IAnexoRepository, AnexoRepository>();
+            container.RegisterPerWebRequest<INotaServicoRepository, NotaServicoRepository>();
             container.RegisterPerWebRequest<IUnitOfWork, UnitOfWork>();
             container.RegisterPerWebRequest<EGestoraContext>();
         }

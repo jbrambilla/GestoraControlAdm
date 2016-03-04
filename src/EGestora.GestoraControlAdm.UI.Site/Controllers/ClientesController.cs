@@ -48,7 +48,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: Clientes/Create
         public ActionResult Create()
         {
-            loadVierBags();
+            loadViewBags();
             return View();
         }
 
@@ -69,13 +69,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     {
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
-                    loadVierBags();
+                    loadViewBags();
                     return View(clienteEnderecoViewModel);
                 }
 
                 return RedirectToAction("Index");
             }
-            loadVierBags();
+            loadViewBags();
             return View(clienteEnderecoViewModel);
         }
 
@@ -491,7 +491,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return File(anexo.Content, anexo.ContentType, anexo.FileName);
         }
 
-        private void loadVierBags()
+        private void loadViewBags()
         {
             ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Descricao");
             ViewBag.ServicoList = new SelectList(_clienteAppService.GetAllServicos().OrderBy(c => c.Descricao), "ServicoId", "Descricao");

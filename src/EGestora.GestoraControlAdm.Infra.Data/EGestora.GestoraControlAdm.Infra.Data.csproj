@@ -61,6 +61,7 @@
     <Compile Include="EntityConfiguration\FornecedorConfiguration.cs" />
     <Compile Include="EntityConfiguration\FuncionarioConfiguration.cs" />
     <Compile Include="EntityConfiguration\NaturezaOperacaoConfiguration.cs" />
+    <Compile Include="EntityConfiguration\NotaServicoConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaFisicaConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaJuridicaConfiguration.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Repository\FornecedorRepository.cs" />
     <Compile Include="Repository\FuncionarioRepository.cs" />
     <Compile Include="Repository\NaturezaOperacaoRepository.cs" />
+    <Compile Include="Repository\NotaServicoRepository.cs" />
     <Compile Include="Repository\PessoaFisicaRepository.cs" />
     <Compile Include="Repository\PessoaJuridicaRepository.cs" />
     <Compile Include="Repository\RegimeApuracaoRepository.cs" />

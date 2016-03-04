@@ -11,6 +11,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         {
             CnaeList = new List<Cnae>();
             FuncionarioList = new List<Funcionario>();
+            NotaServicoList = new List<NotaServico>();
         }
 
         public Guid RegimeApuracaoId { get; set; }
@@ -30,5 +31,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual EnquadramentoServico EnquadramentoServico { get; set; }
         public virtual ICollection<Funcionario> FuncionarioList { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
+        public virtual ICollection<NotaServico> NotaServicoList { get; set; }
     }
 }

@@ -52,5 +52,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             }
             return pfList;
         }
+
+        public Empresa GetEmpresaAtiva()
+        {
+            return Db.Empresas.FirstOrDefault(e => e.Ativo);
+        }
     }
 }

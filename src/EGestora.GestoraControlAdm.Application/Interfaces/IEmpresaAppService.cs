@@ -11,6 +11,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         EmpresaViewModel GetById(Guid id);
         EmpresaViewModel GetByCnpj(string cnpj);
         EmpresaViewModel GetByCpf(string cpf);
+        EmpresaViewModel GetEmpresaAtiva();
         IEnumerable<EmpresaViewModel> GetAll();
         EmpresaViewModel Update(EmpresaViewModel empresaViewModel);
         void Remove(Guid id);

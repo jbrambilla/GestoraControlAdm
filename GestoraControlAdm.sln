@@ -33,6 +33,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Infra.CrossCutting.Utils", "src\EGestora.GestoraControlAdm.Infra.CrossCutting.Utils\EGestora.GestoraControlAdm.Infra.CrossCutting.Utils.csproj", "{ADC32618-75E6-498D-9537-ED8130F66A9E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - AntiCorruption", "6 - AntiCorruption", "{3ADAF88E-BF57-4E42-8ACF-FA7FE69BDB0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.AntiCorruption.NfseWebService", "src\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.csproj", "{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +75,10 @@ Global
 		{ADC32618-75E6-498D-9537-ED8130F66A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADC32618-75E6-498D-9537-ED8130F66A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADC32618-75E6-498D-9537-ED8130F66A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +94,6 @@ Global
 		{69677EB1-3A80-4F58-A464-3E114FE1655D} = {7615B984-D777-4975-A5E3-C11D067F64FC}
 		{93A82149-BD5A-4872-BDF2-6D3F5B765F42} = {F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91}
 		{ADC32618-75E6-498D-9537-ED8130F66A9E} = {F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91}
+		{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834} = {3ADAF88E-BF57-4E42-8ACF-FA7FE69BDB0E}
 	EndGlobalSection
 EndGlobal

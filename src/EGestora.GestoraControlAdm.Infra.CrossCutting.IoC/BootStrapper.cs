@@ -1,5 +1,9 @@
-﻿using EGestora.GestoraControlAdm.Application;
+﻿using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService;
+using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao;
+using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Interfaces;
+using EGestora.GestoraControlAdm.Application;
 using EGestora.GestoraControlAdm.Application.Interfaces;
+using EGestora.GestoraControlAdm.Domain.Interfaces.NfseWebServices;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Services;
@@ -59,6 +63,19 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<INotaServicoRepository, NotaServicoRepository>();
             container.RegisterPerWebRequest<IUnitOfWork, UnitOfWork>();
             container.RegisterPerWebRequest<EGestoraContext>();
+
+            // AntiCorruption
+            container.RegisterPerWebRequest<INotaServicoNfseWebService, NotaServicoNfseWebService>();
+            container.RegisterPerWebRequest<IContatoTomadorNfse, ContatoTomadorNfse>();
+            container.RegisterPerWebRequest<ICredencialNfse, CredencialNfse>();
+            container.RegisterPerWebRequest<IDadosServicoNfse, DadosServicoNfse>();
+            container.RegisterPerWebRequest<IDadosTomadorNfse, DadosTomadorNfse>();
+            container.RegisterPerWebRequest<IEnderecoTomadorNfse, EnderecoTomadorNfse>();
+            container.RegisterPerWebRequest<IIdentificacaoPrestadorNfse, IdentificacaoPrestadorNfse>();
+            container.RegisterPerWebRequest<IItensServicoNfse, ItensServicoNfse>();
+            container.RegisterPerWebRequest<INovaNfse, NovaNfse>();
+            container.RegisterPerWebRequest<IValoresServicoNfse, ValoresServicoNfse>();
+
         }
     }
 }

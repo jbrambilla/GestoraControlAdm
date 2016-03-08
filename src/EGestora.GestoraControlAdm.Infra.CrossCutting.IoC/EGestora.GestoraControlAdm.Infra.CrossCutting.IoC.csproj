@@ -63,6 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.csproj">
+      <Project>{8fe6f8f7-a080-430b-9ae7-6ceefbabc834}</Project>
+      <Name>EGestora.GestoraControlAdm.AntiCorruption.NfseWebService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EGestora.GestoraControlAdm.Application\EGestora.GestoraControlAdm.Application.csproj">
       <Project>{b761cb35-f189-4cf5-8457-1c34c07cd8ca}</Project>
       <Name>EGestora.GestoraControlAdm.Application</Name>

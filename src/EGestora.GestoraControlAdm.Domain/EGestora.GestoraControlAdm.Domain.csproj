@@ -54,6 +54,7 @@
     <Compile Include="Entities\RegimeTributacao.cs" />
     <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Entities\Servico.cs" />
+    <Compile Include="Interfaces\NfseWebServices\INotaServicoNfseWebService.cs" />
     <Compile Include="Interfaces\Repository\IAnexoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />

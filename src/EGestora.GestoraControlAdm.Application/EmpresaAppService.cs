@@ -89,6 +89,12 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Empresa, EmpresaViewModel>(_empresaService.GetByCpf(cpf));
         }
 
+
+        public EmpresaViewModel GetEmpresaAtiva()
+        {
+            return Mapper.Map<Empresa, EmpresaViewModel>(_empresaService.GetEmpresaAtiva());
+        }
+
         public IEnumerable<EmpresaViewModel> GetAll()
         {
             return Mapper.Map<IEnumerable<Empresa>, IEnumerable<EmpresaViewModel>>(_empresaService.GetAll());
@@ -289,6 +295,5 @@ namespace EGestora.GestoraControlAdm.Application
             _empresaService.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

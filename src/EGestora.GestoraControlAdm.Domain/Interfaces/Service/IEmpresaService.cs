@@ -10,6 +10,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Empresa GetById(Guid id);
         Empresa GetByCnpj(string cnpj);
         Empresa GetByCpf(string cpf);
+        Empresa GetEmpresaAtiva();
         IEnumerable<Empresa> GetAll();
         Empresa Update(Empresa empresa);
         void Remove(Guid id);

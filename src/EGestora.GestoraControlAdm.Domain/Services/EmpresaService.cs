@@ -86,6 +86,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _empresaRepository.GetByCpf(cpf);
         }
 
+        public Empresa GetEmpresaAtiva()
+        {
+            return _empresaRepository.GetEmpresaAtiva();
+        }
+
         public IEnumerable<Empresa> GetAll()
         {
             return _empresaRepository.GetAll();
@@ -241,6 +246,5 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _empresaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

@@ -1,0 +1,138 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.NotaServicoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NotaServicoViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpresaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoVerificacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoVerificacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscriminacaoServico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscriminacaoServico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutrasInformacoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutrasInformacoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maquina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maquina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssRetido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssRetido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorDeducoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorDeducoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aliquota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aliquota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseCalculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseCalculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorISS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorISS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorLiquido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValorLiquido)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NotaServicoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

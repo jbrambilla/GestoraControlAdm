@@ -11,5 +11,9 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<NotaServico> GetAll();
         NotaServico Update(NotaServico notaServico);
         void Remove(Guid id);
+
+        IEnumerable<PessoaJuridica> GetAllClientes();
+
+        Empresa GetEmpresaAtiva();
     }
 }

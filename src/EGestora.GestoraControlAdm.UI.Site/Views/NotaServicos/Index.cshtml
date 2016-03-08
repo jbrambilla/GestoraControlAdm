@@ -1,0 +1,117 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.NotaServicoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpresaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClienteId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoVerificacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscriminacaoServico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutrasInformacoes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maquina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssRetido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorDeducoes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aliquota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseCalculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorISS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ValorLiquido)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpresaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClienteId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoVerificacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscriminacaoServico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutrasInformacoes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maquina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IssRetido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorDeducoes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aliquota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaseCalculo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorISS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ValorLiquido)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NotaServicoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NotaServicoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NotaServicoId })
+        </td>
+    </tr>
+}
+
+</table>

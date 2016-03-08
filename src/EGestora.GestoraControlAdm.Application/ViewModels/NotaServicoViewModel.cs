@@ -26,9 +26,11 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public string CodigoVerificacao { get; set; }
 
         [DisplayName("Discriminação de Serviço")]
+        [Required(ErrorMessage = "O Campo Discriminação de Serviço é obrigatório.")]
         public string DiscriminacaoServico { get; set; }
 
         [DisplayName("Outras Informações")]
+        [Required(ErrorMessage = "O Campo Outras Informações é obrigatório.")]
         public string OutrasInformacoes { get; set; }
 
         [DisplayName("Série")]

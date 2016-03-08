@@ -12,11 +12,19 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     {
         private readonly INotaServicoRepository _notaServicoRepository;
         private readonly INotaServicoNfseWebService _notaServicoNfseWebService;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IEmpresaRepository _empresaRepository;
 
-        public NotaServicoService(INotaServicoRepository notaServicoRepository, INotaServicoNfseWebService notaServicoNfseWebService)
+        public NotaServicoService(
+            INotaServicoRepository notaServicoRepository,
+            INotaServicoNfseWebService notaServicoNfseWebService,
+            IClienteRepository clienteRepository,
+            IEmpresaRepository empresaRepository)
         {
             _notaServicoRepository = notaServicoRepository;
             _notaServicoNfseWebService = notaServicoNfseWebService;
+            _clienteRepository = clienteRepository;
+            _empresaRepository = empresaRepository;
         }
 
         public NotaServico Add(NotaServico notaServico)
@@ -26,9 +34,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return notaServico;
             }
 
+            notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
+            notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
             notaServico = _notaServicoNfseWebService.Gerar(notaServico);
 
-            if (notaServico.ValidationResult.Erros.Any())
+            if (!notaServico.ValidationResult.IsValid)
             {
                 return notaServico;
             }
@@ -56,10 +66,22 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _notaServicoRepository.Remove(id);
         }
 
+
+        public IEnumerable<PessoaJuridica> GetAllClientes()
+        {
+            return _clienteRepository.GetAllPessoaJuridica();
+        }
+
+        public Empresa GetEmpresaAtiva()
+        {
+            return _empresaRepository.GetEmpresaAtiva();
+        }
+
         public void Dispose()
         {
             _notaServicoRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

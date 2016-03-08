@@ -1,4 +1,5 @@
 ﻿using DomainValidation.Validation;
+using EGestora.GestoraControlAdm.Domain.Validations.NotaServicos;
 using System;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
@@ -41,7 +42,8 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public bool IsValid()
         {
-            return true;
+            ValidationResult = new NotaServicoEstaConsistenteValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
 
     }

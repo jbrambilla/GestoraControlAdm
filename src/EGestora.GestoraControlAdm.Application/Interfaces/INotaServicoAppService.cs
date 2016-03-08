@@ -11,5 +11,9 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         IEnumerable<NotaServicoViewModel> GetAll();
         NotaServicoViewModel Update(NotaServicoViewModel notaServicoViewModel);
         void Remove(Guid id);
+
+        IEnumerable<PessoaJuridicaViewModel> GetAllClientes();
+
+        EmpresaViewModel GetEmpresaAtiva();
     }
 }

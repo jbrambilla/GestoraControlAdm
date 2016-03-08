@@ -69,10 +69,21 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<PessoaJuridicaViewModel> GetAllClientes()
+        {
+            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_notaServicoService.GetAllClientes());
+        }
+
+        public EmpresaViewModel GetEmpresaAtiva()
+        {
+            return Mapper.Map<Empresa, EmpresaViewModel>(_notaServicoService.GetEmpresaAtiva());
+        }
+
         public void Dispose()
         {
             _notaServicoService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

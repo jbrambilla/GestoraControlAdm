@@ -1,5 +1,8 @@
 ﻿using EGestora.GestoraControlAdm.Application.Interfaces;
 using EGestora.GestoraControlAdm.Application.ViewModels;
+using Rotativa.Core;
+using Rotativa.Core.Options;
+using Rotativa.MVC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +72,17 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
                 if (notaServicoViewModel.Emitir)
                 {
-                    return View("EmitirNota", notaServicoViewModel);
+                    return new ViewAsPdf()
+                    {
+                        ViewName = "EmitirNota",
+                        Model = notaServicoViewModel,
+                        RotativaOptions = new DriverOptions()
+                        {
+                            PageSize = Size.A4,
+                            IsGrayScale = false,
+                            PageMargins = new Margins { Bottom = 5, Left = 5, Right = 5, Top = 5 }
+                        }
+                    };
                 }
 
                 return RedirectToAction("Index");
@@ -91,6 +104,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+
+            LoadViewBags();
             return View(notaServicoViewModel);
         }
 
@@ -106,6 +121,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _notaServicoAppService.Update(notaServicoViewModel);
                 return RedirectToAction("Index");
             }
+
+            LoadViewBags();
             return View(notaServicoViewModel);
         }
 

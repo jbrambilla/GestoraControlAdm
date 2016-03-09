@@ -1,0 +1,254 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.NotaServicoViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissão de Nota</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container body-content">
+        <div class="container-fluid">
+
+            <div class="row" style="border: solid;">
+                <div class="col-xs-2" style="padding: 5px;">
+                    <img src="@Url.Action("ObterImagemEmpresa", "Empresas", new { id = Model.EmpresaId })" />
+                </div>
+                <div class="col-xs-8 " style="text-align:center;">
+                    <p><strong>PREFEITURA MUNICIPAL DE PRESIDENTE PRUDENTE</strong></p>
+                    <b>SECRETARIA MUNICIPAL DE FINANÇAS</b> <br />
+                    <b>DEPARTAMENTO FISCAL E TRIBUTÁRIO</b> <br />
+                    <b>COORDENADORIA FISCAL E TRIBUTÁRIA</b> <br /> <br />
+                    <p><strong>NOTA FISCAL DE SERVIÇOS ELETRÔNICA - NFS-E</strong></p>
+                </div>
+                <div class="col-xs-2" style="font-size: smaller; border-left: solid;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            Nº da Nota Fiscal <br />
+                            <b>9999</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" style="border-bottom: solid; border-top: solid;">
+                            Série da Nota Fiscal <br />
+                            <b>X</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" style="border-bottom: solid;">
+                            Data de Emissão <br />
+                            <b>dd/MM/aaaa</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" style="">
+                            Cód. de Verificação <br />
+                            <b>XXXXXXXXXX</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row " style="border: solid; border-top: none; text-align: center;">
+                <div class="col-xs-12 ">
+                    <strong>DADOS DA EMPRESA</strong>
+                </div>
+            </div>
+            <div class="row " style="border: solid; border-top: none; border-bottom: none; padding: 5px;">
+                <div class="col-xs-2 ">
+                    <img src="@Url.Action("ObterImagemEmpresa", "Empresas", new { id = Model.EmpresaId })" />
+                </div>
+                <div class="col-xs-6" style="text-align:left;">
+                    Nome/Razão Sozial: <b>EVANDRO C M DA COSTA INFORMATICA EPP</b> <br />
+                    CNPJ/CPF: <b>00.000.000/0000-00</b> <br />
+                    Endereço: <b>RUA JOSE DIAS CINTRA</b> &nbsp; &nbsp; <b>Número:</b> 370 <br />
+                    Bairro: <b>VILA OCIDENTAL</b> <br />
+                    Município: <b>PRESIDENTE PRUDENTE</b> <br />
+                    E-mail: <b>gestora@gestorainformatica.com.br</b> <br />
+                </div>
+                <div class="col-xs-4" style="text-align:left;">
+                    Insc. Municipal: <b>78797</b> <br />
+                    Insc. Estadual: <b>654654654564</b> <br />
+                    CEP: <b>18900000</b> <br />
+                    UF: <b>SP</b> <br />
+                    Telefone: <b>1838882222</b> <br />
+                </div>
+            </div>
+            <div class="row " style="border: solid; border-bottom: none; text-align:center;">
+                <div class="col-xs-12 ">
+                    <strong> DADOS DO TOMADOR</strong>
+                </div>
+            </div>
+            <div class="row" style="border: solid; border-bottom: none;">
+                <div class="col-xs-12">
+                    <div class="col-xs-6" style="text-align:left;">
+                        Nome/Razão Sozial: <b>EVANDRO C M DA COSTA INFORMATICA EPP</b> <br />
+                        CNPJ/CPF: <b>00.000.000/0000-00</b> <br />
+                        Endereço: <b>RUA JOSE DIAS CINTRA</b> &nbsp; &nbsp; <b>Número:</b> 370 <br />
+                        Bairro: <b>VILA OCIDENTAL</b> <br />
+                        Município: <b>PRESIDENTE PRUDENTE</b> <br />
+                        E-mail: <b>gestora@gestorainformatica.com.br</b> <br />
+                    </div>
+                    <div class="col-xs-4" style="text-align:left;">
+                        Insc. Municipal: <b>78797</b> <br />
+                        Insc. Estadual: <b>654654654564</b> <br />
+                        CEP: <b>18900000</b> <br />
+                        UF: <b>SP</b> <br />
+                        Telefone: <b>1838882222</b> <br />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="border: solid; border-bottom: none; text-align: center;">
+                <div class="col-xs-12">
+                    <strong>DISCRIMINAÇAO DO SERVIÇOS</strong>
+                </div>
+            </div>
+            <div class="row" style="border: solid; border-bottom: none;">
+                <div class="col-xs-12">
+                    <p>REFERENTE ESCRITA + FOLHA</p>
+                </div>
+            </div>
+            <div class="row" style="border: solid; border-bottom: none;">
+                <div class="col-xs-8" style="border-right: solid;">
+                    <strong>ITEM</strong>
+                </div>
+                <div class="col-xs-4">
+                    <strong>VALOR</strong>
+                </div>
+            </div>
+            <div class="row" style="border: solid; border-bottom: none;">
+                <div class="col-xs-8" style="border-right: solid;">
+                    <p>REFERENTE ESCRITA + FOLHA</p>
+                </div>
+                <div class="col-xs-4">
+                    <p>R$ 55,0</p>
+                </div>
+            </div>
+            <div class="row" style="text-align: right; border: solid;">
+                <div class="col-xs-3" style="border-right: solid; ">
+                    Valor Total da Nota <br />
+                    <strong>112.00</strong>
+
+                </div>
+                <div class="col-xs-3" style="border-right: solid;">
+                    Valor total das Deduções <br />
+                    <strong>0</strong>
+                </div>
+                <div class="col-xs-2" style="border-right: solid;">
+                    Alíquota <br />
+                    <strong>5.00</strong>
+                </div>
+                <div class="col-xs-2" style="border-right: solid;">
+                    Base de Cálculo <br />
+                    <strong>112.00</strong>
+                </div>
+                <div class="col-xs-2" style="">
+                    Valor ISS <br />
+                    <strong>33.00</strong>
+                </div>
+            </div>
+            <div class="row" style="text-align: right; border: solid; border-top: none;">
+                <div class="col-xs-2" style="border-right: solid;">
+                    Valor do PIS <br />
+                    <strong>0.00</strong>
+
+                </div>
+                <div class="col-xs-2" style="border-right: solid; ">
+                    CONFINS <br />
+                    <strong>0.00</strong>
+                </div>
+                <div class="col-xs-2" style="border-right: solid;">
+                    Valor do INSS <br />
+                    <strong>0.00</strong>
+                </div>
+                <div class="col-xs-2" style="border-right: solid;">
+                    Valor do IR <br />
+                    <strong>0.00</strong>
+                </div>
+                <div class="col-xs-2" style="">
+                    Valor do CSLL <br />
+                    <strong>0.00</strong>
+                </div>
+                <div class="col-xs-2" style="">
+                    Valor Líquido <br />
+                    <strong>98.00</strong>
+                </div>
+            </div>
+            <div class="row" style="border: solid; border-top: none; text-align: center;">
+                <div class="col-xs-12">
+                    <strong>ENQUADRAMENTO DE SERVIÇO</strong>
+                </div>
+            </div>
+
+            <div class="row" style="border: solid; border-top: none;">
+                <div class="col-xs-12">
+                    1.07 - enquandramento
+                </div>
+            </div>
+
+            <div class="row" style="border: solid; border-top: none; text-align: center;">
+                <div class="col-xs-12">
+                    <strong>OUTRAS INFORMAÇÕES</strong>
+                </div>
+            </div>
+
+            <div class="row" style="border: solid; border-top: none;">
+                <div class="col-xs-12">
+                    <p>
+                        Valor Aprox Tributos
+                        @*M = R$@ViewBag.ValorMunicipal  (@ViewBag.PorcentagemMunicipal%)
+                        E = R$@ViewBag.ValorEstadual  (@ViewBag.PorcentagemEstadual%)
+                        F = R$@ViewBag.ValorFederal  (@ViewBag.PorcentagemFederal%)*@
+                        M = R$10  (4%)
+                        E = R$10  (4%)
+                        F = R$10  (4%)
+                        Fonte IBPT
+                    </p>
+                </div>
+            </div>
+
+            <hr style="border:dotted;" />
+
+            <div class="row" style="border: solid;">
+                <div class="col-xs-8" style="border-right: solid;">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            Recebi(emos) de: EVANDRO C M DA COSTA INFORMATICA EPP <br />
+                            os serviços constantes nesta Nota Fiscal de Serviços Eletrônica.
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-xs-6">_____________</div>
+                        <div class="col-xs-6">__________________________</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Data</div>
+                        <div class="col-xs-6"> &nbsp; &nbsp; &nbsp;  Assinatura do Recebedor</div>
+                    </div>
+
+                </div>
+                <div class="col-xs-4">
+                    <p><strong>NOTA FISCAL DE SERVIÇOS ELETRÔNICA</strong></p>
+                    <b>Número: </b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <b>10594</b> <br />
+                    <b>Código de Verificação: </b> &nbsp;
+                    <b>10FDSFSDF3</b>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    <script src="~/Scripts/bootstrap.js"></script>
+</body>
+</html>

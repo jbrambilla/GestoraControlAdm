@@ -12,6 +12,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         }
 
         public Guid NotaServicoId { get; set; }
+        public string Numero { get; set; }
         public string CodigoVerificacao { get; set; }
         public string DiscriminacaoServico { get; set; }
         public string OutrasInformacoes { get; set; }

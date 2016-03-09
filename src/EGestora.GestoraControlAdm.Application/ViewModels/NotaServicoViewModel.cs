@@ -22,6 +22,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Cliente")]
         public Guid ClienteId { get; set; }
 
+        [DisplayName("Número")]
+        public string Numero { get; set; }
+
         [DisplayName("Código de Verificação")]
         public string CodigoVerificacao { get; set; }
 

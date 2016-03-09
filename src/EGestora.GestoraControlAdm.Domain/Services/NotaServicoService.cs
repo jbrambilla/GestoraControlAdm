@@ -34,13 +34,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return notaServico;
             }
 
-            notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
-            notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
-            notaServico = _notaServicoNfseWebService.Gerar(notaServico);
-
-            if (!notaServico.ValidationResult.IsValid)
+            if (notaServico.Emitir)
             {
-                return notaServico;
+                notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
+                notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
+                notaServico = _notaServicoNfseWebService.Gerar(notaServico);
+
+                if (!notaServico.ValidationResult.IsValid)
+                {
+                    return notaServico;
+                }
             }
 
             return _notaServicoRepository.Add(notaServico);

@@ -54,6 +54,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public bool IssRetido { get; set; }
 
         [ScaffoldColumn(false)]
+        [DisplayName("Data de Emissão")]
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]
@@ -98,5 +99,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DisplayName("Emitir nota ao realizar o cadastro?")]
+        public bool Emitir { get; set; }
     }
 }

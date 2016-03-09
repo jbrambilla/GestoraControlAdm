@@ -46,5 +46,8 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             return ValidationResult.IsValid;
         }
 
+        //controle no cadastro
+        public bool Emitir { get; set; }
+
     }
 }

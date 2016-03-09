@@ -84,6 +84,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService
                     else if (RespostaNfse.Item is tcRespostaIdentNovaNfse)
                     {
                         notaServico.ValidationResult.Message = "Nota finalizada com sucesso!";
+                        notaServico.NotaFinalizada = true;
                         //viewModel.Resposta = (tcRespostaIdentNovaNfse)RespostaNfse.Item;
                     }
                     else

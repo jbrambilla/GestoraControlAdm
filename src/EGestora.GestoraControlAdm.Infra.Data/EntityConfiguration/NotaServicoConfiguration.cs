@@ -29,6 +29,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(n => n.ValidationResult);
 
+            Ignore(n => n.Emitir);
+
             ToTable("NotaServico");
         }
     }

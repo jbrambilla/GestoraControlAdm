@@ -67,6 +67,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     return View(notaServicoViewModel);
                 }
 
+                if (notaServicoViewModel.Emitir)
+                {
+                    return View("EmitirNota", notaServicoViewModel);
+                }
+
                 return RedirectToAction("Index");
             }
 

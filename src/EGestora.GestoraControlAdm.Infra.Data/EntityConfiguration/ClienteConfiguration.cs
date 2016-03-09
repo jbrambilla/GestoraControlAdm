@@ -41,6 +41,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                 .WithMany(r => r.ClienteList)
                 .HasForeignKey(c => c.RegimeApuracaoId);
 
+            Ignore(c => c.ValorTotalServicos);
+
             ToTable("Clientes");
         }
     }

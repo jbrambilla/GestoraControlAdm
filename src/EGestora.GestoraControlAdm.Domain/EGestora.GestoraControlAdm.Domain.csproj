@@ -45,6 +45,7 @@
     <Compile Include="Entities\EnquadramentoServico.cs" />
     <Compile Include="Entities\Fornecedor.cs" />
     <Compile Include="Entities\Funcionario.cs" />
+    <Compile Include="Entities\LoteFaturamento.cs" />
     <Compile Include="Entities\NaturezaOperacao.cs" />
     <Compile Include="Entities\NotaServico.cs" />
     <Compile Include="Entities\Pessoa.cs" />

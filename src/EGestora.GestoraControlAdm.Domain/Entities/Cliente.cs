@@ -1,5 +1,6 @@
 ﻿using DomainValidation.Validation;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
@@ -12,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             CnaeList = new List<Cnae>();
             ClienteServicoList = new List<ClienteServico>();
             NotaServicoList = new List<NotaServico>();
+            LoteFaturamentoList = new List<LoteFaturamento>();
         }
 
         public Guid? RevendaId { get; set; }
@@ -25,5 +27,16 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual ICollection<Cnae> CnaeList { get; set; }
         public virtual ICollection<ClienteServico> ClienteServicoList { get; set; }
         public virtual ICollection<NotaServico> NotaServicoList { get; set; }
+        public virtual ICollection<LoteFaturamento> LoteFaturamentoList { get; set; }
+
+        public decimal ValorTotalServicos 
+        { 
+            get 
+            {
+                var valor = 0M;
+                ClienteServicoList.ToList().ForEach(clienteServico => valor += clienteServico.Valor);
+                return valor;
+            } 
+        }
     }
 }

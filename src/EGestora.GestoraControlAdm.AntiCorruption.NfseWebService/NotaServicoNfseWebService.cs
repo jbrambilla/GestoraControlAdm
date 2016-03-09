@@ -45,6 +45,8 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService
             _valoresServicoNfse = valoresServicoNfse;
         }
 
+
+
         public NotaServico Gerar(NotaServico notaServico)
         {
             var GerarNovaNfse = new GerarNovaNfseEnvio();
@@ -83,9 +85,12 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService
                     }
                     else if (RespostaNfse.Item is tcRespostaIdentNovaNfse)
                     {
+                        var item = (tcRespostaIdentNovaNfse)RespostaNfse.Item;
+                        notaServico.Numero = item.IdentificacaoNfse.Numero;
+                        notaServico.Serie = item.IdentificacaoNfse.Serie;
+                        notaServico.CodigoVerificacao = item.IdentificacaoNfse.CodigoVerificacao;
                         notaServico.ValidationResult.Message = "Nota finalizada com sucesso!";
                         notaServico.NotaFinalizada = true;
-                        //viewModel.Resposta = (tcRespostaIdentNovaNfse)RespostaNfse.Item;
                     }
                     else
                     {

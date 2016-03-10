@@ -79,11 +79,15 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_loteFaturamentoService.GetAllClienteComNota());
         }
 
+        public ClienteViewModel GetClienteById(Guid id)
+        {
+            return Mapper.Map<Cliente, ClienteViewModel>(_loteFaturamentoService.GetClienteById(id));
+        }
+
         public void Dispose()
         {
             _loteFaturamentoService.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

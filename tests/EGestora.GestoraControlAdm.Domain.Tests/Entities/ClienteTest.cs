@@ -23,5 +23,23 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
 
             Assert.AreEqual(valorEsperado, cliente.ValorTotalServicos);
         }
+
+        [TestMethod]
+        public void Cliente_DiscriminacaoServicosDeveRetornarNomeDeTodosServicos()
+        {
+            var expected = "Serviço 1, Serviço 2";
+
+            var servico1 = new Servico() { Descricao = "Serviço 1" };
+            var servico2 = new Servico() { Descricao = "Serviço 2" };
+            var cliente = new Cliente();
+
+            var clienteServico1 = new ClienteServico() { PessoaId = cliente.PessoaId, ServicoId = servico1.ServicoId, Servico = servico1 };
+            var clienteServico2 = new ClienteServico() { PessoaId = cliente.PessoaId, ServicoId = servico2.ServicoId, Servico = servico2 };
+
+            cliente.ClienteServicoList.Add(clienteServico1);
+            cliente.ClienteServicoList.Add(clienteServico2);
+
+            Assert.AreEqual(expected, cliente.DiscriminacaoServicos);
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         IEnumerable<Cliente> GetAllClienteSemNota();
         IEnumerable<Cliente> GetAllClienteComNota();
+        Cliente GetClienteById(Guid id);
     }
 }

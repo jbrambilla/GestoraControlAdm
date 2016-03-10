@@ -124,6 +124,21 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             ViewBag.ClienteComNotaList = _loteFaturamentoAppService.GetAllClienteComNota();
         }
 
+        public ActionResult ServicoDetails(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var clienteViewModel = _loteFaturamentoAppService.GetClienteById(id.Value);
+            if (clienteViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_ServicoDetails", clienteViewModel);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

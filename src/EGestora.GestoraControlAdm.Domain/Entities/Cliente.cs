@@ -38,5 +38,15 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
                 return valor;
             } 
         }
+
+        public string DiscriminacaoServicos 
+        { 
+            get 
+            {
+                var discriminacao = "";
+                ClienteServicoList.ToList().ForEach(clienteServico => discriminacao += clienteServico.Servico.Descricao + ", ");
+                return discriminacao.Length > 0 ? discriminacao.Remove(discriminacao.Length - 2, 2) : "";
+            }
+        }
     }
 }

@@ -59,11 +59,15 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _clienteRepository.GetAllComNota();
         }
 
+        public Cliente GetClienteById(Guid id)
+        {
+            return _clienteRepository.GetById(id);
+        }
+
         public void Dispose()
         {
             _loteFaturamentoRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-        
     }
 }

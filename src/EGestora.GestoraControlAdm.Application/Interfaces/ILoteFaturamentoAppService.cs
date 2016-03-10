@@ -14,5 +14,6 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         IEnumerable<ClienteViewModel> GetAllClienteSemNota();
         IEnumerable<ClienteViewModel> GetAllClienteComNota();
+        ClienteViewModel GetClienteById(Guid id);
     }
 }

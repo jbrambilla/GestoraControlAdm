@@ -56,7 +56,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane fade in active " id="comNotaList">
                                     <div class="table-responsive">
-                                        <table id="table_id" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                        <table id="tabelaClienteComNota" class="stripe hover row-border compact" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th></th>
@@ -74,6 +74,9 @@
                                                     </th>
                                                     <th>
                                                         Vencimento do Boleto
+                                                    </th>
+                                                    <th>
+                                                        Serviços
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -97,6 +100,9 @@
                                                         <td>
                                                             @Html.DisplayFor(modelItem => item.VencimentoBoleto)
                                                         </td>
+                                                        <td>
+                                                            <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
+                                                        </td>
                                                     </tr>
                                                 }
                                             </tbody>
@@ -105,7 +111,7 @@
                                 </div>
                                 <div class="tab-pane fade in" id="semNotaList">
                                     <div class="table-responsive">
-                                        <table id="table_id2" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                        <table id="tabelaClienteSemNota" class="stripe hover row-border compact" cellspacing="0" width="100%">
                                             <thead>
                                                 <tr>
                                                     <th></th>
@@ -123,6 +129,9 @@
                                                     </th>
                                                     <th>
                                                         Vencimento do Boleto
+                                                    </th>
+                                                    <th>
+                                                        Serviços
                                                     </th>
                                                 </tr>
                                             </thead>
@@ -146,10 +155,46 @@
                                                         <td>
                                                             @Html.DisplayFor(modelItem => item.VencimentoBoleto)
                                                         </td>
+                                                        <td>
+                                                            <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
+                                                        </td>
                                                     </tr>
                                                 }
                                             </tbody>
                                         </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Valores do Lote</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ValorTotalComNota, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ValorTotalComNota, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
+                                            @Html.ValidationMessageFor(model => model.ValorTotalComNota, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ValorTotalSemNota, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ValorTotalSemNota, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
+                                            @Html.ValidationMessageFor(model => model.ValorTotalSemNota, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ValorTotalGeral, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ValorTotalGeral, new { htmlAttributes = new { @class = "form-control", disabled="" } })
+                                            @Html.ValidationMessageFor(model => model.ValorTotalGeral, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -168,13 +213,20 @@
     </div>
 </div>
 
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function () {
-            $('#table_id').DataTable({
-
+            $('#tabelaClienteComNota').DataTable({
                 "language": {
                     "lengthMenu": "Mostrando _MENU_ registros por página",
                     "zeroRecords": "Nenhum registro encontrado - desculpe",
@@ -191,8 +243,7 @@
                 }
             });
 
-            $('#table_id2').DataTable({
-
+            $('#tabelaClienteSemNota').DataTable({
                 "language": {
                     "lengthMenu": "Mostrando _MENU_ registros por página",
                     "zeroRecords": "Nenhum registro encontrado - desculpe",
@@ -209,6 +260,22 @@
                 }
             });
             
+        });
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+
+            $(document).on('click', 'a[data-modal]', function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+
+            });
         });
     </script>
 }

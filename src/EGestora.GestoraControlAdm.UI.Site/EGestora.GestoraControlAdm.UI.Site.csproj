@@ -389,6 +389,7 @@
     <Content Include="Views\LoteFaturamentos\Details.cshtml" />
     <Content Include="Views\LoteFaturamentos\Edit.cshtml" />
     <Content Include="Views\LoteFaturamentos\Index.cshtml" />
+    <Content Include="Views\LoteFaturamentos\Servico\_ServicoDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

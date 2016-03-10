@@ -32,6 +32,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<IServicoAppService, ServicoAppService>();
             container.RegisterPerWebRequest<IEmpresaAppService, EmpresaAppService>();
             container.RegisterPerWebRequest<INotaServicoAppService, NotaServicoAppService>();
+            container.RegisterPerWebRequest<ILoteFaturamentoAppService, LoteFaturamentoAppService>();
 
             // Domain
             container.RegisterPerWebRequest<IClienteService, ClienteService>();

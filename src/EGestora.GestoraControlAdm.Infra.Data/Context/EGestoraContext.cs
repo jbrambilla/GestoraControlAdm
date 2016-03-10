@@ -33,6 +33,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<EnquadramentoServico> EnquadramentoServico { get; set; }
         public DbSet<Anexo> Anexos { get; set; }
         public DbSet<NotaServico> NotaServico { get; set; }
+        public DbSet<LoteFaturamento> LoteFaturamento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -69,6 +70,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new NaturezaOperacaoConfiguration());
             modelBuilder.Configurations.Add(new AnexoConfiguration());
             modelBuilder.Configurations.Add(new NotaServicoConfiguration());
+            modelBuilder.Configurations.Add(new LoteFaturamentoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

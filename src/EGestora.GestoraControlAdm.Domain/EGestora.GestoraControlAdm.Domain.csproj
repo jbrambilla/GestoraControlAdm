@@ -65,6 +65,7 @@
     <Compile Include="Interfaces\Repository\IEnquadramentoServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\IFornecedorRepository.cs" />
     <Compile Include="Interfaces\Repository\IFuncionarioRepository.cs" />
+    <Compile Include="Interfaces\Repository\ILoteFaturamentoRepository.cs" />
     <Compile Include="Interfaces\Repository\INaturezaOperacaoRepository.cs" />
     <Compile Include="Interfaces\Repository\INotaServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Interfaces\Service\ICnaeService.cs" />
     <Compile Include="Interfaces\Service\IEmpresaService.cs" />
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
+    <Compile Include="Interfaces\Service\ILoteFaturamentoService.cs" />
     <Compile Include="Interfaces\Service\INotaServicoService.cs" />
     <Compile Include="Interfaces\Service\IRevendaService.cs" />
     <Compile Include="Interfaces\Service\IServicoService.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Services\CnaeService.cs" />
     <Compile Include="Services\EmpresaService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
+    <Compile Include="Services\LoteFaturamentoService.cs" />
     <Compile Include="Services\NotaServicoService.cs" />
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />

@@ -60,6 +60,7 @@
     <Compile Include="EntityConfiguration\EnquadramentoServicoConfiguration.cs" />
     <Compile Include="EntityConfiguration\FornecedorConfiguration.cs" />
     <Compile Include="EntityConfiguration\FuncionarioConfiguration.cs" />
+    <Compile Include="EntityConfiguration\LoteFaturamentoConfiguration.cs" />
     <Compile Include="EntityConfiguration\NaturezaOperacaoConfiguration.cs" />
     <Compile Include="EntityConfiguration\NotaServicoConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaConfiguration.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Repository\EnquadramentoServicoRepository.cs" />
     <Compile Include="Repository\FornecedorRepository.cs" />
     <Compile Include="Repository\FuncionarioRepository.cs" />
+    <Compile Include="Repository\LoteFaturamentoRepository.cs" />
     <Compile Include="Repository\NaturezaOperacaoRepository.cs" />
     <Compile Include="Repository\NotaServicoRepository.cs" />
     <Compile Include="Repository\PessoaFisicaRepository.cs" />

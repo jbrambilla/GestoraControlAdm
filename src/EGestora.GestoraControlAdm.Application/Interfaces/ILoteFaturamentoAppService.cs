@@ -11,5 +11,8 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         IEnumerable<LoteFaturamentoViewModel> GetAll();
         LoteFaturamentoViewModel Update(LoteFaturamentoViewModel loteFaturamentoViewModel);
         void Remove(Guid id);
+
+        IEnumerable<ClienteViewModel> GetAllClienteSemNota();
+        IEnumerable<ClienteViewModel> GetAllClienteComNota();
     }
 }

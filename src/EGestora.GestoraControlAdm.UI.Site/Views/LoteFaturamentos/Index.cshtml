@@ -1,39 +1,150 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.LoteFaturamentoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Lotes de Faturamento";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Referencia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataFechamento)
-        </th>
-        <th></th>
-    </tr>
+        <h2 class="page-header">Gestão de Lotes de Faturamento</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Referencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataFechamento)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LoteFaturamentoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LoteFaturamentoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LoteFaturamentoId })
-        </td>
-    </tr>
-}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista de Lotes
+            </div>
+            <div class="panel-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#finalizadoList" data-toggle="tab" aria-expanded="true">Lotes Finalizados</a></li>
+                    <li class=""><a href="#naofinalizadoList" data-toggle="tab" aria-expanded="false">Lotes Não Finalizados</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active " id="finalizadoList">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Referencia)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DataFechamento)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CriadoEm)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ValorTotalGeral)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ValorTotalSemNota)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ValorTotalComNota)
+                                    </th>
+                                    <th></th>
+                                </tr>
 
-</table>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.DataFechamento != null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Referencia)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DataFechamento)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CriadoEm)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ValorTotalGeral)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ValorTotalSemNota)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ValorTotalComNota)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit", "LoteFaturamentos", new {id = item.LoteFaturamentoId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                <a href="@Url.Action("Details", "LoteFaturamentos", new { id = item.LoteFaturamentoId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                <a href="@Url.Action("Delete", "LoteFaturamentos", new { id = item.LoteFaturamentoId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="naofinalizadoList">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Referencia)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DataFechamento)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CriadoEm)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ValorTotalGeral)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ValorTotalSemNota)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ValorTotalComNota)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    if (item.DataFechamento == null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Referencia)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DataFechamento)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CriadoEm)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ValorTotalGeral)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ValorTotalSemNota)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ValorTotalComNota)
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit", "LoteFaturamentos", new {id = item.LoteFaturamentoId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                <a href="@Url.Action("Details", "LoteFaturamentos", new { id = item.LoteFaturamentoId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                <a href="@Url.Action("Delete", "LoteFaturamentos", new { id = item.LoteFaturamentoId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                @Html.ActionLink("Novo Lote de Faturamento", "Create", "LoteFaturamentos", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+</div>

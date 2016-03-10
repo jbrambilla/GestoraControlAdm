@@ -44,6 +44,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: LoteFaturamentos/Create
         public ActionResult Create()
         {
+            LoadViewBags();
             return View();
         }
 
@@ -59,7 +60,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _loteFaturamentoAppService.Add(loteFaturamentoViewModel);
                 return RedirectToAction("Index");
             }
-
+            LoadViewBags();
             return View(loteFaturamentoViewModel);
         }
 
@@ -115,6 +116,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             _loteFaturamentoAppService.Remove(id);
             return RedirectToAction("Index");
+        }
+
+        private void LoadViewBags()
+        {
+            ViewBag.ClienteSemNotaList = _loteFaturamentoAppService.GetAllClienteSemNota();
+            ViewBag.ClienteComNotaList = _loteFaturamentoAppService.GetAllClienteComNota();
         }
 
         protected override void Dispose(bool disposing)

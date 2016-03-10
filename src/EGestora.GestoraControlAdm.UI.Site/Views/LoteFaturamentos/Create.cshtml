@@ -2,47 +2,213 @@
 
 @{
     ViewBag.Title = "Create";
+    IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel> ClienteComNotaList = ViewBag.ClienteComNotaList;
+    IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel> ClienteSemNotaList = ViewBag.ClienteSemNotaList;
 }
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
 
-<h2>Create</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1 class="page-header">Criação de Faturamento em Lote</h1>
 
+            @using (Html.BeginForm("Create", "LoteFaturamentos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>LoteFaturamentoViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Referencia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataFechamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataFechamento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataFechamento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Datas do Lote</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Referencia, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DataFechamento, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.DataFechamento, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DataFechamento, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Seleção de Clientes
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#comNotaList" data-toggle="tab" aria-expanded="true">Clientes Com Nota</a></li>
+                                <li class=""><a href="#semNotaList" data-toggle="tab" aria-expanded="false">Clientes Sem Nota</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active " id="comNotaList">
+                                    <div class="table-responsive">
+                                        <table id="table_id" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>
+                                                        Razão Social
+                                                    </th>
+                                                    <th>
+                                                        Nome Fantasia
+                                                    </th>
+                                                    <th>
+                                                        CNPJ
+                                                    </th>
+                                                    <th>
+                                                        E-mail
+                                                    </th>
+                                                    <th>
+                                                        Vencimento do Boleto
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in ClienteComNotaList)
+                                                {
+                                                    <tr>
+                                                        <td>@Html.CheckBox("faturar", new { Value = item.PessoaId })</td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade in" id="semNotaList">
+                                    <div class="table-responsive">
+                                        <table id="table_id2" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>
+                                                        Razão Social
+                                                    </th>
+                                                    <th>
+                                                        Nome Fantasia
+                                                    </th>
+                                                    <th>
+                                                        CNPJ
+                                                    </th>
+                                                    <th>
+                                                        E-mail
+                                                    </th>
+                                                    <th>
+                                                        Vencimento do Boleto
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in ClienteSemNotaList)
+                                                {
+                                                    <tr>
+                                                        <td>@Html.CheckBox("faturar", new { Value = item.PessoaId })</td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" value="Cadastrar" class="btn btn-success" />
+                            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nenhum registro encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ total de registros)",
+                    "search": "Busca:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+            $('#table_id2').DataTable({
+
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nenhum registro encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ total de registros)",
+                    "search": "Busca:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+            
+        });
+    </script>
 }

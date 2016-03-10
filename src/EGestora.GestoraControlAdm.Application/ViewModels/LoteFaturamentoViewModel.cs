@@ -27,9 +27,11 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime DataFechamento { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Name = "Data de Criação")]
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Name = "Data de Alteração")]
         public DateTime AlteradoEm { get; set; }
 
         [ScaffoldColumn(false)]
@@ -49,5 +51,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        //Guids dos clientes selecionados
+        [ScaffoldColumn(false)]
+        public virtual ICollection<string> Faturar { get; set; }
     }
 }

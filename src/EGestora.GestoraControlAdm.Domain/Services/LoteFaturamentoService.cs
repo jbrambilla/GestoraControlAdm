@@ -9,10 +9,14 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     public class LoteFaturamentoService : ILoteFaturamentoService
     {
         private readonly ILoteFaturamentoRepository _loteFaturamentoRepository;
+        private readonly IClienteRepository _clienteRepository;
 
-        public LoteFaturamentoService(ILoteFaturamentoRepository loteFaturamentoRepository)
+        public LoteFaturamentoService(
+            ILoteFaturamentoRepository loteFaturamentoRepository,
+            IClienteRepository clienteRepository)
         {
             _loteFaturamentoRepository = loteFaturamentoRepository;
+            _clienteRepository = clienteRepository;
         }
 
         public LoteFaturamento Add(LoteFaturamento loteFaturamento)
@@ -45,10 +49,21 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _loteFaturamentoRepository.Remove(id);
         }
 
+        public IEnumerable<Cliente> GetAllClienteSemNota()
+        {
+            return _clienteRepository.GetAllSemNota();
+        }
+
+        public IEnumerable<Cliente> GetAllClienteComNota()
+        {
+            return _clienteRepository.GetAllComNota();
+        }
+
         public void Dispose()
         {
             _loteFaturamentoRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+        
     }
 }

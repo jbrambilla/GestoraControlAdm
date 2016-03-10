@@ -58,5 +58,15 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             }
             return pfList;
         }
+
+        public IEnumerable<Cliente> GetAllSemNota()
+        {
+            return Db.Clientes.Where(c => !c.ComNota && c.Ativo).ToList();
+        }
+
+        public IEnumerable<Cliente> GetAllComNota()
+        {
+            return Db.Clientes.Where(c => c.ComNota && c.Ativo).ToList();
+        }
     }
 }

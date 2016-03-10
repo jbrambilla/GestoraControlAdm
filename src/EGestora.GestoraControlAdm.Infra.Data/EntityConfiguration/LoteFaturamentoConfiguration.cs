@@ -21,6 +21,9 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(l => l.DataFechamento)
                 .IsOptional();
 
+            Property(l => l.Referencia)
+                .IsOptional();
+
             Ignore(l => l.ValorTotalComNota);
 
             Ignore(l => l.ValorTotalSemNota);

@@ -11,5 +11,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<LoteFaturamento> GetAll();
         LoteFaturamento Update(LoteFaturamento loteFaturamento);
         void Remove(Guid id);
+
+        IEnumerable<Cliente> GetAllClienteSemNota();
+        IEnumerable<Cliente> GetAllClienteComNota();
     }
 }

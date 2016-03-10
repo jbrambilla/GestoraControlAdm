@@ -69,10 +69,21 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<ClienteViewModel> GetAllClienteSemNota()
+        {
+            return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_loteFaturamentoService.GetAllClienteSemNota());
+        }
+
+        public IEnumerable<ClienteViewModel> GetAllClienteComNota()
+        {
+            return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_loteFaturamentoService.GetAllClienteComNota());
+        }
+
         public void Dispose()
         {
             _loteFaturamentoService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

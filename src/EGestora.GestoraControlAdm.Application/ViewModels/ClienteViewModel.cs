@@ -44,5 +44,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public string DiscriminacaoServicos { get; set; }
+
+        [ScaffoldColumn(false)]
+        public decimal ValorTotalServicos { get; set; }
     }
 }

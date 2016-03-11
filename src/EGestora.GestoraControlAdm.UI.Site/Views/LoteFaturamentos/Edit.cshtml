@@ -2,49 +2,363 @@
 
 @{
     ViewBag.Title = "Edit";
+    IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel> ClienteComNotaList = ViewBag.ClienteComNotaList;
+    IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel> ClienteSemNotaList = ViewBag.ClienteSemNotaList;
 }
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
 
-<h2>Edit</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1 class="page-header">Edição de Faturamento em Lote</h1>
 
+            @using (Html.BeginForm("Edit", "LoteFaturamentos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.LoteFaturamentoId)
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>LoteFaturamentoViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.LoteFaturamentoId)
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Datas do Lote</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Referencia, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Referencia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Referencia, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DataFechamento, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.DataFechamento, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DataFechamento, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataFechamento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataFechamento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataFechamento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Seleção de Clientes
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#comNotaList" data-toggle="tab" aria-expanded="true">Clientes Com Nota</a></li>
+                                <li class=""><a href="#semNotaList" data-toggle="tab" aria-expanded="false">Clientes Sem Nota</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active " id="comNotaList">
+                                    <div class="table-responsive">
+                                        <table id="tabelaClienteComNota" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>
+                                                        Razão Social
+                                                    </th>
+                                                    <th>
+                                                        Nome Fantasia
+                                                    </th>
+                                                    <th>
+                                                        CNPJ
+                                                    </th>
+                                                    <th>
+                                                        E-mail
+                                                    </th>
+                                                    <th>
+                                                        Vencimento do Boleto
+                                                    </th>
+                                                    <th>
+                                                        Serviços
+                                                    </th>
+                                                    <th>
+                                                        Valor Total
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in ClienteComNotaList)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @if (Model.ClienteList.Any(c => c.PessoaId == item.PessoaId))
+                                                            {
+                                                                <input checked type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                                        </td>
+                                                        <td>
+                                                            <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
+                                                        </td>
+                                                        <td>
+                                                            @item.ValorTotalServicos
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade in" id="semNotaList">
+                                    <div class="table-responsive">
+                                        <table id="tabelaClienteSemNota" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>
+                                                        Razão Social
+                                                    </th>
+                                                    <th>
+                                                        Nome Fantasia
+                                                    </th>
+                                                    <th>
+                                                        CNPJ
+                                                    </th>
+                                                    <th>
+                                                        E-mail
+                                                    </th>
+                                                    <th>
+                                                        Vencimento do Boleto
+                                                    </th>
+                                                    <th>
+                                                        Serviços
+                                                    </th>
+                                                    <th>
+                                                        Valor Total
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in ClienteSemNotaList)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @if (Model.ClienteList.Any(c => c.PessoaId == item.PessoaId))
+                                                            {
+                                                                <input checked type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <input type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                                        </td>
+                                                        <td>
+                                                            <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
+                                                        </td>
+                                                        <td>
+                                                            @item.ValorTotalServicos
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Valores do Lote</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <dl class="dl-horizontal">
+                                        <dt>
+                                            Valor Total Com Nota
+                                        </dt>
+                                        <dd id="valortotalcomnota">
+                                            @Model.ValorTotalComNota
+                                        </dd>
+                                        <dt>
+                                            Valor Total Sem Nota
+                                        </dt>
+                                        <dd id="valortotalsemnota">
+                                            @Model.ValorTotalSemNota
+                                        </dd>
+                                        <dt>
+                                            Valor Total Geral
+                                        </dt>
+                                        <dd id="valortotalgeral">
+                                            @Model.ValorTotalGeral
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" value="Cadastrar" class="btn btn-success" />
+                            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-}
+</div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabelaClienteComNota').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nenhum registro encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ total de registros)",
+                    "search": "Busca:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+            $('#tabelaClienteSemNota').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nenhum registro encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ total de registros)",
+                    "search": "Busca:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+
+        });
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+
+            $(document).on('click', 'a[data-modal]', function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+
+            });
+        });
+
+        function calcularValores(valor, comNota, checkbox)
+        {
+            if (comNota) {
+
+                if (checkbox.checked)
+                {
+                    var valorAtualComNota = $('#valortotalcomnota').html();
+                    var valorAtualGeral = $('#valortotalgeral').html();
+
+                    valorAtualComNota = parseFloat(valorAtualComNota) + valor;
+                    valorAtualGeral = parseFloat(valorAtualGeral) + valor;
+
+                    $('#valortotalcomnota').html(valorAtualComNota);
+                    $('#valortotalgeral').html(valorAtualGeral);
+                }
+                else
+                {
+                    var valorAtualComNota = $('#valortotalcomnota').html();
+                    var valorAtualGeral = $('#valortotalgeral').html();
+
+                    valorAtualGeral = parseFloat(valorAtualGeral) - valor;
+                    valorAtualComNota = parseFloat(valorAtualComNota) - valor;
+
+                    $('#valortotalcomnota').html(valorAtualComNota);
+                    $('#valortotalgeral').html(valorAtualGeral);
+                }
+
+            }
+            else {
+
+                if (checkbox.checked)
+                {
+                    var valorAtualSemNota = $('#valortotalsemnota').html();
+                    var valorAtualGeral = $('#valortotalgeral').html();
+
+                    valorAtualSemNota = parseFloat(valorAtualSemNota) + valor;
+                    valorAtualGeral = parseFloat(valorAtualGeral) + valor;
+
+                    $('#valortotalsemnota').html(valorAtualSemNota);
+                    $('#valortotalgeral').html(valorAtualGeral);
+                }
+                else
+                {
+                    var valorAtualSemNota = $('#valortotalsemnota').html();
+                    var valorAtualGeral = $('#valortotalgeral').html();
+
+                    valorAtualGeral = parseFloat(valorAtualGeral) - valor;
+                    valorAtualSemNota = parseFloat(valorAtualSemNota) - valor;
+
+                    $('#valortotalsemnota').html(valorAtualSemNota);
+                    $('#valortotalgeral').html(valorAtualGeral);
+                }
+            }
+        }
+
+    </script>
 }

@@ -31,6 +31,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public LoteFaturamento GetById(Guid id)
         {
+
             return _loteFaturamentoRepository.GetById(id);
         }
 

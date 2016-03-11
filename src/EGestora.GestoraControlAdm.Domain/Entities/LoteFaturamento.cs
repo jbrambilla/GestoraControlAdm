@@ -15,7 +15,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public Guid LoteFaturamentoId { get; set; }
         public DateTime Referencia { get; set; }
-        public DateTime DataFechamento { get; set; }
+        public DateTime? DataFechamento { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
 

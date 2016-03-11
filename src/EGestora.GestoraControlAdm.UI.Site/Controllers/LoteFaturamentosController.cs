@@ -76,6 +76,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+            LoadViewBags();
             return View(loteFaturamentoViewModel);
         }
 
@@ -91,6 +92,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _loteFaturamentoAppService.Update(loteFaturamentoViewModel);
                 return RedirectToAction("Index");
             }
+            LoadViewBags();
             return View(loteFaturamentoViewModel);
         }
 

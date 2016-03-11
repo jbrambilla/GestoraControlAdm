@@ -24,7 +24,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Display(Name = "Data do Fechamento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-        public DateTime DataFechamento { get; set; }
+        public DateTime? DataFechamento { get; set; }
 
         [ScaffoldColumn(false)]
         [Display(Name = "Data de Criação")]
@@ -36,18 +36,21 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         [DisplayName("Valor Total Sem Nota")]
+        [DataType(DataType.Currency)]
         public decimal ValorTotalSemNota { get; set; }
 
         [ScaffoldColumn(false)]
         [DisplayName("Valor Total Com Nota")]
+        [DataType(DataType.Currency)]
         public decimal ValorTotalComNota { get; set; }
 
         [ScaffoldColumn(false)]
         [DisplayName("Valor Total")]
+        [DataType(DataType.Currency)]
         public decimal ValorTotalGeral { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual ICollection<ClienteViewModel> ClienteList { get; set; }
+        public ICollection<ClienteViewModel> ClienteList { get; set; }
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }

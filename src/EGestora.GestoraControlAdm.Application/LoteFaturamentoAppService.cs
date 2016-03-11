@@ -5,6 +5,7 @@ using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Application
@@ -21,17 +22,24 @@ namespace EGestora.GestoraControlAdm.Application
 
         public LoteFaturamentoViewModel Add(LoteFaturamentoViewModel loteFaturamentoViewModel)
         {
+            var clientesParaFaturar = loteFaturamentoViewModel.Faturar.Where(c => !c.Equals("false")).ToList();
             var loteFaturamento = Mapper.Map<LoteFaturamentoViewModel, LoteFaturamento>(loteFaturamentoViewModel);
 
             BeginTransaction();
 
+            foreach (var PessoaId in clientesParaFaturar)
+            {
+                var cliente = _loteFaturamentoService.GetClienteById(Guid.Parse(PessoaId));
+                loteFaturamento.ClienteList.Add(cliente);
+            }
+
             var LoteFaturamentoReturn = _loteFaturamentoService.Add(loteFaturamento);
             loteFaturamentoViewModel = Mapper.Map<LoteFaturamento, LoteFaturamentoViewModel>(LoteFaturamentoReturn);
 
-            if (!loteFaturamentoViewModel.ValidationResult.IsValid)
-            {
-                return loteFaturamentoViewModel;
-            }
+            //if (!loteFaturamentoViewModel.ValidationResult.IsValid)
+            //{
+            //    return loteFaturamentoViewModel;
+            //}
 
             Commit();
 
@@ -50,9 +58,22 @@ namespace EGestora.GestoraControlAdm.Application
 
         public LoteFaturamentoViewModel Update(LoteFaturamentoViewModel loteFaturamentoViewModel)
         {
-            var loteFaturamento = Mapper.Map<LoteFaturamentoViewModel, LoteFaturamento>(loteFaturamentoViewModel);
+            var clientesParaFaturar = loteFaturamentoViewModel.Faturar.Where(c => !c.Equals("false")).ToList();
+            var loteFaturamento = _loteFaturamentoService.GetById(loteFaturamentoViewModel.LoteFaturamentoId);
+
+            // foi preciso fazer na mão para pegar a referencia direta do EF pra update de many to many.
+            // mapeando a view model para o domino nao pega as referencias do relacionamento.
+            loteFaturamento.ClienteList.Clear();
+            loteFaturamento.DataFechamento = loteFaturamentoViewModel.DataFechamento;
+            loteFaturamento.Referencia = loteFaturamentoViewModel.Referencia;
 
             BeginTransaction();
+
+            foreach (var PessoaId in clientesParaFaturar)
+            {
+                var cliente = _loteFaturamentoService.GetClienteById(Guid.Parse(PessoaId));
+                loteFaturamento.ClienteList.Add(cliente);
+            }
 
             var loteFaturamentoReturn = _loteFaturamentoService.Update(loteFaturamento);
             loteFaturamentoViewModel = Mapper.Map<LoteFaturamento, LoteFaturamentoViewModel>(loteFaturamentoReturn);

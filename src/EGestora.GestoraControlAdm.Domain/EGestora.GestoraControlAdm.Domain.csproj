@@ -97,6 +97,7 @@
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
+    <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecification.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Empresas\EmpresaEstaAptaParaCadastroValidation.cs" />
+    <Compile Include="Validations\LoteFaturamentos\LoteFaturamentoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\NotaServicos\NotaServicoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaConsistenteValidation.cs" />
@@ -118,9 +120,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Specifications\LoteFaturamentos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

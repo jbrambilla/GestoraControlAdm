@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using DomainValidation.Validation;
+using EGestora.GestoraControlAdm.Domain.Validations.LoteFaturamentos;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
@@ -53,8 +54,8 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public bool IsValid()
         {
-            ValidationResult = new ValidationResult();
-            return true;
+            ValidationResult = new LoteFaturamentoEstaConsistenteValidation().Validate(this);
+            return ValidationResult.IsValid;
         }
     }
 }

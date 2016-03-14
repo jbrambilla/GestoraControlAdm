@@ -50,5 +50,28 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         //controle no cadastro
         public bool Emitir { get; set; }
 
+        public void CalcularValores()
+        {
+            if (Cliente != null && Empresa != null)
+            {
+                ValorTotal = Cliente.ValorTotalServicos;
+                ValorDeducoes = 0;
+                Aliquota = Empresa.Aliquota;
+                BaseCalculo = ValorTotal;
+                ValorISS = BaseCalculo * (Aliquota / 100);
+                ValorLiquido = ValorTotal - ValorISS;
+            }
+            else
+            {
+                ValorTotal = 0;
+                ValorDeducoes = 0;
+                Aliquota = 0;
+                BaseCalculo = 0;
+                ValorISS = 0;
+                ValorLiquido = 0;
+            }
+
+        }
+
     }
 }

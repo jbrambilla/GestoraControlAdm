@@ -54,7 +54,7 @@
                                 <li class=""><a href="#semNotaList" data-toggle="tab" aria-expanded="false">Clientes Sem Nota</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane fade in active " id="comNotaList">
+                                <div class="tab-pane fade in active" id="comNotaList">
                                     <div class="table-responsive">
                                         <table id="tabelaClienteComNota" class="stripe hover row-border compact" cellspacing="0" width="100%">
                                             <thead>
@@ -117,7 +117,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade in" id="semNotaList">
+                                <div class="tab-pane fade in active" id="semNotaList">
                                     <div class="table-responsive">
                                         <table id="tabelaClienteSemNota" class="stripe hover row-border compact" cellspacing="0" width="100%">
                                             <thead>
@@ -272,7 +272,8 @@
                     }
                 }
             });
-            
+
+            $('#semNotaList').removeClass("active");
         });
 
         $(function () {

@@ -7,7 +7,22 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.NotaServicos
     {
         public bool IsSatisfiedBy(NotaServico notaServico)
         {
-            return true;
+            var valorLiquidoAtual = notaServico.ValorLiquido;
+            var valorLiquidoEsperado = obterValorLiquidoEsperado(notaServico);
+
+            return valorLiquidoAtual == valorLiquidoEsperado;
+        }
+
+        private decimal obterValorLiquidoEsperado(NotaServico notaServico)
+        {
+            var cliente = notaServico.Cliente;
+            var empresa = notaServico.Empresa;
+
+            var total = cliente.ValorTotalServicos;
+            var aliquota = empresa.Aliquota;
+            var baseCalculo = total;
+            var valorISS = baseCalculo * (aliquota / 100);
+            return total - valorISS;
         }
     }
 }

@@ -22,6 +22,8 @@ namespace EGestora.GestoraControlAdm.Application
         public NotaServicoViewModel Add(NotaServicoViewModel notaServicoViewModel)
         {
             var notaServico = Mapper.Map<NotaServicoViewModel, NotaServico>(notaServicoViewModel);
+            notaServico.Cliente = _notaServicoService.ObterClientePorId(notaServico.ClienteId);
+            notaServico.Empresa = _notaServicoService.GetEmpresaAtiva();
 
             BeginTransaction();
 
@@ -79,11 +81,15 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Empresa, EmpresaViewModel>(_notaServicoService.GetEmpresaAtiva());
         }
 
+        public ClienteViewModel ObterClientePorId(Guid id)
+        {
+            return Mapper.Map<Cliente, ClienteViewModel>(_notaServicoService.ObterClientePorId(id));
+        }
+
         public void Dispose()
         {
             _notaServicoService.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

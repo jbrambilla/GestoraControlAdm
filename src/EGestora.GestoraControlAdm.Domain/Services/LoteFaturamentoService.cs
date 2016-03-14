@@ -94,8 +94,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             {
                 var notaServico = new NotaServico()
                 {
-                    Aliquota = 1,
-                    BaseCalculo = 1,
                     ClienteId = cliente.PessoaId,
                     Cliente = cliente,
                     DiscriminacaoServico = "discriminacao",
@@ -104,11 +102,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                     Empresa = _empresaRepository.GetEmpresaAtiva(),
                     IssRetido = false,
                     OutrasInformacoes = "outras informações",
-                    ValorDeducoes = 1,
-                    ValorISS = 1,
-                    ValorLiquido = 1,
-                    ValorTotal = 1
                 };
+
+                notaServico.CalcularValores();
 
                 if (!notaServico.IsValid())
                 {

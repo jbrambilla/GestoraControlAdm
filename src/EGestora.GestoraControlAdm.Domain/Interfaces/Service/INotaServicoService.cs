@@ -13,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         void Remove(Guid id);
 
         IEnumerable<PessoaJuridica> GetAllClientes();
+        Cliente ObterClientePorId(Guid id);
 
         Empresa GetEmpresaAtiva();
     }

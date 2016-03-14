@@ -80,6 +80,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _empresaRepository.GetEmpresaAtiva();
         }
 
+        public Cliente ObterClientePorId(Guid id)
+        {
+            return _clienteRepository.GetById(id);
+        }
+
         public void Dispose()
         {
             _notaServicoRepository.Dispose();

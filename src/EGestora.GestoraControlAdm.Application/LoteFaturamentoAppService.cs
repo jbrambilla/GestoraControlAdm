@@ -36,10 +36,10 @@ namespace EGestora.GestoraControlAdm.Application
             var LoteFaturamentoReturn = _loteFaturamentoService.Add(loteFaturamento);
             loteFaturamentoViewModel = Mapper.Map<LoteFaturamento, LoteFaturamentoViewModel>(LoteFaturamentoReturn);
 
-            //if (!loteFaturamentoViewModel.ValidationResult.IsValid)
-            //{
-            //    return loteFaturamentoViewModel;
-            //}
+            if (!loteFaturamentoViewModel.ValidationResult.IsValid)
+            {
+                return loteFaturamentoViewModel;
+            }
 
             Commit();
 
@@ -105,10 +105,18 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Cliente, ClienteViewModel>(_loteFaturamentoService.GetClienteById(id));
         }
 
+        public LoteFaturamentoViewModel GerarNotaServicos(LoteFaturamentoViewModel loteFaturamentoViewModel)
+        {
+            var loteFaturamento = Mapper.Map<LoteFaturamentoViewModel, LoteFaturamento>(loteFaturamentoViewModel);
+
+            return Mapper.Map<LoteFaturamento, LoteFaturamentoViewModel>(_loteFaturamentoService.GerarNotaServicos(loteFaturamento));
+        }
+
         public void Dispose()
         {
             _loteFaturamentoService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

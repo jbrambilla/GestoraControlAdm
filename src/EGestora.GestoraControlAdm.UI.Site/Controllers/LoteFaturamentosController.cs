@@ -57,7 +57,19 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                _loteFaturamentoAppService.Add(loteFaturamentoViewModel);
+                loteFaturamentoViewModel = _loteFaturamentoAppService.Add(loteFaturamentoViewModel);
+
+                if (!loteFaturamentoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in loteFaturamentoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+
+                    LoadViewBags();
+                    return View(loteFaturamentoViewModel);
+                }
+
                 return RedirectToAction("Index");
             }
             LoadViewBags();

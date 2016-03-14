@@ -53,6 +53,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public bool IsValid()
         {
+            ValidationResult = new ValidationResult();
             return true;
         }
     }

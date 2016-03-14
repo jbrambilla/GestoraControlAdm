@@ -68,7 +68,6 @@
                                                 @Html.DisplayFor(modelItem => item.ValorTotalComNota)
                                             </td>
                                             <td>
-                                                <a href="@Url.Action("Edit", "LoteFaturamentos", new {id = item.LoteFaturamentoId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
                                                 <a href="@Url.Action("Details", "LoteFaturamentos", new { id = item.LoteFaturamentoId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
                                                 <a href="@Url.Action("Delete", "LoteFaturamentos", new { id = item.LoteFaturamentoId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
                                             </td>

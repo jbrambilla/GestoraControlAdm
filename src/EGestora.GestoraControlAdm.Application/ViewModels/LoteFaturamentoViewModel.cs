@@ -11,6 +11,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         {
             LoteFaturamentoId = Guid.NewGuid();
             ClienteList = new List<ClienteViewModel>();
+            Faturar = new List<string>();
         }
 
         [Key]

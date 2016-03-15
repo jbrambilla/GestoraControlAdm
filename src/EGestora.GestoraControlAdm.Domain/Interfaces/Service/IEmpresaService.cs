@@ -20,6 +20,11 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Endereco GetEnderecoById(Guid id);
         void RemoveEndereco(Guid id);
 
+        Contato AddContato(Contato contato);
+        Contato UpdateContato(Contato contato);
+        Contato GetContatoById(Guid id);
+        void RemoveContato(Guid id);
+
         PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica);
         PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica);
 

@@ -13,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             var Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192", RazaoSocial = "DOLEMAR ABRANTES", NomeFantasia = "FUnilaria" } };
             Pessoa.EnderecoList.Add(new Endereco());
+            Pessoa.ContatoList.Add(new Contato());
 
             var validation = new PessoaEstaConsistenteValidation();
             Assert.IsTrue(validation.Validate(Pessoa).IsValid);
@@ -29,6 +30,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsFalse(validation.Validate(Pessoa).IsValid);
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O CNPJ informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Contato para o cadastro."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
@@ -41,6 +43,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             var Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "52967264644", Nome = "Mathias" } };
             Pessoa.EnderecoList.Add(new Endereco());
+            Pessoa.ContatoList.Add(new Contato());
 
             var validation = new PessoaEstaConsistenteValidation();
             Assert.IsTrue(validation.Validate(Pessoa).IsValid);
@@ -57,6 +60,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsFalse(validation.Validate(Pessoa).IsValid);
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O CNPJ informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Contato para o cadastro."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
@@ -75,6 +79,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsFalse(validation.Validate(Pessoa).IsValid);
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O CNPJ informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Contato para o cadastro."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));
@@ -93,6 +98,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
             Assert.IsFalse(validation.Validate(Pessoa).IsValid);
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O CNPJ informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Endereço para o cadastro."));
+            Assert.IsTrue(result.Erros.Any(e => e.Message == "É necessário possuir um Contato para o cadastro."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O CPF informado é inválido."));
             Assert.IsTrue(result.Erros.Any(e => e.Message == "A Entidade precisa ser Física ou Jurídica."));
             Assert.IsFalse(result.Erros.Any(e => e.Message == "O campo Nome é obrigatório."));

@@ -20,6 +20,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IRevendaRepository _revendaRepository;
         private readonly IRegimeApuracaoRepository _regimeApuracaoRepository;
         private readonly IAnexoRepository _anexoRepository;
+        private readonly IContatoRepository _contatoRepository;
 
         public ClienteService(
             IClienteRepository clienteRepository, 
@@ -31,7 +32,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IClienteServicoRepository clienteServicoRepository,
             IRevendaRepository revendaRepository,
             IRegimeApuracaoRepository regimeApuracaoRepository,
-            IAnexoRepository anexoRepository)
+            IAnexoRepository anexoRepository,
+            IContatoRepository contatoRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
@@ -43,6 +45,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _revendaRepository = revendaRepository;
             _regimeApuracaoRepository = regimeApuracaoRepository;
             _anexoRepository = anexoRepository;
+            _contatoRepository = contatoRepository;
         }
 
         public Cliente Add(Cliente cliente)
@@ -111,6 +114,26 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void RemoveEndereco(Guid id)
         {
             _enderecoRepository.Remove(id);
+        }
+
+        public Contato AddContato(Contato contato)
+        {
+            return _contatoRepository.Add(contato);
+        }
+
+        public Contato UpdateContato(Contato contato)
+        {
+            return _contatoRepository.Update(contato);
+        }
+
+        public Contato GetContatoById(Guid id)
+        {
+            return _contatoRepository.GetById(id);
+        }
+
+        public void RemoveContato(Guid id)
+        {
+            _contatoRepository.Remove(id);
         }
 
         public PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica)

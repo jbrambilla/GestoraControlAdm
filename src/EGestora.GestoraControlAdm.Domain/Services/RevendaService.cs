@@ -14,19 +14,22 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IPessoaFisicaRepository _pessoaFisicaRepository;
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
         private readonly IAnexoRepository _anexoRepository;
+        private readonly IContatoRepository _contatoRepository;
 
         public RevendaService(
             IRevendaRepository revendaRepository, 
             IEnderecoRepository enderecoRepository, 
             IPessoaFisicaRepository pessoaFisicaRepository, 
             IPessoaJuridicaRepository pessoaJuridicaRepository,
-            IAnexoRepository anexoRepository)
+            IAnexoRepository anexoRepository,
+            IContatoRepository contatoRepository)
         {
             _revendaRepository = revendaRepository;
             _enderecoRepository = enderecoRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
             _anexoRepository = anexoRepository;
+            _contatoRepository = contatoRepository;
         }
 
         public Revenda Add(Revenda revenda)
@@ -95,6 +98,26 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void RemoveEndereco(Guid id)
         {
             _enderecoRepository.Remove(id);
+        }
+
+        public Contato AddContato(Contato contato)
+        {
+            return _contatoRepository.Add(contato);
+        }
+
+        public Contato UpdateContato(Contato contato)
+        {
+            return _contatoRepository.Update(contato);
+        }
+
+        public Contato GetContatoById(Guid id)
+        {
+            return _contatoRepository.GetById(id);
+        }
+
+        public void RemoveContato(Guid id)
+        {
+            _contatoRepository.Remove(id);
         }
 
         public PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica)

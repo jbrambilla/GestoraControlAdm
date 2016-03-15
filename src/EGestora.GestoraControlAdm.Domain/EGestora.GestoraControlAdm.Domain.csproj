@@ -40,6 +40,7 @@
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
+    <Compile Include="Entities\Contato.cs" />
     <Compile Include="Entities\Empresa.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\EnquadramentoServico.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />
+    <Compile Include="Interfaces\Repository\IContatoRepository.cs" />
     <Compile Include="Interfaces\Repository\IEmpresaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnquadramentoServicoRepository.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecification.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PessoaDeveTerUmContatoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerCpfValidoSpecification.cs" />

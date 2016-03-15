@@ -22,6 +22,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly INaturezaOperacaoRepository _naturezaOperacaoRepository;
         private readonly IEnquadramentoServicoRepository _enquadramentoServicoRepository;
         private readonly IAnexoRepository _anexoRepository;
+        private readonly IContatoRepository _contatoRepository;
 
         public EmpresaService(
             IEmpresaRepository empresaRepository, 
@@ -34,7 +35,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IRegimeTributacaoRepository regimeTributacaoRepository,
             INaturezaOperacaoRepository naturezaOperacaoRepository,
             IEnquadramentoServicoRepository enquadramentoServicoRepository,
-            IAnexoRepository anexoRepository)
+            IAnexoRepository anexoRepository,
+            IContatoRepository contatoRepository)
         {
             _empresaRepository = empresaRepository;
             _enderecoRepository = enderecoRepository;
@@ -47,6 +49,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _naturezaOperacaoRepository = naturezaOperacaoRepository;
             _enquadramentoServicoRepository = enquadramentoServicoRepository;
             _anexoRepository = anexoRepository;
+            _contatoRepository = contatoRepository;
         }
 
         public Empresa Add(Empresa empresa)
@@ -126,6 +129,26 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void RemoveEndereco(Guid id)
         {
             _enderecoRepository.Remove(id);
+        }
+
+        public Contato AddContato(Contato contato)
+        {
+            return _contatoRepository.Add(contato);
+        }
+
+        public Contato UpdateContato(Contato contato)
+        {
+            return _contatoRepository.Update(contato);
+        }
+
+        public Contato GetContatoById(Guid id)
+        {
+            return _contatoRepository.GetById(id);
+        }
+
+        public void RemoveContato(Guid id)
+        {
+            _contatoRepository.Remove(id);
         }
 
         public PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica)

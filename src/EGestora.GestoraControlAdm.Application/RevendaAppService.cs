@@ -28,6 +28,7 @@ namespace EGestora.GestoraControlAdm.Application
             var pf = Mapper.Map<RevendaEnderecoViewModel, PessoaFisica>(revendaEnderecoViewModel);
             var pj = Mapper.Map<RevendaEnderecoViewModel, PessoaJuridica>(revendaEnderecoViewModel);
             var endereco = Mapper.Map<RevendaEnderecoViewModel, Endereco>(revendaEnderecoViewModel);
+            var contato = Mapper.Map<RevendaEnderecoViewModel, Contato>(revendaEnderecoViewModel);
             var foto = revendaEnderecoViewModel.Foto;
 
             if (revendaEnderecoViewModel.FlagIsPessoaJuridica)
@@ -44,6 +45,7 @@ namespace EGestora.GestoraControlAdm.Application
             revenda.PessoaFisica = pf;
             revenda.PessoaJuridica = pj;
             revenda.EnderecoList.Add(endereco);
+            revenda.ContatoList.Add(contato);
 
             var revendaReturn = _revendaService.Add(revenda);
             revendaEnderecoViewModel = Mapper.Map<Revenda, RevendaEnderecoViewModel>(revendaReturn);
@@ -133,6 +135,38 @@ namespace EGestora.GestoraControlAdm.Application
             BeginTransaction();
             _revendaService.RemoveEndereco(id);
             Commit();
+        }
+
+        public ContatoViewModel AddContato(ContatoViewModel contatoViewModel)
+        {
+            var contato = Mapper.Map<ContatoViewModel, Contato>(contatoViewModel);
+
+            BeginTransaction();
+            _revendaService.AddContato(contato);
+            Commit();
+
+            return contatoViewModel;
+        }
+
+        public ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel)
+        {
+            var contato = Mapper.Map<ContatoViewModel, Contato>(contatoViewModel);
+
+            BeginTransaction();
+            _revendaService.UpdateContato(contato);
+            Commit();
+
+            return contatoViewModel;
+        }
+
+        public ContatoViewModel GetContatoById(Guid id)
+        {
+            return Mapper.Map<Contato, ContatoViewModel>(_revendaService.GetContatoById(id));
+        }
+
+        public void RemoveContato(Guid id)
+        {
+            _revendaService.RemoveContato(id);
         }
 
         public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)

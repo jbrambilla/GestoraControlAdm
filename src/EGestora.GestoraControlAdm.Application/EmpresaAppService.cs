@@ -28,6 +28,7 @@ namespace EGestora.GestoraControlAdm.Application
             var pf = Mapper.Map<EmpresaEnderecoViewModel, PessoaFisica>(empresaEnderecoViewModel);
             var pj = Mapper.Map<EmpresaEnderecoViewModel, PessoaJuridica>(empresaEnderecoViewModel);
             var endereco = Mapper.Map<EmpresaEnderecoViewModel, Endereco>(empresaEnderecoViewModel);
+            var contato = Mapper.Map<EmpresaEnderecoViewModel, Contato>(empresaEnderecoViewModel);
             var selectedCnaeList = empresaEnderecoViewModel.SelectedCnaeList;
             var foto = empresaEnderecoViewModel.Foto;
 
@@ -46,6 +47,7 @@ namespace EGestora.GestoraControlAdm.Application
             empresa.PessoaFisica = pf;
             empresa.PessoaJuridica = pj;
             empresa.EnderecoList.Add(endereco);
+            empresa.ContatoList.Add(contato);
             /** FIM Adicionando PF, PJ e ENDEREÇO **/
 
             /** Adicionando CNAES **/
@@ -150,6 +152,38 @@ namespace EGestora.GestoraControlAdm.Application
             BeginTransaction();
             _empresaService.RemoveEndereco(id);
             Commit();
+        }
+
+        public ContatoViewModel AddContato(ContatoViewModel contatoViewModel)
+        {
+            var contato = Mapper.Map<ContatoViewModel, Contato>(contatoViewModel);
+
+            BeginTransaction();
+            _empresaService.AddContato(contato);
+            Commit();
+
+            return contatoViewModel;
+        }
+
+        public ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel)
+        {
+            var contato = Mapper.Map<ContatoViewModel, Contato>(contatoViewModel);
+
+            BeginTransaction();
+            _empresaService.UpdateContato(contato);
+            Commit();
+
+            return contatoViewModel;
+        }
+
+        public ContatoViewModel GetContatoById(Guid id)
+        {
+            return Mapper.Map<Contato, ContatoViewModel>(_empresaService.GetContatoById(id));
+        }
+
+        public void RemoveContato(Guid id)
+        {
+            _empresaService.RemoveContato(id);
         }
 
         public IEnumerable<CnaeViewModel> GetAllCnae()

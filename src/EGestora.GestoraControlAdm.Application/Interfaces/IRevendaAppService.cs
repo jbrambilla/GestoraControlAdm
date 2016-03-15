@@ -20,6 +20,11 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         EnderecoViewModel GetEnderecoById(Guid id);
         void RemoveEndereco(Guid id);
 
+        ContatoViewModel AddContato(ContatoViewModel contatoViewModel);
+        ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel);
+        ContatoViewModel GetContatoById(Guid id);
+        void RemoveContato(Guid id);
+
         void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo);
         AnexoViewModel GetAnexoById(Guid id);
         void RemoveAnexo(Guid id);

@@ -14,6 +14,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         {
             PessoaId = Guid.NewGuid();
             EnderecoId = Guid.NewGuid();
+            ContatoId = Guid.NewGuid();
         }
 
         //Pessoa
@@ -153,6 +154,23 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MaxLength(100, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         public string Estado { get; set; }
+
+        //Contato
+
+        [Key]
+        public Guid ContatoId { get; set; }
+
+        [Required(ErrorMessage = "Preencha o campo Tipo de contato")]
+        [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
+        [DisplayName("Tipo de contato")]
+        public string Tipo { get; set; }
+
+        [Required(ErrorMessage = "Preencha o campo Contato")]
+        [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
+        [DisplayName("Contato")]
+        public string InformacaoContato { get; set; }
 
         //extra not in database
         public bool FlagIsPessoaJuridica { get; set; }

@@ -74,6 +74,7 @@
     <Compile Include="ViewModels\ClienteServicoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
+    <Compile Include="ViewModels\ContatoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />

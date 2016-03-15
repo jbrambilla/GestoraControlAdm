@@ -53,7 +53,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Usuário")]
         public string Usuario { get; set; }
 
-        [DisplayName("ISS Retiro")]
+        [DisplayName("ISS Retido")]
         public bool IssRetido { get; set; }
 
         [ScaffoldColumn(false)]

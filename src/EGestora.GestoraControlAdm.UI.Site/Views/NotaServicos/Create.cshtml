@@ -94,14 +94,14 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.DiscriminacaoServico, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.DiscriminacaoServico, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.TextAreaFor(model => model.DiscriminacaoServico, new { @class = "form-control", rows = "3", id = "discriminacao" })
                                             @Html.ValidationMessageFor(model => model.DiscriminacaoServico, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.OutrasInformacoes, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.OutrasInformacoes, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.TextAreaFor(model => model.OutrasInformacoes, new { @class = "form-control", rows = "3" })
                                             @Html.ValidationMessageFor(model => model.OutrasInformacoes, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Aliquota, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Aliquota, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.TextBox("Aliquota", (decimal)ViewBag.Aliquota, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(model => model.Aliquota, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -175,14 +175,14 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Maquina, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Maquina, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.EditorFor(model => model.Maquina, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
                                             @Html.ValidationMessageFor(model => model.Maquina, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", disabled="" } })
                                             @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -205,4 +205,45 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script>
+
+        $('#IssRetido').change(function () {
+
+            $('#OutrasInformacoes').val("");
+            if (this.checked)
+            {
+                $('#OutrasInformacoes').val("ISS retido na fonte com base na LEI COMPLEMENTAR 199/2015.");
+            }
+
+        });
+
+        $('#ClienteId').change(function () {
+            var id = $('option:selected', this).attr('value');
+            PreencherValoresNotaPeloCliente(id);
+        });
+
+        function PreencherValoresNotaPeloCliente(id)
+        {
+            $.getJSON('/NotaServicos/ObterValoresPorCliente/' + id, PreencherValoresNotaPeloClienteCallBack);
+        }
+
+        function PreencherValoresNotaPeloClienteCallBack(json)
+        {
+            var valorTotal = json.valorTotal;
+            var aliquota = $('#Aliquota').val();
+            var baseCalculo = valorTotal;
+            var valorISS = baseCalculo * (aliquota / 100);
+
+            $('#ValorTotal').val(valorTotal);
+            $('#ValorDeducoes').val(0);
+            $('#BaseCalculo').val(baseCalculo);
+            $('#ValorISS').val(valorISS);
+            $('#ValorLiquido').val(valorTotal - valorISS);
+
+            $('#discriminacao').val(json.discriminacaoServicos);
+        }
+
+    </script>
 }

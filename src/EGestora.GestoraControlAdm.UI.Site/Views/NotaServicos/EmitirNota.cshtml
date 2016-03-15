@@ -32,25 +32,25 @@
                     <div class="row">
                         <div class="col-xs-12">
                             Nº da Nota Fiscal <br />
-                            <b>9999</b>
+                            <b>@Model.Numero</b>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12" style="border-bottom: solid; border-top: solid;">
                             Série da Nota Fiscal <br />
-                            <b>X</b>
+                            <b>@Model.Serie</b>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12" style="border-bottom: solid;">
                             Data de Emissão <br />
-                            <b>dd/MM/aaaa</b>
+                            <b>@Model.CriadoEm</b>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12" style="">
                             Cód. de Verificação <br />
-                            <b>XXXXXXXXXX</b>
+                            <b>@Model.CodigoVerificacao</b>
                         </div>
                     </div>
                 </div>
@@ -65,18 +65,18 @@
                     <img src="@Url.Action("ObterImagemEmpresa", "Empresas", new { id = Model.EmpresaId })" />
                 </div>
                 <div class="col-xs-6" style="text-align:left;">
-                    Nome/Razão Sozial: <b>EVANDRO C M DA COSTA INFORMATICA EPP</b> <br />
-                    CNPJ/CPF: <b>00.000.000/0000-00</b> <br />
-                    Endereço: <b>RUA JOSE DIAS CINTRA</b> &nbsp; &nbsp; <b>Número:</b> 370 <br />
-                    Bairro: <b>VILA OCIDENTAL</b> <br />
-                    Município: <b>PRESIDENTE PRUDENTE</b> <br />
-                    E-mail: <b>gestora@gestorainformatica.com.br</b> <br />
+                    Nome/Razão Sozial: <b>@Model.Empresa.PessoaJuridica.RazaoSocial</b> <br />
+                    CNPJ/CPF: <b>@Model.Empresa.PessoaJuridica.Cnpj</b> <br />
+                    Endereço: <b>@Model.Empresa.EnderecoList.First().Logradouro</b> &nbsp; &nbsp; <b>Número:</b> @Model.Empresa.EnderecoList.First().Numero <br />
+                    Bairro: <b>@Model.Empresa.EnderecoList.First().Bairro</b> <br />
+                    Município: <b>@Model.Empresa.EnderecoList.First().Cidade</b> <br />
+                    E-mail: <b>@Model.Empresa.Email</b> <br />
                 </div>
                 <div class="col-xs-4" style="text-align:left;">
-                    Insc. Municipal: <b>78797</b> <br />
-                    Insc. Estadual: <b>654654654564</b> <br />
-                    CEP: <b>18900000</b> <br />
-                    UF: <b>SP</b> <br />
+                    Insc. Municipal: <b>@Model.Empresa.PessoaJuridica.InscricaoMunicipal</b> <br />
+                    Insc. Estadual: <b>@Model.Empresa.PessoaJuridica.InscricaoEstadual</b> <br />
+                    CEP: <b>@Model.Empresa.EnderecoList.First().CEP</b> <br />
+                    UF: <b>@Model.Empresa.EnderecoList.First().Estado</b> <br />
                     Telefone: <b>1838882222</b> <br />
                 </div>
             </div>
@@ -88,18 +88,18 @@
             <div class="row" style="border: solid; border-bottom: none;">
                 <div class="col-xs-12">
                     <div class="col-xs-6" style="text-align:left;">
-                        Nome/Razão Sozial: <b>EVANDRO C M DA COSTA INFORMATICA EPP</b> <br />
-                        CNPJ/CPF: <b>00.000.000/0000-00</b> <br />
-                        Endereço: <b>RUA JOSE DIAS CINTRA</b> &nbsp; &nbsp; <b>Número:</b> 370 <br />
-                        Bairro: <b>VILA OCIDENTAL</b> <br />
-                        Município: <b>PRESIDENTE PRUDENTE</b> <br />
-                        E-mail: <b>gestora@gestorainformatica.com.br</b> <br />
+                        Nome/Razão Sozial: <b>@Model.Cliente.PessoaJuridica.RazaoSocial</b> <br />
+                        CNPJ/CPF: <b>@Model.Cliente.PessoaJuridica.Cnpj</b> <br />
+                        Endereço: <b>@Model.Cliente.EnderecoList.First().Logradouro</b> &nbsp; &nbsp; <b>Número:</b> @Model.Cliente.EnderecoList.First().Numero <br />
+                        Bairro: <b>@Model.Cliente.EnderecoList.First().Bairro</b> <br />
+                        Município: <b>@Model.Cliente.EnderecoList.First().Cidade</b> <br />
+                        E-mail: <b>@Model.Cliente.Email</b> <br />
                     </div>
                     <div class="col-xs-4" style="text-align:left;">
-                        Insc. Municipal: <b>78797</b> <br />
-                        Insc. Estadual: <b>654654654564</b> <br />
-                        CEP: <b>18900000</b> <br />
-                        UF: <b>SP</b> <br />
+                        Insc. Municipal: <b>@Model.Cliente.PessoaJuridica.InscricaoMunicipal</b> <br />
+                        Insc. Estadual: <b>@Model.Cliente.PessoaJuridica.InscricaoEstadual</b> <br />
+                        CEP: <b>@Model.Cliente.EnderecoList.First().CEP</b> <br />
+                        UF: <b>@Model.Cliente.EnderecoList.First().Estado</b> <br />
                         Telefone: <b>1838882222</b> <br />
                     </div>
                 </div>
@@ -112,7 +112,7 @@
             </div>
             <div class="row" style="border: solid; border-bottom: none;">
                 <div class="col-xs-12">
-                    <p>REFERENTE ESCRITA + FOLHA</p>
+                    <p>@Model.DiscriminacaoServico</p>
                 </div>
             </div>
             <div class="row" style="border: solid; border-bottom: none;">
@@ -124,17 +124,20 @@
                 </div>
             </div>
             <div class="row" style="border: solid; border-bottom: none;">
-                <div class="col-xs-8" style="border-right: solid;">
-                    <p>REFERENTE ESCRITA + FOLHA</p>
-                </div>
-                <div class="col-xs-4">
-                    <p>R$ 55,0</p>
-                </div>
+                @foreach (var item in Model.Cliente.ClienteServicoList) 
+                { 
+                    <div class="col-xs-8" style="border-right: solid;">
+                        <p>@item.Servico.Descricao</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p>R$ @item.Valor</p>
+                    </div>
+                }
             </div>
             <div class="row" style="text-align: right; border: solid;">
                 <div class="col-xs-3" style="border-right: solid; ">
                     Valor Total da Nota <br />
-                    <strong>112.00</strong>
+                    <strong>@Model.ValorTotal</strong>
 
                 </div>
                 <div class="col-xs-3" style="border-right: solid;">
@@ -143,15 +146,15 @@
                 </div>
                 <div class="col-xs-2" style="border-right: solid;">
                     Alíquota <br />
-                    <strong>5.00</strong>
+                    <strong>@Model.Aliquota</strong>
                 </div>
                 <div class="col-xs-2" style="border-right: solid;">
                     Base de Cálculo <br />
-                    <strong>112.00</strong>
+                    <strong>@Model.BaseCalculo</strong>
                 </div>
                 <div class="col-xs-2" style="">
                     Valor ISS <br />
-                    <strong>33.00</strong>
+                    <strong>@Model.ValorISS</strong>
                 </div>
             </div>
             <div class="row" style="text-align: right; border: solid; border-top: none;">
@@ -178,7 +181,7 @@
                 </div>
                 <div class="col-xs-2" style="">
                     Valor Líquido <br />
-                    <strong>98.00</strong>
+                    <strong>@Model.ValorLiquido</strong>
                 </div>
             </div>
             <div class="row" style="border: solid; border-top: none; text-align: center;">
@@ -189,7 +192,7 @@
 
             <div class="row" style="border: solid; border-top: none;">
                 <div class="col-xs-12">
-                    1.07 - enquandramento
+                    @Model.Empresa.EnquadramentoServico.Display
                 </div>
             </div>
 
@@ -202,14 +205,15 @@
             <div class="row" style="border: solid; border-top: none;">
                 <div class="col-xs-12">
                     <p>
-                        Valor Aprox Tributos
+                        @Model.OutrasInformacoes
+                        @*Valor Aprox Tributos
                         @*M = R$@ViewBag.ValorMunicipal  (@ViewBag.PorcentagemMunicipal%)
                         E = R$@ViewBag.ValorEstadual  (@ViewBag.PorcentagemEstadual%)
-                        F = R$@ViewBag.ValorFederal  (@ViewBag.PorcentagemFederal%)*@
+                        F = R$@ViewBag.ValorFederal  (@ViewBag.PorcentagemFederal%)
                         M = R$10  (4%)
                         E = R$10  (4%)
                         F = R$10  (4%)
-                        Fonte IBPT
+                        Fonte IBPT*@
                     </p>
                 </div>
             </div>
@@ -238,9 +242,9 @@
                 <div class="col-xs-4">
                     <p><strong>NOTA FISCAL DE SERVIÇOS ELETRÔNICA</strong></p>
                     <b>Número: </b> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    <b>10594</b> <br />
+                    <b>@Model.Numero</b> <br />
                     <b>Código de Verificação: </b> &nbsp;
-                    <b>10FDSFSDF3</b>
+                    <b>@Model.CodigoVerificacao</b>
                 </div>
             </div>
         </div>

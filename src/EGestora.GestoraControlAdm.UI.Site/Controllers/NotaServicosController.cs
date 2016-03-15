@@ -150,13 +150,21 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ObterValoresPorCliente(Guid id)
+        {
+            var cliente = _notaServicoAppService.ObterClientePorId(id);
+            return Json(new { discriminacaoServicos = cliente.DiscriminacaoServicos, valorTotal = cliente.ValorTotalServicos }, JsonRequestBehavior.AllowGet);
+        }
+
         private void LoadViewBags()
         {
+            var empresa = _notaServicoAppService.GetEmpresaAtiva();
             var empresaList = new List<PessoaJuridicaViewModel>();
-            empresaList.Add(_notaServicoAppService.GetEmpresaAtiva().PessoaJuridica);
+            empresaList.Add(empresa.PessoaJuridica);
 
             ViewBag.ClienteList = new SelectList(_notaServicoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
             ViewBag.Empresa = new SelectList(empresaList, "PessoaId", "RazaoSocial");
+            ViewBag.Aliquota = empresa.Aliquota;
         }
 
         protected override void Dispose(bool disposing)

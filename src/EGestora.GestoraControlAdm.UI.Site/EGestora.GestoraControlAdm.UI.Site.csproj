@@ -213,6 +213,8 @@
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\select2.min.css" />
     <Content Include="Content\timeline.css" />
+    <Content Include="Content\titatoggle-master\dist\titatoggle-dist-min.css" />
+    <Content Include="Content\titatoggle-master\dist\titatoggle-dist.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -259,6 +261,7 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Config\ConnectionStrings.config" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\titatoggle-master\dist\_titatoggle.less" />
     <None Include="Properties\PublishProfiles\GestoraAdm.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

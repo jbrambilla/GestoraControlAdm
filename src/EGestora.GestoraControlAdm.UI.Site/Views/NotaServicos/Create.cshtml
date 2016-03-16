@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
 }
 
+<link href="~/Content/titatoggle-master/dist/titatoggle-dist.css" rel="stylesheet" />
 <div class="row">
     <div class="col-lg-12">
         <div class="container">
@@ -40,51 +41,7 @@
                         </div>
                     </div>
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Informações da Nota</div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.CodigoVerificacao, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.CodigoVerificacao, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.CodigoVerificacao, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Serie, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Serie, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Serie, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.IssRetido, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    @Html.CheckBoxFor(m => m.IssRetido)
-                                                </label>
-                                            </div>
-                                            @Html.ValidationMessageFor(model => model.IssRetido, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Emitir, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            <div class="checkbox">
-                                                <label>
-                                                    @Html.CheckBoxFor(m => m.Emitir)
-                                                </label>
-                                            </div>
-                                            @Html.ValidationMessageFor(model => model.Emitir, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="panel panel-default">
                         <div class="panel-heading">Serviços</div>
@@ -162,34 +119,66 @@
                                             @Html.ValidationMessageFor(model => model.ValorLiquido, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.IssRetido, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox checkbox-slider--a">
+                                                <label>
+                                                    <input type="checkbox" name="IssRetido"><span></span>
+                                                </label>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.IssRetido, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">Lançador</div>
+                        <div class="panel-heading">Configurações</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Maquina, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Emitir, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Maquina, new { htmlAttributes = new { @class = "form-control", disabled = "" } })
-                                            @Html.ValidationMessageFor(model => model.Maquina, "", new { @class = "text-danger" })
+                                            <div class="checkbox checkbox-slider--a">
+                                                <label>
+                                                    <input type="checkbox" name="Emitir"><span></span>
+                                                </label>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Emitir, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.EnviarEmail, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", disabled="" } })
-                                            @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                                            <div class="checkbox checkbox-slider--a">
+                                                <label>
+                                                    <input type="checkbox" name="EnviarEmail"><span></span>
+                                                </label>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.EnviarEmail, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Imprimir, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox checkbox-slider--a">
+                                                <label>
+                                                    <input type="checkbox" name="Imprimir"><span></span>
+                                                </label>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.Imprimir, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <div class="col-md-6">
@@ -206,15 +195,17 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-
     <script>
 
         $('#IssRetido').change(function () {
 
             $('#OutrasInformacoes').val("");
+            $('#ValorLiquido').val($('#ValorTotal').val() - $('#ValorISS').val());
+
             if (this.checked)
             {
                 $('#OutrasInformacoes').val("ISS retido na fonte com base na LEI COMPLEMENTAR 199/2015.");
+                $('#ValorLiquido').val($('#ValorTotal').val());
             }
 
         });
@@ -235,12 +226,13 @@
             var aliquota = $('#Aliquota').val();
             var baseCalculo = valorTotal;
             var valorISS = baseCalculo * (aliquota / 100);
+            var valorLiquido = $('#IssRetido').is(':checked') ? valorTotal : valorTotal - valorISS;
 
             $('#ValorTotal').val(valorTotal);
             $('#ValorDeducoes').val(0);
             $('#BaseCalculo').val(baseCalculo);
             $('#ValorISS').val(valorISS);
-            $('#ValorLiquido').val(valorTotal - valorISS);
+            $('#ValorLiquido').val(valorLiquido);
 
             $('#discriminacao').val(json.discriminacaoServicos);
         }

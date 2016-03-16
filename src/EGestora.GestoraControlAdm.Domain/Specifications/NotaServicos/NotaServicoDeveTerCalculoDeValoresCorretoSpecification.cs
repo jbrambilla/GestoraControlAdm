@@ -22,7 +22,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.NotaServicos
             var aliquota = empresa.Aliquota;
             var baseCalculo = total;
             var valorISS = baseCalculo * (aliquota / 100);
-            return total - valorISS;
+            return notaServico.IssRetido ? total : total - valorISS;
         }
     }
 }

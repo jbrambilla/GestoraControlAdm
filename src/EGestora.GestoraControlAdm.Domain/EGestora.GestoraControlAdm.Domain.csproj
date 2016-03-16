@@ -41,6 +41,7 @@
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
     <Compile Include="Entities\Contato.cs" />
+    <Compile Include="Entities\Debito.cs" />
     <Compile Include="Entities\Empresa.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\EnquadramentoServico.cs" />

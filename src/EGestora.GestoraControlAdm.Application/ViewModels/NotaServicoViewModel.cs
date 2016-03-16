@@ -104,7 +104,15 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
 
         [ScaffoldColumn(false)]
-        [DisplayName("Emitir nota ao realizar o cadastro?")]
+        [DisplayName("Emitir Nota")]
         public bool Emitir { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DisplayName("Enviar Por E-mail")]
+        public bool EnviarEmail { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DisplayName("Imprimir")]
+        public bool Imprimir { get; set; }
     }
 }

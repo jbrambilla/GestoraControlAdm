@@ -197,7 +197,9 @@ namespace EGestora.GestoraControlAdm.Application
 
         public void RemoveContato(Guid id)
         {
+            BeginTransaction();
             _clienteService.RemoveContato(id);
+            Commit();
         }
 
         public IEnumerable<CnaeViewModel> GetAllCnae()

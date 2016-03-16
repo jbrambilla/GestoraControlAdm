@@ -22,7 +22,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Tipo de contato")]
-        public string Tipo { get; set; }
+        public string TipoContato { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Contato")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]

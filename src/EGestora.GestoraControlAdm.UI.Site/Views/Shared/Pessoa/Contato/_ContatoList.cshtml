@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ContatoViewModel>
+
+@{
+    var Controller = @ViewData["_controller"].ToString();
+    var id = ViewBag.PessoaId;
+}
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoContato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InformacaoContato)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoContato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InformacaoContato)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("AtualizarContato", Controller, new { id = item.ContatoId })" data-modal="" class="btn btn-default btn-circle">
+                            <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="@Url.Action("DeletarContato", Controller, new { id = item.ContatoId })" data-modal="" class="btn btn-danger btn-circle">
+                            <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum Contato Cadastrado.
+            </th>
+        </tr>
+    </table>
+}
+
+<div>
+    <div class="form-group">
+        <a href="@Url.Action("AdicionarContato", Controller, new { id = ViewBag.PessoaId }, "")" class="btn btn-success btn-circle" data-modal="">
+            <i title="Adicionar" class="fa fa-plus"></i>
+        </a>
+    </div>
+</div>
+
+

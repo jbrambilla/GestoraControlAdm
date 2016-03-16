@@ -216,6 +216,84 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "endereco" });
         }
 
+        //Contato
+        public ActionResult ListarContatos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            ViewData["_controller"] = "Empresas";
+            return PartialView("_ContatoList", _empresaAppService.GetById(id).ContatoList);
+        }
+
+        [Route("adicionar-contato")]
+        public ActionResult AdicionarContato(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_AdicionarContato");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarContato(ContatoViewModel contatoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _empresaAppService.AddContato(contatoViewModel);
+
+                string url = Url.Action("ListarContatos", "Empresas", new { id = contatoViewModel.PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "contato" });
+            }
+
+            return PartialView("_AdicionarContato", contatoViewModel);
+        }
+
+        public ActionResult AtualizarContato(Guid id)
+        {
+            return PartialView("_AtualizarContato", _empresaAppService.GetContatoById(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizarContato(ContatoViewModel contatoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _empresaAppService.UpdateContato(contatoViewModel);
+
+                string url = Url.Action("ListarContatos", "Empresas", new { id = contatoViewModel.PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "contato" });
+            }
+
+            return PartialView("_AtualizarContato", contatoViewModel);
+        }
+
+        public ActionResult DeletarContato(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var contatoViewModel = _empresaAppService.GetContatoById(id.Value);
+            if (contatoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DeletarContato", contatoViewModel);
+        }
+
+        // POST: Empresas/Delete/5
+
+        [HttpPost, ActionName("DeletarContato")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarContatoConfirmed(Guid id)
+        {
+            var pessoaId = _empresaAppService.GetContatoById(id).PessoaId;
+            _empresaAppService.RemoveContato(id);
+
+            string url = Url.Action("ListarContatos", "Empresas", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "contato" });
+        }
+
         //CNAE
 
         public ActionResult ListarCnaes(Guid id)

@@ -25,6 +25,7 @@
                                 <ul class="nav nav-tabs col-md-9 col-lg-9 ">
                                     <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
                                     <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Enderços</a></li>
+                                    <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
                                     <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
                                 </ul>
                                 <div class="tab-content col-md-9 col-lg-9 ">
@@ -64,6 +65,11 @@
                                     <div class="tab-pane fade in" id="enderecos">
                                         <div id="replacetarget">
                                             @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Fornecedores" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade in" id="contatos">
+                                        <div id="replacetargetContato">
+                                            @Html.Partial("_ContatoList", Model.ContatoList, new ViewDataDictionary { { "_controller", "Fornecedores" }, { "PessoaId", Model.PessoaId.ToString() } })
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="anexos">

@@ -35,6 +35,8 @@ function bindForm(dialog) {
                         $('#replacetargetRevenda').load(result.url);
                     } else if (result.replaceTarget == "anexo") {
                         $('#replacetargetAnexo').load(result.url);
+                    } else if (result.replaceTarget == "contato") {
+                        $('#replacetargetContato').load(result.url);
                     } else {
                         $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                     }

@@ -91,6 +91,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+
+            loadViewBags();
             return View(clienteViewModel);
         }
 
@@ -106,6 +108,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _clienteAppService.Update(clienteViewModel);
                 return RedirectToAction("Index");
             }
+            loadViewBags();
             return View(clienteViewModel);
         }
 
@@ -212,6 +215,84 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             string url = Url.Action("ListarEnderecos", "Clientes", new { id = pessoaId });
             return Json(new { success = true, url = url });
+        }
+
+        //Contato
+        public ActionResult ListarContatos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            ViewData["_controller"] = "Clientes";
+            return PartialView("_ContatoList", _clienteAppService.GetById(id).ContatoList);
+        }
+
+        [Route("adicionar-contato")]
+        public ActionResult AdicionarContato(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_AdicionarContato");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarContato(ContatoViewModel contatoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.AddContato(contatoViewModel);
+
+                string url = Url.Action("ListarContatos", "Clientes", new { id = contatoViewModel.PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "contato" });
+            }
+
+            return PartialView("_AdicionarContato", contatoViewModel);
+        }
+
+        public ActionResult AtualizarContato(Guid id)
+        {
+            return PartialView("_AtualizarContato", _clienteAppService.GetContatoById(id));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizarContato(ContatoViewModel contatoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteAppService.UpdateContato(contatoViewModel);
+
+                string url = Url.Action("ListarContatos", "Clientes", new { id = contatoViewModel.PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "contato" });
+            }
+
+            return PartialView("_AtualizarContato", contatoViewModel);
+        }
+
+        public ActionResult DeletarContato(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var contatoViewModel = _clienteAppService.GetContatoById(id.Value);
+            if (contatoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DeletarContato", contatoViewModel);
+        }
+
+        // POST: Clientes/Delete/5
+
+        [HttpPost, ActionName("DeletarContato")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarContatoConfirmed(Guid id)
+        {
+            var pessoaId = _clienteAppService.GetContatoById(id).PessoaId;
+            _clienteAppService.RemoveContato(id);
+
+            string url = Url.Action("ListarContatos", "Clientes", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "contato" });
         }
 
         //CNAE

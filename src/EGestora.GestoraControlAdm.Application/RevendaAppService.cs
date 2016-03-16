@@ -166,7 +166,9 @@ namespace EGestora.GestoraControlAdm.Application
 
         public void RemoveContato(Guid id)
         {
+            BeginTransaction();
             _revendaService.RemoveContato(id);
+            Commit();
         }
 
         public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)

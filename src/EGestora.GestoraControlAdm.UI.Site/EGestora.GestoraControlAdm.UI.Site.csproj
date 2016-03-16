@@ -390,6 +390,12 @@
     <Content Include="Views\LoteFaturamentos\Edit.cshtml" />
     <Content Include="Views\LoteFaturamentos\Index.cshtml" />
     <Content Include="Views\LoteFaturamentos\Servico\_ServicoDetails.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_AdicionarContato.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_AtualizarContato.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_DadosContato.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_DeletarContato.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_Contato.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_ContatoList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

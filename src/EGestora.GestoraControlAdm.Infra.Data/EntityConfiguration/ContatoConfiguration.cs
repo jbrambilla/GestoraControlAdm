@@ -10,7 +10,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(e => e.ContatoId);
 
-            Property(c => c.Tipo)
+            Property(c => c.TipoContato)
                 .HasMaxLength(20)
                 .IsRequired();
 

@@ -11,7 +11,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public Guid ContatoId { get; set; }
         public Guid PessoaId { get; set; }
-        public string Tipo { get; set; }
+        public string TipoContato { get; set; }
         public string InformacaoContato { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }

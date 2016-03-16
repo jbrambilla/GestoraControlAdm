@@ -1,6 +1,6 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel
 
-@{int i = 0;}
+@{int contadorEndereco = 0; int contadorContato = 0;}
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">
@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-lg-12">
 
-            <div class="container">
+
                 <h2>Detalhes do Funcionário</h2>
 
                 <div class="row">
@@ -30,6 +30,7 @@
                                     <ul class="nav nav-tabs col-md-9 col-lg-9 ">
                                         <li class="active"><a href="#infoBasicaFunc" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
                                         <li class=""><a href="#enderecosFunc" data-toggle="tab" aria-expanded="false">Endereços</a></li>
+                                        <li class=""><a href="#contatosFunc" data-toggle="tab" aria-expanded="false">Contatos</a></li>
                                     </ul>
                                     <div class="tab-content col-md-9 col-lg-9 ">
                                         <div class="tab-pane fade in active " id="infoBasicaFunc">
@@ -62,8 +63,8 @@
                                             <div id="replacetarget">
                                                 @foreach (var endereco in Model.EnderecoList)
                                                 {
-                                                    i++;
-                                                    <h4>Endereço @i</h4>
+                                                    contadorEndereco++;
+                                                    <h4>Endereço @contadorEndereco</h4>
                                                     <table class="table table-user-information ">
                                                         <tbody>
                                                             <tr>
@@ -103,6 +104,30 @@
                                                         </tbody>
                                                     </table>
                                                 }
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane fade in" id="contatosFunc">
+                                            <div id="replacetargetContato">
+                                                @foreach (var contato in Model.ContatoList)
+                                                {
+                                                    contadorContato++;
+                                                    <h4>Contato @contadorContato</h4>
+                                                    <table class="table table-user-information ">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Tipo do Contato</td>
+                                                                <td>@contato.TipoContato</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Contato</td>
+                                                                <td>@contato.InformacaoContato</td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                }
                                            </div>
 
                                         </div>
@@ -125,4 +150,3 @@
             </div>
         </div>
     </div>
-</div>

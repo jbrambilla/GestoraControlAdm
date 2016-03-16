@@ -14,6 +14,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             PessoaId = Guid.NewGuid();
             EnderecoList = new List<EnderecoViewModel>();
             AnexoList = new List<AnexoViewModel>();
+            ContatoList = new List<ContatoViewModel>();
         }
 
         [Key]
@@ -52,6 +53,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<EnderecoViewModel> EnderecoList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<ContatoViewModel> ContatoList { get; set; }
 
         [ScaffoldColumn(false)]
         public ICollection<AnexoViewModel> AnexoList { get; set; }

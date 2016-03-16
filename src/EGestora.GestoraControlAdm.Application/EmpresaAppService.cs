@@ -183,7 +183,9 @@ namespace EGestora.GestoraControlAdm.Application
 
         public void RemoveContato(Guid id)
         {
+            BeginTransaction();
             _empresaService.RemoveContato(id);
+            Commit();
         }
 
         public IEnumerable<CnaeViewModel> GetAllCnae()
@@ -221,6 +223,7 @@ namespace EGestora.GestoraControlAdm.Application
             var pf = Mapper.Map<FuncionarioEnderecoViewModel, PessoaFisica>(funcionarioEnderecoViewModel);
             var pj = Mapper.Map<FuncionarioEnderecoViewModel, PessoaJuridica>(funcionarioEnderecoViewModel);
             var endereco = Mapper.Map<FuncionarioEnderecoViewModel, Endereco>(funcionarioEnderecoViewModel);
+            var contato = Mapper.Map<FuncionarioEnderecoViewModel, Contato>(funcionarioEnderecoViewModel);
             var foto = funcionarioEnderecoViewModel.Foto;
 
             if (funcionarioEnderecoViewModel.FlagIsPessoaJuridica)
@@ -238,6 +241,7 @@ namespace EGestora.GestoraControlAdm.Application
             funcionario.PessoaFisica = pf;
             funcionario.PessoaJuridica = pj;
             funcionario.EnderecoList.Add(endereco);
+            funcionario.ContatoList.Add(contato);
             /** FIM Adicionando PF, PJ e ENDEREÇO **/
 
             var funcionarioReturn = _empresaService.AddFuncionario(funcionario);

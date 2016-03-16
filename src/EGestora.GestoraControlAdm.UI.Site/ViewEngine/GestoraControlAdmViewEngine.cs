@@ -15,6 +15,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.ViewEngine
             "~/Views/Shared/Pessoa/{0}.cshtml",
             "~/Views/Shared/Pessoa/Cnae/{0}.cshtml",
             "~/Views/Shared/Pessoa/Endereco/{0}.cshtml",
+            "~/Views/Shared/Pessoa/Contato/{0}.cshtml",
             "~/Views/Shared/Pessoa/Anexo/{0}.cshtml"
         };
 

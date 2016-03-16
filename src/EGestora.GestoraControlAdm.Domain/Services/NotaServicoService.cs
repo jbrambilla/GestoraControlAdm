@@ -14,17 +14,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly INotaServicoNfseWebService _notaServicoNfseWebService;
         private readonly IClienteRepository _clienteRepository;
         private readonly IEmpresaRepository _empresaRepository;
+        private readonly IDebitoRepository _debitoRepository;
 
         public NotaServicoService(
             INotaServicoRepository notaServicoRepository,
             INotaServicoNfseWebService notaServicoNfseWebService,
             IClienteRepository clienteRepository,
-            IEmpresaRepository empresaRepository)
+            IEmpresaRepository empresaRepository,
+            IDebitoRepository debitoRepository)
         {
             _notaServicoRepository = notaServicoRepository;
             _notaServicoNfseWebService = notaServicoNfseWebService;
             _clienteRepository = clienteRepository;
             _empresaRepository = empresaRepository;
+            _debitoRepository = debitoRepository;
         }
 
         public NotaServico Add(NotaServico notaServico)
@@ -83,6 +86,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public Cliente ObterClientePorId(Guid id)
         {
             return _clienteRepository.GetById(id);
+        }
+
+        public Debito AddDebito(Debito debito)
+        {
+            if (debito.IsValid())
+            {
+                return debito;
+            }
+
+            return _debitoRepository.Add(debito);
         }
 
         public void Dispose()

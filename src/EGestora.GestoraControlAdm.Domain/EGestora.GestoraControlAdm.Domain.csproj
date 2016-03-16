@@ -63,6 +63,7 @@
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />
     <Compile Include="Interfaces\Repository\IContatoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDebitoRepository.cs" />
     <Compile Include="Interfaces\Repository\IEmpresaRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnderecoRepository.cs" />
     <Compile Include="Interfaces\Repository\IEnquadramentoServicoRepository.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClienteServicoService.cs" />
     <Compile Include="Interfaces\Service\ICnaeService.cs" />
+    <Compile Include="Interfaces\Service\IDebitoService.cs" />
     <Compile Include="Interfaces\Service\IEmpresaService.cs" />
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
     <Compile Include="Interfaces\Service\ILoteFaturamentoService.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ClienteServicoService.cs" />
     <Compile Include="Services\CnaeService.cs" />
+    <Compile Include="Services\DebitoService.cs" />
     <Compile Include="Services\EmpresaService.cs" />
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\LoteFaturamentoService.cs" />
@@ -99,6 +102,7 @@
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecification.cs" />
+    <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecification.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecification.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecification.cs" />
     <Compile Include="Validations\ClienteServicos\ClienteServicoEstaConsistenteValidation.cs" />
+    <Compile Include="Validations\Debitos\DebitoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Empresas\EmpresaEstaAptaParaCadastroValidation.cs" />

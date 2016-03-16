@@ -61,6 +61,7 @@
     <Compile Include="Entities\PessoaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecificationTeste.cs" />
+    <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecificationTest.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecificationTest.cs" />
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecificationTest.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecificationTest.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecificationTest.cs" />
     <Compile Include="Validations\ClienteServicos\ClienteServicoEstaConsistenteValidationTest.cs" />
+    <Compile Include="Validations\Debitos\DebitoEstaConsistenteValidationTest.cs" />
     <Compile Include="Validations\Documentos\CnpjValidationTest.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Empresas\EmpresaEstaAptaParaCadastroValidationTest.cs" />

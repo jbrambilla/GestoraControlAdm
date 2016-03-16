@@ -16,5 +16,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Cliente ObterClientePorId(Guid id);
 
         Empresa GetEmpresaAtiva();
+
+        Debito AddDebito(Debito debito);
     }
 }

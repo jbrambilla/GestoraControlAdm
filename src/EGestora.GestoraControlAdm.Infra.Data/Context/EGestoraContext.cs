@@ -35,6 +35,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<NotaServico> NotaServico { get; set; }
         public DbSet<LoteFaturamento> LoteFaturamento { get; set; }
         public DbSet<Contato> Contatos { get; set; }
+        public DbSet<Debito> Debitos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -73,6 +74,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new NotaServicoConfiguration());
             modelBuilder.Configurations.Add(new LoteFaturamentoConfiguration());
             modelBuilder.Configurations.Add(new ContatoConfiguration());
+            modelBuilder.Configurations.Add(new DebitoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CnaesController.cs" />
+    <Compile Include="Controllers\DebitosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -399,6 +400,11 @@
     <Content Include="Views\Shared\Pessoa\Contato\_DeletarContato.cshtml" />
     <Content Include="Views\Shared\Pessoa\Contato\_Contato.cshtml" />
     <Content Include="Views\Shared\Pessoa\Contato\_ContatoList.cshtml" />
+    <Content Include="Views\Debitos\Create.cshtml" />
+    <Content Include="Views\Debitos\Delete.cshtml" />
+    <Content Include="Views\Debitos\Details.cshtml" />
+    <Content Include="Views\Debitos\Edit.cshtml" />
+    <Content Include="Views\Debitos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

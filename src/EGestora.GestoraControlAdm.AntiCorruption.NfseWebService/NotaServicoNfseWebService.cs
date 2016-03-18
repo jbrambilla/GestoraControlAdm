@@ -51,7 +51,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService
         {
             var GerarNovaNfse = new GerarNovaNfseEnvio();
             var ws = new NfseService();
-            ws.Url = "http://testegroselhento.com.br/teste";
+            ws.Url = notaServico.Empresa.WebServiceHomologacao;
             var Credencial = _credencialNfse.GetCredencial(notaServico);
 
             GerarNovaNfse.Prestador = _identificacaoPrestadorNfse.GetIdentificacaoPrestador(notaServico);

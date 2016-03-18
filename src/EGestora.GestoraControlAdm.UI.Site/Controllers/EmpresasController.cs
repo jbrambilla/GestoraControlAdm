@@ -94,6 +94,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+            loadViewBags();
             return View(empresaViewModel);
         }
 
@@ -109,6 +110,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _empresaAppService.Update(empresaViewModel);
                 return RedirectToAction("Index");
             }
+            loadViewBags();
             return View(empresaViewModel);
         }
 

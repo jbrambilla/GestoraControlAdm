@@ -90,7 +90,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Debito AddDebito(Debito debito)
         {
-            if (debito.IsValid())
+            if (!debito.IsValid())
             {
                 return debito;
             }

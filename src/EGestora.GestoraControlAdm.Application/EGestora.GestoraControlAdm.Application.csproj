@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\ContatoViewModel.cs" />
+    <Compile Include="ViewModels\DebitoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="ViewModels\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\LoteFaturamentoViewModel.cs" />
     <Compile Include="ViewModels\NaturezaOperacaoViewModel.cs" />
+    <Compile Include="ViewModels\NotaServicoDebitoViewModel.cs" />
     <Compile Include="ViewModels\NotaServicoViewModel.cs" />
     <Compile Include="ViewModels\PessoaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\PessoaFisicaViewModel.cs" />

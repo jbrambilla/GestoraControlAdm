@@ -19,25 +19,34 @@ namespace EGestora.GestoraControlAdm.Application
             _notaServicoService = notaServicoService;
         }
 
-        public NotaServicoViewModel Add(NotaServicoViewModel notaServicoViewModel)
+        public NotaServicoDebitoViewModel Add(NotaServicoDebitoViewModel notaServicoDebitoViewModel)
         {
-            var notaServico = Mapper.Map<NotaServicoViewModel, NotaServico>(notaServicoViewModel);
+            var notaServico = Mapper.Map<NotaServicoDebitoViewModel, NotaServico>(notaServicoDebitoViewModel);
+            var debito = Mapper.Map<NotaServicoDebitoViewModel, Debito>(notaServicoDebitoViewModel);
             notaServico.Cliente = _notaServicoService.ObterClientePorId(notaServico.ClienteId);
             notaServico.Empresa = _notaServicoService.GetEmpresaAtiva();
 
             BeginTransaction();
 
             var notaServicoReturn = _notaServicoService.Add(notaServico);
-            notaServicoViewModel = Mapper.Map<NotaServico, NotaServicoViewModel>(notaServicoReturn);
+            notaServicoDebitoViewModel = Mapper.Map<NotaServico, NotaServicoDebitoViewModel>(notaServicoReturn);
 
-            if (!notaServicoViewModel.ValidationResult.IsValid)
+            if (!notaServicoDebitoViewModel.ValidationResult.IsValid)
             {
-                return notaServicoViewModel;
+                return notaServicoDebitoViewModel;
+            }
+
+            var debitoReturn = _notaServicoService.AddDebito(debito);
+            
+            if (!debitoReturn.ValidationResult.IsValid)
+            {
+                notaServicoDebitoViewModel.ValidationResult = debitoReturn.ValidationResult;
+                return notaServicoDebitoViewModel;
             }
 
             Commit();
 
-            return notaServicoViewModel;
+            return notaServicoDebitoViewModel;
         }
 
         public NotaServicoViewModel GetById(Guid id)

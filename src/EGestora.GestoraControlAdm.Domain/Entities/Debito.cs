@@ -13,7 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public Guid DebitoId { get; set; }
         public Guid ClienteId { get; set; }
-        public decimal Valor { get; set; }
+        public decimal ValorLiquido { get; set; }
         public string Detalhes { get; set; }
         public string CodigoSeguranca { get; set; }
         public int Parcelas { get; set; }
@@ -32,3 +32,4 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         }
     }
 }
+

@@ -6,7 +6,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 {
     public interface INotaServicoAppService : IDisposable
     {
-        NotaServicoViewModel Add(NotaServicoViewModel notaServicoViewModel);
+        NotaServicoDebitoViewModel Add(NotaServicoDebitoViewModel notaServicoDebitoViewModel);
         NotaServicoViewModel GetById(Guid id);
         IEnumerable<NotaServicoViewModel> GetAll();
         NotaServicoViewModel Update(NotaServicoViewModel notaServicoViewModel);
@@ -16,5 +16,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         ClienteViewModel ObterClientePorId(Guid id);
 
         EmpresaViewModel GetEmpresaAtiva();
+
+        //DebitoViewModel AddDebito(DebitoViewModel debitoViewModel);
     }
 }

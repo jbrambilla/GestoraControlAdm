@@ -54,42 +54,32 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(NotaServicoViewModel notaServicoViewModel)
+        public ActionResult Create(NotaServicoDebitoViewModel notaServicoDebitoViewModel)
         {
             if (ModelState.IsValid)
             {
-                notaServicoViewModel = _notaServicoAppService.Add(notaServicoViewModel);
-                if (!notaServicoViewModel.ValidationResult.IsValid)
+                notaServicoDebitoViewModel = _notaServicoAppService.Add(notaServicoDebitoViewModel);
+                if (!notaServicoDebitoViewModel.ValidationResult.IsValid)
                 {
-                    foreach (var erro in notaServicoViewModel.ValidationResult.Erros)
+                    foreach (var erro in notaServicoDebitoViewModel.ValidationResult.Erros)
                     {
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
 
                     LoadViewBags();
-                    return View(notaServicoViewModel);
+                    return View(notaServicoDebitoViewModel);
                 }
 
-                if (notaServicoViewModel.Emitir)
+                if (notaServicoDebitoViewModel.Emitir)
                 {
-                    return new ViewAsPdf()
-                    {
-                        ViewName = "EmitirNota",
-                        Model = notaServicoViewModel,
-                        RotativaOptions = new DriverOptions()
-                        {
-                            PageSize = Size.A4,
-                            IsGrayScale = false,
-                            PageMargins = new Margins { Bottom = 5, Left = 5, Right = 5, Top = 5 }
-                        }
-                    };
+                    return EmitirPdf(notaServicoDebitoViewModel.NotaServicoId);
                 }
 
                 return RedirectToAction("Index");
             }
 
             LoadViewBags();
-            return View(notaServicoViewModel);
+            return View(notaServicoDebitoViewModel);
         }
 
         // GET: Cnaes/Edit/5
@@ -165,6 +155,23 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             ViewBag.ClienteList = new SelectList(_notaServicoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
             ViewBag.Empresa = new SelectList(empresaList, "PessoaId", "RazaoSocial");
             ViewBag.Aliquota = empresa.Aliquota;
+        }
+
+        private ActionResult EmitirPdf(Guid id)
+        {
+            var notaServico = _notaServicoAppService.GetById(id);
+
+            return new ViewAsPdf()
+            {
+                ViewName = "EmitirNota",
+                Model = notaServico,
+                RotativaOptions = new DriverOptions()
+                {
+                    PageSize = Size.A4,
+                    IsGrayScale = false,
+                    PageMargins = new Margins { Bottom = 5, Left = 5, Right = 5, Top = 5 }
+                }
+            };
         }
 
         protected override void Dispose(bool disposing)

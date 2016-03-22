@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Anexo.cs" />
+    <Compile Include="Entities\Boleto.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Entities\Servico.cs" />
     <Compile Include="Interfaces\NfseWebServices\INotaServicoNfseWebService.cs" />
     <Compile Include="Interfaces\Repository\IAnexoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBoletoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecification.cs" />
+    <Compile Include="Specifications\Debitos\DebitoDevePossuirBoletoSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecification.cs" />

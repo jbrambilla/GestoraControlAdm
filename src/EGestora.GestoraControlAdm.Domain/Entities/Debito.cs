@@ -1,6 +1,7 @@
 ﻿using DomainValidation.Validation;
 using EGestora.GestoraControlAdm.Domain.Validations.Debitos;
 using System;
+using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
@@ -9,6 +10,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Debito()
         {
             DebitoId = Guid.NewGuid();
+            BoletoList = new List<Boleto>();
         }
 
         public Guid DebitoId { get; set; }
@@ -22,6 +24,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public DateTime AlteradoEm { get; set; }
 
         public virtual Cliente Cliente { get; set; }
+        public virtual ICollection<Boleto> BoletoList { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
 

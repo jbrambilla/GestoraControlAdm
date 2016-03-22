@@ -13,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Debitos
         public void Debito_Consistente_True()
         {
             var Debito = new Debito() { Vencimento = new DateTime(2025, 03, 10, 00, 00, 00) };
+            Debito.BoletoList.Add(new Boleto());
 
             var validation = new DebitoEstaConsistenteValidation();
             Assert.IsTrue(validation.Validate(Debito).IsValid);
@@ -28,6 +29,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Debitos
 
             Assert.IsFalse(validationResult.IsValid);
             Assert.IsTrue(validationResult.Erros.Any(e => e.Message == "A data de vencimento deve ser maior que a data atual."));
+            Assert.IsTrue(validationResult.Erros.Any(e => e.Message == "Erro ao emitir boleto. Revise as configurações do débito."));
         }
     }
 }

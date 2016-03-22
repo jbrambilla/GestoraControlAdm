@@ -72,6 +72,7 @@
     <Compile Include="RevendaAppService.cs" />
     <Compile Include="ServicoAppService.cs" />
     <Compile Include="ViewModels\AnexoViewModel.cs" />
+    <Compile Include="ViewModels\BoletoViewModel.cs" />
     <Compile Include="ViewModels\ClienteEnderecoViewModel.cs" />
     <Compile Include="ViewModels\ClienteServicoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />

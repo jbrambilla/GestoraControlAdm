@@ -69,6 +69,11 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public void GerarBoletoParaDebito(Debito debito)
+        {
+            
+        }
+
         public void Dispose()
         {
             _debitoService.Dispose();

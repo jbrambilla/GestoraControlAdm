@@ -26,6 +26,25 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual Cliente Cliente { get; set; }
         public virtual ICollection<Boleto> BoletoList { get; set; }
 
+        public List<decimal> ValorParcelaList
+        {
+            get
+            {
+                var valorParcelaList = new List<decimal>();
+                var dizima = ((ValorLiquido / Parcelas) * 100)/100;
+                var valorParcela = Math.Round(dizima, 2);
+                var somaParcela = valorParcela * Parcelas;
+                var diferencaPrimeiraParcela = ValorLiquido - somaParcela;
+                valorParcelaList.Add(valorParcela + diferencaPrimeiraParcela);
+                for (int i = 1; i < Parcelas; i++ )
+                {
+                    valorParcelaList.Add(valorParcela);
+                }
+
+                return valorParcelaList;
+            }
+        }
+
         public ValidationResult ValidationResult { get; set; }
 
         public bool IsValid()

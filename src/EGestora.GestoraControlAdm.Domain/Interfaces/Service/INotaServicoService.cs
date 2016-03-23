@@ -18,5 +18,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Empresa GetEmpresaAtiva();
 
         Debito AddDebito(Debito debito);
+
+        void GerarBoletoParaDebito(Debito debito);
     }
 }

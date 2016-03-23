@@ -25,6 +25,7 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
+            _debitoService.GerarBoletoParaDebito(debito);
             var debitoReturn = _debitoService.Add(debito);
             debitoViewModel = Mapper.Map<Debito, DebitoViewModel>(debitoReturn);
 
@@ -69,9 +70,9 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
-        public void GerarBoletoParaDebito(Debito debito)
+        public IEnumerable<PessoaJuridicaViewModel> GetAllClientes()
         {
-            
+            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_debitoService.GetAllClientes());
         }
 
         public void Dispose()

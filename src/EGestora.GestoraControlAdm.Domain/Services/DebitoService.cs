@@ -1,4 +1,5 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
+using EGestora.GestoraControlAdm.Domain.Interfaces.BoletoNet;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using System;
@@ -9,10 +10,17 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     public class DebitoService : IDebitoService
     {
         private readonly IDebitoRepository _debitoRepository;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly IBoletoNetService _boletoNetService;
 
-        public DebitoService(IDebitoRepository debitoRepository)
+        public DebitoService(
+            IDebitoRepository debitoRepository,
+            IClienteRepository clienteRepository,
+            IBoletoNetService boletoNetService)
         {
             _debitoRepository = debitoRepository;
+            _clienteRepository = clienteRepository;
+            _boletoNetService = boletoNetService;
         }
 
         public Debito Add(Debito debito)
@@ -45,10 +53,42 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _debitoRepository.Remove(id);
         }
 
+        public IEnumerable<PessoaJuridica> GetAllClientes()
+        {
+            return _clienteRepository.GetAllPessoaJuridica();
+        }
+
+        public void GerarBoletoParaDebito(Debito debito)
+        {
+            var vencimento = debito.Vencimento;
+            vencimento = vencimento.AddDays(-30);
+            foreach (var valorParcela in debito.ValorParcelaList)
+            {
+                vencimento = vencimento.AddDays(30);
+                var boleto = new Boleto()
+                {
+                    Valor = valorParcela,
+                    Vencimento = vencimento
+                };
+                debito.BoletoList.Add(boleto);
+            }
+        }
+
+        public string GetBoletoHtml(Boleto boleto)
+        {
+            return _boletoNetService.GetHtml(boleto);
+        }
+
+        public byte[] GetBoletoBytes(Boleto boleto)
+        {
+            return _boletoNetService.GetBytes(boleto);
+        }
+
         public void Dispose()
         {
             _debitoRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

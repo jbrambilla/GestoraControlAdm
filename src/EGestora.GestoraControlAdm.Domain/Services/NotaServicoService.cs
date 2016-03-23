@@ -98,6 +98,22 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _debitoRepository.Add(debito);
         }
 
+        public void GerarBoletoParaDebito(Debito debito)
+        {
+            var vencimento = debito.Vencimento;
+            vencimento = vencimento.AddDays(-30);
+            foreach (var valorParcela in debito.ValorParcelaList)
+            {
+                vencimento = vencimento.AddDays(30);
+                var boleto = new Boleto()
+                {
+                    Valor = valorParcela,
+                    Vencimento = vencimento
+                };
+                debito.BoletoList.Add(boleto);
+            }
+        }
+
         public void Dispose()
         {
             _notaServicoRepository.Dispose();

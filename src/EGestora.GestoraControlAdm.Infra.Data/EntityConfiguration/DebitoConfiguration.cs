@@ -15,6 +15,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(d => d.ValidationResult);
 
+            Ignore(d => d.ValorParcelaList);
+
             ToTable("Debitos");
         }
     }

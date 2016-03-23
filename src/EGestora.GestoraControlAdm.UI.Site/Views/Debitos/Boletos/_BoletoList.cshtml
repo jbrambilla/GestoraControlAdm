@@ -1,0 +1,56 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.BoletoViewModel>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CriadoEm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vencimento)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CriadoEm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @item.Vencimento.ToString("d")
+                    </td>
+                    <td>
+                        <a href="@Url.Action("", "", new { id = item.BoletoId })" data-modal="" class="btn btn-default btn-circle">
+                            <span title="Imprimir" class="glyphicon glyphicon-print"></span>
+                        </a>
+                        <a href="@Url.Action("", "", new { id = item.BoletoId })" data-modal="" class="btn btn-primary btn-circle">
+                            <span title="Enviar por E-mail" class="glyphicon glyphicon-envelope"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum Boleto Encontrado.
+            </th>
+        </tr>
+    </table>
+}
+

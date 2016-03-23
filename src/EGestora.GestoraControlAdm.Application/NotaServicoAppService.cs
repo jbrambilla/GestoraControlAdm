@@ -36,6 +36,7 @@ namespace EGestora.GestoraControlAdm.Application
                 return notaServicoDebitoViewModel;
             }
 
+            _notaServicoService.GerarBoletoParaDebito(debito);
             var debitoReturn = _notaServicoService.AddDebito(debito);
             
             if (!debitoReturn.ValidationResult.IsValid)

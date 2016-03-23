@@ -44,6 +44,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: Debitos/Create
         public ActionResult Create()
         {
+            LoadViewBags();
             return View();
         }
 
@@ -64,12 +65,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     {
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
+                    LoadViewBags();
                     return View(debitoViewModel);
                 }
 
                 return RedirectToAction("Index");
             }
-
+            LoadViewBags();
             return View(debitoViewModel);
         }
 
@@ -85,6 +87,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+            LoadViewBags();
             return View(debitoViewModel);
         }
 
@@ -100,6 +103,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _debitoAppService.Update(debitoViewModel);
                 return RedirectToAction("Index");
             }
+            LoadViewBags();
             return View(debitoViewModel);
         }
 
@@ -125,6 +129,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             _debitoAppService.Remove(id);
             return RedirectToAction("Index");
+        }
+
+        public void LoadViewBags()
+        {
+            ViewBag.ClienteList = new SelectList(_debitoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
         }
 
         protected override void Dispose(bool disposing)

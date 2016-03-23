@@ -1,8 +1,10 @@
-﻿using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService;
+﻿using EGestora.GestoraControlAdm.AntiCorruption.BoletoNet;
+using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Interfaces;
 using EGestora.GestoraControlAdm.Application;
 using EGestora.GestoraControlAdm.Application.Interfaces;
+using EGestora.GestoraControlAdm.Domain.Interfaces.BoletoNet;
 using EGestora.GestoraControlAdm.Domain.Interfaces.NfseWebServices;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
@@ -83,6 +85,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<IItensServicoNfse, ItensServicoNfse>();
             container.RegisterPerWebRequest<INovaNfse, NovaNfse>();
             container.RegisterPerWebRequest<IValoresServicoNfse, ValoresServicoNfse>();
+            container.RegisterPerWebRequest<IBoletoNetService, BoletoNetService>();
 
         }
     }

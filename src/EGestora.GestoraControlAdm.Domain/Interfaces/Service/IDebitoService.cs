@@ -11,5 +11,12 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<Debito> GetAll();
         Debito Update(Debito debito);
         void Remove(Guid id);
+
+        IEnumerable<PessoaJuridica> GetAllClientes();
+
+        void GerarBoletoParaDebito(Debito debito);
+
+        string GetBoletoHtml(Boleto boleto);
+        byte[] GetBoletoBytes(Boleto boleto);
     }
 }

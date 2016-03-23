@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="tab-pane fade in" id="boleto">
                                         <div id="replacetargetBoleto">
-
+                                            @Html.Partial("_BoletoList", @Model.BoletoList.OrderBy(b => b.Vencimento))
                                         </div>
                                     </div>
                                 </div>

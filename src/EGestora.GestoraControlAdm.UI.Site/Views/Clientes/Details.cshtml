@@ -30,6 +30,7 @@
                                     <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
                                     <li class=""><a href="#revenda" data-toggle="tab" aria-expanded="false">Revenda</a></li>
                                     <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
+                                    <li class=""><a href="#debitos" data-toggle="tab" aria-expanded="false">Debitos</a></li>
                                 </ul>
                                 <div class="tab-content col-md-9 col-lg-9 ">
                                     <div class="tab-pane fade in active " id="infoBasica">
@@ -103,6 +104,11 @@
                                     <div class="tab-pane fade in" id="anexos">
                                         <div id="replacetargetAnexo">
                                             @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId } })
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade in" id="debitos">
+                                        <div id="replacetargetDebito">
+                                            @Html.Partial("_DebitoList", Model.DebitoList)
                                         </div>
                                     </div>
                                 </div>

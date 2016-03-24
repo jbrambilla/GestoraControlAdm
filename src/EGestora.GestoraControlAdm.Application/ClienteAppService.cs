@@ -323,6 +323,11 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public DebitoViewModel GetDebitoById(Guid id)
+        {
+            return Mapper.Map<Debito, DebitoViewModel>(_clienteService.GetDebitoById(id));
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();

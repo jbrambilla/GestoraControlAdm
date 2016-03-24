@@ -51,5 +51,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         Anexo GetAnexoById(Guid id);
         void RemoveAnexo(Guid id);
+
+        Debito GetDebitoById(Guid id);
     }
 }

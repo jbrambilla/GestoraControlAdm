@@ -49,5 +49,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo);
         AnexoViewModel GetAnexoById(Guid id);
         void RemoveAnexo(Guid id);
+
+        DebitoViewModel GetDebitoById(Guid id);
     }
 }

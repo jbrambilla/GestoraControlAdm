@@ -45,6 +45,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime Vencimento { get; set; }
 
         [ScaffoldColumn(false)]
+        [DisplayName("Gerado Em")]
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]

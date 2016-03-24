@@ -21,6 +21,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IRegimeApuracaoRepository _regimeApuracaoRepository;
         private readonly IAnexoRepository _anexoRepository;
         private readonly IContatoRepository _contatoRepository;
+        private readonly IDebitoRepository _debitoRepository;
 
         public ClienteService(
             IClienteRepository clienteRepository, 
@@ -33,7 +34,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IRevendaRepository revendaRepository,
             IRegimeApuracaoRepository regimeApuracaoRepository,
             IAnexoRepository anexoRepository,
-            IContatoRepository contatoRepository)
+            IContatoRepository contatoRepository,
+            IDebitoRepository debitoRepository)
         {
             _clienteRepository = clienteRepository;
             _enderecoRepository = enderecoRepository;
@@ -46,6 +48,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _regimeApuracaoRepository = regimeApuracaoRepository;
             _anexoRepository = anexoRepository;
             _contatoRepository = contatoRepository;
+            _debitoRepository = debitoRepository;
         }
 
         public Cliente Add(Cliente cliente)
@@ -275,6 +278,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void RemoveAnexo(Guid id)
         {
             _anexoRepository.Remove(id);
+        }
+
+        public Debito GetDebitoById(Guid id)
+        {
+            return _debitoRepository.GetById(id);
         }
 
         public void Dispose()

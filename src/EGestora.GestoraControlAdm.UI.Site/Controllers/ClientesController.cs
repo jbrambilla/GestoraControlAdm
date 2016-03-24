@@ -566,6 +566,23 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "anexo" });
         }
 
+        //DEBITOS
+
+        public ActionResult ListarBoletos(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var debitoViewModel = _clienteAppService.GetDebitoById(id.Value);
+            if (debitoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_BoletoList", debitoViewModel.BoletoList.OrderBy(b => b.Vencimento));
+        }
+
         public ActionResult BaixarAnexo(Guid id)
         {
             var anexo = _clienteAppService.GetAnexoById(id);

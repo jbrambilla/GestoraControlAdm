@@ -63,9 +63,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EGestora.GestoraControlAdm.AntiCorruption.BoletoNet\EGestora.GestoraControlAdm.AntiCorruption.BoletoNet.csproj">
-      <Project>{1425df04-2f19-4618-9402-aac00c1e1969}</Project>
-      <Name>EGestora.GestoraControlAdm.AntiCorruption.BoletoNet</Name>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer\EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer.csproj">
+      <Project>{dbcb082f-ba54-4858-bb3c-6991f95b688b}</Project>
+      <Name>EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.csproj">
       <Project>{8fe6f8f7-a080-430b-9ae7-6ceefbabc834}</Project>

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1425DF04-2F19-4618-9402-AAC00C1E1969}</ProjectGuid>
+    <ProjectGuid>{DBCB082F-BA54-4858-BB3C-6991F95B688B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EGestora.GestoraControlAdm.AntiCorruption.BoletoNet</RootNamespace>
-    <AssemblyName>EGestora.GestoraControlAdm.AntiCorruption.BoletoNet</AssemblyName>
+    <RootNamespace>EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer</RootNamespace>
+    <AssemblyName>EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Boleto.Net">
+      <HintPath>..\..\..\..\BOLETONET\boletonet\src\Boleto.Net\obj\Debug\Boleto.Net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

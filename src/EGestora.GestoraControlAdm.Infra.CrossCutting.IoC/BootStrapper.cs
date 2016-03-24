@@ -1,4 +1,4 @@
-﻿using EGestora.GestoraControlAdm.AntiCorruption.BoletoNet;
+﻿using EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Interfaces;

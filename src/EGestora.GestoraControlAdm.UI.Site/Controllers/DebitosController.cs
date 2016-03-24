@@ -131,6 +131,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult BoletoHtml(Guid id)
+        {
+            var boleto = _debitoAppService.GetBoletoById(id);
+            ViewBag.Boleto = _debitoAppService.GetBoletoHtml(boleto);
+
+            return View();
+        }
+
         public void LoadViewBags()
         {
             ViewBag.ClienteList = new SelectList(_debitoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");

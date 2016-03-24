@@ -13,5 +13,10 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void Remove(Guid id);
 
         IEnumerable<PessoaJuridicaViewModel> GetAllClientes();
+
+        string GetBoletoHtml(BoletoViewModel boleto);
+        byte[] GetBoletoBytes(BoletoViewModel boleto);
+
+        BoletoViewModel GetBoletoById(Guid id);
     }
 }

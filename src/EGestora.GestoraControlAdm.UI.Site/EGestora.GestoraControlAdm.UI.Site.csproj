@@ -406,6 +406,7 @@
     <Content Include="Views\Debitos\Edit.cshtml" />
     <Content Include="Views\Debitos\Index.cshtml" />
     <Content Include="Views\Debitos\Boletos\_BoletoList.cshtml" />
+    <Content Include="Views\Debitos\BoletoHtml.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -75,10 +75,26 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_debitoService.GetAllClientes());
         }
 
+        public string GetBoletoHtml(BoletoViewModel boleto)
+        {
+            return _debitoService.GetBoletoHtml(Mapper.Map<BoletoViewModel, Boleto>(boleto));
+        }
+
+        public byte[] GetBoletoBytes(BoletoViewModel boleto)
+        {
+            return _debitoService.GetBoletoBytes(Mapper.Map<BoletoViewModel, Boleto>(boleto));
+        }
+
+        public BoletoViewModel GetBoletoById(Guid id)
+        {
+            return Mapper.Map<Boleto, BoletoViewModel>(_debitoService.GetBoletoById(id));
+        }
+
         public void Dispose()
         {
             _debitoService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

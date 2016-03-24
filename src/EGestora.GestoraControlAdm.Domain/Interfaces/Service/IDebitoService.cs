@@ -18,5 +18,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         string GetBoletoHtml(Boleto boleto);
         byte[] GetBoletoBytes(Boleto boleto);
+
+        Boleto GetBoletoById(Guid id);
     }
 }

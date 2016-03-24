@@ -12,15 +12,18 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IDebitoRepository _debitoRepository;
         private readonly IClienteRepository _clienteRepository;
         private readonly IBoletoNetService _boletoNetService;
+        private readonly IBoletoRepository _boletoRepository;
 
         public DebitoService(
             IDebitoRepository debitoRepository,
             IClienteRepository clienteRepository,
-            IBoletoNetService boletoNetService)
+            IBoletoNetService boletoNetService,
+            IBoletoRepository boletoRepository)
         {
             _debitoRepository = debitoRepository;
             _clienteRepository = clienteRepository;
             _boletoNetService = boletoNetService;
+            _boletoRepository = boletoRepository;
         }
 
         public Debito Add(Debito debito)
@@ -82,6 +85,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public byte[] GetBoletoBytes(Boleto boleto)
         {
             return _boletoNetService.GetBytes(boleto);
+        }
+
+        public Boleto GetBoletoById(Guid id)
+        {
+            return _boletoRepository.GetById(id);
         }
 
         public void Dispose()

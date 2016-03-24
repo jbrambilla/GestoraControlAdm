@@ -33,6 +33,9 @@
     <Reference Include="Boleto.Net">
       <HintPath>..\..\..\..\BOLETONET\boletonet\src\Boleto.Net\obj\Debug\Boleto.Net.dll</HintPath>
     </Reference>
+    <Reference Include="NReco.PdfGenerator">
+      <HintPath>..\..\packages\NReco.PdfGenerator.1.1.11.0\lib\net20\NReco.PdfGenerator.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -51,6 +54,9 @@
       <Project>{88b37913-0211-4043-b99e-6a7f7412d5bf}</Project>
       <Name>EGestora.GestoraControlAdm.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

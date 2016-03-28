@@ -37,16 +37,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return notaServico;
             }
 
-            if (notaServico.Emitir)
+            if (!EmitirNotaFiscal(notaServico))
             {
-                notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
-                notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
-                notaServico = _notaServicoNfseWebService.Gerar(notaServico);
-
-                if (!notaServico.ValidationResult.IsValid)
-                {
-                    return notaServico;
-                }
+                return notaServico;
             }
 
             return _notaServicoRepository.Add(notaServico);
@@ -112,6 +105,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 };
                 debito.BoletoList.Add(boleto);
             }
+        }
+
+        private bool EmitirNotaFiscal(NotaServico notaServico)
+        {
+            if (notaServico.Emitir)
+            {
+                notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
+                notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
+                notaServico = _notaServicoNfseWebService.Gerar(notaServico);
+
+                return notaServico.ValidationResult.IsValid;
+            }
+
+            return true;
         }
 
         public void Dispose()

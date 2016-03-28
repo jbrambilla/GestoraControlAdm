@@ -103,7 +103,7 @@
                                                             @Html.DisplayFor(modelItem => item.Email)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                                            @item.VencimentoBoleto.ToString("d")
                                                         </td>
                                                         <td>
                                                             <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
@@ -166,7 +166,7 @@
                                                             @Html.DisplayFor(modelItem => item.Email)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.VencimentoBoleto)
+                                                            @item.VencimentoBoleto.ToString("d")
                                                         </td>
                                                         <td>
                                                             <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>

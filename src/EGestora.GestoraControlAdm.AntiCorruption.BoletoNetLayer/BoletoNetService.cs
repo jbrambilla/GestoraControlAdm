@@ -68,6 +68,20 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer
             b.DataDocumento = DateTime.Now;
 
             boletoBancario.Boleto = b;
+
+            boletoBancario.OcultarInstrucoes = true;
+
+            boletoBancario.CodigoDeSeguranca = "123";
+            boletoBancario.Observacao = "Observaca1";
+
+            boletoBancario.TituloInformacao = "TITULO TESTE";
+            boletoBancario.SiteEmpresa = "http://www.egestora.com.br/teste";
+            boletoBancario.EmailEmpresa = "contato@egestorateste.com.br";
+            boletoBancario.Telefone1 = "(18) 3222-2222";
+            boletoBancario.Telefone2 = "(18) 3222-3333";
+
+            boletoBancario.ImagemEmpresa = "https://goo.gl/lgOg2i";
+
             boletoBancario.Boleto.Valida();
 
             return boletoBancario;

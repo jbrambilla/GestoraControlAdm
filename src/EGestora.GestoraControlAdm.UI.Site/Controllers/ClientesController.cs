@@ -580,7 +580,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView("_BoletoList", debitoViewModel.BoletoList.OrderBy(b => b.Vencimento));
+            return PartialView("_BoletoListCliente", debitoViewModel.BoletoList.OrderBy(b => b.Vencimento));
         }
 
         public ActionResult BaixarAnexo(Guid id)

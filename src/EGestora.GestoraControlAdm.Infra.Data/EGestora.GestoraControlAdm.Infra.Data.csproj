@@ -74,6 +74,7 @@
     <Compile Include="EntityConfiguration\RevendaConfiguration.cs" />
     <Compile Include="EntityConfiguration\ServicoConfiguration.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="MailService\EmailService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AnexoRepository.cs" />

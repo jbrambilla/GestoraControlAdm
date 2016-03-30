@@ -1,6 +1,8 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 {

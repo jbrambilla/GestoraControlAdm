@@ -59,6 +59,7 @@
     <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Entities\Servico.cs" />
     <Compile Include="Interfaces\BoletoNet\IBoletoNetService.cs" />
+    <Compile Include="Interfaces\MailService\IEmailService.cs" />
     <Compile Include="Interfaces\NfseWebServices\INotaServicoNfseWebService.cs" />
     <Compile Include="Interfaces\Repository\IAnexoRepository.cs" />
     <Compile Include="Interfaces\Repository\IBoletoRepository.cs" />

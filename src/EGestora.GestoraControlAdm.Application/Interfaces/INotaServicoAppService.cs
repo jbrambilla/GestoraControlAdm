@@ -18,5 +18,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         EmpresaViewModel GetEmpresaAtiva();
 
         //DebitoViewModel AddDebito(DebitoViewModel debitoViewModel);
+
+        bool EnviarEmail(NotaServicoDebitoViewModel notaServicoViewModel);
     }
 }

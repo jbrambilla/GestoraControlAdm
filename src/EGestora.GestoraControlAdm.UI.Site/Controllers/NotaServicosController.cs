@@ -70,9 +70,21 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     return View(notaServicoDebitoViewModel);
                 }
 
+                var NfseViewAsPdf = EmitirPdf(notaServicoDebitoViewModel.NotaServicoId);
+                if (notaServicoDebitoViewModel.EnviarEmail)
+                {
+                    notaServicoDebitoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
+                    if (!_notaServicoAppService.EnviarEmail(notaServicoDebitoViewModel))
+                    {
+                        ModelState.AddModelError(string.Empty, "Erro ao enviar e-mail.");
+                        LoadViewBags();
+                        return View(notaServicoDebitoViewModel);
+                    }
+                }
+
                 if (notaServicoDebitoViewModel.Emitir)
                 {
-                    return EmitirPdf(notaServicoDebitoViewModel.NotaServicoId);
+                    return NfseViewAsPdf;
                 }
 
                 return RedirectToAction("Index");
@@ -157,7 +169,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             ViewBag.Aliquota = empresa.Aliquota;
         }
 
-        private ActionResult EmitirPdf(Guid id)
+        private ViewAsPdf EmitirPdf(Guid id)
         {
             var notaServico = _notaServicoAppService.GetById(id);
 

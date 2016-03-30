@@ -49,26 +49,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return notaServico;
             }
 
-            if (!EnviarEmail(notaServico))
-            {
-                return notaServico;
-            }
-
             return _notaServicoRepository.Add(notaServico);
-        }
-
-        private bool EnviarEmail(NotaServico notaServico)
-        {
-            _emailService.AdicionarDestinatário("jotabram@gmail.com");
-            _emailService.AdicionarRemetente("joao.brambilla@egestora.com.br");
-            _emailService.AdicionarAssunto("assunto teste");
-            _emailService.AdicionarCorpo("teste body");
-            if (!_emailService.Enviar())
-            {
-                notaServico.ValidationResult.Add(new ValidationError("Erro no envio de e-mail"));
-                return false;
-            }
-            return true;
         }
 
         public NotaServico GetById(Guid id)
@@ -135,16 +116,32 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         private bool EmitirNotaFiscal(NotaServico notaServico)
         {
-            if (notaServico.Emitir)
-            {
-                notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
-                notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
-                notaServico = _notaServicoNfseWebService.Gerar(notaServico);
-
-                return notaServico.ValidationResult.IsValid;
+            if (!notaServico.Emitir) {
+                return true;
             }
 
-            return true;
+            notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
+            notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
+            notaServico = _notaServicoNfseWebService.Gerar(notaServico);
+            return notaServico.ValidationResult.IsValid;
+        }
+
+        public bool EnviarEmail(NotaServico notaServico)
+        {
+            if (!notaServico.EnviarEmail)
+            {
+                return false;
+            }
+
+            var cliente = _clienteRepository.GetById(notaServico.ClienteId);
+
+            //_emailService.AdicionarDestinatário("jotabram@gmail.com");
+            _emailService.AdicionarDestinatário(cliente.Email);
+            _emailService.AdicionarRemetente("joao.brambilla@egestora.com.br");
+            _emailService.AdicionarAssunto("assunto teste");
+            _emailService.AdicionarCorpo("teste body");
+            _emailService.AdicionarAnexo(notaServico.PdfNfse, "Nota Fiscal de Serviço Eletrônica");
+            return _emailService.Enviar();
         }
 
         public void Dispose()

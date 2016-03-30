@@ -114,5 +114,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [ScaffoldColumn(false)]
         [DisplayName("Imprimir")]
         public bool Imprimir { get; set; }
+
+        [ScaffoldColumn(false)]
+        public byte[] PdfNfse { get; set; }
     }
 }

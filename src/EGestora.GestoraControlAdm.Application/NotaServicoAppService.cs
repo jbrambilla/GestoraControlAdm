@@ -101,5 +101,11 @@ namespace EGestora.GestoraControlAdm.Application
             _notaServicoService.Dispose();
             GC.SuppressFinalize(this);
         }
+
+
+        public bool EnviarEmail(NotaServicoDebitoViewModel notaServicoViewModel)
+        {
+            return _notaServicoService.EnviarEmail(Mapper.Map<NotaServicoDebitoViewModel, NotaServico>(notaServicoViewModel));
+        }
     }
 }

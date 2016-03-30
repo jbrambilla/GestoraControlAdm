@@ -34,18 +34,18 @@ namespace EGestora.GestoraControlAdm.Infra.Data.MailService
 
             using (var smtp = new SmtpClient())
             {
-                var credential = new NetworkCredential
-                {
-                    UserName = "joao.brambilla@egestora.com.br",  // replace with valid value
-                    Password = "85182mais"  // replace with valid value
-                };
-                smtp.Credentials = credential;
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
                 try
                 {
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "joao.brambilla@egestora.com.br",  // replace with valid value
+                        Password = "85182mais"  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                
                     smtp.Send(MailMessage);
                     return true;
                 }

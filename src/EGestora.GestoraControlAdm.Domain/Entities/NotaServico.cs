@@ -49,6 +49,8 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         //controle no cadastro
         public bool Emitir { get; set; }
+        public bool EnviarEmail { get; set; }
+        public byte[] PdfNfse { get; set; }
 
         public void CalcularValores()
         {

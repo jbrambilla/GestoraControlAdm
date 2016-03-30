@@ -22,5 +22,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Debito AddDebito(Debito debito);
 
         void GerarBoletoParaDebito(Debito debito);
+
+        bool EnviarEmail(NotaServico notaServico);
     }
 }

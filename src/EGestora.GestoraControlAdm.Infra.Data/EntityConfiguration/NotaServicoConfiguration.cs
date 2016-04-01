@@ -33,6 +33,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(n => n.EnviarEmail);
 
+            Ignore(n => n.PdfNfse);
+
             ToTable("NotaServico");
         }
     }

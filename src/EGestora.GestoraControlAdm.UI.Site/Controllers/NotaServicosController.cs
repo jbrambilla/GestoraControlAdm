@@ -70,21 +70,9 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     return View(notaServicoDebitoViewModel);
                 }
 
-                var NfseViewAsPdf = EmitirPdf(notaServicoDebitoViewModel.NotaServicoId);
-                if (notaServicoDebitoViewModel.EnviarEmail)
+                if (!EnviarEmail(notaServicoDebitoViewModel))
                 {
-                    notaServicoDebitoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
-                    if (!_notaServicoAppService.EnviarEmail(notaServicoDebitoViewModel))
-                    {
-                        ModelState.AddModelError(string.Empty, "Erro ao enviar e-mail.");
-                        LoadViewBags();
-                        return View(notaServicoDebitoViewModel);
-                    }
-                }
-
-                if (notaServicoDebitoViewModel.Emitir)
-                {
-                    return NfseViewAsPdf;
+                    return View(notaServicoDebitoViewModel);
                 }
 
                 return RedirectToAction("Index");
@@ -158,15 +146,23 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { discriminacaoServicos = cliente.DiscriminacaoServicos, valorTotal = cliente.ValorTotalServicos }, JsonRequestBehavior.AllowGet);
         }
 
-        private void LoadViewBags()
+        private bool EnviarEmail(NotaServicoDebitoViewModel notaServicoDebitoViewModel)
         {
-            var empresa = _notaServicoAppService.GetEmpresaAtiva();
-            var empresaList = new List<PessoaJuridicaViewModel>();
-            empresaList.Add(empresa.PessoaJuridica);
+            var NfseViewAsPdf = EmitirPdf(notaServicoDebitoViewModel.NotaServicoId);
+            if (!notaServicoDebitoViewModel.EnviarEmail)
+            {
+                return false;
+            }
 
-            ViewBag.ClienteList = new SelectList(_notaServicoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
-            ViewBag.Empresa = new SelectList(empresaList, "PessoaId", "RazaoSocial");
-            ViewBag.Aliquota = empresa.Aliquota;
+            notaServicoDebitoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
+            if (_notaServicoAppService.EnviarEmail(notaServicoDebitoViewModel))
+            {
+                return true;
+            }
+
+            ModelState.AddModelError(string.Empty, "Erro ao enviar e-mail.");
+            LoadViewBags();
+            return false;
         }
 
         private ViewAsPdf EmitirPdf(Guid id)
@@ -186,6 +182,17 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             };
         }
 
+        private void LoadViewBags()
+        {
+            var empresa = _notaServicoAppService.GetEmpresaAtiva();
+            var empresaList = new List<PessoaJuridicaViewModel>();
+            empresaList.Add(empresa.PessoaJuridica);
+
+            ViewBag.ClienteList = new SelectList(_notaServicoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            ViewBag.Empresa = new SelectList(empresaList, "PessoaId", "RazaoSocial");
+            ViewBag.Aliquota = empresa.Aliquota;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -196,3 +203,4 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
     }
 }
+

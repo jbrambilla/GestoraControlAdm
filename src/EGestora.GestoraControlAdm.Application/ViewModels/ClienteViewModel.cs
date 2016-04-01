@@ -13,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             CnaeList = new List<CnaeViewModel>();
             ClienteServicoList = new List<ClienteServicoViewModel>();
             DebitoList = new List<DebitoViewModel>();
+            NotaServicoList = new List<NotaServicoViewModel>();
         }
 
         [DisplayName("Revenda")]
@@ -31,6 +32,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime VencimentoBoleto { get; set; }
 
+
         [ScaffoldColumn(false)]
         public ICollection<CnaeViewModel> CnaeList { get; set; }
 
@@ -39,6 +41,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<DebitoViewModel> DebitoList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<NotaServicoViewModel> NotaServicoList { get; set; }
 
         [ScaffoldColumn(false)]
         public RevendaViewModel Revenda { get; set; }

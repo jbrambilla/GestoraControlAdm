@@ -9,6 +9,7 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.MailService;
 using System.Threading.Tasks;
 using System.IO;
 using DomainValidation.Validation;
+using EGestora.GestoraControlAdm.Domain.Interfaces.BoletoNet;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
 {
@@ -20,6 +21,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEmpresaRepository _empresaRepository;
         private readonly IDebitoRepository _debitoRepository;
         private readonly IEmailService _emailService;
+        private readonly IBoletoNetService _boletoNetService;
 
         public NotaServicoService(
             INotaServicoRepository notaServicoRepository,
@@ -27,7 +29,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IClienteRepository clienteRepository,
             IEmpresaRepository empresaRepository,
             IDebitoRepository debitoRepository,
-            IEmailService emailService)
+            IEmailService emailService,
+            IBoletoNetService boletoNetService)
         {
             _notaServicoRepository = notaServicoRepository;
             _notaServicoNfseWebService = notaServicoNfseWebService;
@@ -35,6 +38,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _empresaRepository = empresaRepository;
             _debitoRepository = debitoRepository;
             _emailService = emailService;
+            _boletoNetService = boletoNetService;
         }
 
         public NotaServico Add(NotaServico notaServico)
@@ -135,12 +139,15 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
             var cliente = _clienteRepository.GetById(notaServico.ClienteId);
 
-            //_emailService.AdicionarDestinatário("jotabram@gmail.com");
-            _emailService.AdicionarDestinatário(cliente.Email);
+            var boleto = cliente.DebitoList.FirstOrDefault().BoletoList.FirstOrDefault();
+
+            _emailService.AdicionarDestinatário("jotabram@gmail.com");
+            //_emailService.AdicionarDestinatário(cliente.Email);
             _emailService.AdicionarRemetente("joao.brambilla@egestora.com.br");
             _emailService.AdicionarAssunto("assunto teste");
             _emailService.AdicionarCorpo("teste body");
-            _emailService.AdicionarAnexo(notaServico.PdfNfse, "Nota Fiscal de Serviço Eletrônica");
+            _emailService.AdicionarAnexo(_boletoNetService.GetBytes(boleto), "BoletoEgestora.pdf");
+            _emailService.AdicionarAnexo(notaServico.PdfNfse, "NfseEgestora.pdf");
             return _emailService.Enviar();
         }
 

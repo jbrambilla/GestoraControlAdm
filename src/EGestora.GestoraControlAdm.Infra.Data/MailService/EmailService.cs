@@ -63,14 +63,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.MailService
 
         public void AdicionarAnexo(byte[] anexo, string nome)
         {
-            Attachment attachment;
-            using (var stream = new MemoryStream())
-            {
-                stream.Write(anexo, 0, anexo.Length - 1);
-                attachment = new Attachment(stream, nome);
-            }
-            var message = new MailMessage();
-            message.Attachments.Add(attachment);
+            Stream attachment = new MemoryStream(anexo);
+            MailMessage.Attachments.Add(new Attachment(attachment, nome));
         }
 
 

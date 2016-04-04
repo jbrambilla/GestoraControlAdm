@@ -15,19 +15,22 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEmpresaRepository _empresaRepository;
         private readonly INotaServicoNfseWebService _notaServicoNfseWebService;
         private readonly INotaServicoRepository _notaServicoRepository;
+        private readonly IDebitoRepository _debitoRepository;
 
         public LoteFaturamentoService(
             ILoteFaturamentoRepository loteFaturamentoRepository,
             IClienteRepository clienteRepository,
             IEmpresaRepository empresaRepository,
             INotaServicoNfseWebService notaServicoNfseWebService,
-            INotaServicoRepository notaServicoRepository)
+            INotaServicoRepository notaServicoRepository,
+            IDebitoRepository debitoRepository)
         {
             _loteFaturamentoRepository = loteFaturamentoRepository;
             _clienteRepository = clienteRepository;
             _empresaRepository = empresaRepository;
             _notaServicoNfseWebService = notaServicoNfseWebService;
             _notaServicoRepository = notaServicoRepository;
+            _debitoRepository = debitoRepository;
         }
 
         public LoteFaturamento Add(LoteFaturamento loteFaturamento)
@@ -90,6 +93,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         {
             var notaServicoList = new List<NotaServico>();
 
+            var debitoList = new List<Debito>();
+
             foreach(var cliente in loteFaturamento.ClienteList)
             {
                 var notaServico = new NotaServico()
@@ -117,11 +122,33 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                     return loteFaturamento;
                 }
 
+                var debito = new Debito()
+                {
+                    ClienteId = cliente.PessoaId,
+                    CodigoSeguranca = "",
+                    Detalhes = "Débito gerado em lote.",
+                    ValorLiquido = notaServico.ValorLiquido,
+                    Parcelas = 1,
+                    Vencimento = loteFaturamento.DataFechamento.Value.AddDays(30)
+                };
+
+                if (!debito.IsValid())
+                {
+                    loteFaturamento.ValidationResult.Add(
+                        new ValidationError(
+                            "O débito referente ao cliente " + cliente.PessoaJuridica.RazaoSocial + " não é válida"
+                        )
+                    );
+
+                    return loteFaturamento;
+                }
+
                 notaServico = _notaServicoNfseWebService.Gerar(notaServico);
 
                 if (!notaServico.ValidationResult.IsValid)
                 {
                     foreach (var erro in notaServico.ValidationResult.Erros)
+     
                     {
                         loteFaturamento.ValidationResult.Add(new ValidationError("Problema na emissão da nota do cliente: " + cliente.PessoaJuridica.RazaoSocial + ". " + erro.Message));
                     }
@@ -130,6 +157,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 }
 
                 notaServicoList.Add(notaServico);
+                debitoList.Add(debito);
             }
 
             foreach (var notaServico in notaServicoList)
@@ -137,9 +165,31 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 _notaServicoRepository.Add(notaServico);
             }
 
+            foreach (var debito in debitoList)
+            {
+                GerarBoletoParaDebito(debito);
+                _debitoRepository.Add(debito);
+            }
+
             return loteFaturamento;
         }
 
+
+        private void GerarBoletoParaDebito(Debito debito)
+        {
+            var vencimento = debito.Vencimento;
+            vencimento = vencimento.AddDays(-30);
+            foreach (var valorParcela in debito.ValorParcelaList)
+            {
+                vencimento = vencimento.AddDays(30);
+                var boleto = new Boleto()
+                {
+                    Valor = valorParcela,
+                    Vencimento = vencimento
+                };
+                debito.BoletoList.Add(boleto);
+            }
+        }
         public void Dispose()
         {
             _loteFaturamentoRepository.Dispose();

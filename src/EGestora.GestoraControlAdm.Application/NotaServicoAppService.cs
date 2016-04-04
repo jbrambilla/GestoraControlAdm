@@ -96,6 +96,11 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Cliente, ClienteViewModel>(_notaServicoService.ObterClientePorId(id));
         }
 
+        public bool EnviarEmail(NotaServicoDebitoViewModel notaServicoViewModel)
+        {
+            return _notaServicoService.EnviarEmail(Mapper.Map<NotaServicoDebitoViewModel, NotaServico>(notaServicoViewModel));
+        }
+
         public void Dispose()
         {
             _notaServicoService.Dispose();
@@ -103,9 +108,7 @@ namespace EGestora.GestoraControlAdm.Application
         }
 
 
-        public bool EnviarEmail(NotaServicoDebitoViewModel notaServicoViewModel)
-        {
-            return _notaServicoService.EnviarEmail(Mapper.Map<NotaServicoDebitoViewModel, NotaServico>(notaServicoViewModel));
-        }
+
+
     }
 }

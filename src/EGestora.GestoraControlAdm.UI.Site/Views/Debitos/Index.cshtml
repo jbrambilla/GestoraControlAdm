@@ -59,7 +59,7 @@
                                         @Html.DisplayFor(modelItem => item.Parcelas)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Vencimento)
+                                        @item.Vencimento.ToString("d")
                                     </td>
                                     <td>
                                         <a href="@Url.Action("Edit", "Debitos", new {id = item.DebitoId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>

@@ -1,7 +1,24 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.BoletoViewModel>
 
+@{
+    int i = 0;
+}
+
 @if (Model.Any())
 {
+    <div class="row">
+        <div class="col-md-4">
+            <form role="form">
+                <div class="form-group">
+                    <p class="help-block"></p>
+                    <label>Data de Trava</label>
+                    <input type="date" class="form-control" id="trava">
+                    <p class="help-block"></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
     <div class="table-responsive">
         <table class="table table-hover">
             <tr>
@@ -19,8 +36,8 @@
 
             @foreach (var item in Model)
             {
+
                 <tr>
-                   
                     <td>
                         @Html.DisplayFor(modelItem => item.CriadoEm)
                     </td>
@@ -31,14 +48,16 @@
                         @item.Vencimento.ToString("d")
                     </td>
                     <td>
-                        <a href="#" class="btn btn-default btn-circle" onclick="popup('@Url.Action("BoletoHtml", "Debitos", new { id = item.BoletoId })')">
+                        <a href="#" class="btn btn-default btn-circle" onclick="popup('@Url.Action("BoletoHtml", "Debitos")', @i)">
                             <span title="Imprimir" class="glyphicon glyphicon-print"></span>
                         </a>
                         <a href="@Url.Action("", "", new { id = item.BoletoId })" data-modal="" class="btn btn-primary btn-circle">
                             <span title="Enviar por E-mail" class="glyphicon glyphicon-envelope"></span>
                         </a>
+                        <input type="hidden" value="@item.BoletoId" id="boletoid_@i" />
                     </td>
                 </tr>
+                i++;
             }
         </table>
     </div>
@@ -55,7 +74,8 @@ else
 }
 
 <script>
-    function popup(data) {
+    function popup(data, rowData) {
+        data += "?id=" + $('#boletoid_' + rowData ).val() + "&trava=" + $('#trava').val();
         window.open(data, "WindowPopup", 'width=668,height=780');
     }
 </script>

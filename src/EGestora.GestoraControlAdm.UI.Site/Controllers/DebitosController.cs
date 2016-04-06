@@ -131,10 +131,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult BoletoHtml(Guid id)
+        [HttpGet]
+        [ValidateInput(false)]
+        public ActionResult BoletoHtml(Guid id, DateTime trava)
         {
             var boleto = _debitoAppService.GetBoletoById(id);
             ViewBag.Boleto = _debitoAppService.GetBoletoHtml(boleto);
+
+            //aqui será gerado o código da trava
 
             return View();
         }

@@ -23,7 +23,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public string NomeFantasia { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo CNPJ")]
-        [MaxLength(14, ErrorMessage = "Máximo {0} caracteres")]
+        [MaxLength(18, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("CNPJ")]
         public string Cnpj { get; set; }

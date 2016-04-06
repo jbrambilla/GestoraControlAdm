@@ -15,7 +15,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             HasKey(p => p.PessoaId);
 
             Property(c => c.Cnpj)
-                .HasMaxLength(14);
+                .HasMaxLength(18);
 
             Property(c => c.RazaoSocial)
                  .HasMaxLength(100);

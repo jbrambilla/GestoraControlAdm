@@ -39,8 +39,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public string Bairro { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo CEP")]
-        [MaxLength(8, ErrorMessage = "Máximo {0} caracteres")]
-        [MinLength(8, ErrorMessage = "Mínimo {0} caracteres")]
+        [MaxLength(9, ErrorMessage = "Máximo {0} caracteres")]
+        [MinLength(9, ErrorMessage = "Mínimo {0} caracteres")]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Cidade")]

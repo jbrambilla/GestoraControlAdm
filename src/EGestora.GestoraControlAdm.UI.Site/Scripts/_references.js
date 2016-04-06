@@ -11,3 +11,4 @@
 /// <reference path="radiobuttonpfpj.js" />
 /// <reference path="select2.full.min.js" />
 /// <reference path="pessoaajaxmodal.js" />
+/// <reference path="jquery.mask.min.js" />

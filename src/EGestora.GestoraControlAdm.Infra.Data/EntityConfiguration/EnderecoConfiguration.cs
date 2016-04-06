@@ -27,7 +27,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Property(e => e.Cep)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(9);
 
             Property(e => e.Complemento)
                 .IsRequired()

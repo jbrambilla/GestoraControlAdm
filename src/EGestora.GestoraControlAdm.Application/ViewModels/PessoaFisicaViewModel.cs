@@ -17,13 +17,13 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
 
         [Required(ErrorMessage = "Preencha o campo RG")]
-        [MaxLength(14, ErrorMessage = "Máximo {0} caracteres")]
+        [MaxLength(12, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("RG")]
         public string Rg { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo CPF")]
-        [MaxLength(14, ErrorMessage = "Máximo {0} caracteres")]
+        [MaxLength(18, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("CPF")]
         public string Cpf { get; set; }

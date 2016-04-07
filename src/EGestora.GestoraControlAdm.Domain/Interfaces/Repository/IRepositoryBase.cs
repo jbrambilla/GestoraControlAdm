@@ -12,6 +12,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
         TEntity Update(TEntity obj);
         void Remove(Guid id);
         IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate);
+        int GetTotalRecords();
         int SaveChanges();
     }
 }

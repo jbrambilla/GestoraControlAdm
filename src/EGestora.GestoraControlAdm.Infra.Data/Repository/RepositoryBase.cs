@@ -59,10 +59,16 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             return Db.SaveChanges();
         }
 
+        public int GetTotalRecords()
+        {
+            return DbSet.Count();
+        }
+
         public void Dispose()
         {
             Db.Dispose();
             GC.SuppressFinalize(this);
         }
+        
     }
 }

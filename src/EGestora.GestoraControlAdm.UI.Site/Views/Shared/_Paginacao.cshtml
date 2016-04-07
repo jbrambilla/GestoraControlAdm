@@ -1,0 +1,18 @@
+﻿@{
+    string botaoVoltar = ViewBag.PaginaAtual - 1 < 0 ? "visibility: hidden" : "visibility: visible";
+    string botaoAvancar = ViewBag.PaginaAtual + 1 >= ViewBag.TotalPaginas ? "visibility: hidden" : "visibility: visible";
+}
+
+
+<ul class="pagination pagination-sm pull-right">
+    <li>@Html.ActionLink("<", "Index", new { page = ViewBag.PaginaAtual - 1 }, new { style = botaoVoltar })</li>
+
+    @for (int i = 0; i < ViewBag.TotalPaginas; i++)
+    {
+        <li class="@(i == ViewBag.PaginaAtual ? "active" : "")"> @Html.ActionLink((i + 1).ToString(), "Index", new { page = i }) </li>
+    }
+
+
+    <li>@Html.ActionLink(">", "Index", new { page = ViewBag.PaginaAtual + 1 }, new { style = botaoAvancar })</li>
+</ul>
+

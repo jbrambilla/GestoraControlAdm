@@ -411,6 +411,7 @@
     <Content Include="Views\Debitos\BoletoHtml.cshtml" />
     <Content Include="Views\Clientes\Debitos\_DebitoList.cshtml" />
     <Content Include="Views\Clientes\Debitos\_BoletoListCliente.cshtml" />
+    <Content Include="Views\Shared\_Paginacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

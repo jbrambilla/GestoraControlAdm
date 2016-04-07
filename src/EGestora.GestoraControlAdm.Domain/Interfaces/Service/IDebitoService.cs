@@ -11,6 +11,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<Debito> GetAll();
         Debito Update(Debito debito);
         void Remove(Guid id);
+        int GetTotalRecords();
+        IEnumerable<Debito> GetAllToGrid(int skip, int take);
 
         IEnumerable<PessoaJuridica> GetAllClientes();
 

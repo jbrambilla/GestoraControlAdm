@@ -21,9 +21,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         // GET: Debitos
-        public ActionResult Index()
+        public ActionResult Index(int page = 0)
         {
-            return View(_debitoAppService.GetAll());
+            int registrosPorPagina = 5;
+            ViewBag.PaginaAtual = page;
+            ViewBag.TotalPaginas = Math.Ceiling((float)_debitoAppService.GetTotalRecords() / registrosPorPagina);
+
+            return View(_debitoAppService.GetAllToGrid(registrosPorPagina * page, registrosPorPagina));
         }
 
         // GET: Debitos/Details/5

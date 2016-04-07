@@ -90,11 +90,20 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Boleto, BoletoViewModel>(_debitoService.GetBoletoById(id));
         }
 
+        public int GetTotalRecords()
+        {
+            return _debitoService.GetTotalRecords();
+        }
+
+        public IEnumerable<DebitoViewModel> GetAllToGrid(int skip, int take)
+        {
+            return Mapper.Map<IEnumerable<Debito>, IEnumerable<DebitoViewModel>>(_debitoService.GetAllToGrid(skip, take));
+        }
+
         public void Dispose()
         {
             _debitoService.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

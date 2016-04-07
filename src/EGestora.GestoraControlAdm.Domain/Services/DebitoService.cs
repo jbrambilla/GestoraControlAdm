@@ -92,6 +92,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _boletoRepository.GetById(id);
         }
 
+        public int GetTotalRecords()
+        {
+            return _debitoRepository.GetTotalRecords();
+        }
+
+        public IEnumerable<Debito> GetAllToGrid(int skip, int take)
+        {
+            return _debitoRepository.GetAllToGrid(skip, take);
+        }
+
         public void Dispose()
         {
             _debitoRepository.Dispose();

@@ -23,9 +23,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.CodigoSegurancas
                 Cliente = codigoSeguranca.Cliente,
                 Codigo = "111111111111"
             };
-
-            codigoSegurancaTeste.DataTrava = codigoSeguranca.DataTrava;
-
+            //5793
             _codigoSegurancaRepository.GerarCodigo(codigoSegurancaTeste);
 
             return codigoSeguranca.Codigo.Length == 12 && codigoSeguranca.Codigo == codigoSegurancaTeste.Codigo;

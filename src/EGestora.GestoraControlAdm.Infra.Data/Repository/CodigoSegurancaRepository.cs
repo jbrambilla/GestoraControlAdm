@@ -10,5 +10,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             :base (context)
         {
         }
+
+        public void GerarCodigo(CodigoSeguranca codigoSeguranca)
+        {
+            codigoSeguranca.Codigo = "111111111111";
+        }
     }
 }

@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CnaesController.cs" />
+    <Compile Include="Controllers\CodigoSegurancasController.cs" />
     <Compile Include="Controllers\DebitosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
@@ -412,6 +413,11 @@
     <Content Include="Views\Clientes\Debitos\_DebitoList.cshtml" />
     <Content Include="Views\Clientes\Debitos\_BoletoListCliente.cshtml" />
     <Content Include="Views\Shared\_Paginacao.cshtml" />
+    <Content Include="Views\CodigoSegurancas\Create.cshtml" />
+    <Content Include="Views\CodigoSegurancas\Delete.cshtml" />
+    <Content Include="Views\CodigoSegurancas\Details.cshtml" />
+    <Content Include="Views\CodigoSegurancas\Edit.cshtml" />
+    <Content Include="Views\CodigoSegurancas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

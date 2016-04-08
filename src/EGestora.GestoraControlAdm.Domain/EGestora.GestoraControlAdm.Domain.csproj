@@ -112,6 +112,7 @@
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataAtualDeveSerMaiorQueDataDeHojeSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataTravaDeveSerMaiorQueDataDeHojeSpecification.cs" />
+    <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDeveGerarCodigoCorretoSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoDevePossuirBoletoSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecification.cs" />
     <Compile Include="Validations\ClienteServicos\ClienteServicoEstaConsistenteValidation.cs" />
+    <Compile Include="Validations\CodigoSegurancas\CodigoSegurancaEstaAptoParaCadastroValidation.cs" />
     <Compile Include="Validations\CodigoSegurancas\CodigoSegurancaEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Debitos\DebitoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />

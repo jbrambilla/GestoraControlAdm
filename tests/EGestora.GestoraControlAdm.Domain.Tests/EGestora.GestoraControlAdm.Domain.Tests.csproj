@@ -64,6 +64,7 @@
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecificationTeste.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataAtualDeveSerMaiorQueDataDeHojeSpecificationTest.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataTravaDeveSerMaiorQueDataDeHojeSpecificationTest.cs" />
+    <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDeveGerarCodigoCorretoSpecificationTest.cs" />
     <Compile Include="Specifications\Debitos\DebitoDevePossuirBoletoSpecificationTest.cs" />
     <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecificationTest.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecificationTest.cs" />

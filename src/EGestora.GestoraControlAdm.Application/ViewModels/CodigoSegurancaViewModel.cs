@@ -4,13 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
-    class CodigoSegurancaViewModel
+    public class CodigoSegurancaViewModel
     {
         public CodigoSegurancaViewModel()
         {
             CodigoSegurancaId = Guid.NewGuid();
         }
-
 
         [Key]
         public Guid CodigoSegurancaId { get; set; }
@@ -42,7 +41,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime AlteradoEm { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual ClienteViewModel Cliente { get; set; }
+        public ClienteViewModel Cliente { get; set; }
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }

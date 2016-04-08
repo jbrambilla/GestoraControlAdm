@@ -1,6 +1,7 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
+using EGestora.GestoraControlAdm.Domain.Validations.CodigoSegurancas;
 using System;
 using System.Collections.Generic;
 
@@ -18,6 +19,13 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public CodigoSeguranca Add(CodigoSeguranca codigoSeguranca)
         {
             if (!codigoSeguranca.IsValid())
+            {
+                return codigoSeguranca;
+            }
+
+            _codigoSegurancaRepository.GerarCodigo(codigoSeguranca);
+            codigoSeguranca.ValidationResult = new CodigoSegurancaEstaAptoParaCadastroValidation(_codigoSegurancaRepository).Validate(codigoSeguranca);
+            if (!codigoSeguranca.ValidationResult.IsValid)
             {
                 return codigoSeguranca;
             }
@@ -50,5 +58,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _codigoSegurancaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

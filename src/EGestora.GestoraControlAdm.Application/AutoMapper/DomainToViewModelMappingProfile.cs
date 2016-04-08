@@ -94,6 +94,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Debito, NotaServicoDebitoViewModel>();
 
             Mapper.CreateMap<Boleto, BoletoViewModel>();
+
+            Mapper.CreateMap<CodigoSeguranca, CodigoSegurancaViewModel>();
         }
     }
 }

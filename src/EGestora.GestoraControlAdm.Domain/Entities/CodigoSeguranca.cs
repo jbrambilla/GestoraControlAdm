@@ -5,6 +5,11 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 {
     public class CodigoSeguranca
     {
+        public CodigoSeguranca()
+        {
+            CodigoSegurancaId = Guid.NewGuid();
+        }
+
         public Guid CodigoSegurancaId { get; set; }
         public Guid ClienteId { get; set; }
         public string Codigo { get; set; }

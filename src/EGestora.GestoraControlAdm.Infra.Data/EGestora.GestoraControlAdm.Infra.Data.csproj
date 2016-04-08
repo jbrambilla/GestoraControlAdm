@@ -56,6 +56,7 @@
     <Compile Include="EntityConfiguration\ClienteConfiguration.cs" />
     <Compile Include="EntityConfiguration\ClienteServicoConfiguration.cs" />
     <Compile Include="EntityConfiguration\CnaeConfiguration.cs" />
+    <Compile Include="EntityConfiguration\CodigoSegurancaConfiguration.cs" />
     <Compile Include="EntityConfiguration\ContatoConfiguration.cs" />
     <Compile Include="EntityConfiguration\DebitoConfiguration.cs" />
     <Compile Include="EntityConfiguration\EmpresaConfiguration.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\ClienteServicoRepository.cs" />
     <Compile Include="Repository\CnaeRepository.cs" />
+    <Compile Include="Repository\CodigoSegurancaRepository.cs" />
     <Compile Include="Repository\ContatoRepository.cs" />
     <Compile Include="Repository\DebitoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />

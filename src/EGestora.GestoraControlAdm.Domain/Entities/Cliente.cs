@@ -14,6 +14,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             ClienteServicoList = new List<ClienteServico>();
             NotaServicoList = new List<NotaServico>();
             LoteFaturamentoList = new List<LoteFaturamento>();
+            CodigoSegurancaList = new List<CodigoSeguranca>();
         }
 
         public Guid? RevendaId { get; set; }

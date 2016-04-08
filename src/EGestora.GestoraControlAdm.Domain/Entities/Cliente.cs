@@ -29,6 +29,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual ICollection<NotaServico> NotaServicoList { get; set; }
         public virtual ICollection<LoteFaturamento> LoteFaturamentoList { get; set; }
         public virtual ICollection<Debito> DebitoList { get; set; }
+        public virtual ICollection<CodigoSeguranca> CodigoSegurancaList { get; set; }
 
         public decimal ValorTotalServicos 
         { 

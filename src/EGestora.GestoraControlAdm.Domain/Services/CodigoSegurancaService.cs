@@ -56,9 +56,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _codigoSegurancaRepository.Remove(id);
         }
 
-        public IEnumerable<PessoaJuridica> GetAllClientes()
+        public IEnumerable<Cliente> GetAllClientes()
         {
-            return _clienteRepository.GetAllPessoaJuridica();
+            return _clienteRepository.GetAll();
         }
 
         public void Dispose()

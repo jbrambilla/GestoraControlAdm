@@ -2,7 +2,11 @@
 
 @{
     ViewBag.Title = "Gerar Código de Segurança";
+    IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel> ClienteList = ViewBag.ClienteList;
 }
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+<link href="~/Content/titatoggle-master/dist/titatoggle-dist.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-lg-12">
@@ -17,18 +21,10 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="panel panel-default">
-                        <div class="panel-heading">Informações de Trava</div>
+                        <div class="panel-heading">Datas para a Trava</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.ClienteId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.DropDownList("ClienteId", (IEnumerable<SelectListItem>)ViewBag.ClienteList, String.Empty, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.DataAtual, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
@@ -42,6 +38,91 @@
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.DataTrava, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.DataTrava, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Clientes</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table id="tabelaCliente" class="stripe hover row-border compact" cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>
+                                                        Razão Social
+                                                    </th>
+                                                    <th>
+                                                        Nome Fantasia
+                                                    </th>
+                                                    <th>
+                                                        CNPJ
+                                                    </th>
+                                                    <th>
+                                                        E-mail
+                                                    </th>
+                                                    <th>
+                                                        Vencimento do Boleto
+                                                    </th>
+                                                    <th>
+                                                        Valor Total dos Serviços
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in ClienteList)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            <input type="checkbox" id="gerar" name="gerar" value="@item.PessoaId" />
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+                                                        <td>
+                                                            @item.VencimentoBoleto.ToString("d")
+                                                        </td>
+                                                        <td>
+                                                            @item.ValorTotalServicos
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Configurações</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EnviarEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            <div class="checkbox checkbox-slider--a">
+                                                <label>
+                                                    <input type="checkbox" name="EnviarEmail" id="EnviarEmail" value="true"><span></span>
+                                                </label>
+                                            </div>
+                                            @Html.ValidationMessageFor(model => model.EnviarEmail, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -63,4 +144,25 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#tabelaCliente').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nenhum registro encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ total de registros)",
+                    "search": "Busca:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
 }

@@ -5,6 +5,7 @@ using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Application
@@ -21,18 +22,26 @@ namespace EGestora.GestoraControlAdm.Application
 
         public CodigoSegurancaViewModel Add(CodigoSegurancaViewModel codigoSegurancaViewModel)
         {
-            var codigoSeguranca = Mapper.Map<CodigoSegurancaViewModel, CodigoSeguranca>(codigoSegurancaViewModel);
-
+            var clientesParaGerarCodigo = codigoSegurancaViewModel.Gerar.Where(c => !c.Equals("false")).ToList();
+            
             BeginTransaction();
 
-            var codigoSegurancaReturn = _codigoSegurancaService.Add(codigoSeguranca);
-            codigoSegurancaViewModel = Mapper.Map<CodigoSeguranca, CodigoSegurancaViewModel>(codigoSegurancaReturn);
-            
-            if (!codigoSegurancaViewModel.ValidationResult.IsValid)
+            foreach (var ClienteId in clientesParaGerarCodigo)
             {
-                return codigoSegurancaViewModel;
-            }
+                var codigoSeguranca = Mapper.Map<CodigoSegurancaViewModel, CodigoSeguranca>(codigoSegurancaViewModel);
+                codigoSeguranca.CodigoSegurancaId = Guid.NewGuid();
+                codigoSeguranca.ClienteId = Guid.Parse(ClienteId);
 
+                var codigoSegurancaReturn = _codigoSegurancaService.Add(codigoSeguranca);
+
+                codigoSegurancaViewModel = Mapper.Map<CodigoSeguranca, CodigoSegurancaViewModel>(codigoSegurancaReturn);
+
+                if (!codigoSegurancaViewModel.ValidationResult.IsValid)
+                {
+                    return codigoSegurancaViewModel;
+                }
+            }
+            
             Commit();
 
             return codigoSegurancaViewModel;
@@ -69,9 +78,9 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
-        public IEnumerable<PessoaJuridicaViewModel> GetAllClientes()
+        public IEnumerable<ClienteViewModel> GetAllClientes()
         {
-            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_codigoSegurancaService.GetAllClientes());
+            return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_codigoSegurancaService.GetAllClientes());
         }
 
         public void Dispose()

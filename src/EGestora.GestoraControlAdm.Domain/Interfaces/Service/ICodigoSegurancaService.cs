@@ -12,6 +12,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         CodigoSeguranca Update(CodigoSeguranca codigoSeguranca);
         void Remove(Guid id);
 
-        IEnumerable<PessoaJuridica> GetAllClientes();
+        IEnumerable<Cliente> GetAllClientes();
     }
 }

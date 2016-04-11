@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,6 +10,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public CodigoSegurancaViewModel()
         {
             CodigoSegurancaId = Guid.NewGuid();
+            Gerar = new List<string>();
         }
 
         [Key]
@@ -34,6 +36,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime DataTrava { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Name = "Criado Em")]
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]
@@ -44,5 +47,13 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        //Guids dos clientes selecionados
+        [ScaffoldColumn(false)]
+        public virtual ICollection<string> Gerar { get; set; }
+
+        [ScaffoldColumn(false)]
+        [DisplayName("Enviar Por E-mail")]
+        public bool EnviarEmail { get; set; }
     }
 }

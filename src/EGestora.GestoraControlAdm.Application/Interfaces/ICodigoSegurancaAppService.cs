@@ -12,6 +12,6 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         CodigoSegurancaViewModel Update(CodigoSegurancaViewModel codigoSegurancaViewModel);
         void Remove(Guid id);
 
-        IEnumerable<PessoaJuridicaViewModel> GetAllClientes();
+        IEnumerable<ClienteViewModel> GetAllClientes();
     }
 }

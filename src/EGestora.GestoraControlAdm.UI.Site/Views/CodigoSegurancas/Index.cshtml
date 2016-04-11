@@ -31,6 +31,9 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.DataTrava)
                                 </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CriadoEm)
+                                </th>
                                 <th></th>
                             </tr>
 
@@ -50,6 +53,9 @@
                                     </td>
                                     <td>
                                         @item.DataTrava.ToString("d")
+                                    </td>
+                                    <td>
+                                        @item.CriadoEm.ToString("dd/MM/yyyy HH:mm")
                                     </td>
                                     <td>
                                         <a href="@Url.Action("Edit", "CodigoSegurancas", new { id = item.CodigoSegurancaId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>

@@ -59,6 +59,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 codigoSegurancaViewModel = _codigoSegurancaAppService.Add(codigoSegurancaViewModel);
 
+                if (codigoSegurancaViewModel.ValidationResult == null)
+                {
+                    LoadViewBags();
+                    return View(codigoSegurancaViewModel);
+                }
+
                 if (!codigoSegurancaViewModel.ValidationResult.IsValid)
                 {
                     foreach (var erro in codigoSegurancaViewModel.ValidationResult.Erros)
@@ -133,7 +139,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         private void LoadViewBags()
         {
-            ViewBag.ClienteList = new SelectList(_codigoSegurancaAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            ViewBag.ClienteList = _codigoSegurancaAppService.GetAllClientes();
         }
 
         protected override void Dispose(bool disposing)

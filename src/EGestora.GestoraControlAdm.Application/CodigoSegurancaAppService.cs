@@ -69,10 +69,16 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<PessoaJuridicaViewModel> GetAllClientes()
+        {
+            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_codigoSegurancaService.GetAllClientes());
+        }
+
         public void Dispose()
         {
             _codigoSegurancaService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

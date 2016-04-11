@@ -18,7 +18,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Cliente")]
         public Guid ClienteId { get; set; }
 
-        [Required]
         [DisplayName("Código")]
         [MaxLength(12, ErrorMessage="O Código deve ter no máximo {1} caracteres.")]
         [MinLength(12, ErrorMessage = "O Código deve ter no mínimo {1} caracteres.")]

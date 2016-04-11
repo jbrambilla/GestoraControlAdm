@@ -21,9 +21,9 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.CodigoSegurancas
                 DataAtual = codigoSeguranca.DataAtual,
                 ClienteId = codigoSeguranca.ClienteId,
                 Cliente = codigoSeguranca.Cliente,
-                Codigo = "111111111111"
             };
-            //5793
+            var quantidadeDias = codigoSeguranca.Codigo.Substring(4, 4);
+            codigoSegurancaTeste.DataTrava = new DateTime(2000, 05, 29).AddDays(Convert.ToDouble(quantidadeDias));
             _codigoSegurancaRepository.GerarCodigo(codigoSegurancaTeste);
 
             return codigoSeguranca.Codigo.Length == 12 && codigoSeguranca.Codigo == codigoSegurancaTeste.Codigo;

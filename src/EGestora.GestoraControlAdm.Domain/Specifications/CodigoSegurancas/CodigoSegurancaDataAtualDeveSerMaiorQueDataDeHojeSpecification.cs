@@ -8,7 +8,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.CodigoSegurancas
     {
         public bool IsSatisfiedBy(CodigoSeguranca codigoSeguranca)
         {
-            return codigoSeguranca.DataAtual.CompareTo(DateTime.Now) > 0;
+            return codigoSeguranca.DataAtual.Date.CompareTo(DateTime.Now.Date) >= 0;
         }
     }
 }

@@ -10,10 +10,12 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     public class CodigoSegurancaService : ICodigoSegurancaService
     {
         private readonly ICodigoSegurancaRepository _codigoSegurancaRepository;
+        private readonly IClienteRepository _clienteRepository;
 
-        public CodigoSegurancaService(ICodigoSegurancaRepository codigoSegurancaRepository)
+        public CodigoSegurancaService(ICodigoSegurancaRepository codigoSegurancaRepository, IClienteRepository clienteRepository)
         {
             _codigoSegurancaRepository = codigoSegurancaRepository;
+            _clienteRepository = clienteRepository;
         }
 
         public CodigoSeguranca Add(CodigoSeguranca codigoSeguranca)
@@ -23,6 +25,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return codigoSeguranca;
             }
 
+            codigoSeguranca.Cliente = _clienteRepository.GetById(codigoSeguranca.ClienteId);
             _codigoSegurancaRepository.GerarCodigo(codigoSeguranca);
             codigoSeguranca.ValidationResult = new CodigoSegurancaEstaAptoParaCadastroValidation(_codigoSegurancaRepository).Validate(codigoSeguranca);
             if (!codigoSeguranca.ValidationResult.IsValid)
@@ -51,6 +54,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void Remove(Guid id)
         {
             _codigoSegurancaRepository.Remove(id);
+        }
+
+        public IEnumerable<PessoaJuridica> GetAllClientes()
+        {
+            return _clienteRepository.GetAllPessoaJuridica();
         }
 
         public void Dispose()

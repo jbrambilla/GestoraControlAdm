@@ -44,6 +44,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: CodigoSegurancas/Create
         public ActionResult Create()
         {
+            LoadViewBags();
             return View();
         }
 
@@ -65,12 +66,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
 
+                    LoadViewBags();
                     return View(codigoSegurancaViewModel);
                 }
 
                 return RedirectToAction("Index");
             }
 
+            LoadViewBags();
             return View(codigoSegurancaViewModel);
         }
 
@@ -126,6 +129,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             _codigoSegurancaAppService.Remove(id);
             return RedirectToAction("Index");
+        }
+
+        private void LoadViewBags()
+        {
+            ViewBag.ClienteList = new SelectList(_codigoSegurancaAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
         }
 
         protected override void Dispose(bool disposing)

@@ -27,14 +27,14 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
 
             for (int i = 0; i < constante1.Length; i++)
             {
-                primeiroTotal += cnpjDatas[i] * constante1[i];
+                primeiroTotal += Convert.ToInt32(cnpjDatas[i].ToString()) * Convert.ToInt32(constante1[i].ToString());
             }
 
             cnpjDatas += diffDataTrava;
 
             for (int i = 0; i < constante2.Length; i++)
             {
-                segundoTotal += cnpjDatas[i] * constante2[i];
+                segundoTotal += Convert.ToInt32(cnpjDatas[i].ToString()) * Convert.ToInt32(constante2[i].ToString());
             }
 
             codigoSeguranca.Codigo = primeiroTotal.ToString().PadLeft(4, '0') + diffDataTrava + segundoTotal.ToString().PadLeft(4, '0');

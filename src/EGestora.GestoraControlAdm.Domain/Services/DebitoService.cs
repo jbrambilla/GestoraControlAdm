@@ -61,6 +61,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _clienteRepository.GetAllPessoaJuridica();
         }
 
+        public void Baixar(Guid id)
+        {
+            _debitoRepository.Baixar(id);
+        }
+
         public void GerarBoletoParaDebito(Debito debito)
         {
             var vencimento = debito.Vencimento;

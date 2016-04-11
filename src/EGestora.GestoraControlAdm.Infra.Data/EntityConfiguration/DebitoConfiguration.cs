@@ -9,6 +9,9 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(d => d.DebitoId);
 
+            Property(d => d.PagoEm)
+                .IsOptional();
+
             HasRequired(d => d.Cliente)
                 .WithMany(c => c.DebitoList)
                 .HasForeignKey(d => d.ClienteId);

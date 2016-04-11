@@ -49,6 +49,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]
+        [DisplayName("Data do Pagamento")]
+        public DateTime? PagoEm { get; set; }
+
+        [ScaffoldColumn(false)]
         public DateTime AlteradoEm { get; set; }
 
         [ScaffoldColumn(false)]

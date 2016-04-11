@@ -418,6 +418,7 @@
     <Content Include="Views\CodigoSegurancas\Details.cshtml" />
     <Content Include="Views\CodigoSegurancas\Edit.cshtml" />
     <Content Include="Views\CodigoSegurancas\Index.cshtml" />
+    <Content Include="Views\Debitos\Baixar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

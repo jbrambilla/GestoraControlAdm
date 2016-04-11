@@ -100,10 +100,18 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Debito>, IEnumerable<DebitoViewModel>>(_debitoService.GetAllToGrid(skip, take));
         }
 
+        public void Baixar(Guid id)
+        {
+            BeginTransaction();
+            _debitoService.Baixar(id);
+            Commit();
+        }
+
         public void Dispose()
         {
             _debitoService.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

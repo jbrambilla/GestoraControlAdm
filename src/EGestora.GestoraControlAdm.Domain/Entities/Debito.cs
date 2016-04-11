@@ -20,6 +20,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string CodigoSeguranca { get; set; }
         public int Parcelas { get; set; }
         public DateTime Vencimento { get; set; }
+        public DateTime? PagoEm { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
 
@@ -43,6 +44,11 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
                 return valorParcelaList;
             }
+        }
+
+        public bool IsPago()
+        {
+            return PagoEm != null;
         }
 
         public ValidationResult ValidationResult { get; set; }

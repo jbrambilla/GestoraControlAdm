@@ -135,6 +135,33 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return RedirectToAction("Index");
         }
 
+
+
+        // GET: Debitos/Delete/5
+        public ActionResult Baixar(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DebitoViewModel debitoViewModel = _debitoAppService.GetById(id.Value);
+            if (debitoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(debitoViewModel);
+        }
+
+        // POST: Debitos/Delete/5
+        [HttpPost, ActionName("Baixar")]
+        [ValidateAntiForgeryToken]
+        public ActionResult BaixarConfirmado(Guid id)
+        {
+            _debitoAppService.Baixar(id);
+            return RedirectToAction("Index");
+        }
+
+
         [HttpGet]
         [ValidateInput(false)]
         public ActionResult BoletoHtml(Guid id, DateTime trava)

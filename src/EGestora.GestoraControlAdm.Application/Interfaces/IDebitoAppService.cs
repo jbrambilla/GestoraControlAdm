@@ -13,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void Remove(Guid id);
         int GetTotalRecords();
         IEnumerable<DebitoViewModel> GetAllToGrid(int skip, int take);
+        void Baixar(Guid id);
 
         IEnumerable<PessoaJuridicaViewModel> GetAllClientes();
 

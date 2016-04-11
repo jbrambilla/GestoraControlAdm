@@ -36,6 +36,9 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Vencimento)
                                 </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PagoEm)
+                                </th>
                                 <th></th>
                             </tr>
 
@@ -62,6 +65,14 @@
                                         @item.Vencimento.ToString("d")
                                     </td>
                                     <td>
+                                        @item.PagoEm
+                                    </td>
+                                    <td>
+                                        @if (item.PagoEm == null) { 
+                                            <a href="@Url.Action("Baixar", "Debitos", new {id = item.DebitoId})" class="btn btn-default"><span title="Dar baixa" class="fa fa-arrow-down"></span></a>
+                                        } else {
+                                            <a href="#" class="btn btn-success disabled"><span title="Pago" class="fa fa-check"></span></a>
+                                        }
                                         <a href="@Url.Action("Edit", "Debitos", new {id = item.DebitoId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
                                         <a href="@Url.Action("Details", "Debitos", new { id = item.DebitoId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
                                         <a href="@Url.Action("Delete", "Debitos", new { id = item.DebitoId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>

@@ -19,6 +19,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         //DebitoViewModel AddDebito(DebitoViewModel debitoViewModel);
 
-        bool EnviarEmail(NotaServicoDebitoViewModel notaServicoViewModel);
+        bool EnviarEmail(NotaServicoViewModel notaServicoViewModel);
+        bool EnviarEmail(NotaServicoDebitoViewModel notaServicoDebitoViewModel);
     }
 }

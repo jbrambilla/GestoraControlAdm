@@ -108,10 +108,24 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                _notaServicoAppService.Update(notaServicoViewModel);
+                notaServicoViewModel = _notaServicoAppService.Update(notaServicoViewModel);
+                if (!notaServicoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in notaServicoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+                    LoadViewBags();
+                    return View(notaServicoViewModel);
+                }
+
+                if (!EnviarEmail(notaServicoViewModel))
+                {
+                    return View(notaServicoViewModel);
+                }
+
                 return RedirectToAction("Index");
             }
-
             LoadViewBags();
             return View(notaServicoViewModel);
         }
@@ -156,6 +170,25 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             notaServicoDebitoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
             if (_notaServicoAppService.EnviarEmail(notaServicoDebitoViewModel))
+            {
+                return true;
+            }
+
+            ModelState.AddModelError(string.Empty, "Erro ao enviar e-mail.");
+            LoadViewBags();
+            return false;
+        }
+
+        private bool EnviarEmail(NotaServicoViewModel notaServicoViewModel)
+        {
+            var NfseViewAsPdf = EmitirPdf(notaServicoViewModel.NotaServicoId);
+            if (!notaServicoViewModel.EnviarEmail)
+            {
+                return false;
+            }
+
+            notaServicoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
+            if (_notaServicoAppService.EnviarEmail(notaServicoViewModel))
             {
                 return true;
             }

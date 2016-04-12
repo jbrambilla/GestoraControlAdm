@@ -69,6 +69,11 @@ namespace EGestora.GestoraControlAdm.Application
             var notaServicoReturn = _notaServicoService.Update(notaServico);
             notaServicoViewModel = Mapper.Map<NotaServico, NotaServicoViewModel>(notaServicoReturn);
 
+            if (!notaServicoViewModel.ValidationResult.IsValid)
+            {
+                return notaServicoViewModel;
+            }
+
             Commit();
 
             return notaServicoViewModel;
@@ -96,9 +101,14 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Cliente, ClienteViewModel>(_notaServicoService.ObterClientePorId(id));
         }
 
-        public bool EnviarEmail(NotaServicoDebitoViewModel notaServicoViewModel)
+        public bool EnviarEmail(NotaServicoViewModel notaServicoViewModel)
         {
-            return _notaServicoService.EnviarEmail(Mapper.Map<NotaServicoDebitoViewModel, NotaServico>(notaServicoViewModel));
+            return _notaServicoService.EnviarEmail(Mapper.Map<NotaServicoViewModel, NotaServico>(notaServicoViewModel));
+        }
+
+        public bool EnviarEmail(NotaServicoDebitoViewModel notaServicoDebitoViewModel)
+        {
+            return _notaServicoService.EnviarEmail(Mapper.Map<NotaServicoDebitoViewModel, NotaServico>(notaServicoDebitoViewModel));
         }
 
         public void Dispose()
@@ -106,9 +116,6 @@ namespace EGestora.GestoraControlAdm.Application
             _notaServicoService.Dispose();
             GC.SuppressFinalize(this);
         }
-
-
-
-
+        
     }
 }

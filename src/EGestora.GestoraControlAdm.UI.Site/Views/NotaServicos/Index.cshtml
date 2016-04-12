@@ -74,7 +74,6 @@
                                                 @Html.DisplayFor(modelItem => item.CriadoEm)
                                             </td>
                                             <td>
-                                                <a href="@Url.Action("Edit", "NotaServicos", new {id = item.NotaServicoId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
                                                 <a href="@Url.Action("Details", "NotaServicos", new { id = item.NotaServicoId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
                                                 <a href="@Url.Action("Delete", "NotaServicos", new { id = item.NotaServicoId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
                                             </td>

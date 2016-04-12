@@ -12,3 +12,4 @@
 /// <reference path="select2.full.min.js" />
 /// <reference path="pessoaajaxmodal.js" />
 /// <reference path="jquery.mask.min.js" />
+/// <reference path="notaservicocalculos.js" />

@@ -68,6 +68,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public NotaServico Update(NotaServico notaServico)
         {
+            if (!notaServico.IsValid())
+            {
+                return notaServico;
+            }
+
+            if (!EmitirNotaFiscal(notaServico))
+            {
+                return notaServico;
+            }
+
             return _notaServicoRepository.Update(notaServico);
         }
 

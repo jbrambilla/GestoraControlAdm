@@ -1,0 +1,54 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.CodigoSegurancaViewModel>
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Codigo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataTrava)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CriadoEm)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @item.DataTrava.ToString("d")
+                    </td>
+                    <td>
+                        @item.CriadoEm.ToString("d")
+                    </td>
+                    <td>
+                        <a href="@Url.Action("", "", new { id = item.ClienteId })" data-modal="" class="btn btn-primary btn-circle">
+                            <span title="Enviar por E-mail" class="glyphicon glyphicon-envelope"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum Código de Segurança registrado.
+            </th>
+        </tr>
+    </table>
+}
+
+

@@ -14,6 +14,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             ClienteServicoList = new List<ClienteServicoViewModel>();
             DebitoList = new List<DebitoViewModel>();
             NotaServicoList = new List<NotaServicoViewModel>();
+            CodigoSegurancaList = new List<CodigoSegurancaViewModel>();
         }
 
         [DisplayName("Revenda")]
@@ -44,6 +45,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<NotaServicoViewModel> NotaServicoList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ICollection<CodigoSegurancaViewModel> CodigoSegurancaList { get; set; }
 
         [ScaffoldColumn(false)]
         public RevendaViewModel Revenda { get; set; }

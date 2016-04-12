@@ -13,7 +13,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Guid CodigoSegurancaId { get; set; }
         public Guid ClienteId { get; set; }
         public string Codigo { get; set; }
-        public DateTime DataAtual { get; set; }
         public DateTime DataTrava { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }

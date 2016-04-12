@@ -25,11 +25,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(12, ErrorMessage = "O Código deve ter no mínimo {1} caracteres.")]
         public string Codigo { get; set; }
 
-        [Display(Name = "Data Atual")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-        public DateTime DataAtual { get; set; }
-
         [Display(Name = "Data da Trava")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]

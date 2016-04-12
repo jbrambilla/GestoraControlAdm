@@ -18,7 +18,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.CodigoSegurancas
         {
             var codigoSegurancaTeste = new CodigoSeguranca()
             {
-                DataAtual = codigoSeguranca.DataAtual,
+                CriadoEm = codigoSeguranca.CriadoEm,
                 ClienteId = codigoSeguranca.ClienteId,
                 Cliente = codigoSeguranca.Cliente,
             };

@@ -15,7 +15,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
 
         public void GerarCodigo(CodigoSeguranca codigoSeguranca)
         {
-            var diffDataAtual = codigoSeguranca.DataAtual.Subtract(DateTime.Parse("29/05/2000")).Days.ToString().PadLeft(4,'0');
+            var diffDataAtual = codigoSeguranca.CriadoEm.Subtract(DateTime.Parse("29/05/2000")).Days.ToString().PadLeft(4,'0');
             var diffDataTrava = codigoSeguranca.DataTrava.Subtract(DateTime.Parse("29/05/2000")).Days.ToString().PadLeft(4, '0');
             var cnpj = codigoSeguranca.Cliente.PessoaJuridica.Cnpj.Replace(".", "").Replace("-", "").Replace("/", "").PadLeft(14, '0');
 

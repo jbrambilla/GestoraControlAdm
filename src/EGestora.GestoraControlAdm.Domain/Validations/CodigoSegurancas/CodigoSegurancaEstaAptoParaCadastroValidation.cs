@@ -10,8 +10,10 @@ namespace EGestora.GestoraControlAdm.Domain.Validations.CodigoSegurancas
         public CodigoSegurancaEstaAptoParaCadastroValidation(ICodigoSegurancaRepository codigoSegurancaRepository)
         {
             var codigo = new CodigoSegurancaDeveGerarCodigoCorretoSpecification(codigoSegurancaRepository);
+            var clientesDevedores = new CodigoSegurancaNaoDeveGerarCodigoParaClientesDevedoresSpecification();
 
             base.Add("codigo", new Rule<CodigoSeguranca>(codigo, "O Código gerado não confere."));
+            base.Add("clientesDevedores", new Rule<CodigoSeguranca>(clientesDevedores, "Não é possível gerar o código para Clientes com débito pendente."));
         }
     }
 }

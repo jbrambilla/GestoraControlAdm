@@ -113,6 +113,7 @@
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataAtualDeveSerMaiorQueDataDeHojeSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataTravaDeveSerMaiorQueDataDeHojeSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDeveGerarCodigoCorretoSpecification.cs" />
+    <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaNaoDeveGerarCodigoParaClientesDevedoresSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoDevePossuirBoletoSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />

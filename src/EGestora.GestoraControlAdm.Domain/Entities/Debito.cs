@@ -51,6 +51,11 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             return PagoEm != null;
         }
 
+        public bool IsVencido()
+        {
+            return Vencimento.Date.CompareTo(DateTime.Now.Date) < 0;
+        }
+
         public ValidationResult ValidationResult { get; set; }
 
         public bool IsValid()

@@ -1,4 +1,6 @@
-﻿using EGestora.GestoraControlAdm.Domain.Entities;
+﻿using DomainValidation.Validation;
+using EGestora.GestoraControlAdm.Domain.Entities;
+using EGestora.GestoraControlAdm.Domain.Interfaces.MailService;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Validations.CodigoSegurancas;
@@ -11,11 +13,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     {
         private readonly ICodigoSegurancaRepository _codigoSegurancaRepository;
         private readonly IClienteRepository _clienteRepository;
+        private readonly IEmailService _emailService;
 
-        public CodigoSegurancaService(ICodigoSegurancaRepository codigoSegurancaRepository, IClienteRepository clienteRepository)
+        public CodigoSegurancaService(
+            ICodigoSegurancaRepository codigoSegurancaRepository,
+            IClienteRepository clienteRepository,
+            IEmailService emailService)
         {
             _codigoSegurancaRepository = codigoSegurancaRepository;
             _clienteRepository = clienteRepository;
+            _emailService = emailService;
         }
 
         public CodigoSeguranca Add(CodigoSeguranca codigoSeguranca)
@@ -29,6 +36,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _codigoSegurancaRepository.GerarCodigo(codigoSeguranca);
             codigoSeguranca.ValidationResult = new CodigoSegurancaEstaAptoParaCadastroValidation(_codigoSegurancaRepository).Validate(codigoSeguranca);
             if (!codigoSeguranca.ValidationResult.IsValid)
+            {
+                return codigoSeguranca;
+            }
+
+            if (!EnviarEmail(codigoSeguranca))
             {
                 return codigoSeguranca;
             }
@@ -61,11 +73,31 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _clienteRepository.GetAll();
         }
 
+        public bool EnviarEmail(CodigoSeguranca codigoSeguranca)
+        {
+            if (!codigoSeguranca.EnviarEmail)
+            {
+                return true;
+            }
+            //var cliente = codigoSeguranca.Cliente;
+
+            _emailService.AdicionarDestinatário("jotabram@gmail.com");
+            //_emailService.AdicionarDestinatário(cliente.Email);
+            _emailService.AdicionarRemetente("joao.brambilla@egestora.com.br");
+            _emailService.AdicionarAssunto("Código de Segurança EGestora");
+            _emailService.AdicionarCorpo(codigoSeguranca.Codigo);
+            if (!_emailService.Enviar())
+            {
+                codigoSeguranca.ValidationResult.Add(new ValidationError("Falha ao enviar e-mail."));
+                return false;
+            }
+            return true;
+        }
+
         public void Dispose()
         {
             _codigoSegurancaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

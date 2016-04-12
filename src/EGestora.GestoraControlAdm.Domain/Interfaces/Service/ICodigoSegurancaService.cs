@@ -13,5 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         void Remove(Guid id);
 
         IEnumerable<Cliente> GetAllClientes();
+
+        bool EnviarEmail(CodigoSeguranca codigoSeguranca);
     }
 }

@@ -21,6 +21,8 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public ValidationResult ValidationResult { get; set; }
 
+        public bool EnviarEmail { get; set; }
+
         public bool IsValid()
         {
             ValidationResult = new CodigoSegurancaEstaConsistenteValidation().Validate(this);

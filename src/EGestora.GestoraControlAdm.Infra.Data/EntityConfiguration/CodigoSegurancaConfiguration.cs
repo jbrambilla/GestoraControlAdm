@@ -18,6 +18,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                 .HasForeignKey(cs => cs.ClienteId);
 
             Ignore(cs => cs.ValidationResult);
+
+            Ignore(cs => cs.EnviarEmail);
         }
     }
 }

@@ -51,5 +51,6 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void RemoveAnexo(Guid id);
 
         DebitoViewModel GetDebitoById(Guid id);
+        void BaixarDebito(Guid id);
     }
 }

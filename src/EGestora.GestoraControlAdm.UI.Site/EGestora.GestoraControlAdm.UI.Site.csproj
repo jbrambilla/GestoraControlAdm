@@ -421,6 +421,8 @@
     <Content Include="Views\CodigoSegurancas\Index.cshtml" />
     <Content Include="Views\Debitos\Baixar.cshtml" />
     <Content Include="Views\Clientes\CodigoSegurancas\_CodigoSegurancaList.cshtml" />
+    <Content Include="Views\Clientes\Debitos\_BaixarDebitoCliente.cshtml" />
+    <Content Include="Views\Clientes\Debitos\_DadosDebito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

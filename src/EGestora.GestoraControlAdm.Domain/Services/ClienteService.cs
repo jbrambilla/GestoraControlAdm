@@ -285,6 +285,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _debitoRepository.GetById(id);
         }
 
+        public void BaixarDebito(Guid id)
+        {
+            _debitoRepository.Baixar(id);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();

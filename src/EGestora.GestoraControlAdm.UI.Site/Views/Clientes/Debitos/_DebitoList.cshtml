@@ -9,9 +9,6 @@
                     @Html.DisplayNameFor(model => model.Detalhes)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CodigoSeguranca)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.ValorLiquido)
                 </th>
                 <th>
@@ -23,6 +20,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Vencimento)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PagoEm)
+                </th>
                 <th></th>
             </tr>
 
@@ -32,9 +32,6 @@
 
                     <td>
                         @Html.DisplayFor(modelItem => item.Detalhes)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CodigoSeguranca)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.ValorLiquido)
@@ -50,6 +47,24 @@
                         @item.Vencimento.ToString("d")
                     </td>
                     <td>
+                        @if (item.PagoEm.HasValue)
+                        {
+                            @item.PagoEm.Value.ToString("d")
+                        }
+                    </td>
+                    <td>
+                        @if (item.PagoEm == null)
+                        {
+                            <a href="@Url.Action("BaixarDebito", "Clientes", new { id = item.DebitoId })" data-modal="" class="btn btn-danger btn-circle">
+                                <span title="Baixar Débito" class="glyphicon glyphicon-arrow-down"></span>
+                            </a>
+                        }
+                        else {
+                            <a href="#" class="btn btn-success btn-circle disabled">
+                                <span title="Baixar Débito" class="fa fa-check"></span>
+                            </a>
+                        }
+                        
                         <a href="@Url.Action("ListarBoletos", "Clientes", new { id = item.DebitoId })" data-modal="" class="btn btn-default btn-circle">
                             <span title="Boletos" class="glyphicon glyphicon-list"></span>
                         </a>

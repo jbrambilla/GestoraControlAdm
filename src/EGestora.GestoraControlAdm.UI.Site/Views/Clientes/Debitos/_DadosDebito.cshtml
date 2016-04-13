@@ -1,0 +1,46 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.DebitoViewModel
+
+
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Detalhes)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Detalhes)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ValorLiquido)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ValorLiquido)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Parcelas)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Parcelas)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.CriadoEm)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CriadoEm)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Vencimento)
+    </dt>
+
+    <dd>
+        @Model.Vencimento.ToString("d")
+    </dd>
+</dl>
+
+

@@ -37,6 +37,8 @@ function bindForm(dialog) {
                         $('#replacetargetAnexo').load(result.url);
                     } else if (result.replaceTarget == "contato") {
                         $('#replacetargetContato').load(result.url);
+                    } else if (result.replaceTarget == "debito") {
+                        $('#replacetargetDebito').load(result.url);
                     } else {
                         $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                     }

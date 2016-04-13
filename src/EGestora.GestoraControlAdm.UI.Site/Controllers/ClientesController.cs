@@ -583,6 +583,50 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return PartialView("_BoletoListCliente", debitoViewModel.BoletoList.OrderBy(b => b.Vencimento));
         }
 
+        public ActionResult ListarDebitos(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var clienteViewModel = _clienteAppService.GetById(id.Value);
+            if (clienteViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DebitoList", clienteViewModel.DebitoList);
+        }
+
+        public ActionResult BaixarDebito(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var debitoViewModel = _clienteAppService.GetDebitoById(id.Value);
+            if (debitoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            //ViewBag.PessoaId = anexoViewModel.PessoaId;
+            return PartialView("_BaixarDebitoCliente", debitoViewModel);
+        }
+
+        [HttpPost, ActionName("BaixarDebito")]
+        [ValidateAntiForgeryToken]
+        public ActionResult BaixarDebitoConfirmed(Guid id)
+        {
+            var pessoaId = _clienteAppService.GetDebitoById(id).ClienteId;
+            _clienteAppService.BaixarDebito(id);
+
+            string url = Url.Action("ListarDebitos", "Clientes", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "debito" });
+        }
+
+        //ANEXOS
+
         public ActionResult BaixarAnexo(Guid id)
         {
             var anexo = _clienteAppService.GetAnexoById(id);

@@ -9,11 +9,11 @@
 
 <div class="modal-body">
     <div class="form-horizontal">
-
-        @Html.Partial("_DadosDebito")
-
         @using (Html.BeginForm())
         {
+            @Html.Partial("_DadosDebito")
+
+        
             @Html.AntiForgeryToken()
             
             <div class="modal-footer">

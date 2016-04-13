@@ -41,6 +41,13 @@
     <dd>
         @Model.Vencimento.ToString("d")
     </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.PagoEm)
+    </dt>
+
+    <dd>
+        <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="DataBaixa" name="DataBaixa" required class="form-control" />
+    </dd>
 </dl>
 
 

@@ -65,7 +65,10 @@
                                         @item.Vencimento.ToString("d")
                                     </td>
                                     <td>
-                                        @item.PagoEm
+                                        @if (item.PagoEm.HasValue)
+                                        {
+                                            @item.PagoEm.Value.ToString("d")
+                                        }
                                     </td>
                                     <td>
                                         @if (item.PagoEm == null) { 

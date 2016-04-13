@@ -21,10 +21,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
         }
 
 
-        public void Baixar(Guid id)
+        public void Baixar(Guid id, DateTime DataBaixa)
         {
             var debito = GetById(id);
-            debito.PagoEm = DateTime.Now;
+            debito.PagoEm = DataBaixa;
             Update(debito);
         }
     }

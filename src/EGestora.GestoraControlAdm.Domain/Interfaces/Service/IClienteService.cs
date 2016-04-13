@@ -53,6 +53,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         void RemoveAnexo(Guid id);
 
         Debito GetDebitoById(Guid id);
-        void BaixarDebito(Guid id);
+        void BaixarDebito(Guid id, DateTime DataBaixa);
     }
 }

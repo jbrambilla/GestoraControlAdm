@@ -13,7 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         void Remove(Guid id);
         int GetTotalRecords();
         IEnumerable<Debito> GetAllToGrid(int skip, int take);
-        void Baixar(Guid id);
+        void Baixar(Guid id, DateTime DataBaixa);
 
         IEnumerable<PessoaJuridica> GetAllClientes();
 

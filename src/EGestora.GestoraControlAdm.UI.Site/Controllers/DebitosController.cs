@@ -155,9 +155,9 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // POST: Debitos/Delete/5
         [HttpPost, ActionName("Baixar")]
         [ValidateAntiForgeryToken]
-        public ActionResult BaixarConfirmado(Guid id)
+        public ActionResult BaixarConfirmado(Guid id, DateTime DataBaixa)
         {
-            _debitoAppService.Baixar(id);
+            _debitoAppService.Baixar(id, DataBaixa);
             return RedirectToAction("Index");
         }
 

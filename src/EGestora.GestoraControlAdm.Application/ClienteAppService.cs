@@ -328,10 +328,10 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Debito, DebitoViewModel>(_clienteService.GetDebitoById(id));
         }
 
-        public void BaixarDebito(Guid id)
+        public void BaixarDebito(Guid id, DateTime DataBaixa)
         {
             BeginTransaction();
-            _clienteService.BaixarDebito(id);
+            _clienteService.BaixarDebito(id, DataBaixa);
             Commit();
         }
 

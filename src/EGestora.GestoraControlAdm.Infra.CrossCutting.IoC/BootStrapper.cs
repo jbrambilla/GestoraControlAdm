@@ -10,11 +10,16 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.NfseWebServices;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Services;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Configuration;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Context;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Model;
 using EGestora.GestoraControlAdm.Infra.Data.Context;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using EGestora.GestoraControlAdm.Infra.Data.MailService;
 using EGestora.GestoraControlAdm.Infra.Data.Repository;
 using EGestora.GestoraControlAdm.Infra.Data.UoW;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
 
 namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
@@ -76,6 +81,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<IDebitoRepository, DebitoRepository>();
             container.RegisterPerWebRequest<IBoletoRepository, BoletoRepository>();
             container.RegisterPerWebRequest<ICodigoSegurancaRepository, CodigoSegurancaRepository>();
+            container.RegisterPerWebRequest<IUsuarioRepository, UsuarioRepository>();
             container.RegisterPerWebRequest<IUnitOfWork, UnitOfWork>();
             container.RegisterPerWebRequest<EGestoraContext>();
 
@@ -93,7 +99,15 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<IBoletoNetService, BoletoNetService>();
 
             //Email
-            container.RegisterPerWebRequest<IEmailService, EmailService>();
+            container.RegisterPerWebRequest<IEmailService, EGestora.GestoraControlAdm.Infra.Data.MailService.EmailService>();
+
+            //Identity
+            container.RegisterPerWebRequest<ApplicationDbContext>();
+            container.RegisterPerWebRequest<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            container.RegisterPerWebRequest<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>());
+            container.RegisterPerWebRequest<ApplicationRoleManager>();
+            container.RegisterPerWebRequest<ApplicationUserManager>();
+            container.RegisterPerWebRequest<ApplicationSignInManager>();
 
         }
     }

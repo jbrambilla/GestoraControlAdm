@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer", "src\EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer\EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer.csproj", "{DBCB082F-BA54-4858-BB3C-6991F95B688B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGestora.GestoraControlAdm.Infra.CrossCutting.Identity", "src\EGestora.GestoraControlAdm.Infra.CrossCutting.Identity\EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.csproj", "{5BF27AE5-2030-4F70-BF80-8B00E1AB0DCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{DBCB082F-BA54-4858-BB3C-6991F95B688B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCB082F-BA54-4858-BB3C-6991F95B688B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCB082F-BA54-4858-BB3C-6991F95B688B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF27AE5-2030-4F70-BF80-8B00E1AB0DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF27AE5-2030-4F70-BF80-8B00E1AB0DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF27AE5-2030-4F70-BF80-8B00E1AB0DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF27AE5-2030-4F70-BF80-8B00E1AB0DCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +108,6 @@ Global
 		{ADC32618-75E6-498D-9537-ED8130F66A9E} = {F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91}
 		{8FE6F8F7-A080-430B-9AE7-6CEEFBABC834} = {3ADAF88E-BF57-4E42-8ACF-FA7FE69BDB0E}
 		{DBCB082F-BA54-4858-BB3C-6991F95B688B} = {3ADAF88E-BF57-4E42-8ACF-FA7FE69BDB0E}
+		{5BF27AE5-2030-4F70-BF80-8B00E1AB0DCE} = {F20CEF50-ED1F-48C5-B5C9-3A1BBE41ED91}
 	EndGlobalSection
 EndGlobal

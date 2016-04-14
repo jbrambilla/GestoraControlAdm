@@ -59,6 +59,7 @@
     <Compile Include="Entities\RegimeTributacao.cs" />
     <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Entities\Servico.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Interfaces\BoletoNet\IBoletoNetService.cs" />
     <Compile Include="Interfaces\MailService\IEmailService.cs" />
     <Compile Include="Interfaces\NfseWebServices\INotaServicoNfseWebService.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repository\IRevendaRepository.cs" />
     <Compile Include="Interfaces\Repository\IServicoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Service\IClienteService.cs" />
     <Compile Include="Interfaces\Service\IClienteServicoService.cs" />
     <Compile Include="Interfaces\Service\ICnaeService.cs" />

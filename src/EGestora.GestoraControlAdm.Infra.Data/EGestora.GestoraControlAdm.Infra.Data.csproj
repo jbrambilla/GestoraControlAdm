@@ -74,6 +74,7 @@
     <Compile Include="EntityConfiguration\RegimeTributacaoConfiguration.cs" />
     <Compile Include="EntityConfiguration\RevendaConfiguration.cs" />
     <Compile Include="EntityConfiguration\ServicoConfiguration.cs" />
+    <Compile Include="EntityConfiguration\UsuarioConfiguration.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="MailService\EmailService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\RevendaRepository.cs" />
     <Compile Include="Repository\ServicoRepository.cs" />
+    <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

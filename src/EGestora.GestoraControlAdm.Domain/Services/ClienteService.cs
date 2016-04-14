@@ -290,11 +290,20 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _debitoRepository.Baixar(id, DataBaixa);
         }
 
+        public Debito AdicionarDebito(Debito debito)
+        {
+            if (!debito.IsValid())
+            {
+                return debito;
+            }
+
+            return _debitoRepository.Add(debito);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

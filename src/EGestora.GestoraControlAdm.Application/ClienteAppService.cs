@@ -335,6 +335,25 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public DebitoViewModel AdicionarDebito(DebitoViewModel debitoViewModel)
+        {
+            var debito = Mapper.Map<DebitoViewModel, Debito>(debitoViewModel);
+
+            BeginTransaction();
+
+            var debitoReturn = _clienteService.AdicionarDebito(debito);
+            debitoViewModel = Mapper.Map<Debito, DebitoViewModel>(debitoReturn);
+
+            if (!debitoViewModel.ValidationResult.IsValid)
+            {
+                return debitoViewModel;
+            }
+
+            Commit();
+
+            return debitoViewModel;
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();

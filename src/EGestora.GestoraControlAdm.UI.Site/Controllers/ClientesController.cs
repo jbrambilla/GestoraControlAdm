@@ -594,7 +594,41 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.PessoaId = clienteViewModel.PessoaId;
             return PartialView("_DebitoList", clienteViewModel.DebitoList);
+        }
+
+        [Route("adicionar-debito")]
+        public ActionResult AdicionarDebito(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_AdicionarDebito");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarDebito(DebitoViewModel debitoViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                debitoViewModel = _clienteAppService.AdicionarDebito(debitoViewModel);
+
+                if (!debitoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in debitoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+
+                    return PartialView("_AdicionarDebito", debitoViewModel);
+                }
+
+                string url = Url.Action("ListarDebitos", "Clientes", new { id = debitoViewModel.ClienteId });
+                return Json(new { success = true, url = url, replaceTarget = "debito" });
+            }
+
+            return PartialView("_AdicionarDebito", debitoViewModel);
         }
 
         public ActionResult BaixarDebito(Guid? id)

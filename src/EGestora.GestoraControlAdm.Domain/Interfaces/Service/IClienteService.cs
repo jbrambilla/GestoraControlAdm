@@ -54,5 +54,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         Debito GetDebitoById(Guid id);
         void BaixarDebito(Guid id, DateTime DataBaixa);
+        Debito AdicionarDebito(Debito debito);
     }
 }

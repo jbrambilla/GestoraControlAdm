@@ -419,6 +419,7 @@
     <Content Include="Views\Clientes\CodigoSegurancas\_CodigoSegurancaList.cshtml" />
     <Content Include="Views\Clientes\Debitos\_BaixarDebitoCliente.cshtml" />
     <Content Include="Views\Clientes\Debitos\_DadosDebito.cshtml" />
+    <Content Include="Views\Shared\_SideBarMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

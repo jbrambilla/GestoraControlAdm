@@ -1,0 +1,71 @@
+﻿@if (Request.IsAuthenticated) { 
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav in" id="side-menu">
+                <li class="sidebar-search">
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                    <!-- /input-group -->
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Empresas")"><i class="fa fa-building-o fa-fw"></i>Gestão da Empresa</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i>Gestão de Pessoas<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="@Url.Action("Index", "Clientes")"><i class="fa fa-group fa-fw"></i>Clientes</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Fornecedores")"><i class="fa fa-group fa-fw"></i>Fornecedores</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Revendas")"><i class="fa fa-group fa-fw"></i>Revendas</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i>Cadastros Básicos<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="@Url.Action("Index", "Servicos")"><i class="glyphicon glyphicon-pencil"></i>Serviços</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Cnaes")"><i class="glyphicon glyphicon-pencil"></i>Códigos Cnae</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i>Gestão de Nota de Serviço Eletrônica<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="@Url.Action("Index", "NotaServicos")"><i class="fa fa-file-text-o fa-fw"></i>Emissão Manual</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "LoteFaturamentos")"><i class="fa fa-files-o fa-fw"></i>Emissão em Lote</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Debitos")"><i class="fa fa-edit fa-fw"></i>Gestão de Débitos</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "CodigoSegurancas")"><i class="fa fa-unlock-alt fa-fw"></i>Gerar Código de Segurança</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+}

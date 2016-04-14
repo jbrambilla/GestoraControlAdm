@@ -177,7 +177,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
@@ -197,9 +196,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewEngine\GestoraControlAdmViewEngine.cs" />
@@ -438,6 +434,10 @@
     <ProjectReference Include="..\EGestora.GestoraControlAdm.Application\EGestora.GestoraControlAdm.Application.csproj">
       <Project>{b761cb35-f189-4cf5-8457-1c34c07cd8ca}</Project>
       <Name>EGestora.GestoraControlAdm.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.Infra.CrossCutting.Identity\EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.csproj">
+      <Project>{5bf27ae5-2030-4f70-bf80-8b00e1ab0dce}</Project>
+      <Name>EGestora.GestoraControlAdm.Infra.CrossCutting.Identity</Name>
     </ProjectReference>
     <ProjectReference Include="..\EGestora.GestoraControlAdm.Infra.CrossCutting.IoC\EGestora.GestoraControlAdm.Infra.CrossCutting.IoC.csproj">
       <Project>{c2047188-bc21-405c-bf07-bfa5ae6a7b2a}</Project>

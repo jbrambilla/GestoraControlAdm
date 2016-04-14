@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using EGestora.GestoraControlAdm.UI.Site.Models;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Model;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Configuration;
 
 namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 {

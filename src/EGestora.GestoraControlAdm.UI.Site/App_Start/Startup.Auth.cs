@@ -5,8 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using EGestora.GestoraControlAdm.UI.Site.Models;
 using System.Web.Mvc;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Configuration;
+using EGestora.GestoraControlAdm.Infra.CrossCutting.Identity.Model;
 
 namespace EGestora.GestoraControlAdm.UI.Site
 {

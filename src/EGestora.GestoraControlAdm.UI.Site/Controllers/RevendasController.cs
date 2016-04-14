@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EGestora.GestoraControlAdm.Application.ViewModels;
-using EGestora.GestoraControlAdm.UI.Site.Models;
 using EGestora.GestoraControlAdm.Application.Interfaces;
 using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
 using EGestora.GestoraControlAdm.Infra.CrossCutting.MvcFilters.FilePath;

@@ -27,5 +27,22 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             debito.PagoEm = DataBaixa;
             Update(debito);
         }
+
+
+        public void GerarBoletos(Debito debito)
+        {
+            var vencimento = debito.Vencimento;
+            vencimento = vencimento.AddDays(-30);
+            foreach (var valorParcela in debito.ValorParcelaList)
+            {
+                vencimento = vencimento.AddDays(30);
+                var boleto = new Boleto()
+                {
+                    Valor = valorParcela,
+                    Vencimento = vencimento
+                };
+                debito.BoletoList.Add(boleto);
+            }
+        }
     }
 }

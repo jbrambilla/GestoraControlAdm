@@ -341,6 +341,7 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
+            _clienteService.GerarBoletos(debito);
             var debitoReturn = _clienteService.AdicionarDebito(debito);
             debitoViewModel = Mapper.Map<Debito, DebitoViewModel>(debitoReturn);
 

@@ -300,6 +300,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _debitoRepository.Add(debito);
         }
 
+        public void GerarBoletos(Debito debito)
+        {
+            _debitoRepository.GerarBoletos(debito);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();

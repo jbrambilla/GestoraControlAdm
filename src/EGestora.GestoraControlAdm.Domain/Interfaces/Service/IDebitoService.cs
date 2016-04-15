@@ -23,5 +23,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         byte[] GetBoletoBytes(Boleto boleto);
 
         Boleto GetBoletoById(Guid id);
+        void GerarBoletos(Debito debito);
     }
 }

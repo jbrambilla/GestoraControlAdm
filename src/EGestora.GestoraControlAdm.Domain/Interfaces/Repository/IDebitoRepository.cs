@@ -8,5 +8,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
     {
         IEnumerable<Debito> GetAllToGrid(int skip, int take);
         void Baixar(Guid id, DateTime DataBaixa);
+        void GerarBoletos(Debito debito);
     }
 }

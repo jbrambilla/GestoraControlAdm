@@ -12,6 +12,18 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(d => d.PagoEm)
                 .IsOptional();
 
+            Property(d => d.Desconto)
+                .IsOptional();
+
+            Property(d => d.Juros)
+                .IsOptional();
+
+            Property(d => d.Multa)
+                .IsOptional();
+
+            Property(d => d.ValorPago)
+                .IsOptional();
+
             HasRequired(d => d.Cliente)
                 .WithMany(c => c.DebitoList)
                 .HasForeignKey(d => d.ClienteId);

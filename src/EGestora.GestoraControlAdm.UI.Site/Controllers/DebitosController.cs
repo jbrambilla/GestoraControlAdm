@@ -21,13 +21,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         // GET: Debitos
-        public ActionResult Index(int page = 0)
+        public ActionResult Index()
         {
-            int registrosPorPagina = 5;
-            ViewBag.PaginaAtual = page;
-            ViewBag.TotalPaginas = Math.Ceiling((float)_debitoAppService.GetTotalRecords() / registrosPorPagina);
+            //int registrosPorPagina = 5;
+            //ViewBag.PaginaAtual = page;
+            //ViewBag.TotalPaginas = Math.Ceiling((float)_debitoAppService.GetTotalRecords() / registrosPorPagina);
 
-            return View(_debitoAppService.GetAllToGrid(registrosPorPagina * page, registrosPorPagina));
+            //return View(_debitoAppService.GetAllToGrid(registrosPorPagina * page, registrosPorPagina));
+            return View(_debitoAppService.GetAll());
         }
 
         // GET: Debitos/Details/5
@@ -155,10 +156,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // POST: Debitos/Delete/5
         [HttpPost, ActionName("Baixar")]
         [ValidateAntiForgeryToken]
-        public ActionResult BaixarConfirmado(Guid id, DateTime DataBaixa)
+        public ActionResult BaixarConfirmado(DebitoViewModel debitoViewModel)
         {
-            _debitoAppService.Baixar(id, DataBaixa);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _debitoAppService.Update(debitoViewModel);
+                return RedirectToAction("Index");
+            }
+            return View(debitoViewModel);
         }
 
 

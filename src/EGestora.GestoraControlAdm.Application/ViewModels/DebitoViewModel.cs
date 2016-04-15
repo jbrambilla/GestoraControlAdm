@@ -24,13 +24,25 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Valor")]
         public decimal ValorLiquido { get; set; }
 
+        [DataType(DataType.Currency, ErrorMessage = "Preencha um valor monetário.")]
+        [DisplayName("Valor Pago")]
+        public decimal ValorPago { get; set; }
+
+        [DisplayName("Juros")]
+        public decimal Juros { get; set; }
+
+        [DisplayName("Desconto")]
+        public decimal Desconto { get; set; }
+
+        [DisplayName("Multa")]
+        public decimal Multa { get; set; }
+
         [Required(ErrorMessage = "Preencha o campo Detalhes")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Detalhes")]
         public string Detalhes { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Código de Segurança")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Código de Segurança")]

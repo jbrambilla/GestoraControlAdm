@@ -16,6 +16,10 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Guid DebitoId { get; set; }
         public Guid ClienteId { get; set; }
         public decimal ValorLiquido { get; set; }
+        public decimal? ValorPago { get; set; }
+        public decimal? Juros { get; set; }
+        public decimal? Desconto { get; set; }
+        public decimal? Multa { get; set; }
         public string Detalhes { get; set; }
         public string CodigoSeguranca { get; set; }
         public int Parcelas { get; set; }

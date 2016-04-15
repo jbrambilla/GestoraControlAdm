@@ -15,8 +15,15 @@
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                           
-                          
+                            @Html.HiddenFor(d => d.DebitoId)
+                            @Html.HiddenFor(d => d.Detalhes)
+                            @Html.HiddenFor(d => d.ValorLiquido)
+                            @Html.HiddenFor(d => d.Parcelas)
+                            @Html.HiddenFor(d => d.Vencimento)
+                            @Html.HiddenFor(d => d.ClienteId)
+                            @Html.HiddenFor(d => d.CriadoEm)
+                            @Html.HiddenFor(d => d.AlteradoEm)
+
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemCliente", "Clientes", new { id = Model.ClienteId })" alt="" class="img-circle img-responsive"> </div>
@@ -36,15 +43,61 @@
                                                 </tr>
 
                                                 <tr>
-                                                    <td><strong>Data do Pagamento</strong></td>
+                                                    <td><strong>Valor Pago</strong></td>
                                                     <td>
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="DataBaixa" name="DataBaixa" required class="form-control" />
+                                                                @Html.TextBoxFor(model => model.ValorPago, new { value = Model.ValorLiquido, @class = "form-control" })
                                                             </div>
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                                <tr>
+                                                    <td><strong>Desconto</strong></td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                @Html.TextBoxFor(model => model.Desconto, new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>Juros</strong></td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                @Html.TextBoxFor(model => model.Juros, new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>Multa</strong></td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                @Html.TextBoxFor(model => model.Multa, new { @class = "form-control" })
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><strong>Data do Pagamento</strong></td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="PagoEm" name="@Html.NameFor(d => d.PagoEm)" required class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                
 
                                             </tbody>
                                         </table>

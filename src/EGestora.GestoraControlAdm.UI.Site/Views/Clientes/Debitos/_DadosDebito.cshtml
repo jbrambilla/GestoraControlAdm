@@ -42,11 +42,35 @@
         @Model.Vencimento.ToString("d")
     </dd>
     <dt>
+        @Html.DisplayNameFor(model => model.ValorPago)
+    </dt>
+    <dd>
+        @Html.TextBoxFor(model => model.ValorPago, new { value = Model.ValorLiquido, @class = "form-control" })
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Desconto)
+    </dt>
+    <dd>
+        @Html.TextBoxFor(model => model.Desconto, new { @class = "form-control" })
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Juros)
+    </dt>
+    <dd>
+        @Html.TextBoxFor(model => model.Juros, new { @class = "form-control" })
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Multa)
+    </dt>
+    <dd>
+        @Html.TextBoxFor(model => model.Multa, new { @class = "form-control" })
+    </dd>
+    <dt>
         @Html.DisplayNameFor(model => model.PagoEm)
     </dt>
 
     <dd>
-        <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="DataBaixa" name="DataBaixa" required class="form-control" />
+        <input type="date" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="PagoEm" name="@Html.NameFor(d => d.PagoEm)" required class="form-control" />
     </dd>
 </dl>
 

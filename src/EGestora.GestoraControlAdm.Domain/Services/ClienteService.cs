@@ -285,11 +285,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _debitoRepository.GetById(id);
         }
 
-        public void BaixarDebito(Guid id, DateTime DataBaixa)
-        {
-            _debitoRepository.Baixar(id, DataBaixa);
-        }
-
         public Debito AdicionarDebito(Debito debito)
         {
             if (!debito.IsValid())
@@ -305,10 +300,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _debitoRepository.GerarBoletos(debito);
         }
 
+        public Debito AtualizarDebito(Debito debito)
+        {
+            return _debitoRepository.Update(debito);
+        }
+
         public void Dispose()
         {
             _clienteRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

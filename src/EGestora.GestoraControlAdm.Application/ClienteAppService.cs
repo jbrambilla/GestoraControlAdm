@@ -328,13 +328,6 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Debito, DebitoViewModel>(_clienteService.GetDebitoById(id));
         }
 
-        public void BaixarDebito(Guid id, DateTime DataBaixa)
-        {
-            BeginTransaction();
-            _clienteService.BaixarDebito(id, DataBaixa);
-            Commit();
-        }
-
         public DebitoViewModel AdicionarDebito(DebitoViewModel debitoViewModel)
         {
             var debito = Mapper.Map<DebitoViewModel, Debito>(debitoViewModel);
@@ -355,11 +348,23 @@ namespace EGestora.GestoraControlAdm.Application
             return debitoViewModel;
         }
 
+        public DebitoViewModel AtualizarDebito(DebitoViewModel debitoViewModel)
+        {
+            var debito = Mapper.Map<DebitoViewModel, Debito>(debitoViewModel);
+
+            BeginTransaction();
+            var debitoReturn = _clienteService.AtualizarDebito(debito);
+            debitoViewModel = Mapper.Map<Debito, DebitoViewModel>(debitoReturn);
+            Commit();
+
+            return debitoViewModel;
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
-
+        
     }
 }

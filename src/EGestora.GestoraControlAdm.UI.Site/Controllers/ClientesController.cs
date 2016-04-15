@@ -649,13 +649,16 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         [HttpPost, ActionName("BaixarDebito")]
         [ValidateAntiForgeryToken]
-        public ActionResult BaixarDebitoConfirmed(Guid id, DateTime DataBaixa)
+        public ActionResult BaixarDebitoConfirmed(DebitoViewModel debitoViewModel)
         {
-            var pessoaId = _clienteAppService.GetDebitoById(id).ClienteId;
-            _clienteAppService.BaixarDebito(id, DataBaixa);
-
-            string url = Url.Action("ListarDebitos", "Clientes", new { id = pessoaId });
-            return Json(new { success = true, url = url, replaceTarget = "debito" });
+            if (ModelState.IsValid)
+            {
+                var pessoaId = debitoViewModel.ClienteId;
+                _clienteAppService.AtualizarDebito(debitoViewModel);
+                string url = Url.Action("ListarDebitos", "Clientes", new { id = pessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "debito" });
+            }
+            return View(debitoViewModel);            
         }
 
         //ANEXOS

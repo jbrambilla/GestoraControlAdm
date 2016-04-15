@@ -11,11 +11,20 @@
     <div class="form-horizontal">
         @using (Html.BeginForm())
         {
+            
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(d => d.DebitoId)
+            @Html.HiddenFor(d => d.Detalhes)
+            @Html.HiddenFor(d => d.ValorLiquido)
+            @Html.HiddenFor(d => d.Parcelas)
+            @Html.HiddenFor(d => d.Vencimento)
+            @Html.HiddenFor(d => d.ClienteId)
+            @Html.HiddenFor(d => d.CriadoEm)
+            @Html.HiddenFor(d => d.AlteradoEm)
+            
             @Html.Partial("_DadosDebito")
 
-        
-            @Html.AntiForgeryToken()
-            
             <div class="modal-footer">
                 <input class="btn btn-danger" type="submit" value="Sim" />
                 <input type="button" class="btn btn-success" data-dismiss="modal" value="Não" />

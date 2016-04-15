@@ -20,15 +20,6 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             return Db.Debitos.OrderBy(d => d.Vencimento).Skip(skip).Take(take).ToList();
         }
 
-
-        public void Baixar(Guid id, DateTime DataBaixa)
-        {
-            var debito = GetById(id);
-            debito.PagoEm = DataBaixa;
-            Update(debito);
-        }
-
-
         public void GerarBoletos(Debito debito)
         {
             var vencimento = debito.Vencimento;

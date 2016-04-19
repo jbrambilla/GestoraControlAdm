@@ -112,6 +112,7 @@
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Specifications\ClienteServicos\ClienteServicoDeveTerClienteEservicoSpecification.cs" />
+    <Compile Include="Specifications\Clientes\ClienteCnaePrincipalNaoDeveEstarNaListaDeCnaesSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDataTravaDeveSerMaiorQueDataDeHojeSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaDeveGerarCodigoCorretoSpecification.cs" />
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaNaoDeveGerarCodigoParaClientesDevedoresSpecification.cs" />

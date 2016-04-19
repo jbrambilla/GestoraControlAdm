@@ -311,7 +311,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ViewBag.PessoaId = id.Value;
-            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
             return PartialView("_AdicionarCnae");
         }
 
@@ -321,13 +321,19 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                _clienteAppService.AddCnae(CnaeId, PessoaId);
+                if (!_clienteAppService.AddCnae(CnaeId, PessoaId))
+                {
+                    ModelState.AddModelError(string.Empty, "Não é possível adicionar um Cnae igual ao Principal.");
+                    ViewBag.PessoaId = PessoaId;
+                    ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
+                    return PartialView("_AdicionarCnae");
+                }
 
                 string url = Url.Action("ListarCnaes", "Clientes", new { id = PessoaId});
                 return Json(new { success = true, url = url, replaceTarget = "cnae" });
             }
             ViewBag.PessoaId = PessoaId;
-            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Descricao");
+            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
             return PartialView("_AdicionarCnae");
         }
 

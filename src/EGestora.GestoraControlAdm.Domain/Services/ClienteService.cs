@@ -5,6 +5,7 @@ using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using EGestora.GestoraControlAdm.Domain.Validations.Clientes;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
 {
@@ -59,6 +60,12 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             }
 
             cliente.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Cliente>(_clienteRepository).Validate(cliente);
+            if (!cliente.ValidationResult.IsValid)
+            {
+                return cliente;
+            }
+
+            cliente.ValidationResult = new ClienteEstaAptoParaCadastroValidation().Validate(cliente);
             if (!cliente.ValidationResult.IsValid)
             {
                 return cliente;
@@ -167,11 +174,18 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _cnaeRepository.GetById(id);
         }
 
-        public void AddCnae(Guid id, Guid pessoaId)
+        public bool AddCnae(Guid id, Guid pessoaId)
         {
             var cliente = _clienteRepository.GetById(pessoaId);
+
+            if (cliente.CnaeId == id)
+            {
+                return false;
+            }
+
             var cnae = _cnaeRepository.GetById(id);
             cliente.CnaeList.Add(cnae);
+            return true;
         }
 
         public void RemoveCnae(Guid id, Guid pessoaId)

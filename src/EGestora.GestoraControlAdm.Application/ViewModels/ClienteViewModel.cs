@@ -24,6 +24,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Regime de Apuração")]
         public Guid RegimeApuracaoId { get; set; }
 
+        [Required(ErrorMessage = "Selecione um Cnae principal.")]
+        [DisplayName("Cnae Principal")]
+        public Guid CnaeId { get; set; }
+
         [Required]
         [DisplayName("Com Nota")]
         public bool ComNota { get; set; }
@@ -51,6 +55,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public RevendaViewModel Revenda { get; set; }
+
+        [ScaffoldColumn(false)]
+        public CnaeViewModel Cnae { get; set; }
 
         [ScaffoldColumn(false)]
         public RegimeApuracaoViewModel RegimeApuracao { get; set; }

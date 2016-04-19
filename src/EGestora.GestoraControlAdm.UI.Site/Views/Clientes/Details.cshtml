@@ -54,8 +54,13 @@
                                                     </tr>
 
                                                     <tr>
+                                                        <td>Cnae Principal</td>
+                                                        <td><a href="mailto:@Model.Email">@Model.Email</a></td>
+                                                    </tr>
+
+                                                    <tr>
                                                         <td>Ativo</td>
-                                                        <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
+                                                        <td>@Model.Cnae.Display</td>
                                                     </tr>
 
                                                     <tr>

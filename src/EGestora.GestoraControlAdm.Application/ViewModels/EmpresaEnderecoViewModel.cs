@@ -14,6 +14,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             SelectedCnaeList = new List<Guid>();
         }
 
+        [Required(ErrorMessage = "Selecione um Cnae principal.")]
+        [DisplayName("Cnae Principal")]
+        public Guid CnaeId { get; set; }
+
         [Required(ErrorMessage = "Seleciona o Regime de Apuração.")]
         [DisplayName("Regime de Apuração")]
         public Guid RegimeApuracaoId { get; set; }

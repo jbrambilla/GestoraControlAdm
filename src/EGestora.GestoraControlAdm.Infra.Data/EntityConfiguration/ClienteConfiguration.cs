@@ -20,6 +20,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(p => p.ComNota)
                 .IsRequired();
 
+            HasRequired(c => c.Cnae)
+                .WithMany()
+                .HasForeignKey(c => c.CnaeId);
+
             HasMany(f => f.CnaeList)
                 .WithMany()
                 .Map(me =>

@@ -19,10 +19,13 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public Guid? RevendaId { get; set; }
         public Guid RegimeApuracaoId { get; set; }
+        public Guid CnaeId { get; set; }
         public bool ComNota { get; set; }
         public DateTime VencimentoBoleto { get; set; }
         public decimal Repasse { get; set; }
         public bool RepassePercentual { get; set; }
+
+        public virtual Cnae Cnae { get; set; }
         public virtual Revenda Revenda { get; set; }
         public virtual RegimeApuracao RegimeApuracao { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }

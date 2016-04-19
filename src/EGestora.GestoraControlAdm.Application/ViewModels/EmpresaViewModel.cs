@@ -13,6 +13,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             CnaeList = new List<CnaeViewModel>();
         }
 
+        [Required(ErrorMessage = "Selecione um Cnae principal.")]
+        [DisplayName("Cnae Principal")]
+        public Guid CnaeId { get; set; }
+
         [Required(ErrorMessage = "Seleciona o Regime de Apuração.")]
         [DisplayName("Regime de Apuração")]
         public Guid RegimeApuracaoId { get; set; }
@@ -72,6 +76,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public EnquadramentoServicoViewModel EnquadramentoServico { get; set; }
+
+        [ScaffoldColumn(false)]
+        public CnaeViewModel Cnae { get; set; }
 
         [ScaffoldColumn(false)]
         public ICollection<CnaeViewModel> CnaeList { get; set; }

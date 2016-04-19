@@ -35,5 +35,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Required(ErrorMessage = "Selecione um Regime de Apuração.")]
         [DisplayName("Regime de Apuração")]
         public Guid RegimeApuracaoId { get; set; }
+
+        [Required(ErrorMessage = "Selecione um Cnae principal.")]
+        [DisplayName("Cnae Principal")]
+        public Guid CnaeId { get; set; }
     }
 }

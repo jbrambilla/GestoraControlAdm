@@ -198,11 +198,12 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Cnae, CnaeViewModel>(_empresaService.GetCnaeById(id));
         }
 
-        public void AddCnae(Guid id, Guid pessoaId)
+        public bool AddCnae(Guid id, Guid pessoaId)
         {
             BeginTransaction();
-            _empresaService.AddCnae(id, pessoaId);
+            var retorno = _empresaService.AddCnae(id, pessoaId);
             Commit();
+            return retorno;
         }
 
         public void RemoveCnae(Guid cnaeId, Guid pessoaId)

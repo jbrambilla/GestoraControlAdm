@@ -117,6 +117,7 @@
     <Compile Include="Specifications\CodigoSegurancas\CodigoSegurancaNaoDeveGerarCodigoParaClientesDevedoresSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoDevePossuirBoletoSpecification.cs" />
     <Compile Include="Specifications\Debitos\DebitoVencimentoDeveSerMaiorQueDataAtualSpecification.cs" />
+    <Compile Include="Specifications\Empresas\EmpresaCnaePrincipalNaoDeveEstarNaListaDeCnaesSpecification.cs" />
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecification.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecification.cs" />

@@ -133,6 +133,7 @@
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecification.cs" />
     <Compile Include="Validations\ClienteServicos\ClienteServicoEstaConsistenteValidation.cs" />
+    <Compile Include="Validations\Clientes\ClienteEstaAptoParaCadastroValidation.cs" />
     <Compile Include="Validations\CodigoSegurancas\CodigoSegurancaEstaAptoParaCadastroValidation.cs" />
     <Compile Include="Validations\CodigoSegurancas\CodigoSegurancaEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Debitos\DebitoEstaConsistenteValidation.cs" />

@@ -44,6 +44,7 @@ namespace EGestora.GestoraControlAdm.Application
             
             Commit();
 
+            codigoSegurancaViewModel.QuantidadeGerada = clientesParaGerarCodigo.Count;
             return codigoSegurancaViewModel;
         }
 

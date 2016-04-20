@@ -47,6 +47,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [ScaffoldColumn(false)]
         public virtual ICollection<string> Gerar { get; set; }
 
+        //Numero de códigos gerados nesse request
+        [ScaffoldColumn(false)]
+        public int QuantidadeGerada { get; set; }
+
         [ScaffoldColumn(false)]
         [DisplayName("Enviar Por E-mail")]
         public bool EnviarEmail { get; set; }

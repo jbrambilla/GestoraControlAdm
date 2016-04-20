@@ -4,8 +4,27 @@
     ViewBag.Title = "Lista de Códigos";
 }
 
+
+
 <div class="row">
     <div class="col-lg-12">
+
+        @if (TempData["quantidadeGerada"] != null)
+        {
+            var ultimosRegistros = Model.OrderByDescending(c => c.CriadoEm).Take((int)TempData["quantidadeGerada"]);
+
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4>Últimos códigos gerados</h4>
+                    <ul>
+                        @foreach (var item in ultimosRegistros)
+                        {
+                            <li>@item.Cliente.PessoaJuridica.RazaoSocial @Html.ActionLink(item.Codigo, "Details", new { id = item.CodigoSegurancaId, target = "_parent" })</li>
+                        }
+                    </ul>
+
+            </div>
+        }
 
         <h2 class="page-header">Gestão de Códigos de Segurança</h2>
 

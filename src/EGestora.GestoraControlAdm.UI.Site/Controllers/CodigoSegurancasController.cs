@@ -75,7 +75,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     LoadViewBags();
                     return View(codigoSegurancaViewModel);
                 }
-
+                TempData["quantidadeGerada"] = codigoSegurancaViewModel.QuantidadeGerada;
                 return RedirectToAction("Index");
             }
 

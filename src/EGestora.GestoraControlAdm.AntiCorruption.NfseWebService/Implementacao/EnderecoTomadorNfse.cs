@@ -17,7 +17,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
             enderecoTomador.Numero = endereco.Numero;
             enderecoTomador.Bairro = endereco.Bairro;
             enderecoTomador.Uf = endereco.Estado;
-            enderecoTomador.Cep = Convert.ToInt32(endereco.Cep);
+            enderecoTomador.Cep = Convert.ToInt32(endereco.Cep.Replace("-",""));
             enderecoTomador.CepSpecified = true;
             enderecoTomador.CodigoMunicipio = 3541406;//Convert.ToInt32(endereco.Cidade.CidadeCodigo.Replace("-", ""));
             enderecoTomador.CodigoMunicipioSpecified = true; //(cidadeCodigo > 0);

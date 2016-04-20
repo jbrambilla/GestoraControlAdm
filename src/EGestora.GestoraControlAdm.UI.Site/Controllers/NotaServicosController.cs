@@ -70,13 +70,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     return View(notaServicoDebitoViewModel);
                 }
 
-                if (!EnviarEmail(notaServicoDebitoViewModel))
-                {
-                    ModelState.AddModelError(string.Empty, "Erro ao enviar e-mail.");
-                    LoadViewBags();
-                    return View(notaServicoDebitoViewModel);
-                }
-
                 return RedirectToAction("Index");
             }
 
@@ -121,11 +114,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     return View(notaServicoViewModel);
                 }
 
-                if (!EnviarEmail(notaServicoViewModel))
-                {
-                    return View(notaServicoViewModel);
-                }
-
                 return RedirectToAction("Index");
             }
             LoadViewBags();
@@ -160,55 +148,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             var cliente = _notaServicoAppService.ObterClientePorId(id);
             return Json(new { discriminacaoServicos = cliente.DiscriminacaoServicos, valorTotal = cliente.ValorTotalServicos }, JsonRequestBehavior.AllowGet);
-        }
-
-        private bool EnviarEmail(NotaServicoDebitoViewModel notaServicoDebitoViewModel)
-        {
-            
-            if (notaServicoDebitoViewModel.EnviarEmail)
-            {
-                var NfseViewAsPdf = EmitirPdf(notaServicoDebitoViewModel.NotaServicoId);
-
-                notaServicoDebitoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
-                if (_notaServicoAppService.EnviarEmail(notaServicoDebitoViewModel))
-                {
-                    return true;
-                }
-                return false;
-            }
-            return true;
-        }
-
-        private bool EnviarEmail(NotaServicoViewModel notaServicoViewModel)
-        {
-            if (notaServicoViewModel.EnviarEmail)
-            {
-                var NfseViewAsPdf = EmitirPdf(notaServicoViewModel.NotaServicoId);
-                notaServicoViewModel.PdfNfse = NfseViewAsPdf.BuildPdf(ControllerContext);
-                if (_notaServicoAppService.EnviarEmail(notaServicoViewModel))
-                {
-                    return true;
-                }
-                return false;
-            }
-            return true;
-        }
-
-        private ViewAsPdf EmitirPdf(Guid id)
-        {
-            var notaServico = _notaServicoAppService.GetById(id);
-
-            return new ViewAsPdf()
-            {
-                ViewName = "EmitirNota",
-                Model = notaServico,
-                RotativaOptions = new DriverOptions()
-                {
-                    PageSize = Size.A4,
-                    IsGrayScale = false,
-                    PageMargins = new Margins { Bottom = 5, Left = 5, Right = 5, Top = 5 }
-                }
-            };
         }
 
         private void LoadViewBags()

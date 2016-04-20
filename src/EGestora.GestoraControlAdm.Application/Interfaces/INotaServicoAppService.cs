@@ -16,10 +16,5 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         ClienteViewModel ObterClientePorId(Guid id);
 
         EmpresaViewModel GetEmpresaAtiva();
-
-        //DebitoViewModel AddDebito(DebitoViewModel debitoViewModel);
-
-        bool EnviarEmail(NotaServicoViewModel notaServicoViewModel);
-        bool EnviarEmail(NotaServicoDebitoViewModel notaServicoDebitoViewModel);
     }
 }

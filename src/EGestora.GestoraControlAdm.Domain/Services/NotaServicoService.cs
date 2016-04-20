@@ -48,7 +48,14 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return notaServico;
             }
 
-            if (!EmitirNotaFiscal(notaServico))
+            notaServico = EmitirNotaFiscal(notaServico);
+            if (!notaServico.ValidationResult.IsValid)
+            {
+                return notaServico;
+            }
+
+            notaServico = EnviarEmail(notaServico);
+            if (!notaServico.ValidationResult.IsValid)
             {
                 return notaServico;
             }
@@ -69,11 +76,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public NotaServico Update(NotaServico notaServico)
         {
             if (!notaServico.IsValid())
-            {
-                return notaServico;
-            }
-
-            if (!EmitirNotaFiscal(notaServico))
             {
                 return notaServico;
             }
@@ -128,37 +130,41 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             }
         }
 
-        private bool EmitirNotaFiscal(NotaServico notaServico)
+        private NotaServico EmitirNotaFiscal(NotaServico notaServico)
         {
-            if (!notaServico.Emitir) {
-                return true;
+            if (!notaServico.Emitir)
+            {
+                return notaServico;
             }
 
             notaServico.Cliente = _clienteRepository.GetById(notaServico.ClienteId);
             notaServico.Empresa = _empresaRepository.GetById(notaServico.EmpresaId);
-            notaServico = _notaServicoNfseWebService.Gerar(notaServico);
-            return notaServico.ValidationResult.IsValid;
+            return _notaServicoNfseWebService.Gerar(notaServico);
         }
 
-        public bool EnviarEmail(NotaServico notaServico)
+        private NotaServico EnviarEmail(NotaServico notaServico)
         {
             if (!notaServico.EnviarEmail)
             {
-                return false;
+                return notaServico;
             }
 
             var cliente = _clienteRepository.GetById(notaServico.ClienteId);
 
-            var boleto = cliente.DebitoList.FirstOrDefault().BoletoList.FirstOrDefault();
+            //var boleto = cliente.DebitoList.FirstOrDefault().BoletoList.FirstOrDefault();
 
             _emailService.AdicionarDestinatário("jotabram@gmail.com");
             //_emailService.AdicionarDestinatário(cliente.Email);
             _emailService.AdicionarRemetente("joao.brambilla@egestora.com.br");
             _emailService.AdicionarAssunto("assunto teste");
             _emailService.AdicionarCorpo("teste body");
-            _emailService.AdicionarAnexo(_boletoNetService.GetBytes(boleto), "BoletoEgestora.pdf");
-            _emailService.AdicionarAnexo(notaServico.PdfNfse, "NfseEgestora.pdf");
-            return _emailService.Enviar();
+            _emailService.AdicionarAnexo(notaServico.PdfNfse, "NotaServico.pdf");
+
+            if (!_emailService.Enviar())
+            {
+                notaServico.ValidationResult.Add(new ValidationError("Erro ao enviar e-mail."));
+            }
+            return notaServico;
         }
 
         public void Dispose()

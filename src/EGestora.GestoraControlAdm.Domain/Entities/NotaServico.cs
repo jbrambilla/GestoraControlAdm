@@ -39,6 +39,11 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual Empresa Empresa { get; set; }
         public virtual Cliente Cliente { get; set; }
 
+        /** NÃO ESTÃO NO BANCO DE DADOS **/
+        public bool Emitir { get; set; }
+        public bool EnviarEmail { get; set; }
+        public byte[] PdfNfse { get; set; }
+
         public ValidationResult ValidationResult { get; set; }
 
         public bool IsValid()
@@ -46,11 +51,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             ValidationResult = new NotaServicoEstaConsistenteValidation().Validate(this);
             return ValidationResult.IsValid;
         }
-
-        //controle no cadastro
-        public bool Emitir { get; set; }
-        public bool EnviarEmail { get; set; }
-        public byte[] PdfNfse { get; set; }
 
         public void CalcularValores()
         {

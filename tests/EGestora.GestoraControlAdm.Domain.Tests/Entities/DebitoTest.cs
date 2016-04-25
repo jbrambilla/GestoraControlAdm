@@ -66,5 +66,24 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
 
             Assert.IsFalse(Debito.IsVencido());
         }
+
+        [TestMethod]
+        public void Debito_ObterProximoBoletoQueVaiVencer()
+        {
+            var boletoY = new Boleto() { Vencimento = DateTime.Now.AddDays(-10) };
+            var boleto1 = new Boleto() { Vencimento = DateTime.Now.AddDays(-30) };
+            var boletoX = new Boleto() { Vencimento = DateTime.Now.AddDays(29) };
+            var boleto2 = new Boleto() { Vencimento = DateTime.Now.AddDays(30) };
+            var boleto3 = new Boleto() { Vencimento = DateTime.Now.AddDays(60) };
+            var Debito = new Debito();
+
+            Debito.BoletoList.Add(boleto1);
+            Debito.BoletoList.Add(boleto2);
+            Debito.BoletoList.Add(boleto3);
+            Debito.BoletoList.Add(boletoX);
+            Debito.BoletoList.Add(boletoY);
+
+            Assert.AreEqual(DateTime.Now.AddDays(29).Date, Debito.ObterProximoBoletoQueVaiVencer().Vencimento.Date);
+        }
     }
 }

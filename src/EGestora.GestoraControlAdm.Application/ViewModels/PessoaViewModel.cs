@@ -15,6 +15,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             EnderecoList = new List<EnderecoViewModel>();
             AnexoList = new List<AnexoViewModel>();
             ContatoList = new List<ContatoViewModel>();
+            Ativo = true;
         }
 
         [Key]

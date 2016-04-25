@@ -76,13 +76,27 @@
                                                 @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Ativo)
+                                                @if (item.Ativo)
+                                                {
+                                                    <div class="text-success"><strong>Sim</strong></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="text-danger"><strong>Não</strong></div>
+                                                }
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.Email)
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.ComNota)
+                                                @if (item.ComNota)
+                                                {
+                                                    <div class="text-success"><strong>Sim</strong></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="text-danger"><strong>Não</strong></div>
+                                                }
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.VencimentoBoleto)

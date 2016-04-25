@@ -30,7 +30,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Empresas
         public void Empresa_AptoQuandoExisteEmpresaCadastrada_True()
         {
             Empresa = new Empresa();
-            var list = new List<Empresa>() { new Empresa() };
+            var list = new List<Empresa>() { new Empresa() { Ativo = false } };
 
             var stubRepo = MockRepository.GenerateStub<IEmpresaRepository>();
             stubRepo.Stub(s => s.GetAll()).Return(list);

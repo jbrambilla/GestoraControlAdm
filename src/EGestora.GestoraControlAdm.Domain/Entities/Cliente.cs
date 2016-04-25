@@ -15,6 +15,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             NotaServicoList = new List<NotaServico>();
             LoteFaturamentoList = new List<LoteFaturamento>();
             CodigoSegurancaList = new List<CodigoSeguranca>();
+            DebitoList = new List<Debito>();
         }
 
         public Guid? RevendaId { get; set; }
@@ -53,6 +54,11 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
                 ClienteServicoList.ToList().ForEach(clienteServico => discriminacao += clienteServico.Servico.Descricao + ", ");
                 return discriminacao.Length > 0 ? discriminacao.Remove(discriminacao.Length - 2, 2) : "";
             }
+        }
+
+        public Debito ObterUltimoDebitoAtivo()
+        {
+            return DebitoList.OrderByDescending(c => c.CriadoEm).FirstOrDefault();
         }
     }
 }

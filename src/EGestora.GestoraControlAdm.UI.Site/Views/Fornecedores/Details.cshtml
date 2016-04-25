@@ -50,7 +50,16 @@
 
                                                     <tr>
                                                         <td>Ativo</td>
-                                                        <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
+                                                        <td>
+                                                            @if (Model.Ativo)
+                                                            {
+                                                                <div class="text-success"><strong>Sim</strong></div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="text-danger"><strong>Não</strong></div>
+                                                            }
+                                                        </td>
                                                     </tr>
 
                                                     <tr>

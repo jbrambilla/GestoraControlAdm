@@ -150,8 +150,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             }
 
             var cliente = _clienteRepository.GetById(notaServico.ClienteId);
+            var boleto = cliente.ObterUltimoDebitoAtivo().ObterProximoBoletoQueVaiVencer();
 
-            //var boleto = cliente.DebitoList.FirstOrDefault().BoletoList.FirstOrDefault();
 
             _emailService.AdicionarDestinatário("jotabram@gmail.com");
             //_emailService.AdicionarDestinatário(cliente.Email);
@@ -159,6 +159,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _emailService.AdicionarAssunto("assunto teste");
             _emailService.AdicionarCorpo("teste body");
             _emailService.AdicionarAnexo(notaServico.PdfNfse, "NotaServico.pdf");
+            _emailService.AdicionarAnexo(_boletoNetService.GetBytes(boleto), "Boleto.pdf");
 
             if (!_emailService.Enviar())
             {

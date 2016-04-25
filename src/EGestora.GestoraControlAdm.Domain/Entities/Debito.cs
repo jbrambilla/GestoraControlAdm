@@ -1,6 +1,7 @@
 ﻿using DomainValidation.Validation;
 using EGestora.GestoraControlAdm.Domain.Validations.Debitos;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
@@ -66,6 +67,11 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         {
             ValidationResult = new DebitoEstaConsistenteValidation().Validate(this);
             return ValidationResult.IsValid;
+        }
+
+        public Boleto ObterProximoBoletoQueVaiVencer()
+        {
+            return BoletoList.Where(b => b.Vencimento.CompareTo(DateTime.Now) > 0).OrderBy(b => b.Vencimento).FirstOrDefault();
         }
     }
 }

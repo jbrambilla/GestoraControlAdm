@@ -15,6 +15,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             PessoaId = Guid.NewGuid();
             EnderecoId = Guid.NewGuid();
             ContatoId = Guid.NewGuid();
+            Ativo = true;
         }
 
         //Pessoa

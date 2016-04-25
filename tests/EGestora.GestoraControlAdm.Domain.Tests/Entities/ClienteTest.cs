@@ -1,5 +1,6 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
 {
@@ -40,6 +41,18 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Entities
             cliente.ClienteServicoList.Add(clienteServico2);
 
             Assert.AreEqual(expected, cliente.DiscriminacaoServicos);
+        }
+
+        [TestMethod]
+        public void Cliente_ObterUltimoDebitoAtivo()
+        {
+            var debito1 = new Debito() { CriadoEm = DateTime.Now };
+            var debito2 = new Debito() { CriadoEm = DateTime.Now.AddDays(-30) };
+            var Cliente = new Cliente();
+            Cliente.DebitoList.Add(debito1);
+            Cliente.DebitoList.Add(debito2);
+
+            Assert.AreEqual(DateTime.Now.Date, Cliente.ObterUltimoDebitoAtivo().CriadoEm.Date);
         }
     }
 }

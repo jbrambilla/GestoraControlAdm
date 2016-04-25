@@ -13,6 +13,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             EnderecoList = new List<Endereco>();
             AnexoList = new List<Anexo>();
             ContatoList = new List<Contato>();
+            Ativo = true;
         }
 
         public Guid PessoaId { get; set; }

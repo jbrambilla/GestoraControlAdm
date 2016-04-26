@@ -181,6 +181,7 @@
     <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuditController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CnaesController.cs" />
     <Compile Include="Controllers\CodigoSegurancasController.cs" />
@@ -421,9 +422,15 @@
     <Content Include="Views\Clientes\Debitos\_DadosDebito.cshtml" />
     <Content Include="Views\Shared\_SideBarMenu.cshtml" />
     <Content Include="Views\Clientes\Debitos\_AdicionarDebito.cshtml" />
+    <Content Include="Views\Audit\Create.cshtml" />
+    <Content Include="Views\Audit\Delete.cshtml" />
+    <Content Include="Views\Audit\Details.cshtml" />
+    <Content Include="Views\Audit\Edit.cshtml" />
+    <Content Include="Views\Audit\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

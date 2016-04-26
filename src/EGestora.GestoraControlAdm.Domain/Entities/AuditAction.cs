@@ -12,6 +12,8 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Guid AuditActionId { get; set; }
         public Guid AuditControllerId { get; set; }
         public string ActionName { get; set; }
+        public DateTime CriadoEm { get; set; }
+        public DateTime AlteradoEm { get; set; }
 
         public virtual AuditController AuditController { get; set; }
     }

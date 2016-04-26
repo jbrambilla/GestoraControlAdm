@@ -30,10 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,7 +51,22 @@
     <Compile Include="FilePath\FilePathConstants.cs" />
     <Compile Include="FileSizeAttribute.cs" />
     <Compile Include="FileTypesAttribute.cs" />
+    <Compile Include="AuditAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.Domain\EGestora.GestoraControlAdm.Domain.csproj">
+      <Project>{88b37913-0211-4043-b99e-6a7f7412d5bf}</Project>
+      <Name>EGestora.GestoraControlAdm.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.Infra.Data\EGestora.GestoraControlAdm.Infra.Data.csproj">
+      <Project>{2b398f2d-52de-4c99-bba6-73bef877dfc3}</Project>
+      <Name>EGestora.GestoraControlAdm.Infra.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

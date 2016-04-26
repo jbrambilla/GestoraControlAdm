@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Context\EGestoraContext.cs" />
     <Compile Include="EntityConfiguration\AnexoConfiguration.cs" />
+    <Compile Include="EntityConfiguration\AuditConfiguration.cs" />
     <Compile Include="EntityConfiguration\BoletoConfiguration.cs" />
     <Compile Include="EntityConfiguration\ClienteConfiguration.cs" />
     <Compile Include="EntityConfiguration\ClienteServicoConfiguration.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AnexoRepository.cs" />
+    <Compile Include="Repository\AuditRepository.cs" />
     <Compile Include="Repository\BoletoRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\ClienteServicoRepository.cs" />

@@ -39,6 +39,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<Boleto> Boletos { get; set; }
         public DbSet<CodigoSeguranca> CodigoSeguranca { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Audit> Audit { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -81,6 +82,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new BoletoConfiguration());
             modelBuilder.Configurations.Add(new CodigoSegurancaConfiguration());
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
+            modelBuilder.Configurations.Add(new AuditConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

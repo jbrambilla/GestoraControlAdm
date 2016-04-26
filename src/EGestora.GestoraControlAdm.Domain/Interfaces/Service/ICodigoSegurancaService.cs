@@ -14,6 +14,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         IEnumerable<Cliente> GetAllClientes();
 
-        bool EnviarEmail(CodigoSeguranca codigoSeguranca);
+        CodigoSeguranca EnviarEmail(CodigoSeguranca codigoSeguranca);
     }
 }

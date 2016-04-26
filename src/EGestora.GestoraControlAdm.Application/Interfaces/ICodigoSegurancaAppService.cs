@@ -13,5 +13,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void Remove(Guid id);
 
         IEnumerable<ClienteViewModel> GetAllClientes();
+
+        CodigoSegurancaViewModel EnviarEmail(CodigoSegurancaViewModel codigoSegurancaViewModel);
     }
 }

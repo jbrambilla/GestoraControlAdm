@@ -137,6 +137,23 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult EnviarEmail(Guid id)
+        {
+            TempData["MessageType"] = "alert-success";
+
+            var codigoSegurancaViewModel = _codigoSegurancaAppService.GetById(id);
+            codigoSegurancaViewModel.EnviarEmail = true;
+            codigoSegurancaViewModel = _codigoSegurancaAppService.EnviarEmail(codigoSegurancaViewModel);
+
+            if (!codigoSegurancaViewModel.ValidationResult.IsValid)
+            {
+                TempData["EmailMessage"] = codigoSegurancaViewModel.ValidationResult.Erros.FirstOrDefault().Message;
+                TempData["MessageType"] = "alert-danger";
+            }
+            TempData["EmailMessage"] = codigoSegurancaViewModel.ValidationResult.Message;
+            return RedirectToAction("Details", new { id = id });
+        }
+
         private void LoadViewBags()
         {
             ViewBag.ClienteList = _codigoSegurancaAppService.GetAllClientes();

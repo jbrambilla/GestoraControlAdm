@@ -84,6 +84,18 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_codigoSegurancaService.GetAllClientes());
         }
 
+        public CodigoSegurancaViewModel EnviarEmail(CodigoSegurancaViewModel codigoSegurancaViewModel)
+        {
+            var codigoSeguranca = Mapper.Map<CodigoSegurancaViewModel, CodigoSeguranca>(codigoSegurancaViewModel);
+            codigoSegurancaViewModel = Mapper.Map<CodigoSeguranca, CodigoSegurancaViewModel>(_codigoSegurancaService.EnviarEmail(codigoSeguranca));
+
+            if (codigoSeguranca.ValidationResult.IsValid)
+            {
+                codigoSeguranca.ValidationResult.Message = "E-mail enviado com sucesso!";
+            }
+
+            return codigoSegurancaViewModel;
+        }
         public void Dispose()
         {
             _codigoSegurancaService.Dispose();

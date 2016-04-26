@@ -25,7 +25,7 @@
 
             </div>
         }
-
+        
         <h2 class="page-header">Gestão de Códigos de Segurança</h2>
 
         <div class="panel panel-default">
@@ -75,6 +75,7 @@
                                             <a href="@Url.Action("Edit", "CodigoSegurancas", new { id = item.CodigoSegurancaId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
                                             <a href="@Url.Action("Details", "CodigoSegurancas", new { id = item.CodigoSegurancaId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
                                             <a href="@Url.Action("Delete", "CodigoSegurancas", new { id = item.CodigoSegurancaId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                            <a href="@Url.Action("EnviarEmail", "CodigoSegurancas", new { id = item.CodigoSegurancaId })" class="btn btn-primary"><span title="Excluir" class="glyphicon glyphicon-envelope"></span></a>
                                         </td>
                                     </tr>
                                 }

@@ -40,7 +40,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return codigoSeguranca;
             }
 
-            if (!EnviarEmail(codigoSeguranca))
+            codigoSeguranca = EnviarEmail(codigoSeguranca);
+            if (!codigoSeguranca.ValidationResult.IsValid)
             {
                 return codigoSeguranca;
             }
@@ -73,11 +74,13 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _clienteRepository.GetAll();
         }
 
-        public bool EnviarEmail(CodigoSeguranca codigoSeguranca)
+        public CodigoSeguranca EnviarEmail(CodigoSeguranca codigoSeguranca)
         {
+            VerificarValidationResult(codigoSeguranca);
+
             if (!codigoSeguranca.EnviarEmail)
             {
-                return true;
+                return codigoSeguranca;
             }
             //var cliente = codigoSeguranca.Cliente;
 
@@ -89,9 +92,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             if (!_emailService.Enviar())
             {
                 codigoSeguranca.ValidationResult.Add(new ValidationError("Falha ao enviar e-mail."));
-                return false;
             }
-            return true;
+            return codigoSeguranca;
+        }
+
+        private void VerificarValidationResult(CodigoSeguranca codigoSeguranca)
+        {
+            if (codigoSeguranca.ValidationResult == null)
+            {
+                codigoSeguranca.ValidationResult = new ValidationResult();
+            }
         }
 
         public void Dispose()

@@ -96,6 +96,12 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Boleto, BoletoViewModel>();
 
             Mapper.CreateMap<CodigoSeguranca, CodigoSegurancaViewModel>();
+
+            Mapper.CreateMap<AuditController, AuditControllerViewModel>();
+
+            Mapper.CreateMap<AuditAction, AuditActionViewModel>();
+
+            Mapper.CreateMap<Audit, AuditViewModel>();
         }
     }
 }

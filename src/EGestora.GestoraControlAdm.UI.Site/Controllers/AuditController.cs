@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using EGestora.GestoraControlAdm.Application.ViewModels;
 using EGestora.GestoraControlAdm.Application.Interfaces;
+using System.Reflection;
 
 namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 {
@@ -44,6 +45,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // GET: AuditControllers/Create
         public ActionResult Create()
         {
+            LoadViewBags();
             return View();
         }
 
@@ -65,12 +67,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
 
+                    LoadViewBags();
                     return View(auditControllerViewModel);
                 }
 
                 return RedirectToAction("Index");
             }
 
+            LoadViewBags();
             return View(auditControllerViewModel);
         }
 
@@ -86,6 +90,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
+
+            LoadViewBags();
             return View(auditControllerViewModel);
         }
 
@@ -101,6 +107,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _auditControllerAppService.Update(auditControllerViewModel);
                 return RedirectToAction("Index");
             }
+
+            LoadViewBags();
             return View(auditControllerViewModel);
         }
 
@@ -126,6 +134,35 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             _auditControllerAppService.Remove(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult LoadActions(string controllerName)
+        {
+            Assembly asm = Assembly.GetAssembly(typeof(MvcApplication));
+
+            var actionList = new SelectList(
+                asm.GetTypes()
+                    .Where(type => typeof(System.Web.Mvc.Controller).IsAssignableFrom(type))
+                    .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
+                    .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
+                    .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name }).Where(x => x.Controller == controllerName)
+                    .GroupBy(x => x.Action, x => x.Controller, (key, g) => new { Action = key }).ToList(), string.Empty, "Action");
+
+            return Json(actionList, JsonRequestBehavior.AllowGet);
+        }
+
+        private void LoadViewBags()
+        {
+            Assembly asm = Assembly.GetAssembly(typeof(MvcApplication));
+
+            ViewBag.ControllerList = new SelectList(
+                asm.GetTypes()
+                    .Where(type => typeof(System.Web.Mvc.Controller).IsAssignableFrom(type))
+                    .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
+                    .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
+                    .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name })
+                    .OrderBy(x => x.Controller).GroupBy(x => x.Controller, x => x.Action, (key, g) => new { Controller = key }).ToList(), "Controller", "Controller");
         }
 
         protected override void Dispose(bool disposing)

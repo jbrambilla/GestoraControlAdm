@@ -1,33 +1,54 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.AuditControllerViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gerenciamento de Auditoria";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ControllerName)
-        </th>
-        <th></th>
-    </tr>
+        <h2 class="page-header">Gerenciamento de Auditoria</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ControllerName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AuditControllerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AuditControllerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AuditControllerId })
-        </td>
-    </tr>
-}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista de Área Auditadas
+            </div>
+            <div class="panel-body">
+                <div class="tab-pane" id="pjList">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ControllerName)
+                                </th>
+                                <th>Ações</th>
+                                <th>Regra Criada Em</th>
+                                <th></th>
+                            </tr>
 
-</table>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ControllerName)
+                                    </td>
+                                    <td>Ver</td>
+                                    <td>@Html.DisplayFor(modelItem => item.CriadoEm)</td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Audit", new { id = item.AuditControllerId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                        <a href="@Url.Action("Delete", "Audit", new { id = item.AuditControllerId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.ActionLink("Adicionar Controller", "Create", "Audit", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>

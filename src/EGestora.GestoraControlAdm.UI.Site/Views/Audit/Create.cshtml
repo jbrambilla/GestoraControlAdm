@@ -1,40 +1,105 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.AuditControllerViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nova Regra de Auditoria";
 }
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+            <h1 class="page-header">Nova Regra de Auditoria</h1>
 
-<h2>Create</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>AuditControllerViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ControllerName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Auditoria de Controller</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.ControllerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("ControllerName", (IEnumerable<SelectListItem>)ViewBag.ControllerList, String.Empty, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.ControllerName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Actions</label>
+                                        <div class="col-md-10">
+                                            <select id="ActionNameList" name="ActionNameList" class="form-control" multiple></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <input type="submit" value="Gravar" class="btn btn-success" />
+                            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/bootstrap-multiselect.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#ActionNameList').multiselect({
+                enableFiltering: true,
+                enableClickableOptGroups: true,
+                includeSelectAllOption: true,
+                buttonWidth: '100%',
+                nonSelectedText: 'Nenhuma ação selecionada',
+                allSelectedText: 'Todas estão selecionadas',
+                numberDisplayed: 5,
+                selectAllText: 'Selecionar Todos',
+                nSelectedText: "Ações Selecionadas"
+            });
+
+            $("#ControllerName").change(function () {
+                if ($(this).val() != "") {
+                    listaActions($(this).val());
+                }
+            });
+        });
+        
+        
+        function listaActions(controller) {
+            $.getJSON('/Audit/LoadActions?controllerName=' + controller, listaActionsCallBack);
+        }
+
+        function listaActionsCallBack(json) {
+            $('#ActionNameList').multiselect('destroy');
+            $("#ActionNameList").empty();
+
+            $(json).each(function () {
+                $("#ActionNameList").append("<option value='" + this.Text + "'>" + this.Text + "</option>");
+            });
+
+            $('#ActionNameList').multiselect({
+                enableFiltering: true,
+                enableClickableOptGroups: true,
+                includeSelectAllOption: true,
+                buttonWidth: '100%',
+                nonSelectedText: 'Nenhuma ação selecionada',
+                allSelectedText: 'Todas estão selecionadas',
+                numberDisplayed: 5,
+                selectAllText: 'Selecionar Todos',
+                nSelectedText: "Ações Selecionadas"
+            });
+        }
+    </script>
 }

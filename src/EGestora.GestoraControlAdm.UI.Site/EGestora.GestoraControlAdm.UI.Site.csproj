@@ -202,6 +202,7 @@
     <Compile Include="ViewEngine\GestoraControlAdmViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome\.gitignore" />
@@ -221,6 +222,7 @@
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap-filestyle.js" />
     <Content Include="Scripts\bootstrap-filestyle.min.js" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome\.bower.json" />
@@ -261,6 +263,7 @@
     <Content Include="Config\ConnectionStrings.config" />
     <Content Include="App_Browsers\qt.browser" />
     <Content Include="Content\titatoggle-master\dist\_titatoggle.less" />
+    <Content Include="Less\bootstrap-multiselect.less" />
     <None Include="Properties\PublishProfiles\GestoraAdm.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

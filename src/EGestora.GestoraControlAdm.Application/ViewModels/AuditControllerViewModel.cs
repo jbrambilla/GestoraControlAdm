@@ -12,14 +12,13 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         {
             AuditControllerId = Guid.NewGuid();
             AuditActionList = new List<AuditActionViewModel>();
+            ActionNameList = new List<string>();
         }
 
         [Key]
         public Guid AuditControllerId { get; set; }
 
         [Required(ErrorMessage = "O Nome do Controller é obrigatório.")]
-        [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
-        [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         [DisplayName("Controller")]
         public string ControllerName { get; set; }
 
@@ -34,5 +33,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        [ScaffoldColumn(false)]
+        public IEnumerable<string> ActionNameList { get; set; }
     }
 }

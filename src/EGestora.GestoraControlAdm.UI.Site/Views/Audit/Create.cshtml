@@ -55,51 +55,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/bootstrap-multiselect.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#ActionNameList').multiselect({
-                enableFiltering: true,
-                enableClickableOptGroups: true,
-                includeSelectAllOption: true,
-                buttonWidth: '100%',
-                nonSelectedText: 'Nenhuma ação selecionada',
-                allSelectedText: 'Todas estão selecionadas',
-                numberDisplayed: 5,
-                selectAllText: 'Selecionar Todos',
-                nSelectedText: "Ações Selecionadas"
-            });
-
-            $("#ControllerName").change(function () {
-                if ($(this).val() != "") {
-                    listaActions($(this).val());
-                }
-            });
-        });
-        
-        
-        function listaActions(controller) {
-            $.getJSON('/Audit/LoadActions?controllerName=' + controller, listaActionsCallBack);
-        }
-
-        function listaActionsCallBack(json) {
-            $('#ActionNameList').multiselect('destroy');
-            $("#ActionNameList").empty();
-
-            $(json).each(function () {
-                $("#ActionNameList").append("<option value='" + this.Text + "'>" + this.Text + "</option>");
-            });
-
-            $('#ActionNameList').multiselect({
-                enableFiltering: true,
-                enableClickableOptGroups: true,
-                includeSelectAllOption: true,
-                buttonWidth: '100%',
-                nonSelectedText: 'Nenhuma ação selecionada',
-                allSelectedText: 'Todas estão selecionadas',
-                numberDisplayed: 5,
-                selectAllText: 'Selecionar Todos',
-                nSelectedText: "Ações Selecionadas"
-            });
-        }
-    </script>
+    <script src="~/Scripts/createAudit.js"></script>
 }

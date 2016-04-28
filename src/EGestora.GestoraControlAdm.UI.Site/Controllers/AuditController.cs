@@ -146,7 +146,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     .Where(type => typeof(System.Web.Mvc.Controller).IsAssignableFrom(type))
                     .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
                     .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true).Any())
-                    .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name }).Where(x => x.Controller == controllerName)
+                    .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name }).Where(x => x.Controller == controllerName && !x.Action.Contains("Confirmed"))
                     .GroupBy(x => x.Action, x => x.Controller, (key, g) => new { Action = key }).ToList(), string.Empty, "Action");
 
             return Json(actionList, JsonRequestBehavior.AllowGet);

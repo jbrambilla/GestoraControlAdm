@@ -266,6 +266,7 @@
     <Content Include="Less\bootstrap-multiselect.less" />
     <None Include="Properties\PublishProfiles\GestoraAdm.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\createAudit.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

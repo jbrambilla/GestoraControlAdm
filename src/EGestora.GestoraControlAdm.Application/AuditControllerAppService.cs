@@ -22,8 +22,14 @@ namespace EGestora.GestoraControlAdm.Application
         public AuditControllerViewModel Add(AuditControllerViewModel auditControllerViewModel)
         {
             var auditController = Mapper.Map<AuditControllerViewModel, AuditController>(auditControllerViewModel);
+            var auditActionNameList = auditControllerViewModel.ActionNameList;
 
             BeginTransaction();
+
+            foreach (var actionName in auditActionNameList)
+            {
+                auditController.AuditActionList.Add(new AuditAction() { ActionName = actionName, AuditControllerId = auditController.AuditControllerId });
+            }
 
             var auditControllerReturn = _auditControllerService.Add(auditController);
             auditControllerViewModel = Mapper.Map<AuditController, AuditControllerViewModel>(auditControllerReturn);

@@ -11,6 +11,8 @@ namespace EGestora.GestoraControlAdm.UI.Site
             filters.Add(new HandleErrorAttribute());
 
             filters.Add(new AuthorizeAttribute());
+
+            filters.Add(new AuditAttribute());
         }
     }
 }

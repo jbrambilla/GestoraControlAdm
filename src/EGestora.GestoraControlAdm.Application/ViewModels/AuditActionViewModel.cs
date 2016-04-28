@@ -12,6 +12,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         }
 
         [Key]
+        [DisplayName("Ação")]
         public Guid AuditActionId { get; set; }
 
         [Required(ErrorMessage = "A Action deve pertencer a um controller.")]

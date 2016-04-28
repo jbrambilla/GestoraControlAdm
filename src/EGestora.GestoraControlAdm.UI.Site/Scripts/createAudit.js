@@ -9,9 +9,13 @@ $("#ControllerName").change(function () {
 
 $("form").submit(function (event) {
     if ($('#ControllerName').val() != "") {
-        if (confirm('ATENÇÃO! Ao salvar um controller sem actions, você assumirá que todas as actions deste controller serão auditadas. Deseja continuar?')) {
-            return;
+        if ($("#ActionNameList :selected").length <= 0) {
+            if (confirm('ATENÇÃO! Ao salvar um controller sem actions, você assumirá que todas as actions deste controller serão auditadas. Deseja continuar?')) {
+                return;
+            }
+            event.preventDefault();
         }
+        return;
     }
     event.preventDefault();
 });

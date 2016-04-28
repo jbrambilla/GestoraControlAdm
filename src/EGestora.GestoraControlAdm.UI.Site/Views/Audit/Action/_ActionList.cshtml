@@ -1,0 +1,33 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.AuditActionViewModel>
+
+@if (Model.Any())
+{ 
+    <table class="table table-user-information">
+        <thead>
+            <tr>
+                <th>Nome da Ação</th>
+                <th>Adicionado Em</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var action in Model)
+            {
+                <tr>
+                    <td>@action.ActionName</td>
+                    <td>@action.CriadoEm</td>
+                    <td>
+                        <a href="@Url.Action("DeletarAction", "Audit", new { id = action.AuditActionId })" data-modal="" class="btn btn-danger btn-circle">
+                            <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p><strong>Nenhuma Ação foi registrada.</strong></p>
+    <p>Todas as ações deste controller estão sendo auditadas.</p>
+}

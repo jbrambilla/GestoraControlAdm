@@ -1,26 +1,103 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.AuditControllerViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Gerenciamento da Auditoria";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-lg-12">
 
-<div>
-    <h4>AuditControllerViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ControllerName)
-        </dt>
+        <div class="container">
+            <h2>Gerenciamento da Auditoria</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.ControllerName)
-        </dd>
+            <div class="row">
+                <div class="">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><strong>@Model.ControllerName </strong> </h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                @*<div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemCliente", "Clientes", new { id = Model.ClienteId })" alt="" class="img-circle img-responsive"> </div>*@
 
-    </dl>
+                                <div class="tab-content col-md-9 col-lg-9 ">
+                                    <div class="tab-pane fade in active " id="infoBasica">
+                                        <h4>Regra criada em @Model.CriadoEm</h4>
+                                        <div id="replacetargetAction">
+                                            @Html.Partial("_ActionList", Model.AuditActionList)
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <a href="@Url.Action("AdicionarAction", "Audit", new { id = Model.AuditControllerId }, "")" class="btn btn-success" data-modal="">
+                                    Adicionar Ação 
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <a href="@Url.Action("Delete", "Audit", new { id = Model.AuditControllerId })" class="btn btn-danger">
+                                <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                            </a>
+                            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AuditControllerId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+
+            $(document).on('click', 'a[data-modal]', function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+
+            });
+        });
+
+        function bindForm(dialog) {
+            $('form', dialog).submit(function () {
+                $.ajax({
+                    url: this.action,
+                    type: this.method,
+                    data: new FormData(this),
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        if (result.success) {
+                            $('#myModal').modal('hide');
+                            if (result.replaceTarget == "action") {
+                                $('#replacetargetAction').load(result.url);
+                            } 
+                        } else {
+                            $('#myModalContent').html(result);
+                            bindForm(dialog);
+                        }
+                    }
+                });
+                return false;
+            });
+        }
+    </script>
+
+}

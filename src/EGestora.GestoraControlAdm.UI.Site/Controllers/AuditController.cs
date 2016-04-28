@@ -165,6 +165,107 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     .OrderBy(x => x.Controller).GroupBy(x => x.Controller, x => x.Action, (key, g) => new { Controller = key }).ToList(), "Controller", "Controller");
         }
 
+
+
+        //Actions
+
+        public ActionResult ListarActionsNoIndex(Guid id)
+        {
+            var auditController = _auditControllerAppService.GetById(id);
+            return PartialView("_ActionListIndex", auditController.AuditActionList);
+        }
+
+        public ActionResult ListarActions(Guid id)
+        {
+            var auditController = _auditControllerAppService.GetById(id);
+            return PartialView("_ActionList", auditController.AuditActionList);
+        }
+
+        [Route("adicionar-action")]
+        public ActionResult AdicionarAction(Guid id)
+        {
+            var auditController = _auditControllerAppService.GetById(id);
+
+            ViewBag.AuditControllerId = auditController.AuditControllerId;
+
+            RemoverActionsExistentesNoControllerEcarregarViewBag(auditController);
+            
+            return PartialView("_AdicionarAction");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarAction(AuditActionViewModel auditActionViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _auditControllerAppService.AddAction(auditActionViewModel);
+
+                string url = Url.Action("ListarActions", "Audit", new { id = auditActionViewModel.AuditControllerId });
+                return Json(new { success = true, url = url, replaceTarget = "action" });
+            }
+
+            return PartialView("_AdicionarAction", auditActionViewModel);
+        }
+
+        public ActionResult DeletarAction(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var auditActionViewModel = _auditControllerAppService.GetActionById(id.Value);
+            if (auditActionViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DeletarAction", auditActionViewModel);
+        }
+
+        // POST: Clientes/Delete/5
+
+        [HttpPost, ActionName("DeletarAction")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarActionConfirmed(Guid id)
+        {
+            var auditControllerId = _auditControllerAppService.GetActionById(id).AuditControllerId;
+            _auditControllerAppService.RemoveAction(id);
+
+            string url = Url.Action("ListarActions", "Audit", new { id = auditControllerId });
+            return Json(new { success = true, url = url, replaceTarget = "action" });
+        }
+
+        private void RemoverActionsExistentesNoControllerEcarregarViewBag(AuditControllerViewModel auditController)
+        {
+            var actionListSemActionsExistentes = new List<string>();
+
+            Assembly asm = Assembly.GetAssembly(typeof(MvcApplication));
+
+            var actionList = new SelectList(
+                asm.GetTypes()
+                    .Where(type => typeof(System.Web.Mvc.Controller).IsAssignableFrom(type))
+                    .SelectMany(type => type.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public))
+                    .Where(m => !m.GetCustomAttributes(typeof(System.Runtime.CompilerServices.CompilerGeneratedAttribute), true)
+                    .Any())
+                    .Select(x => new { Controller = x.DeclaringType.Name, Action = x.Name })
+                    .Where(x => x.Controller == auditController.ControllerName && !x.Action.Contains("Confirmed"))
+                    .GroupBy(x => x.Action, x => x.Controller, (key, g) => new { Action = key })
+                    .ToList(), string.Empty, "Action");
+
+
+
+            foreach (var action in actionList)
+            {
+                if (!auditController.AuditActionList.Any(ac => ac.ActionName == action.Text))
+                {
+                    actionListSemActionsExistentes.Add(action.Text);
+                }
+            }
+
+            ViewBag.ActionList = new SelectList(actionListSemActionsExistentes);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

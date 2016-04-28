@@ -32,10 +32,10 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ControllerName)
                                     </td>
-                                    <td>Ver</td>
+                                    <td><a href="@Url.Action("ListarActionsNoIndex", "Audit", new { id = item.AuditControllerId })" class="btn btn-default btn-circle" data-modal=""><span title="Detalhes" class="glyphicon glyphicon-search"></span></a></td>
                                     <td>@Html.DisplayFor(modelItem => item.CriadoEm)</td>
                                     <td>
-                                        <a href="@Url.Action("Details", "Audit", new { id = item.AuditControllerId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                        <a href="@Url.Action("Details", "Audit", new { id = item.AuditControllerId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-cog"></span></a>
                                         <a href="@Url.Action("Delete", "Audit", new { id = item.AuditControllerId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
                                     </td>
                                 </tr>
@@ -52,3 +52,32 @@
         </div>
     </div>
 </div>
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $.ajaxSetup({ cache: false });
+
+            $(document).on('click', 'a[data-modal]', function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+
+            });
+        });
+    </script>
+
+}

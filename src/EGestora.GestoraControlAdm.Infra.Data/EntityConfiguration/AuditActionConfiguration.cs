@@ -11,7 +11,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             HasRequired(a => a.AuditController)
                 .WithMany(ac => ac.AuditActionList)
-                .HasForeignKey(a => a.AuditControllerId);
+                .HasForeignKey(a => a.AuditControllerId)
+                .WillCascadeOnDelete(true);
 
             ToTable("AuditActions");
         }

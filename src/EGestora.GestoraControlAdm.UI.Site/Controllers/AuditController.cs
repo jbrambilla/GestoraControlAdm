@@ -257,6 +257,22 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return PartialView("_DetailsHistory", auditViewModel);
         }
 
+        public ActionResult EnviarEmail(Guid id)
+        {
+            TempData["EmailMessage"] = "Enviado com sucesso!";
+            TempData["MessageType"] = "alert-success";
+
+            var auditViewModel = _auditControllerAppService.GetAuditById(id);
+            auditViewModel = _auditControllerAppService.EnviarEmail(auditViewModel);
+
+            if (!auditViewModel.ValidationResult.IsValid)
+            {
+                TempData["EmailMessage"] = auditViewModel.ValidationResult.Erros.FirstOrDefault().Message;
+                TempData["MessageType"] = "alert-danger";
+            }
+            return RedirectToAction("History");
+        }
+
         private void RemoverActionsExistentesNoControllerEcarregarViewBag(AuditControllerViewModel auditController)
         {
             var actionListSemActionsExistentes = new List<string>();

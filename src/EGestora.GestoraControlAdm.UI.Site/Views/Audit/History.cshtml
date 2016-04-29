@@ -7,6 +7,15 @@
 <div class="row">
     <div class="col-lg-12">
 
+        @if (TempData["EmailMessage"] != null)
+        {
+            <div class="alert @TempData["MessageType"] alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4>Envio de e-mail</h4>
+                <p>@TempData["EmailMessage"]</p>
+            </div>
+        }
+        
         <h2 class="page-header">Histórico de ações dos usuários</h2>
         <div class="panel panel-default">
             <div class="panel-heading">

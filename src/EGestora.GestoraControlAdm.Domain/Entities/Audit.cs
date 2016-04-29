@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainValidation.Validation;
+using System;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
@@ -7,6 +8,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Audit()
         {
             AuditId = Guid.NewGuid();
+            ValidationResult = new ValidationResult();
         }
 
         public Guid AuditId { get; set; }
@@ -15,5 +17,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string AreaAccessed { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
+
+        public ValidationResult ValidationResult { get; set; }
     }
 }

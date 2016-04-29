@@ -1,4 +1,6 @@
-﻿using EGestora.GestoraControlAdm.Domain.Entities;
+﻿using DomainValidation.Validation;
+using EGestora.GestoraControlAdm.Domain.Entities;
+using EGestora.GestoraControlAdm.Domain.Interfaces.MailService;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Validations.AuditControllers;
@@ -12,15 +14,18 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IAuditControllerRepository _auditControllerRepository;
         private readonly IAuditActionRepository _auditActionRepository;
         private readonly IAuditRepository _auditRepository;
+        private readonly IEmailService _emailService;
 
         public AuditControllerService(
             IAuditControllerRepository auditControllerRepository,
             IAuditActionRepository auditActionRepository,
-            IAuditRepository auditRepository)
+            IAuditRepository auditRepository,
+            IEmailService emailService)
         {
             _auditControllerRepository = auditControllerRepository;
             _auditActionRepository = auditActionRepository;
             _auditRepository = auditRepository;
+            _emailService = emailService;
         }
 
         public AuditController Add(AuditController auditController)
@@ -87,6 +92,24 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public Audit GetAuditById(Guid id)
         {
             return _auditRepository.GetById(id);
+        }
+
+        public Audit EnviarEmail(Audit audit)
+        {
+            _emailService.AdicionarDestinatário("jotabram@gmail.com");
+            _emailService.AdicionarRemetente("joao.brambilla@egestora.com.br");
+            _emailService.AdicionarAssunto("Auditoria do sistema.");
+            _emailService.AdicionarCorpo(
+                "Usuário: " + audit.UserName + "\n" +
+                "IP: " + audit.IPAddress + "\n" +
+                "Área acessada: " + audit.AreaAccessed + "\n" +
+                "Data do acesso: " + audit.CriadoEm + "\n"
+            );
+            if (!_emailService.Enviar())
+            {
+                audit.ValidationResult.Add(new ValidationError("Falha ao enviar e-mail."));
+            }
+            return audit;
         }
 
         public void Dispose()

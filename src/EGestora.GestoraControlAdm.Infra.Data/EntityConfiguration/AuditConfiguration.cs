@@ -9,6 +9,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(a => a.AuditId);
 
+            Ignore(a => a.ValidationResult);
+
             ToTable("Audit");
         }
     }

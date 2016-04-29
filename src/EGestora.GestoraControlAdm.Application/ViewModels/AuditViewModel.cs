@@ -27,5 +27,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DateTime AlteradoEm { get; set; }
+
+        [ScaffoldColumn(false)]
+        public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
     }
 }

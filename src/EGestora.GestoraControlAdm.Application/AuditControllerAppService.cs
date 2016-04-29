@@ -136,5 +136,11 @@ namespace EGestora.GestoraControlAdm.Application
         {
             return Mapper.Map<Audit, AuditViewModel>(_auditControllerService.GetAuditById(id));
         }
+
+        public AuditViewModel EnviarEmail(AuditViewModel auditViewModel)
+        {
+            var audit = Mapper.Map<AuditViewModel, Audit>(auditViewModel);
+            return Mapper.Map<Audit, AuditViewModel>(_auditControllerService.EnviarEmail(audit));
+        }
     }
 }

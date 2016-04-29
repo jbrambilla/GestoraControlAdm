@@ -47,6 +47,6 @@
 </div>
 
 <div class="modal-footer">
-    <a href="#" class="btn btn-primary"><span title="Enviar por E-mail" class="glyphicon glyphicon-envelope"></span></a>
+    <a href="@Url.Action("EnviarEmail", "Audit", new { id = Model.AuditId })" class="btn btn-primary"><span title="Enviar por E-mail" class="glyphicon glyphicon-envelope"></span></a>
     <input type="button" class="btn btn-danger" data-dismiss="modal" value="Fechar" />
 </div>

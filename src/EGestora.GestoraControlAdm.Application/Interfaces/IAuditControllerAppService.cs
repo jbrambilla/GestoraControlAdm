@@ -19,5 +19,6 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         IEnumerable<AuditViewModel> GetAllAudit();
         AuditViewModel GetAuditById(Guid id);
+        AuditViewModel EnviarEmail(AuditViewModel auditViewModel);
     }
 }

@@ -11,13 +11,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
     {
         private readonly IAuditControllerRepository _auditControllerRepository;
         private readonly IAuditActionRepository _auditActionRepository;
+        private readonly IAuditRepository _auditRepository;
 
         public AuditControllerService(
             IAuditControllerRepository auditControllerRepository,
-            IAuditActionRepository auditActionRepository)
+            IAuditActionRepository auditActionRepository,
+            IAuditRepository auditRepository)
         {
             _auditControllerRepository = auditControllerRepository;
             _auditActionRepository = auditActionRepository;
+            _auditRepository = auditRepository;
         }
 
         public AuditController Add(AuditController auditController)
@@ -76,10 +79,21 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _auditActionRepository.Remove(id);
         }
 
+        public IEnumerable<Audit> GetAllAudit()
+        {
+            return _auditRepository.GetAll();
+        }
+
+        public Audit GetAuditById(Guid id)
+        {
+            return _auditRepository.GetById(id);
+        }
+
         public void Dispose()
         {
             _auditControllerRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

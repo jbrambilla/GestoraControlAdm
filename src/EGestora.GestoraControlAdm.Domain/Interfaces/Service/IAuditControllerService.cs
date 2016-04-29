@@ -16,5 +16,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         AuditAction UpdateAction(AuditAction auditAction);
         AuditAction GetActionById(Guid id);
         void RemoveAction(Guid id);
+
+        IEnumerable<Audit> GetAllAudit();
+        Audit GetAuditById(Guid id);
     }
 }

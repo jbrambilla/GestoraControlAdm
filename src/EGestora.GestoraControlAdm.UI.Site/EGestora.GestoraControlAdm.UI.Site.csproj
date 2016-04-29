@@ -435,6 +435,8 @@
     <Content Include="Views\Audit\Action\_AdicionarAction.cshtml" />
     <Content Include="Views\Audit\Action\_DeletarAction.cshtml" />
     <Content Include="Views\Audit\Action\_ActionListIndex.cshtml" />
+    <Content Include="Views\Audit\History.cshtml" />
+    <Content Include="Views\Audit\_DetailsHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

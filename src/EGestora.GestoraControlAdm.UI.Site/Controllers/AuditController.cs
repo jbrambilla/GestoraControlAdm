@@ -21,6 +21,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             _auditControllerAppService = auditControllerAppService;
         }
 
+        // GET: Audits
+        public ActionResult History()
+        {
+            return View(_auditControllerAppService.GetAllAudit());
+        }
+
         // GET: AuditControllers
         public ActionResult Index()
         {
@@ -234,6 +240,21 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             string url = Url.Action("ListarActions", "Audit", new { id = auditControllerId });
             return Json(new { success = true, url = url, replaceTarget = "action" });
+        }
+
+        public ActionResult DetailsAuditHistory(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var auditViewModel = _auditControllerAppService.GetAuditById(id.Value);
+            if (auditViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_DetailsHistory", auditViewModel);
         }
 
         private void RemoverActionsExistentesNoControllerEcarregarViewBag(AuditControllerViewModel auditController)

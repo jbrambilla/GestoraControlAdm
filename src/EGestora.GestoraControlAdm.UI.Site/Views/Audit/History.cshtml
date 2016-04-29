@@ -1,0 +1,100 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.AuditViewModel>
+
+@{
+    ViewBag.Title = "Histórico de ações dos usuários";
+}
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
+<div class="row">
+    <div class="col-lg-12">
+
+        <h2 class="page-header">Histórico de ações dos usuários</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Histórico
+            </div>
+            <div class="panel-body">
+                <div class="tab-pane" id="pjList">
+                    <div class="table-responsive">
+                        <table class="hover stripe" width="100%" cellspacing="0" id="audithistory">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                                    <th>@Html.DisplayNameFor(model => model.IPAddress)</th>
+                                    <th>@Html.DisplayNameFor(model => model.AreaAccessed)</th>
+                                    <th>@Html.DisplayNameFor(model => model.CriadoEm)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.IPAddress)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.AreaAccessed)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CriadoEm)</td>
+                                        <td>
+                                            <a href="@Url.Action("DetailsAuditHistory", "Audit", new { id = item.AuditId })" class="btn btn-default" data-modal=""><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#audithistory').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por página",
+                    "zeroRecords": "Nenhum registro encontrado - desculpe",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "infoFiltered": "(filtrado de _MAX_ total de registros)",
+                    "search": "Busca:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+
+            $(document).on('click', 'a[data-modal]', function (e) {
+                $('#myModalContent').load(this.href, function () {
+                    $('#myModal').modal({
+                        /*backdrop: 'static',*/
+                        keyboard: true
+                    }, 'show');
+                    bindForm(this);
+                });
+                return false;
+
+            });
+        });
+    </script>
+}
+

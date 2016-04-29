@@ -125,5 +125,16 @@ namespace EGestora.GestoraControlAdm.Application
             _auditControllerService.Dispose();
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<AuditViewModel> GetAllAudit()
+        {
+            return Mapper.Map<IEnumerable<Audit>, IEnumerable<AuditViewModel>>(_auditControllerService.GetAllAudit());
+        }
+
+
+        public AuditViewModel GetAuditById(Guid id)
+        {
+            return Mapper.Map<Audit, AuditViewModel>(_auditControllerService.GetAuditById(id));
+        }
     }
 }

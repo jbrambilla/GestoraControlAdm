@@ -16,5 +16,8 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         AuditActionViewModel UpdateAction(AuditActionViewModel auditActionViewModel);
         AuditActionViewModel GetActionById(Guid id);
         void RemoveAction(Guid id);
+
+        IEnumerable<AuditViewModel> GetAllAudit();
+        AuditViewModel GetAuditById(Guid id);
     }
 }

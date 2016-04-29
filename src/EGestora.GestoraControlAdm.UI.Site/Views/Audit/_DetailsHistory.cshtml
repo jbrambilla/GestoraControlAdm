@@ -1,0 +1,52 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.AuditViewModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title">Detalhes do acesso</h4>
+</div>
+
+<div class="modal-body">
+    <div class="form-horizontal">
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IPAddress)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IPAddress)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AreaAccessed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AreaAccessed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CriadoEm)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CriadoEm)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a href="#" class="btn btn-primary"><span title="Enviar por E-mail" class="glyphicon glyphicon-envelope"></span></a>
+    <input type="button" class="btn btn-danger" data-dismiss="modal" value="Fechar" />
+</div>

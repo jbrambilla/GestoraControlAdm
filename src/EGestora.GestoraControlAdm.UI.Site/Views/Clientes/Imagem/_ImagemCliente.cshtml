@@ -1,0 +1,8 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel
+
+<div class="col-md-3 col-lg-3 " align="center">
+    <a href="@Url.Action("AlterarImagem", "Clientes", new { id = Model.PessoaId })" data-modal="">
+        <img id="imagemCliente" src="@Url.Action("ObterImagemCliente", "Clientes", new { id = Model.PessoaId })" alt="" class="img-circle img-responsive">
+    </a>
+    <a href="@Url.Action("AlterarImagem", "Clientes", new { id = Model.PessoaId })" data-modal="">Alterar Imagem</a>
+</div>

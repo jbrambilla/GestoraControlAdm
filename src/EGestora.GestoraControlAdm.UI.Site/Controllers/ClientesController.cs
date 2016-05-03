@@ -496,18 +496,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "revenda" });
         }
 
-        public ActionResult ObterImagemCliente(Guid id)
-        {
-            var foto = ImagemUtil.ObterImagem(id, FilePathConstants.CLIENTES_IMAGE_PATH);
-
-            if (foto == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            return File(foto, "image/jpeg");
-        }
-
         //ANEXOS
 
         public ActionResult ListarAnexos(Guid id)
@@ -673,6 +661,65 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             var anexo = _clienteAppService.GetAnexoById(id);
             return File(anexo.Content, anexo.ContentType, anexo.FileName);
+        }
+
+        //IMAGEM
+
+        public ActionResult ObterImagemCliente(Guid id)
+        {
+            var foto = ImagemUtil.ObterImagem(id, FilePathConstants.CLIENTES_IMAGE_PATH);
+
+            if (foto == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return File(foto, "image/jpeg");
+        }
+
+        public ActionResult MostrarImagemCliente(Guid id)
+        {
+
+            return PartialView("_ImagemCliente", _clienteAppService.GetById(id));
+        }
+
+        [Route("alterar-imagem")]
+        public ActionResult AlterarImagem(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            return PartialView("_AlterarImagem");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AlterarImagem(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Arquivo == null)
+                {
+                    ViewBag.PessoaId = PessoaId;
+                    return PartialView("_AlterarImagem");
+                }
+
+                var foto = ImagemUtil.ObterImagem(PessoaId, FilePathConstants.CLIENTES_IMAGE_PATH);
+
+                if (foto != null)
+                {
+                    System.IO.File.Delete(foto);
+                }
+
+                ImagemUtil.SalvarImagem(Arquivo, PessoaId, FilePathConstants.CLIENTES_IMAGE_PATH);
+
+                string url = foto;
+                return Json(new { success = true, url = url, replaceTarget = "imagem" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            return PartialView("_AlterarImagem");
         }
 
         private void loadViewBags()

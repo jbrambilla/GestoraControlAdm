@@ -39,6 +39,8 @@ function bindForm(dialog) {
                         $('#replacetargetContato').load(result.url);
                     } else if (result.replaceTarget == "debito") {
                         $('#replacetargetDebito').load(result.url);
+                    } else if (result.replaceTarget == "imagem") {
+                        $('#imagemCliente').attr('src', result.url);
                     } else {
                         $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                     }

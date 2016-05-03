@@ -12,6 +12,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.ViewEngine
             "~/Views/Clientes/Revendas/{0}.cshtml",
             "~/Views/Clientes/Debitos/{0}.cshtml",
             "~/Views/Clientes/CodigoSegurancas/{0}.cshtml",
+            "~/Views/Clientes/Imagem/{0}.cshtml",
             "~/Views/Empresas/Funcionarios/{0}.cshtml",
             "~/Views/LoteFaturamentos/Servico/{0}.cshtml",
             "~/Views/Debitos/Boletos/{0}.cshtml",

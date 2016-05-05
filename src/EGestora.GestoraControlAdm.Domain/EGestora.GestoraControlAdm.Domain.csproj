@@ -88,6 +88,7 @@
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaJuridicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaComplexaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeApuracaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeTributacaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Interfaces\Service\IFornecedorService.cs" />
     <Compile Include="Interfaces\Service\ILoteFaturamentoService.cs" />
     <Compile Include="Interfaces\Service\INotaServicoService.cs" />
+    <Compile Include="Interfaces\Service\IPessoaService.cs" />
     <Compile Include="Interfaces\Service\IRevendaService.cs" />
     <Compile Include="Interfaces\Service\IServicoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Services\FornecedorService.cs" />
     <Compile Include="Services\LoteFaturamentoService.cs" />
     <Compile Include="Services\NotaServicoService.cs" />
+    <Compile Include="Services\PessoaService.cs" />
     <Compile Include="Services\RevendaService.cs" />
     <Compile Include="Services\ServicoService.cs" />
     <Compile Include="Specifications\AuditControllers\AuditControllerDevePossuirControllerUnicoSpecification.cs" />

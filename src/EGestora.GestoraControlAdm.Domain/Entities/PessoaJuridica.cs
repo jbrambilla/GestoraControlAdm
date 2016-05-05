@@ -12,6 +12,12 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string InscricaoMunicipal { get; set; }
         public string InscricaoEstadual { get; set; }
         public DateTime DataFundacao { get; set; }
+        public DateTime DataAniversario { get; set; }
         public virtual Pessoa Pessoa { get; set; }
+
+        //cnaes
+        //funcionarios
+        //proprietarios
+        //regime de imposto
     }
 }

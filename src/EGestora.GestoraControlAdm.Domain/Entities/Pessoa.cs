@@ -19,6 +19,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Guid PessoaId { get; set; }
         public bool Ativo { get; set; }
         public string Email { get; set; }
+        public string Observacao { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
 

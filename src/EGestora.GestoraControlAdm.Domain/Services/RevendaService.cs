@@ -39,12 +39,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return revenda;
             }
 
-            revenda.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Revenda>(_revendaRepository).Validate(revenda);
-            if (!revenda.ValidationResult.IsValid)
-            {
-                return revenda;
-            }
-
             return _revendaRepository.Add(revenda);
         }
 

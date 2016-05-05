@@ -4,11 +4,11 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 
 namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF
 {
-    public class PessoaFisicaDevePossuirCpfUnicoSpecification<TEntity> : ISpecification<Pessoa> where TEntity : class
+    public class PessoaFisicaDevePossuirCpfUnicoSpecification : ISpecification<Pessoa>
     {
-        private readonly IPessoaComplexaRepository<TEntity> _pessoaRepository;
+        private readonly IPessoaRepository _pessoaRepository;
 
-        public PessoaFisicaDevePossuirCpfUnicoSpecification(IPessoaComplexaRepository<TEntity> pessoaRepository)
+        public PessoaFisicaDevePossuirCpfUnicoSpecification(IPessoaRepository pessoaRepository)
         {
             _pessoaRepository = pessoaRepository;
         }

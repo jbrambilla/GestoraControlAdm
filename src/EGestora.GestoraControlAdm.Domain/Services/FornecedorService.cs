@@ -41,11 +41,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             {
                 return fornecedor;
             }
-            fornecedor.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Fornecedor>(_fornecedorRepository).Validate(fornecedor);
-            if (!fornecedor.ValidationResult.IsValid)
-            {
-                return fornecedor;
-            }
 
             return _fornecedorRepository.Add(fornecedor);
         }

@@ -59,12 +59,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return cliente;
             }
 
-            cliente.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Cliente>(_clienteRepository).Validate(cliente);
-            if (!cliente.ValidationResult.IsValid)
-            {
-                return cliente;
-            }
-
             cliente.ValidationResult = new ClienteEstaAptoParaCadastroValidation().Validate(cliente);
             if (!cliente.ValidationResult.IsValid)
             {

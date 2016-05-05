@@ -36,6 +36,12 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return pessoa;
             }
 
+            pessoa.ValidationResult = new PessoaEstaAptaParaCadastroValidation(_pessoaRepository).Validate(pessoa);
+            if (!pessoa.ValidationResult.IsValid)
+            {
+                return pessoa;
+            }
+
             return _pessoaRepository.Add(pessoa);
         }
 

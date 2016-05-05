@@ -6,11 +6,11 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 
 namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
 {
-    public class PessoaJuridicaDevePossuirCnpjUnicoSpecification<TEntity> : ISpecification<Pessoa> where TEntity : class
+    public class PessoaJuridicaDevePossuirCnpjUnicoSpecification : ISpecification<Pessoa>
     {
-        private readonly IPessoaComplexaRepository<TEntity> _pessoaRepository;
+        private readonly IPessoaRepository _pessoaRepository;
 
-        public PessoaJuridicaDevePossuirCnpjUnicoSpecification(IPessoaComplexaRepository<TEntity> pessoaRepository)
+        public PessoaJuridicaDevePossuirCnpjUnicoSpecification(IPessoaRepository pessoaRepository)
         {
             _pessoaRepository = pessoaRepository;
         }

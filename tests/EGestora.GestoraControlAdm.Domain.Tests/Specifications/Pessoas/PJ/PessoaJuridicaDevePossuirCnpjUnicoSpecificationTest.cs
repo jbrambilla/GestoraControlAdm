@@ -16,10 +16,10 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PJ
         {
             Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
             stubRepo.Stub(s => s.GetByCnpj(Pessoa.PessoaJuridica.Cnpj)).Return(null);
 
-            var specification = new PessoaJuridicaDevePossuirCnpjUnicoSpecification<Pessoa>(stubRepo);
+            var specification = new PessoaJuridicaDevePossuirCnpjUnicoSpecification(stubRepo);
             Assert.IsTrue(specification.IsSatisfiedBy(Pessoa));
         }
 
@@ -28,9 +28,9 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PJ
         {
             Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
 
-            var specification = new PessoaJuridicaDevePossuirCnpjUnicoSpecification<Pessoa>(stubRepo);
+            var specification = new PessoaJuridicaDevePossuirCnpjUnicoSpecification(stubRepo);
             Assert.IsTrue(specification.IsSatisfiedBy(Pessoa));
         }
 
@@ -39,10 +39,10 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PJ
         {
             Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
             stubRepo.Stub(s => s.GetByCnpj(Pessoa.PessoaJuridica.Cnpj)).Return(Pessoa);
 
-            var specification = new PessoaJuridicaDevePossuirCnpjUnicoSpecification<Pessoa>(stubRepo);
+            var specification = new PessoaJuridicaDevePossuirCnpjUnicoSpecification(stubRepo);
             Assert.IsFalse(specification.IsSatisfiedBy(Pessoa));
         }
 

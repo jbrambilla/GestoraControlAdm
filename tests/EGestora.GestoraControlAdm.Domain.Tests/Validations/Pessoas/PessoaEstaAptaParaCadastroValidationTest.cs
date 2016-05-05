@@ -17,10 +17,10 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
             stubRepo.Stub(s => s.GetByCnpj(Pessoa.PessoaJuridica.Cnpj)).Return(null);
 
-            var validation = new PessoaEstaAptaParaCadastroValidation<Pessoa>(stubRepo);
+            var validation = new PessoaEstaAptaParaCadastroValidation(stubRepo);
 
             Assert.IsTrue(validation.Validate(Pessoa).IsValid);
         }
@@ -30,9 +30,9 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
 
-            var validation = new PessoaEstaAptaParaCadastroValidation<Pessoa>(stubRepo);
+            var validation = new PessoaEstaAptaParaCadastroValidation(stubRepo);
 
             Assert.IsTrue(validation.Validate(Pessoa).IsValid);
         }
@@ -42,10 +42,10 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() { Cnpj = "34625757000192" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
             stubRepo.Stub(s => s.GetByCnpj(Pessoa.PessoaJuridica.Cnpj)).Return(Pessoa);
 
-            var validation = new PessoaEstaAptaParaCadastroValidation<Pessoa>(stubRepo);
+            var validation = new PessoaEstaAptaParaCadastroValidation(stubRepo);
             var result = validation.Validate(Pessoa);
 
             Assert.IsFalse(validation.Validate(Pessoa).IsValid);
@@ -57,10 +57,10 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "52967264644" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
             stubRepo.Stub(s => s.GetByCpf(Pessoa.PessoaFisica.Cpf)).Return(null);
 
-            var validation = new PessoaEstaAptaParaCadastroValidation<Pessoa>(stubRepo);
+            var validation = new PessoaEstaAptaParaCadastroValidation(stubRepo);
 
             Assert.IsTrue(validation.Validate(Pessoa).IsValid);
         }
@@ -70,9 +70,9 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
 
-            var validation = new PessoaEstaAptaParaCadastroValidation<Pessoa>(stubRepo);
+            var validation = new PessoaEstaAptaParaCadastroValidation(stubRepo);
 
             Assert.IsTrue(validation.Validate(Pessoa).IsValid);
         }
@@ -82,10 +82,10 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Validations.Pessoas
         {
             Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "52967264111" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaRepository>();
             stubRepo.Stub(s => s.GetByCpf(Pessoa.PessoaFisica.Cpf)).Return(Pessoa);
 
-            var validation = new PessoaEstaAptaParaCadastroValidation<Pessoa>(stubRepo);
+            var validation = new PessoaEstaAptaParaCadastroValidation(stubRepo);
             var result = validation.Validate(Pessoa);
 
             Assert.IsFalse(validation.Validate(Pessoa).IsValid);

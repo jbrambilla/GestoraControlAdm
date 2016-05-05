@@ -59,12 +59,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 return empresa;
             }
 
-            empresa.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Empresa>(_empresaRepository).Validate(empresa);
-            if (!empresa.ValidationResult.IsValid)
-            {
-                return empresa;
-            }
-
             empresa.ValidationResult = new EmpresaEstaAptaParaCadastroValidation(_empresaRepository).Validate(empresa);
             if (!empresa.ValidationResult.IsValid)
             {
@@ -211,12 +205,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public Funcionario AddFuncionario(Funcionario funcionario)
         {
             if (!funcionario.IsValid())
-            {
-                return funcionario;
-            }
-
-            funcionario.ValidationResult = new PessoaEstaAptaParaCadastroValidation<Funcionario>(_funcionarioRepository).Validate(funcionario);
-            if (!funcionario.ValidationResult.IsValid)
             {
                 return funcionario;
             }

@@ -6,9 +6,9 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PF
 {
     public class PessoaFisicaDevePossuirCpfUnicoSpecification<TEntity> : ISpecification<Pessoa> where TEntity : class
     {
-        private readonly IPessoaRepository<TEntity> _pessoaRepository;
+        private readonly IPessoaComplexaRepository<TEntity> _pessoaRepository;
 
-        public PessoaFisicaDevePossuirCpfUnicoSpecification(IPessoaRepository<TEntity> pessoaRepository)
+        public PessoaFisicaDevePossuirCpfUnicoSpecification(IPessoaComplexaRepository<TEntity> pessoaRepository)
         {
             _pessoaRepository = pessoaRepository;
         }

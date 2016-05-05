@@ -2,7 +2,7 @@
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
-    public interface IFornecedorRepository : IPessoaRepository<Fornecedor>
+    public interface IFornecedorRepository : IPessoaComplexaRepository<Fornecedor>
     {
     }
 }

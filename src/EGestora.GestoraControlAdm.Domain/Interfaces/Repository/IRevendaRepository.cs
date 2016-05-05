@@ -2,7 +2,7 @@
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
-    public interface IRevendaRepository : IPessoaRepository<Revenda>
+    public interface IRevendaRepository : IPessoaComplexaRepository<Revenda>
     {
     }
 }

@@ -16,7 +16,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PF
         {
             Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "52967264644" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
             stubRepo.Stub(s => s.GetByCpf(Pessoa.PessoaFisica.Cpf)).Return(null);
 
             var specification = new PessoaFisicaDevePossuirCpfUnicoSpecification<Pessoa>(stubRepo);
@@ -28,7 +28,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PF
         {
             Pessoa = new Pessoa() { PessoaJuridica = new PessoaJuridica() };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
 
             var specification = new PessoaFisicaDevePossuirCpfUnicoSpecification<Pessoa>(stubRepo);
             Assert.IsTrue(specification.IsSatisfiedBy(Pessoa));
@@ -39,7 +39,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Pessoas.PF
         {
             Pessoa = new Pessoa() { PessoaFisica = new PessoaFisica() { Cpf = "34625757000192" } };
 
-            var stubRepo = MockRepository.GenerateStub<IPessoaRepository<Pessoa>>();
+            var stubRepo = MockRepository.GenerateStub<IPessoaComplexaRepository<Pessoa>>();
             stubRepo.Stub(s => s.GetByCpf(Pessoa.PessoaFisica.Cpf)).Return(Pessoa);
 
             var specification = new PessoaFisicaDevePossuirCpfUnicoSpecification<Pessoa>(stubRepo);

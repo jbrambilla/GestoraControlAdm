@@ -8,9 +8,9 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
 {
     public class PessoaJuridicaDevePossuirCnpjUnicoSpecification<TEntity> : ISpecification<Pessoa> where TEntity : class
     {
-        private readonly IPessoaRepository<TEntity> _pessoaRepository;
+        private readonly IPessoaComplexaRepository<TEntity> _pessoaRepository;
 
-        public PessoaJuridicaDevePossuirCnpjUnicoSpecification(IPessoaRepository<TEntity> pessoaRepository)
+        public PessoaJuridicaDevePossuirCnpjUnicoSpecification(IPessoaComplexaRepository<TEntity> pessoaRepository)
         {
             _pessoaRepository = pessoaRepository;
         }

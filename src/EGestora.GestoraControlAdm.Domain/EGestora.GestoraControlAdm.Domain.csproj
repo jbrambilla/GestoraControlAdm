@@ -87,7 +87,7 @@
     <Compile Include="Interfaces\Repository\INotaServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaFisicaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaJuridicaRepository.cs" />
-    <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
+    <Compile Include="Interfaces\Repository\IPessoaComplexaRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeApuracaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeTributacaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />

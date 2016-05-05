@@ -2,7 +2,7 @@
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
-    public interface IFuncionarioRepository : IPessoaRepository<Funcionario>
+    public interface IFuncionarioRepository : IPessoaComplexaRepository<Funcionario>
     {
     }
 }

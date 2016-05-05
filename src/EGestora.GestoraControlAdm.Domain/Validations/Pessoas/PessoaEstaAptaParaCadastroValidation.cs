@@ -8,7 +8,7 @@ namespace EGestora.GestoraControlAdm.Domain.Validations.Pessoas
 {
     public class PessoaEstaAptaParaCadastroValidation<TEntity> : Validator<Pessoa> where TEntity : class
     {
-        public PessoaEstaAptaParaCadastroValidation(IPessoaRepository<TEntity> pessoaRepository)
+        public PessoaEstaAptaParaCadastroValidation(IPessoaComplexaRepository<TEntity> pessoaRepository)
         {
             var cnpjUnico = new PessoaJuridicaDevePossuirCnpjUnicoSpecification<TEntity>(pessoaRepository);
             var cpfUnico = new PessoaFisicaDevePossuirCpfUnicoSpecification<TEntity>(pessoaRepository);

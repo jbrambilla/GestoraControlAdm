@@ -192,6 +192,7 @@
     <Compile Include="Controllers\LoteFaturamentosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotaServicosController.cs" />
+    <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\RevendasController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -439,6 +440,11 @@
     <Content Include="Views\Audit\_DetailsHistory.cshtml" />
     <Content Include="Views\Clientes\Imagem\_AlterarImagem.cshtml" />
     <Content Include="Views\Clientes\Imagem\_ImagemCliente.cshtml" />
+    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\Delete.cshtml" />
+    <Content Include="Views\Pessoas\Details.cshtml" />
+    <Content Include="Views\Pessoas\Edit.cshtml" />
+    <Content Include="Views\Pessoas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

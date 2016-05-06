@@ -34,6 +34,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             // Lifestyle.Scoped => Uma instancia unica para o request
 
             // App
+            container.RegisterPerWebRequest<IPessoaAppService, PessoaAppService>();
             container.RegisterPerWebRequest<IClienteAppService, ClienteAppService>();
             container.RegisterPerWebRequest<IFornecedorAppService, FornecedorAppService>();
             container.RegisterPerWebRequest<IRevendaAppService, RevendaAppService>();

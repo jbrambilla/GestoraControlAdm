@@ -35,6 +35,7 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Endereco, RevendaEnderecoViewModel>();
             Mapper.CreateMap<Endereco, EmpresaEnderecoViewModel>();
             Mapper.CreateMap<Endereco, FuncionarioEnderecoViewModel>();
+            Mapper.CreateMap<Endereco, PessoaEnderecoViewModel>();
 
             Mapper.CreateMap<Contato, ContatoViewModel>();
             Mapper.CreateMap<Contato, ClienteEnderecoViewModel>();
@@ -42,7 +43,9 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Contato, RevendaEnderecoViewModel>();
             Mapper.CreateMap<Contato, EmpresaEnderecoViewModel>();
             Mapper.CreateMap<Contato, FuncionarioEnderecoViewModel>();
+            Mapper.CreateMap<Contato, PessoaEnderecoViewModel>();
 
+            Mapper.CreateMap<PessoaJuridica, PessoaEnderecoViewModel>();
             Mapper.CreateMap<PessoaJuridica, PessoaJuridicaViewModel>();
             Mapper.CreateMap<PessoaJuridica, ClienteEnderecoViewModel>();
             Mapper.CreateMap<PessoaJuridica, ClienteViewModel>();
@@ -55,6 +58,7 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<PessoaJuridica, FuncionarioEnderecoViewModel>();
             Mapper.CreateMap<PessoaJuridica, FuncionarioViewModel>();
 
+            Mapper.CreateMap<PessoaFisica, PessoaEnderecoViewModel>();
             Mapper.CreateMap<PessoaFisica, PessoaFisicaViewModel>();
             Mapper.CreateMap<PessoaFisica, ClienteEnderecoViewModel>();
             Mapper.CreateMap<PessoaFisica, ClienteViewModel>();
@@ -68,6 +72,7 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<PessoaFisica, FuncionarioViewModel>();
 
             Mapper.CreateMap<Pessoa, PessoaViewModel>();
+            Mapper.CreateMap<Pessoa, PessoaEnderecoViewModel>();
 
             Mapper.CreateMap<Cnae, CnaeViewModel>();
 

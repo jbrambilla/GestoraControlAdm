@@ -39,6 +39,12 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Lista de Anexos")]
         public IEnumerable<HttpPostedFileBase> Anexos { get; set; }
 
+        [Required(ErrorMessage = "Preencha o campo Observação")]
+        [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
+        [DisplayName("Observação")]
+        public string Observacao { get; set; }
+
         [ScaffoldColumn(false)]
         public DateTime CriadoEm { get; set; }
 
@@ -85,6 +91,11 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataFundacao { get; set; }
 
+        [Display(Name = "Data de Aniversário")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        public DateTime DataAniversario { get; set; }
+
         //Pessoa Física
 
         //[Required(ErrorMessage = "Preencha o campo Nome")]
@@ -92,6 +103,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Preencha o campo Apelido")]
+        [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
+        public string Apelido { get; set; }
 
         //[Required(ErrorMessage = "Preencha o campo RG")]
         [MaxLength(12, ErrorMessage = "Máximo {1} caracteres")]
@@ -110,6 +125,12 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         [DisplayName("Gênero")]
         public string Genero { get; set; }
+
+        [Required(ErrorMessage = "Selecione um Estado Civil")]
+        [MaxLength(14, ErrorMessage = "Máximo {1} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
+        [DisplayName("Estado Civil")]
+        public string EstadoCivil { get; set; }
 
         [Display(Name = "Data de Nascimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]

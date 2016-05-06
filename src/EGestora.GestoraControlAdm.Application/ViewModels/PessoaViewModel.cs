@@ -53,10 +53,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime AlteradoEm { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual PessoaJuridicaViewModel PessoaJuridica { get; set; }
+        public PessoaJuridicaViewModel PessoaJuridica { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual PessoaFisicaViewModel PessoaFisica { get; set; }
+        public PessoaFisicaViewModel PessoaFisica { get; set; }
 
         [ScaffoldColumn(false)]
         public ICollection<EnderecoViewModel> EnderecoList { get; set; }

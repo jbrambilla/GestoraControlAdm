@@ -10,6 +10,7 @@ namespace EGestora.GestoraControlAdm.Domain.Validations.Documentos
     {
         public static bool Validar(string cpf)
         {
+            cpf = cpf.Replace(".", "").Replace("-", "");
             if (cpf.Length > 11)
                 return false;
 

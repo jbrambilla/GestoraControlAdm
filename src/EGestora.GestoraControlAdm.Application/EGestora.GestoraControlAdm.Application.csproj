@@ -68,10 +68,12 @@
     <Compile Include="Interfaces\IFornecedorAppService.cs" />
     <Compile Include="Interfaces\ILoteFaturamentoAppService.cs" />
     <Compile Include="Interfaces\INotaServicoAppService.cs" />
+    <Compile Include="Interfaces\IPessoaAppService.cs" />
     <Compile Include="Interfaces\IRevendaAppService.cs" />
     <Compile Include="Interfaces\IServicoAppService.cs" />
     <Compile Include="LoteFaturamentoAppService.cs" />
     <Compile Include="NotaServicoAppService.cs" />
+    <Compile Include="PessoaAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RevendaAppService.cs" />
     <Compile Include="ServicoAppService.cs" />

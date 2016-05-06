@@ -103,6 +103,7 @@
     <Compile Include="Repository\NotaServicoRepository.cs" />
     <Compile Include="Repository\PessoaFisicaRepository.cs" />
     <Compile Include="Repository\PessoaJuridicaRepository.cs" />
+    <Compile Include="Repository\PessoaRepository.cs" />
     <Compile Include="Repository\RegimeApuracaoRepository.cs" />
     <Compile Include="Repository\RegimeTributacaoRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />

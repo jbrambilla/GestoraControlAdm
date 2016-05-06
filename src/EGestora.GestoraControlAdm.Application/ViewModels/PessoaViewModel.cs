@@ -34,6 +34,12 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("E-mail")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Preencha o campo Observação")]
+        [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
+        [DisplayName("Observação")]
+        public string Observacao { get; set; }
+
         [ScaffoldColumn(false)]
         public bool IsPessoaJuridica { get; set; }
 

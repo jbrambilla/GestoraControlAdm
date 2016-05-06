@@ -45,6 +45,11 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataFundacao { get; set; }
 
+        [Display(Name = "Data de Aniversário")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
+        public DateTime DataAniversario { get; set; }
+
         [ScaffoldColumn(false)]
         public PessoaViewModel Pessoa;
     }

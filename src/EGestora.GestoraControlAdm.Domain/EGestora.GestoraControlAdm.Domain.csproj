@@ -134,9 +134,9 @@
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecification.cs" />
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecification.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaDevePossuirUmEnderecoCobrancaSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaDevePossuirUmEnderecoEntregaSpecification.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaDevePossuirUmEnderecoPrincipalSpecification.cs" />
+    <Compile Include="Specifications\Enderecos\PessoaDevePossuirUmEnderecoCobrancaSpecification.cs" />
+    <Compile Include="Specifications\Enderecos\PessoaDevePossuirUmEnderecoEntregaSpecification.cs" />
+    <Compile Include="Specifications\Enderecos\PessoaDevePossuirUmEnderecoPrincipalSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveSerJuridicaOuFisicaSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmContatoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmEnderecoSpecification.cs" />

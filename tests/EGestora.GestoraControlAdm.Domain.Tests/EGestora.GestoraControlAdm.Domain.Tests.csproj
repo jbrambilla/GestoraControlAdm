@@ -73,9 +73,9 @@
     <Compile Include="Specifications\Empresas\EmpresaDeveTerRegistroAtivoUnicoSpecificationTest.cs" />
     <Compile Include="Specifications\LoteFaturamentos\LoteDeveTerClienteSpecificationTest.cs" />
     <Compile Include="Specifications\NotaServicos\NotaServicoDeveTerCalculoDeValoresCorretoSpecificationTest.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaDevePossuirUmEnderecoCobrancaSpecificationTest.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaDevePossuirUmEnderecoEntregaSpecificationTest.cs" />
-    <Compile Include="Specifications\Pessoas\PessoaDevePossuirUmEnderecoPrincipalSpecificationTest.cs" />
+    <Compile Include="Specifications\Enderecos\PessoaDevePossuirUmEnderecoCobrancaSpecificationTest.cs" />
+    <Compile Include="Specifications\Enderecos\PessoaDevePossuirUmEnderecoEntregaSpecificationTest.cs" />
+    <Compile Include="Specifications\Enderecos\PessoaDevePossuirUmEnderecoPrincipalSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PessoaDeveTerUmContatoSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerNomeObrigatorioSpecificationTest.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDevePossuirCnpjUnicoSpecificationTest.cs" />

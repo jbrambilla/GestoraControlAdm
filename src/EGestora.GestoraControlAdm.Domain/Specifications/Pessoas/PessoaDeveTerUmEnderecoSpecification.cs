@@ -6,7 +6,6 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas
 {
     public class PessoaDeveTerUmEnderecoSpecification : ISpecification<Pessoa>
     {
-
         public bool IsSatisfiedBy(Pessoa pessoa)
         {
             return pessoa.EnderecoList != null && pessoa.EnderecoList.Any();

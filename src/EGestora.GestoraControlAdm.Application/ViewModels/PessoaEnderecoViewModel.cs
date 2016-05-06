@@ -177,6 +177,21 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         public string Estado { get; set; }
 
+        [DisplayName("Cobrança")]
+        public bool Cobranca { get; set; }
+
+        [DisplayName("Entrega")]
+        public bool Entrega { get; set; }
+
+        [DisplayName("Principal")]
+        public bool Principal { get; set; }
+
+        [Required(ErrorMessage = "Preencha o campo Descrição")]
+        [MaxLength(100, ErrorMessage = "Máximo {1} caracteres")]
+        [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
+        [DisplayName("Descrição")]
+        public string Descricao { get; set; }
+
         //Contato
 
         [Key]

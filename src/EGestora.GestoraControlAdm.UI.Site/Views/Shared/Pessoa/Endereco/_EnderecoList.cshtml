@@ -3,9 +3,238 @@
 @{
     var Controller = @ViewData["_controller"].ToString();
     var id = ViewBag.PessoaId;
+    var enderecoPrincipal = Model.Where(e => e.Principal).FirstOrDefault();
+    var enderecoEntrega = Model.Where(e => e.Entrega).FirstOrDefault();
+    var enderecoCobranca = Model.Where(e => e.Cobranca).FirstOrDefault();
+    var listaEnderecos = Model.Where(e => !e.Principal && !e.Cobranca && !e.Entrega).ToList();
 }
 
-@if (Model.Any())
+<h3>Principal</h3>
+@if (enderecoPrincipal != null)
+{ 
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Logradouro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Complemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bairro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CEP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Logradouro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Complemento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.CEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("AtualizarEndereco", Controller, new { id = enderecoPrincipal.EnderecoId })" data-modal="" class="btn btn-default btn-circle">
+                        <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="@Url.Action("DeletarEndereco", Controller, new { id = enderecoPrincipal.EnderecoId })" data-modal="" class="btn btn-danger btn-circle">
+                        <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum endereço foi definido como Principal.
+            </th>
+        </tr>
+    </table>
+}
+
+<h3>Entrega</h3>
+@if (enderecoEntrega != null)
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Logradouro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Complemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bairro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CEP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Logradouro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Complemento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.CEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("AtualizarEndereco", Controller, new { id = enderecoEntrega.EnderecoId })" data-modal="" class="btn btn-default btn-circle">
+                        <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="@Url.Action("DeletarEndereco", Controller, new { id = enderecoEntrega.EnderecoId })" data-modal="" class="btn btn-danger btn-circle">
+                        <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum endereço foi definido como Endereço de Entrega.
+            </th>
+        </tr>
+    </table>
+}
+
+<h3>Cobrança</h3>
+@if (enderecoCobranca != null)
+{
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Logradouro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Complemento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bairro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CEP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Logradouro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Complemento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Bairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.CEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("AtualizarEndereco", Controller, new { id = enderecoCobranca.EnderecoId })" data-modal="" class="btn btn-default btn-circle">
+                        <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a href="@Url.Action("DeletarEndereco", Controller, new { id = enderecoCobranca.EnderecoId })" data-modal="" class="btn btn-danger btn-circle">
+                        <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Nenhum endereço foi definido como Endereço de Cobrança.
+            </th>
+        </tr>
+    </table>
+}
+
+<h3>Lista de endereços</h3>
+@if (listaEnderecos.Any())
 {
     <div class="table-responsive">
         <table class="table table-hover">
@@ -34,7 +263,7 @@
                 <th></th>
             </tr>
 
-            @foreach (var item in Model)
+            @foreach (var item in listaEnderecos)
             {
                 <tr>
                     <td>

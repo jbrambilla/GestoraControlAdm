@@ -96,7 +96,15 @@ namespace EGestora.GestoraControlAdm.Application
             var endereco = Mapper.Map<EnderecoViewModel, Endereco>(enderecoViewModel);
 
             BeginTransaction();
-            _pessoaService.AddEndereco(endereco);
+
+            var enderecoReturn = _pessoaService.AddEndereco(endereco);
+            enderecoViewModel = Mapper.Map<Endereco, EnderecoViewModel>(enderecoReturn);
+
+            if (!enderecoViewModel.ValidationResult.IsValid)
+            {
+                return enderecoViewModel;
+            }
+            
             Commit();
 
             return enderecoViewModel;

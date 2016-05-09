@@ -156,6 +156,7 @@
     <Compile Include="Validations\Documentos\CnpjValidation.cs" />
     <Compile Include="Validations\Documentos\CpfValidation.cs" />
     <Compile Include="Validations\Empresas\EmpresaEstaAptaParaCadastroValidation.cs" />
+    <Compile Include="Validations\Enderecos\EnderecoEstaAptoParaCadastroValidation.cs" />
     <Compile Include="Validations\LoteFaturamentos\LoteFaturamentoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\NotaServicos\NotaServicoEstaConsistenteValidation.cs" />
     <Compile Include="Validations\Pessoas\PessoaEstaAptaParaCadastroValidation.cs" />

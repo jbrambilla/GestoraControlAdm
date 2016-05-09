@@ -1,6 +1,7 @@
 ﻿using EGestora.GestoraControlAdm.Domain.Entities;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
+using EGestora.GestoraControlAdm.Domain.Validations.Enderecos;
 using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,12 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Endereco AddEndereco(Endereco endereco)
         {
+            endereco.ValidationResult = new EnderecoEstaAptoParaCadastroValidation(_enderecoRepository).Validate(endereco);
+            if (!endereco.ValidationResult.IsValid)
+            {
+                return endereco;
+            }
+
             return _enderecoRepository.Add(endereco);
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DomainValidation.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +28,12 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public bool Principal { get; set; }
         public string Descricao { get; set; }
         public virtual Pessoa Pessoa { get; set; }
+
+        public ValidationResult ValidationResult { get; set; }
+
+        public bool IsValid()
+        {
+            return true;
+        }
     }
 }

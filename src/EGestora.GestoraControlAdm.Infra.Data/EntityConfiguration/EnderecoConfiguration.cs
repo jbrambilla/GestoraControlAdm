@@ -45,6 +45,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
                 .WithMany(p => p.EnderecoList)
                 .HasForeignKey(e => e.PessoaId);
 
+            Ignore(e => e.ValidationResult);
+
             ToTable("Enderecos");
         }
     }

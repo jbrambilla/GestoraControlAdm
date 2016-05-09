@@ -1,5 +1,7 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.EnderecoViewModel
 
+<link href="~/Content/titatoggle-master/dist/titatoggle-dist.css" rel="stylesheet" />
+
 <div class="form-group">
     @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
@@ -53,6 +55,38 @@
     <div class="col-md-10">
         @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="col-lg-2 control-label">Tipo</label>
+    <div class="col-lg-10">
+        <div class="radio">
+            <label>
+                @Html.CheckBoxFor(m => m.Principal)
+                Principal
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                @Html.CheckBoxFor(m => m.Entrega)
+                Entrega
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                @Html.CheckBoxFor(m => m.Cobranca)
+                Cobrança
+            </label>
+        </div>
     </div>
 </div>
 

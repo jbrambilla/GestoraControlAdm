@@ -157,7 +157,17 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             if (ModelState.IsValid)
             {
-                _pessoaAppService.AddEndereco(enderecoViewModel);
+                enderecoViewModel = _pessoaAppService.AddEndereco(enderecoViewModel);
+
+                if (!enderecoViewModel.ValidationResult.IsValid)
+                {
+                    foreach (var erro in enderecoViewModel.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+
+                    return PartialView("_AdicionarEndereco", enderecoViewModel);
+                }
 
                 string url = Url.Action("ListarEnderecos", "Pessoas", new { id = enderecoViewModel.PessoaId });
                 return Json(new { success = true, url = url });

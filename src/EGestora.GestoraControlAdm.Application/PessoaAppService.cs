@@ -167,6 +167,11 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<TipoContatoViewModel> GetAllTipoContatos()
+        {
+            return Mapper.Map<IEnumerable<TipoContato>, IEnumerable<TipoContatoViewModel>>(_pessoaService.GetAllTipoContatos());
+        }
+
         public void Dispose()
         {
             _pessoaService.Dispose();

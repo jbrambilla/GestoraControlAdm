@@ -10,17 +10,21 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(e => e.ContatoId);
 
-            Property(c => c.TipoContato)
-                .HasMaxLength(20)
+            Property(c => c.InformacaoContato)
+                .HasMaxLength(80)
                 .IsRequired();
 
-            Property(c => c.InformacaoContato)
+            Property(c => c.DescricaoContato)
                 .HasMaxLength(80)
                 .IsRequired();
 
             HasRequired(e => e.Pessoa)
                 .WithMany(p => p.ContatoList)
                 .HasForeignKey(e => e.PessoaId);
+
+            HasRequired(e => e.TipoContato)
+                .WithMany(tc => tc.ContatoList)
+                .HasForeignKey(tc => tc.TipoContatoId);
 
             ToTable("Contatos");
         }

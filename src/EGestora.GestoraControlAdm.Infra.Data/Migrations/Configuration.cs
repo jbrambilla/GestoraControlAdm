@@ -16,11 +16,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
 
         protected override void Seed(EGestoraContext context)
         {
-           // context.RegimeApuracao.AddOrUpdate (
-           //     new RegimeApuracao() { Codigo = 1, Descricao = "Regime A 1"},
-           //     new RegimeApuracao() { Codigo = 2, Descricao = "Regime A 2" },
-           //     new RegimeApuracao() { Codigo = 3, Descricao = "Regime A 3" }
-           // );
+            //context.TipoContato.AddOrUpdate(
+            //    new TipoContato() { Nome = "Telefone", Mascara = "(00)0000-0000" },
+            //    new TipoContato() { Nome = "Celular", Mascara = "(00)00000-0000" }
+            //);
 
            // context.RegimeTributacao.AddOrUpdate(
            //     new RegimeTributacao() { Codigo = 1, Descricao = "Regime T 1" },

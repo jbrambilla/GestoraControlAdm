@@ -21,5 +21,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel);
         ContatoViewModel GetContatoById(Guid id);
         void RemoveContato(Guid id);
+
+        IEnumerable<TipoContatoViewModel> GetAllTipoContatos();
     }
 }

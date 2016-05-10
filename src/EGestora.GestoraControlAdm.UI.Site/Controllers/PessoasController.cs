@@ -316,6 +316,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         private void loadViewBags()
         {
+            ViewBag.TipoContatoList = _pessoaAppService.GetAllTipoContatos().OrderBy(tc => tc.Nome);
         }
 
         protected override void Dispose(bool disposing)

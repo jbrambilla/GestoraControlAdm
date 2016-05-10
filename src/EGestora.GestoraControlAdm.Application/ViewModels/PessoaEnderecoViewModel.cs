@@ -103,7 +103,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Apelido")]
+        //[Required(ErrorMessage = "Preencha o campo Apelido")]
         [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         public string Apelido { get; set; }
@@ -126,7 +126,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Gênero")]
         public string Genero { get; set; }
 
-        [Required(ErrorMessage = "Selecione um Estado Civil")]
+        //[Required(ErrorMessage = "Selecione um Estado Civil")]
         [MaxLength(14, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         [DisplayName("Estado Civil")]
@@ -197,17 +197,20 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Key]
         public Guid ContatoId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Tipo de contato")]
+        [Required(ErrorMessage = "Preencha o campo Descrição")]
         [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
-        [DisplayName("Tipo de contato")]
-        public string TipoContato { get; set; }
+        [DisplayName("Descrição")]
+        public string DescricaoContato { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Contato")]
         [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         [DisplayName("Contato")]
         public string InformacaoContato { get; set; }
+
+        [Required(ErrorMessage = "Selecione o Tipo de Contato")]
+        public Guid TipoContatoId { get; set; }
 
         //extra not in database
         public bool FlagIsPessoaJuridica { get; set; }

@@ -271,6 +271,37 @@
                                             @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Tipo</label>
+                                        <div class="col-lg-10">
+                                            <div class="radio">
+                                                <label>
+                                                    @Html.CheckBoxFor(m => m.Principal)
+                                                    Principal
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    @Html.CheckBoxFor(m => m.Entrega)
+                                                    Entrega
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    @Html.CheckBoxFor(m => m.Cobranca)
+                                                    Cobrança
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -282,20 +313,37 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
+                                    
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.TipoContato, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.TipoContatoId, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.TipoContato, new { htmlAttributes = new { @class = "form-control" } })
-                                            <p class="help-block">Ex: Telefone, E-mail, Fax, etc.</p>
-                                            @Html.ValidationMessageFor(model => model.TipoContato, "", new { @class = "text-danger" })
+                                            <select name="@Html.NameFor(Model => Model.TipoContatoId)"
+                                                    id="@Html.IdFor(Model => Model.TipoContatoId)"
+                                                    class="form-control">
+                                                @foreach (EGestora.GestoraControlAdm.Application.ViewModels.TipoContatoViewModel tipoContato in ViewBag.TipoContatoList)
+                                                {
+                                                    <option value="@tipoContato.TipoContatoId" mascara="@tipoContato.Mascara">
+                                                        @tipoContato.Nome
+                                                    </option>
+                                                }
+                                            </select>
+                                            @Html.ValidationMessageFor(model => model.TipoContatoId, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.InformacaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.InformacaoContato, new { htmlAttributes = new { @class = "form-control" } })
-                                            <p class="help-block">Ex: (18) 9988-4433, asd@serv.com</p>
                                             @Html.ValidationMessageFor(model => model.InformacaoContato, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.DescricaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.DescricaoContato, new { htmlAttributes = new { @class = "form-control" } })
+                                            <p class="help-block">Ex: Residêncial, Comercial, etc.</p>
+                                            @Html.ValidationMessageFor(model => model.DescricaoContato, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -320,4 +368,30 @@
     @Scripts.Render("~/bundles/jquerymask")
     <script src="~/Scripts/radioButtonPfPj.js"></script>
     <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
+    <script>
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        },
+        spOptions = {
+            onKeyPress: function (val, e, field, options) {
+                field.mask(SPMaskBehavior.apply({}, arguments), options);
+            }
+        };
+        colocarMascara();
+        $('#TipoContatoId').change(function () {
+            colocarMascara();
+        });
+
+        function colocarMascara()
+        {
+            var mascara = $("#TipoContatoId option:selected").attr('mascara');
+            var text = $("#TipoContatoId option:selected").text();
+            if (text.indexOf("Celular") >= 0) {
+                $('#InformacaoContato').mask(SPMaskBehavior, spOptions);
+            }
+            else {
+                $('#InformacaoContato').mask(mascara);
+            }
+        }
+    </script>
 }

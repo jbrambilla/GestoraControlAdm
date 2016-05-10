@@ -15,19 +15,22 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IPessoaJuridicaRepository _pessoaJuridicaRepository;
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IContatoRepository _contatoRepository;
+        private readonly ITipoContatoRepository _tipoContatoRepository;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
             IPessoaFisicaRepository pessoaFisicaRepository,
             IPessoaJuridicaRepository pessoaJuridicaRepository,
             IEnderecoRepository enderecoRepository,
-            IContatoRepository contatoRepository)
+            IContatoRepository contatoRepository,
+            ITipoContatoRepository tipoContatoRepository)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
             _pessoaJuridicaRepository = pessoaJuridicaRepository;
             _enderecoRepository = enderecoRepository;
             _contatoRepository = contatoRepository;
+            _tipoContatoRepository = tipoContatoRepository;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -132,10 +135,15 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _pessoaJuridicaRepository.Update(pessoaJuridica);
         }
 
+        public IEnumerable<TipoContato> GetAllTipoContatos()
+        {
+            return _tipoContatoRepository.GetAll();
+        }
+
         public void Dispose()
         {
             _pessoaRepository.Dispose();
             GC.SuppressFinalize(this);
-        }
+        }        
     }
 }

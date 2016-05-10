@@ -110,6 +110,7 @@
     <Compile Include="ViewModels\RevendaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\RevendaViewModel.cs" />
     <Compile Include="ViewModels\ServicoViewModel.cs" />
+    <Compile Include="ViewModels\TipoContatoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EGestora.GestoraControlAdm.Domain\EGestora.GestoraControlAdm.Domain.csproj">

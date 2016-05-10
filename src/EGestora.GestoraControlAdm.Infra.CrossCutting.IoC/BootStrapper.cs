@@ -90,6 +90,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<IAuditRepository, AuditRepository>();
             container.RegisterPerWebRequest<IAuditControllerRepository, AuditControllerRepository>();
             container.RegisterPerWebRequest<IAuditActionRepository, AuditActionRepository>();
+            container.RegisterPerWebRequest<ITipoContatoRepository, TipoContatoRepository>();
             container.RegisterPerWebRequest<IUnitOfWork, UnitOfWork>();
             container.RegisterPerWebRequest<EGestoraContext>();
 

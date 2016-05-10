@@ -11,7 +11,10 @@
         <table class="table table-hover">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.TipoContato)
+                    @Html.DisplayNameFor(model => model.DescricaoContato)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoContatoId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.InformacaoContato)
@@ -23,7 +26,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TipoContato)
+                        @Html.DisplayFor(modelItem => item.DescricaoContato)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoContato.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.InformacaoContato)

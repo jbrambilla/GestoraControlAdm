@@ -16,6 +16,9 @@
         <table class="table table-hover">
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Logradouro)
                 </th>
                 <th>
@@ -39,6 +42,9 @@
                 <th></th>
             </tr>
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoPrincipal.Descricao)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => enderecoPrincipal.Logradouro)
                 </td>
@@ -90,6 +96,9 @@ else
         <table class="table table-hover">
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Logradouro)
                 </th>
                 <th>
@@ -113,6 +122,9 @@ else
                 <th></th>
             </tr>
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoEntrega.Descricao)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => enderecoEntrega.Logradouro)
                 </td>
@@ -165,6 +177,9 @@ else
         <table class="table table-hover">
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Logradouro)
                 </th>
                 <th>
@@ -188,6 +203,9 @@ else
                 <th></th>
             </tr>
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => enderecoCobranca.Descricao)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => enderecoCobranca.Logradouro)
                 </td>
@@ -240,6 +258,9 @@ else
         <table class="table table-hover">
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Logradouro)
                 </th>
                 <th>
@@ -266,6 +287,9 @@ else
             @foreach (var item in listaEnderecos)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Logradouro)
                     </td>

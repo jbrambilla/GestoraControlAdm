@@ -18,11 +18,16 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [ScaffoldColumn(false)]
         public Guid PessoaId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Tipo de contato")]
+        [Required]
+        [ScaffoldColumn(false)]
+        [DisplayName("Tipo do Contato")]
+        public Guid TipoContatoId { get; set; }
+
+        [Required(ErrorMessage = "Preencha o campo Descrição")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
-        [DisplayName("Tipo de contato")]
-        public string TipoContato { get; set; }
+        [DisplayName("Descrição")]
+        public string DescricaoContato { get; set; }
 
         [Required(ErrorMessage = "Preencha o campo Contato")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
@@ -38,5 +43,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public PessoaViewModel Pessoa { get; set; }
+
+        [ScaffoldColumn(false)]
+        public TipoContatoViewModel TipoContato { get; set; }
     }
 }

@@ -302,6 +302,75 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "contato" });
         }
 
+        //ANEXOS
+
+        public ActionResult ListarAnexos(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            ViewData["_controller"] = "Pessoas";
+            return PartialView("_AnexoList", _pessoaAppService.GetById(id).AnexoList);
+        }
+
+        [Route("adicionar-anexo")]
+        public ActionResult AdicionarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewData["_controller"] = "Pessoas";
+            return PartialView("_AdicionarAnexo");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            if (ModelState.IsValid)
+            {
+                _pessoaAppService.AddAnexo(PessoaId, Arquivo);
+
+                string url = Url.Action("ListarAnexos", "Pessoas", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "anexo" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            return PartialView("_AdicionarAnexo");
+        }
+
+        public ActionResult DeletarAnexo(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var anexoViewModel = _pessoaAppService.GetAnexoById(id.Value);
+            if (anexoViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = anexoViewModel.PessoaId;
+            return PartialView("_DeletarAnexo", anexoViewModel);
+        }
+
+        [HttpPost, ActionName("DeletarAnexo")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarAnexoConfirmed(Guid id)
+        {
+            var pessoaId = _pessoaAppService.GetAnexoById(id).PessoaId;
+            _pessoaAppService.RemoveAnexo(id);
+
+            string url = Url.Action("ListarAnexos", "Pessoas", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "anexo" });
+        }
+
+        public ActionResult BaixarAnexo(Guid id)
+        {
+            var anexo = _pessoaAppService.GetAnexoById(id);
+            return File(anexo.Content, anexo.ContentType, anexo.FileName);
+        }
+
         public ActionResult ObterImagemPessoa(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.PESSOAS_IMAGE_PATH);
@@ -313,6 +382,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             return File(foto, "image/jpeg");
         }
+
 
         private void loadViewBags()
         {

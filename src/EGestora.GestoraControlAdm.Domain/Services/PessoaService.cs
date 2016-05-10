@@ -16,6 +16,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IEnderecoRepository _enderecoRepository;
         private readonly IContatoRepository _contatoRepository;
         private readonly ITipoContatoRepository _tipoContatoRepository;
+        private readonly IAnexoRepository _anexoRepository;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
@@ -23,7 +24,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IPessoaJuridicaRepository pessoaJuridicaRepository,
             IEnderecoRepository enderecoRepository,
             IContatoRepository contatoRepository,
-            ITipoContatoRepository tipoContatoRepository)
+            ITipoContatoRepository tipoContatoRepository,
+            IAnexoRepository anexoRepository)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
@@ -31,6 +33,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _enderecoRepository = enderecoRepository;
             _contatoRepository = contatoRepository;
             _tipoContatoRepository = tipoContatoRepository;
+            _anexoRepository = anexoRepository;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -140,10 +143,21 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _tipoContatoRepository.GetAll();
         }
 
+        public Anexo GetAnexoById(Guid id)
+        {
+            return _anexoRepository.GetById(id);
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            _anexoRepository.Remove(id);
+        }
+
         public void Dispose()
         {
             _pessoaRepository.Dispose();
             GC.SuppressFinalize(this);
-        }        
+        }
+
     }
 }

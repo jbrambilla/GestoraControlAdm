@@ -8,6 +8,7 @@ using EGestora.GestoraControlAdm.Infra.CrossCutting.Utils;
 using EGestora.GestoraControlAdm.Infra.Data.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application
 {
@@ -45,6 +46,7 @@ namespace EGestora.GestoraControlAdm.Application
             pessoa.PessoaJuridica = pj;
             pessoa.EnderecoList.Add(endereco);
             pessoa.ContatoList.Add(contato);
+            AddAnexoList(pessoa, pessoaEnderecoViewModel.Anexos);
 
             var pessoaReturn = _pessoaService.Add(pessoa);
             pessoaEnderecoViewModel = Mapper.Map<Pessoa, PessoaEnderecoViewModel>(pessoaReturn);
@@ -172,10 +174,46 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<TipoContato>, IEnumerable<TipoContatoViewModel>>(_pessoaService.GetAllTipoContatos());
         }
 
+        public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
+        {
+            BeginTransaction();
+
+            var pessoa = _pessoaService.GetById(PessoaId);
+            pessoa.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
+            _pessoaService.Update(pessoa);
+
+            Commit();
+        }
+
+        public AnexoViewModel GetAnexoById(Guid id)
+        {
+            return Mapper.Map<Anexo, AnexoViewModel>(_pessoaService.GetAnexoById(id));
+        }
+
+        public void RemoveAnexo(Guid id)
+        {
+            BeginTransaction();
+            _pessoaService.RemoveAnexo(id);
+            Commit();
+        }
+
         public void Dispose()
         {
             _pessoaService.Dispose();
             GC.SuppressFinalize(this);
         }
+
+        private static void AddAnexoList(Pessoa pessoa, IEnumerable<HttpPostedFileBase> anexoList)
+        {
+            foreach (var anexo in anexoList)
+            {
+                var anexoEntity = AnexoUtil.GetEntityFromHttpPostedFileBase(anexo);
+                if (anexoEntity != null)
+                {
+                    pessoa.AnexoList.Add(anexoEntity);
+                }
+            }
+        }
+
     }
 }

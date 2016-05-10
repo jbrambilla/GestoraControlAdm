@@ -26,5 +26,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica);
 
         IEnumerable<TipoContato> GetAllTipoContatos();
+
+        Anexo GetAnexoById(Guid id);
+        void RemoveAnexo(Guid id);
     }
 }

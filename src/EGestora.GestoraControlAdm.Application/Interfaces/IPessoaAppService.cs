@@ -1,6 +1,7 @@
 ﻿using EGestora.GestoraControlAdm.Application.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Web;
 
 namespace EGestora.GestoraControlAdm.Application.Interfaces
 {
@@ -23,5 +24,9 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void RemoveContato(Guid id);
 
         IEnumerable<TipoContatoViewModel> GetAllTipoContatos();
+
+        void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo);
+        AnexoViewModel GetAnexoById(Guid id);
+        void RemoveAnexo(Guid id);
     }
 }

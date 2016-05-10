@@ -199,6 +199,14 @@
                                     </div>
 
                                     <div class="form-group">
+                                        @Html.LabelFor(model => model.Anexos, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-3">
+                                            <input type="file" name="Anexos" id="Anexos" class="filestyle input-sm" data-placeholder="Nenhum arquivo" data-buttonname="btn-primary" data-buttontext="Procurar" multiple>
+                                            @Html.ValidationMessageFor(model => model.Anexos, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.Observacao, new { htmlAttributes = new { @class = "form-control" } })

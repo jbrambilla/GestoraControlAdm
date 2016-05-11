@@ -15,3 +15,4 @@
 /// <reference path="notaservicocalculos.js" />
 /// <reference path="bootstrap-multiselect.js" />
 /// <reference path="createaudit.js" />
+/// <reference path="contatomascaradinamica.js" />

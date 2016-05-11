@@ -235,6 +235,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         [Route("adicionar-contato")]
         public ActionResult AdicionarContato(Guid id)
         {
+            loadViewBags();
             ViewBag.PessoaId = id;
             return PartialView("_AdicionarContato");
         }
@@ -250,12 +251,13 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 string url = Url.Action("ListarContatos", "Pessoas", new { id = contatoViewModel.PessoaId });
                 return Json(new { success = true, url = url, replaceTarget = "contato" });
             }
-
+            loadViewBags();
             return PartialView("_AdicionarContato", contatoViewModel);
         }
 
         public ActionResult AtualizarContato(Guid id)
         {
+            loadViewBags();
             return PartialView("_AtualizarContato", _pessoaAppService.GetContatoById(id));
         }
 
@@ -270,7 +272,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 string url = Url.Action("ListarContatos", "Pessoas", new { id = contatoViewModel.PessoaId });
                 return Json(new { success = true, url = url, replaceTarget = "contato" });
             }
-
+            loadViewBags();
             return PartialView("_AtualizarContato", contatoViewModel);
         }
 

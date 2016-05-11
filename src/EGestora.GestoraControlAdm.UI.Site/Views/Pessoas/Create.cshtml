@@ -134,9 +134,14 @@
 
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Rg, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
+                                            <div class="col-md-6">
                                                 @Html.EditorFor(model => model.Rg, new { htmlAttributes = new { @class = "form-control" } })
                                                 @Html.ValidationMessageFor(model => model.Rg, "", new { @class = "text-danger" })
+                                            </div>
+                                            @Html.LabelFor(model => model.OrgaoEmissor, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-2">
+                                                @Html.EditorFor(model => model.OrgaoEmissor, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.OrgaoEmissor, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
@@ -191,14 +196,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
                                         @Html.LabelFor(model => model.Anexos, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-3">
                                             <input type="file" name="Anexos" id="Anexos" class="filestyle input-sm" data-placeholder="Nenhum arquivo" data-buttonname="btn-primary" data-buttontext="Procurar" multiple>
@@ -213,6 +210,9 @@
                                             @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
+
+                                    
+
                                 </div>
                             </div>
                         </div>
@@ -226,15 +226,12 @@
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
+                                        <div class="col-md-6">
                                             @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
                                         </div>
-                                    </div>
-
-                                    <div class="form-group">
                                         @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
+                                        <div class="col-md-2">
                                             @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
                                         </div>
@@ -324,7 +321,7 @@
                                     
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.TipoContatoId, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
+                                        <div class="col-md-4">
                                             <select name="@Html.NameFor(Model => Model.TipoContatoId)"
                                                     id="@Html.IdFor(Model => Model.TipoContatoId)"
                                                     class="form-control">
@@ -337,21 +334,47 @@
                                             </select>
                                             @Html.ValidationMessageFor(model => model.TipoContatoId, "", new { @class = "text-danger" })
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
                                         @Html.LabelFor(model => model.InformacaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        <div class="col-md-10">
+                                        <div class="col-md-4">
                                             @Html.EditorFor(model => model.InformacaoContato, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.InformacaoContato, "", new { @class = "text-danger" })
                                         </div>
+
                                     </div>
+
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.DescricaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.DescricaoContato, new { htmlAttributes = new { @class = "form-control" } })
                                             <p class="help-block">Ex: Residêncial, Comercial, etc.</p>
                                             @Html.ValidationMessageFor(model => model.DescricaoContato, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-4">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                                @Html.CheckBox("Newsletter")
+                                                Newsletter
+                                            </label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                                @Html.CheckBox("Nfse")
+                                                Nota Fiscal
+                                            </label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label>
+                                                @Html.CheckBox("Boleto")
+                                                Boleto
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -376,30 +399,5 @@
     @Scripts.Render("~/bundles/jquerymask")
     <script src="~/Scripts/radioButtonPfPj.js"></script>
     <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
-    <script>
-        var SPMaskBehavior = function (val) {
-            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-        },
-        spOptions = {
-            onKeyPress: function (val, e, field, options) {
-                field.mask(SPMaskBehavior.apply({}, arguments), options);
-            }
-        };
-        colocarMascara();
-        $('#TipoContatoId').change(function () {
-            colocarMascara();
-        });
-
-        function colocarMascara()
-        {
-            var mascara = $("#TipoContatoId option:selected").attr('mascara');
-            var text = $("#TipoContatoId option:selected").text();
-            if (text.indexOf("Celular") >= 0) {
-                $('#InformacaoContato').mask(SPMaskBehavior, spOptions);
-            }
-            else {
-                $('#InformacaoContato').mask(mascara);
-            }
-        }
-    </script>
+    <script src="~/Scripts/contatoMascaraDinamica.js"></script>
 }

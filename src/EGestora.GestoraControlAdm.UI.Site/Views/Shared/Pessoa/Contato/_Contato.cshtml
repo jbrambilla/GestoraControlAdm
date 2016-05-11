@@ -1,22 +1,34 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ContatoViewModel
 
 <div class="form-group">
-    @Html.LabelFor(model => model.TipoContato, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.EditorFor(model => model.TipoContato, new { htmlAttributes = new { @class = "form-control" } })
-        <p class="help-block">Ex: Telefone, E-mail, Fax, etc.</p>
-        @Html.ValidationMessageFor(model => model.TipoContato, "", new { @class = "text-danger" })
+    @Html.LabelFor(model => model.TipoContatoId, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        <select name="@Html.NameFor(Model => Model.TipoContatoId)"
+                id="@Html.IdFor(Model => Model.TipoContatoId)"
+                class="form-control">
+            @foreach (EGestora.GestoraControlAdm.Application.ViewModels.TipoContatoViewModel tipoContato in ViewBag.TipoContatoList)
+            {
+                <option value="@tipoContato.TipoContatoId" mascara="@tipoContato.Mascara">
+                    @tipoContato.Nome
+                </option>
+            }
+        </select>
+        @Html.ValidationMessageFor(model => model.TipoContatoId, "", new { @class = "text-danger" })
     </div>
+
+    @Html.LabelFor(model => model.InformacaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+        @Html.EditorFor(model => model.InformacaoContato, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.InformacaoContato, "", new { @class = "text-danger" })
+    </div>
+
 </div>
 
 <div class="form-group">
-    @Html.LabelFor(model => model.InformacaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.DescricaoContato, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-10">
-        @Html.EditorFor(model => model.InformacaoContato, new { htmlAttributes = new { @class = "form-control" } })
-        <p class="help-block">Ex: (18) 9988-4433, asd@serv.com</p>
-        @Html.ValidationMessageFor(model => model.InformacaoContato, "", new { @class = "text-danger" })
+        @Html.EditorFor(model => model.DescricaoContato, new { htmlAttributes = new { @class = "form-control" } })
+        <p class="help-block">Ex: Residêncial, Comercial, etc.</p>
+        @Html.ValidationMessageFor(model => model.DescricaoContato, "", new { @class = "text-danger" })
     </div>
 </div>
-
-
-

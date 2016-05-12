@@ -20,6 +20,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IAnexoRepository _anexoRepository;
         private readonly ICnaeRepository _cnaeRepository;
         private readonly IRegimeImpostoRepository _regimeImpostoRepository;
+        private readonly IProfissaoRepository _profissaoRepository;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
@@ -30,7 +31,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             ITipoContatoRepository tipoContatoRepository,
             IAnexoRepository anexoRepository,
             ICnaeRepository cnaeRepository,
-            IRegimeImpostoRepository regimeImpostoRepository)
+            IRegimeImpostoRepository regimeImpostoRepository,
+            IProfissaoRepository profissaoRepository)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
@@ -41,6 +43,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _anexoRepository = anexoRepository;
             _cnaeRepository = cnaeRepository;
             _regimeImpostoRepository = regimeImpostoRepository;
+            _profissaoRepository = profissaoRepository;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -202,6 +205,11 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public IEnumerable<RegimeImposto> GetAllRegimeImpostos()
         {
             return _regimeImpostoRepository.GetAll();
+        }
+
+        public IEnumerable<Profissao> GetAllProfissoes()
+        {
+            return _profissaoRepository.GetAll();
         }
 
         public void Dispose()

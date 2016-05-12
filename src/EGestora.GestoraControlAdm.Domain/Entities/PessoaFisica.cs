@@ -6,6 +6,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
     public class PessoaFisica
     {
         public Guid PessoaId { get; set; }
+        public Guid ProfissaoId { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
         public string Rg { get; set; }
@@ -15,7 +16,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string EstadoCivil { get; set; }
         public DateTime Nascimento { get; set; }
         public virtual Pessoa Pessoa { get; set; }
-
-        //profissao
+        public virtual Profissao Profissao { get; set; }
     }
 }

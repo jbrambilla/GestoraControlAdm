@@ -37,5 +37,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
 
         IEnumerable<RegimeImposto> GetAllRegimeImpostos();
+
+        IEnumerable<Profissao> GetAllProfissoes();
     }
 }

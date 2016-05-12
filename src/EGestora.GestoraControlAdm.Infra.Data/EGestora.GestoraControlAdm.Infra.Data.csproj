@@ -73,6 +73,7 @@
     <Compile Include="EntityConfiguration\PessoaConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaFisicaConfiguration.cs" />
     <Compile Include="EntityConfiguration\PessoaJuridicaConfiguration.cs" />
+    <Compile Include="EntityConfiguration\ProfissaoConfiguration.cs" />
     <Compile Include="EntityConfiguration\RegimeApuracaoConfiguration.cs" />
     <Compile Include="EntityConfiguration\RegimeImpostoConfiguration.cs" />
     <Compile Include="EntityConfiguration\RegimeTributacaoConfiguration.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Repository\PessoaFisicaRepository.cs" />
     <Compile Include="Repository\PessoaJuridicaRepository.cs" />
     <Compile Include="Repository\PessoaRepository.cs" />
+    <Compile Include="Repository\ProfissaoRepository.cs" />
     <Compile Include="Repository\RegimeApuracaoRepository.cs" />
     <Compile Include="Repository\RegimeImpostoRepository.cs" />
     <Compile Include="Repository\RegimeTributacaoRepository.cs" />

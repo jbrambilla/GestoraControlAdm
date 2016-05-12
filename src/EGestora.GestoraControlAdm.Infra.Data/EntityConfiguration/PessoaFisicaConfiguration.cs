@@ -21,6 +21,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(c => c.Nome)
                 .HasMaxLength(100);
 
+            HasRequired(pf => pf.Profissao)
+                .WithMany(prof => prof.PessoaFisicaList)
+                .HasForeignKey(pf => pf.ProfissaoId);
+
         }
     }
 }

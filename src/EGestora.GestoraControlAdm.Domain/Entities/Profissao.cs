@@ -13,6 +13,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
 
         public Guid ProfissaoId { get; set; }
         public string Nome { get; set; }
-        public virtual IEnumerable<PessoaFisica> PessoaFisicaList { get; set; }
+        public virtual ICollection<PessoaFisica> PessoaFisicaList { get; set; }
     }
 }

@@ -44,6 +44,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
         public DbSet<AuditAction> AuditActions { get; set; }
         public DbSet<TipoContato> TipoContato { get; set; }
         public DbSet<RegimeImposto> RegimeImposto { get; set; }
+        public DbSet<Profissao> Profissao { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -91,6 +92,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Context
             modelBuilder.Configurations.Add(new AuditActionConfiguration());
             modelBuilder.Configurations.Add(new TipoContatoConfiguration());
             modelBuilder.Configurations.Add(new RegimeImpostoConfiguration());
+            modelBuilder.Configurations.Add(new ProfissaoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

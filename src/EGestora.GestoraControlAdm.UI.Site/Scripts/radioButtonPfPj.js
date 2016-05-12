@@ -26,4 +26,6 @@ function ColocarMascaras()
     $('[name="Cnpj"]').mask('00.000.000/0000-00', { reverse: true });
     $('[name="Rg"]').mask('00.000.000-0', { reverse: true });
     $('[name="CEP"]').mask('00000-000');
+    $('#SelectedCnaeList').select2();
+    $('#CnaeId').select2();
 }

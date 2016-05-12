@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Cadastro de Pessoa";
 }
-
+<link href="~/Content/select2.min.css" rel="stylesheet" />
 <div class="row">
     <div class="col-lg-12">
         <div class="container">
@@ -104,6 +104,30 @@
                                                 @Html.ValidationMessageFor(model => model.DataAniversario, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.RegimeImpostoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("RegimeImpostoId", (IEnumerable<SelectListItem>)ViewBag.RegimeImpostoList, String.Empty, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.RegimeImpostoId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.CnaeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("CnaeId", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.CnaeId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">Códigos Cnae Secundários</label>
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(m => m.SelectedCnaeList, (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control", multiple = "multiple" })
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -400,4 +424,9 @@
     <script src="~/Scripts/radioButtonPfPj.js"></script>
     <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
     <script src="~/Scripts/contatoMascaraDinamica.js"></script>
+    <script src="~/Scripts/select2.full.min.js"></script>
+    <script>
+        
+    </script>
+
 }

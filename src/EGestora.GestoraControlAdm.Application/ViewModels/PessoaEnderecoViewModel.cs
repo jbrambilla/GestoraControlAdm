@@ -96,6 +96,17 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataAniversario { get; set; }
 
+        [Required(ErrorMessage = "Selecione um Regime de Imposto")]
+        [DisplayName("Regime de Imposto")]
+        public Guid RegimeImpostoId { get; set; }
+
+        [Required(ErrorMessage = "Selecione um Cnae principal.")]
+        [DisplayName("Cnae Principal")]
+        public Guid CnaeId { get; set; }
+
+        [ScaffoldColumn(false)]
+        public IEnumerable<Guid> SelectedCnaeList { get; set; }
+
         //Pessoa Física
 
         //[Required(ErrorMessage = "Preencha o campo Nome")]

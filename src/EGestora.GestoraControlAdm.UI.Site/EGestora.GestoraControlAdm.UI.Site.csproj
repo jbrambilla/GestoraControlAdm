@@ -446,6 +446,7 @@
     <Content Include="Views\Pessoas\Details.cshtml" />
     <Content Include="Views\Pessoas\Edit.cshtml" />
     <Content Include="Views\Pessoas\Index.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Cnae\_AlterarCnaePrincipal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

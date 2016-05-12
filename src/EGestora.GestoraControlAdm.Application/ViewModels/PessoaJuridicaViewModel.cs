@@ -10,6 +10,14 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Key]
         public Guid PessoaId { get; set; }
 
+        [Required(ErrorMessage = "Selecione um Regime de Imposto")]
+        [DisplayName("Regime de Imposto")]
+        public Guid RegimeImpostoId { get; set; }
+
+        [Required(ErrorMessage = "Selecione um Cnae Principal")]
+        [DisplayName("Cnae Principal")]
+        public Guid CnaeId { get; set; }
+
         [Required(ErrorMessage = "Preencha o campo Razão Social")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
@@ -52,5 +60,14 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public PessoaViewModel Pessoa;
+
+        [ScaffoldColumn(false)]
+        public virtual RegimeImpostoViewModel RegimeImposto { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual CnaeViewModel Cnae { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual ICollection<CnaeViewModel> CnaeList { get; set; }
     }
 }

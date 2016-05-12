@@ -20,6 +20,22 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(c => c.RazaoSocial)
                  .HasMaxLength(100);
 
+            HasRequired(pj => pj.RegimeImposto)
+                .WithMany(ri => ri.PessoaJuridicaList)
+                .HasForeignKey(pj => pj.RegimeImpostoId);
+
+            HasRequired(pj => pj.Cnae)
+                .WithMany()
+                .HasForeignKey(pj => pj.CnaeId);
+
+            HasMany(pj => pj.CnaeList)
+                .WithMany()
+                .Map(me =>
+                {
+                    me.MapLeftKey("PessoaId");
+                    me.MapRightKey("CnaeId");
+                    me.ToTable("PessoaCnae");
+                });
         }
     }
 }

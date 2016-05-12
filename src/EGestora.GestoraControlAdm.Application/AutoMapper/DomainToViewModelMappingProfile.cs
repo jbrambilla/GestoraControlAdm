@@ -109,6 +109,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Audit, AuditViewModel>();
 
             Mapper.CreateMap<TipoContato, TipoContatoViewModel>();
+
+            Mapper.CreateMap<RegimeImposto, RegimeImpostoViewModel>();
         }
     }
 }

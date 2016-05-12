@@ -4,6 +4,7 @@ using EGestora.GestoraControlAdm.Domain.Interfaces.Service;
 using EGestora.GestoraControlAdm.Domain.Validations.Enderecos;
 using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
@@ -17,6 +18,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IContatoRepository _contatoRepository;
         private readonly ITipoContatoRepository _tipoContatoRepository;
         private readonly IAnexoRepository _anexoRepository;
+        private readonly ICnaeRepository _cnaeRepository;
+        private readonly IRegimeImpostoRepository _regimeImpostoRepository;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
@@ -25,7 +28,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IEnderecoRepository enderecoRepository,
             IContatoRepository contatoRepository,
             ITipoContatoRepository tipoContatoRepository,
-            IAnexoRepository anexoRepository)
+            IAnexoRepository anexoRepository,
+            ICnaeRepository cnaeRepository,
+            IRegimeImpostoRepository regimeImpostoRepository)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
@@ -34,6 +39,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _contatoRepository = contatoRepository;
             _tipoContatoRepository = tipoContatoRepository;
             _anexoRepository = anexoRepository;
+            _cnaeRepository = cnaeRepository;
+            _regimeImpostoRepository = regimeImpostoRepository;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -151,6 +158,50 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public void RemoveAnexo(Guid id)
         {
             _anexoRepository.Remove(id);
+        }
+
+        public IEnumerable<Cnae> GetAllCnae()
+        {
+            return _cnaeRepository.GetAll();
+        }
+
+        public Cnae GetCnaeById(Guid id)
+        {
+            return _cnaeRepository.GetById(id);
+        }
+
+        public bool AddCnae(Guid id, Guid pessoaId)
+        {
+            var pessoa = _pessoaRepository.GetById(pessoaId);
+
+            if (pessoa.PessoaJuridica.CnaeId == id)
+            {
+                return false;
+            }
+
+            var cnae = _cnaeRepository.GetById(id);
+            pessoa.PessoaJuridica.CnaeList.Add(cnae);
+            return true;
+        }
+
+        public void RemoveCnae(Guid id, Guid pessoaId)
+        {
+            var pessoa = _pessoaRepository.GetById(pessoaId);
+            var cnae = _cnaeRepository.GetById(id);
+            pessoa.PessoaJuridica.CnaeList.Remove(cnae);
+        }
+
+        public IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id)
+        {
+            var pessoa = _pessoaRepository.GetById(id);
+            var allCnaes = _cnaeRepository.GetAll();
+
+            return allCnaes.Except(pessoa.PessoaJuridica.CnaeList);
+        }
+
+        public IEnumerable<RegimeImposto> GetAllRegimeImpostos()
+        {
+            return _regimeImpostoRepository.GetAll();
         }
 
         public void Dispose()

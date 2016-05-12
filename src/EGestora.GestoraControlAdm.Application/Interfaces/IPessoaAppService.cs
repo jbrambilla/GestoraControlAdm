@@ -28,5 +28,16 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo);
         AnexoViewModel GetAnexoById(Guid id);
         void RemoveAnexo(Guid id);
+
+        IEnumerable<CnaeViewModel> GetAllCnae();
+        CnaeViewModel GetCnaeById(Guid id);
+        bool AddCnae(Guid id, Guid pessoaId);
+        void RemoveCnae(Guid cnaeId, Guid pessoaId);
+        IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id);
+
+        IEnumerable<RegimeImpostoViewModel> GetAllRegimeImpostos();
+
+        PessoaFisicaViewModel UpdatePessoaFisica(PessoaFisicaViewModel pessoaFisicaViewModel);
+        PessoaJuridicaViewModel UpdatePessoaJuridica(PessoaJuridicaViewModel pessoaJuridicaViewModel);
     }
 }

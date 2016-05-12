@@ -30,6 +30,7 @@ namespace EGestora.GestoraControlAdm.Application
             var endereco = Mapper.Map<PessoaEnderecoViewModel, Endereco>(pessoaEnderecoViewModel);
             var contato = Mapper.Map<PessoaEnderecoViewModel, Contato>(pessoaEnderecoViewModel);
             var foto = pessoaEnderecoViewModel.Foto;
+            var selectedCnaeList = pessoaEnderecoViewModel.SelectedCnaeList;
 
             if (pessoaEnderecoViewModel.FlagIsPessoaJuridica)
             {
@@ -47,6 +48,7 @@ namespace EGestora.GestoraControlAdm.Application
             pessoa.EnderecoList.Add(endereco);
             pessoa.ContatoList.Add(contato);
             AddAnexoList(pessoa, pessoaEnderecoViewModel.Anexos);
+            AddCnaeList(pessoa.PessoaJuridica, selectedCnaeList);
 
             var pessoaReturn = _pessoaService.Add(pessoa);
             pessoaEnderecoViewModel = Mapper.Map<Pessoa, PessoaEnderecoViewModel>(pessoaReturn);
@@ -197,10 +199,79 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public IEnumerable<CnaeViewModel> GetAllCnae()
+        {
+            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_pessoaService.GetAllCnae());
+        }
+
+        public CnaeViewModel GetCnaeById(Guid id)
+        {
+            return Mapper.Map<Cnae, CnaeViewModel>(_pessoaService.GetCnaeById(id));
+        }
+
+        public bool AddCnae(Guid id, Guid pessoaId)
+        {
+            BeginTransaction();
+            var retorno = _pessoaService.AddCnae(id, pessoaId);
+            Commit();
+            return retorno;
+        }
+
+        public void RemoveCnae(Guid cnaeId, Guid pessoaId)
+        {
+            BeginTransaction();
+            _pessoaService.RemoveCnae(cnaeId, pessoaId);
+            Commit();
+        }
+
+        public IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id)
+        {
+            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_pessoaService.GetAllCnaeOutPessoa(id));
+        }
+
+        public IEnumerable<RegimeImpostoViewModel> GetAllRegimeImpostos()
+        {
+            return Mapper.Map<IEnumerable<RegimeImposto>, IEnumerable<RegimeImpostoViewModel>>(_pessoaService.GetAllRegimeImpostos());
+        }
+
+        public PessoaFisicaViewModel UpdatePessoaFisica(PessoaFisicaViewModel pessoaFisicaViewModel)
+        {
+            var pessoaFisica = Mapper.Map<PessoaFisicaViewModel, PessoaFisica>(pessoaFisicaViewModel);
+
+            BeginTransaction();
+            var pessoaFisicaReturn = _pessoaService.UpdatePessoaFisica(pessoaFisica);
+            pessoaFisicaViewModel = Mapper.Map<PessoaFisica, PessoaFisicaViewModel>(pessoaFisicaReturn);
+            Commit();
+            return pessoaFisicaViewModel;
+        }
+
+        public PessoaJuridicaViewModel UpdatePessoaJuridica(PessoaJuridicaViewModel pessoaJuridicaViewModel)
+        {
+            var pessoaJuridica = Mapper.Map<PessoaJuridicaViewModel, PessoaJuridica>(pessoaJuridicaViewModel);
+
+            BeginTransaction();
+            var pessoaJuridicaReturn = _pessoaService.UpdatePessoaJuridica(pessoaJuridica);
+            pessoaJuridicaViewModel = Mapper.Map<PessoaJuridica, PessoaJuridicaViewModel>(pessoaJuridicaReturn);
+            Commit();
+            return pessoaJuridicaViewModel;
+        }
+
         public void Dispose()
         {
             _pessoaService.Dispose();
             GC.SuppressFinalize(this);
+        }
+
+        private void AddCnaeList(PessoaJuridica pessoaJuridica, IEnumerable<Guid> selectedCnaeList)
+        {
+            if (pessoaJuridica != null)
+            {
+                foreach (var CnaeId in selectedCnaeList)
+                {
+                    var cnae = _pessoaService.GetCnaeById(CnaeId);
+                    pessoaJuridica.CnaeList.Add(cnae);
+                }
+            }
         }
 
         private static void AddAnexoList(Pessoa pessoa, IEnumerable<HttpPostedFileBase> anexoList)
@@ -214,6 +285,5 @@ namespace EGestora.GestoraControlAdm.Application
                 }
             }
         }
-
     }
 }

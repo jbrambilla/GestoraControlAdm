@@ -89,7 +89,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 return HttpNotFound();
             }
 
-            loadViewBags();
+            ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
             return View(pessoaViewModel);
         }
 
@@ -105,7 +106,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _pessoaAppService.Update(pessoaViewModel);
                 return RedirectToAction("Index");
             }
-            loadViewBags();
+            ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(pessoaViewModel.PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
             return View(pessoaViewModel);
         }
 
@@ -373,6 +375,102 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return File(anexo.Content, anexo.ContentType, anexo.FileName);
         }
 
+        //CNAE
+
+        public ActionResult ListarCnaes(Guid id)
+        {
+            ViewBag.PessoaId = id;
+
+            return PartialView("_CnaeList", _pessoaAppService.GetById(id).PessoaJuridica);
+        }
+
+        [Route("alterar-cnae-principal")]
+        public ActionResult AlterarCnaePrincipal(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            return PartialView("_AlterarCnaePrincipal", _pessoaAppService.GetById(id.Value).PessoaJuridica);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AlterarCnaePrincipal(PessoaJuridicaViewModel pessoaJuridicaViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _pessoaAppService.UpdatePessoaJuridica(pessoaJuridicaViewModel);
+
+                string url = Url.Action("ListarCnaes", "Pessoas", new { id = pessoaJuridicaViewModel.PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "cnae" });
+            }
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(pessoaJuridicaViewModel.PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            return PartialView("_AlterarCnaePrincipal", pessoaJuridicaViewModel);
+        }
+
+        [Route("adicionar-cnae")]
+        public ActionResult AdicionarCnae(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ViewBag.PessoaId = id.Value;
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            return PartialView("_AdicionarCnae");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarCnae(Guid PessoaId, Guid CnaeId)
+        {
+            if (ModelState.IsValid)
+            {
+                if (!_pessoaAppService.AddCnae(CnaeId, PessoaId))
+                {
+                    ModelState.AddModelError(string.Empty, "Não é possível adicionar um Cnae igual ao Principal.");
+                    ViewBag.PessoaId = PessoaId;
+                    ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
+                    return PartialView("_AdicionarCnae");
+                }
+
+                string url = Url.Action("ListarCnaes", "Pessoas", new { id = PessoaId });
+                return Json(new { success = true, url = url, replaceTarget = "cnae" });
+            }
+            ViewBag.PessoaId = PessoaId;
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            return PartialView("_AdicionarCnae");
+        }
+
+        public ActionResult DeletarCnae(Guid? id, Guid? pessoaId)
+        {
+            if (id == null || pessoaId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var cnaeViewModel = _pessoaAppService.GetCnaeById(id.Value);
+            if (cnaeViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PessoaId = pessoaId;
+            return PartialView("_DeletarCnae", cnaeViewModel);
+        }
+
+        [HttpPost, ActionName("DeletarCnae")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletarCnaeConfirmed(Guid id, Guid pessoaId)
+        {
+            _pessoaAppService.RemoveCnae(id, pessoaId);
+
+            string url = Url.Action("ListarCnaes", "Pessoas", new { id = pessoaId });
+            return Json(new { success = true, url = url, replaceTarget = "cnae" });
+        }
+
         public ActionResult ObterImagemPessoa(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.PESSOAS_IMAGE_PATH);
@@ -385,10 +483,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return File(foto, "image/jpeg");
         }
 
-
         private void loadViewBags()
         {
             ViewBag.TipoContatoList = _pessoaAppService.GetAllTipoContatos().OrderBy(tc => tc.Nome);
+            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Display");
+            ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
         }
 
         protected override void Dispose(bool disposing)

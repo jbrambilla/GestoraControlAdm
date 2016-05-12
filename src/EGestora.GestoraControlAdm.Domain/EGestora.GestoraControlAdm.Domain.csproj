@@ -59,6 +59,7 @@
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
     <Compile Include="Entities\RegimeApuracao.cs" />
+    <Compile Include="Entities\RegimeImposto.cs" />
     <Compile Include="Entities\RegimeTributacao.cs" />
     <Compile Include="Entities\Revenda.cs" />
     <Compile Include="Entities\Servico.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="Interfaces\Repository\IPessoaComplexaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeApuracaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IRegimeImpostoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeTributacaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repository\IRevendaRepository.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDevePossuirCpfUnicoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerCpfValidoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PF\PessoaFisicaDeveTerNomeObrigatorioSpecification.cs" />
+    <Compile Include="Specifications\Pessoas\PJ\PessoaCnaePrincipalNaoDeveEstarNaListaDeCnaesSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDevePossuirCnpjUnicoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerCnpjValidoSpecification.cs" />
     <Compile Include="Specifications\Pessoas\PJ\PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecification.cs" />

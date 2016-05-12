@@ -84,6 +84,21 @@
                                                 @Html.ValidationMessageFor(model => model.PessoaJuridica.DataAniversario, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PessoaJuridica.RegimeImpostoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(m => m.PessoaJuridica.RegimeImpostoId, (IEnumerable<SelectListItem>)ViewBag.RegimeImpostoList, String.Empty, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.PessoaJuridica.RegimeImpostoId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-2">Cnae Principal</label>
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(m => m.PessoaJuridica.CnaeId, (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control" })
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

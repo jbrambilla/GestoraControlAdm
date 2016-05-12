@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\PessoaJuridicaViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\RegimeApuracaoViewModel.cs" />
+    <Compile Include="ViewModels\RegimeImpostoViewModel.cs" />
     <Compile Include="ViewModels\RegimeTributacaoViewModel.cs" />
     <Compile Include="ViewModels\RevendaEnderecoViewModel.cs" />
     <Compile Include="ViewModels\RevendaViewModel.cs" />

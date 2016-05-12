@@ -1,0 +1,42 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaJuridicaViewModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title">Atualizar Cnae Principal</h4>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Hidden("PessoaId", (Guid?)ViewBag.PessoaId)
+            @Html.HiddenFor(m => m.Cnpj)
+            @Html.HiddenFor(m => m.DataAniversario)
+            @Html.HiddenFor(m => m.DataFundacao)
+            @Html.HiddenFor(m => m.InscricaoEstadual)
+            @Html.HiddenFor(m => m.InscricaoMunicipal)
+            @Html.HiddenFor(m => m.NomeFantasia)
+            @Html.HiddenFor(m => m.RazaoSocial)
+            @Html.HiddenFor(m => m.RegimeImpostoId)
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Códigos Cnae</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("CnaeId", (IEnumerable<SelectListItem>)ViewBag.CnaeList, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <input type="submit" value="Alterar" class="btn btn-success" />
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Fechar" />
+            </div>
+        </div>
+    </div>
+}
+

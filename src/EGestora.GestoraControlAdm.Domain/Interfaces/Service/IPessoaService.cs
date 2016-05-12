@@ -29,5 +29,13 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
 
         Anexo GetAnexoById(Guid id);
         void RemoveAnexo(Guid id);
+
+        IEnumerable<Cnae> GetAllCnae();
+        Cnae GetCnaeById(Guid id);
+        void RemoveCnae(Guid id, Guid pessoaId);
+        bool AddCnae(Guid id, Guid pessoaId);
+        IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
+
+        IEnumerable<RegimeImposto> GetAllRegimeImpostos();
     }
 }

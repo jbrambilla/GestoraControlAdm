@@ -1,14 +1,23 @@
-﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.CnaeViewModel>
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaJuridicaViewModel
 
+<h3>Cnae Principal</h3>
 <table class="table table-user-information">
     <tbody>
+        <tr>
+            <td>@Model.Cnae.Display</td>
+            <td><a href="@Url.Action("AlterarCnaePrincipal", new { id = ViewBag.PessoaId })" class="btn btn-primary btn-circle" data-modal=""><span title="Alterar" class="glyphicon glyphicon-pencil"></span></a></td>
+        </tr>
+    </tbody>
+</table>
 
-        @foreach(var item in Model)
-        { 
+<h3>Cnaes Secundários</h3>
+<table class="table table-user-information">
+    <tbody>
+        @foreach (var cnae in Model.CnaeList)
+        {
             <tr>
-                <td>@item.Codigo</td>
-                <td>@item.Descricao</td>
-                <td><a href="@Url.Action("DeletarCnae", new { id = item.CnaeId, pessoaId = ViewBag.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+                <td>@cnae.Display</td>
+                <td><a href="@Url.Action("DeletarCnae", new { id = cnae.CnaeId, pessoaId = ViewBag.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
         }
         <tr>
@@ -17,7 +26,6 @@
                     <i title="Adicionar" class="fa fa-plus"></i>
                 </a>
             </td>
-            <td></td>
             <td></td>
         </tr>
     </tbody>

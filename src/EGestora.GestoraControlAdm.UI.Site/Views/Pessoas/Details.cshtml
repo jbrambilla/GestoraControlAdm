@@ -25,8 +25,11 @@
                                 </div>
                                 <ul class="nav nav-tabs col-md-9 col-lg-9 ">
                                     <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
-                                    @*<li class=""><a href="#servico" data-toggle="tab" aria-expanded="false">Serviços</a></li>
-                                    <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>*@
+                                    @*<li class=""><a href="#servico" data-toggle="tab" aria-expanded="false">Serviços</a></li>*@
+                                    @if (Model.PessoaJuridica != null)
+                                    { 
+                                        <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
+                                    }
                                     <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
                                     <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
                                     @*<li class=""><a href="#revenda" data-toggle="tab" aria-expanded="false">Revenda</a></li>*@
@@ -83,12 +86,15 @@
                                         <div id="replacetargetServico">
                                             @Html.Partial("_ServicoList", Model.ClienteServicoList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
                                         </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="cnae">
-                                        <div id="replacetargetCnae">
-                                            @Html.Partial("_CnaeList", Model.CnaeList, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
-                                        </div>
                                     </div>*@
+                                    @if (Model.PessoaJuridica != null)
+                                    { 
+                                        <div class="tab-pane fade in" id="cnae">
+                                            <div id="replacetargetCnae">
+                                                @Html.Partial("_CnaeList", Model.PessoaJuridica, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
+                                            </div>
+                                        </div>
+                                    }
                                     <div class="tab-pane fade in" id="enderecos">
                                         <div id="replacetarget">
                                             @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })

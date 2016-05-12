@@ -71,6 +71,13 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
                 new Servico() { Descricao = "Servico 4", Valor = 50 },
                 new Servico() { Descricao = "Servico 5", Valor = 700 }
             );
+
+            context.Profissao.AddOrUpdate(
+                p => p.Nome,
+                new Profissao() { Nome = "Marceneiro" },
+                new Profissao() { Nome = "Empresário" },
+                new Profissao() { Nome = "Carpitnteiro" }
+            );
         }
     }
 }

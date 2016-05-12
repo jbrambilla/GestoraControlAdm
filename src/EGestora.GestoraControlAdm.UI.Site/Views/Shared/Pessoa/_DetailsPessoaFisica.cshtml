@@ -1,18 +1,33 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaFisicaViewModel
 
 <tr>
+    <td>Apelido</td>
+    <td>@Model.Apelido</td>
+</tr>
+
+<tr>
     <td>CPF</td>
     <td>@Model.Cpf</td>
 </tr>
 
 <tr>
     <td>RG</td>
-    <td>@Model.Rg</td>
+    <td>@Model.Rg - @Model.OrgaoEmissor</td>
 </tr>
 
 <tr>
     <td>Genero</td>
     <td>@Model.Genero</td>
+</tr>
+
+<tr>
+    <td>Estado Civil</td>
+    <td>@Model.EstadoCivil</td>
+</tr>
+
+<tr>
+    <td>Profissao</td>
+    <td>@Model.Profissao.Nome</td>
 </tr>
 
 <tr>

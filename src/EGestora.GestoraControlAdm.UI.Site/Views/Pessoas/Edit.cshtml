@@ -133,9 +133,14 @@
 
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.PessoaFisica.Rg, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            <div class="col-md-10">
+                                            <div class="col-md-6">
                                                 @Html.EditorFor(model => model.PessoaFisica.Rg, new { htmlAttributes = new { @class = "form-control" } })
                                                 @Html.ValidationMessageFor(model => model.PessoaFisica.Rg, "", new { @class = "text-danger" })
+                                            </div>
+                                            @Html.LabelFor(model => model.PessoaFisica.OrgaoEmissor, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-2">
+                                                @Html.EditorFor(model => model.PessoaFisica.OrgaoEmissor, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.PessoaFisica.OrgaoEmissor, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 
@@ -160,6 +165,14 @@
                                             <div class="col-md-10">
                                                 @Html.EditorFor(model => model.PessoaFisica.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })
                                                 @Html.ValidationMessageFor(model => model.PessoaFisica.EstadoCivil, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.PessoaFisica.ProfissaoId, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownListFor(model => model.PessoaFisica.ProfissaoId, (IEnumerable<SelectListItem>)ViewBag.ProfissaoList, String.Empty, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.PessoaFisica.ProfissaoId, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
 

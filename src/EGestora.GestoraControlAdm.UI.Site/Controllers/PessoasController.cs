@@ -89,8 +89,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
-            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            LoadViewBagsEditar(id);
             return View(pessoaViewModel);
         }
 
@@ -106,8 +105,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                 _pessoaAppService.Update(pessoaViewModel);
                 return RedirectToAction("Index");
             }
-            ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
-            ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(pessoaViewModel.PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            LoadViewBagsEditar(pessoaViewModel.PessoaId);
             return View(pessoaViewModel);
         }
 
@@ -488,6 +486,19 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             ViewBag.TipoContatoList = _pessoaAppService.GetAllTipoContatos().OrderBy(tc => tc.Nome);
             ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Display");
             ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
+            ViewBag.ProfissaoList = new SelectList(_pessoaAppService.GetAllProfissoes().OrderBy(c => c.Nome), "ProfissaoId", "Nome");
+        }
+
+        private void LoadViewBagsEditar(Guid? id)
+        {
+            var pessoa = _pessoaAppService.GetById(id.Value);
+
+            ViewBag.RegimeImpostoList = new SelectList(_pessoaAppService.GetAllRegimeImpostos().OrderBy(r => r.Descricao), "RegimeImpostoId", "Descricao");
+            if (pessoa.IsPessoaJuridica)
+            {
+                ViewBag.CnaeList = new SelectList(_pessoaAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
+            }
+            ViewBag.ProfissaoList = new SelectList(_pessoaAppService.GetAllProfissoes().OrderBy(c => c.Nome), "ProfissaoId", "Nome");
         }
 
         protected override void Dispose(bool disposing)

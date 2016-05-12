@@ -10,6 +10,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Key]
         public Guid PessoaId { get; set; }
 
+        [Required(ErrorMessage = "Selecione uma Profissão")]
+        [DisplayName("Profissão")]
+        public Guid ProfissaoId { get; set; }
+
         [Required(ErrorMessage = "Preencha o campo Nome")]
         [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
@@ -56,6 +60,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime Nascimento { get; set; }
 
         [ScaffoldColumn(false)]
-        public PessoaViewModel Pessoa;
+        public PessoaViewModel Pessoa { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ProfissaoViewModel Profissao { get; set; }
     }
 }

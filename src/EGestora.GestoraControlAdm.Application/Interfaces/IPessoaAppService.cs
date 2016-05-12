@@ -39,5 +39,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 
         PessoaFisicaViewModel UpdatePessoaFisica(PessoaFisicaViewModel pessoaFisicaViewModel);
         PessoaJuridicaViewModel UpdatePessoaJuridica(PessoaJuridicaViewModel pessoaJuridicaViewModel);
+
+        IEnumerable<ProfissaoViewModel> GetAllProfissoes();
     }
 }

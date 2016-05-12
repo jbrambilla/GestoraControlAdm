@@ -149,6 +149,10 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Estado Civil")]
         public string EstadoCivil { get; set; }
 
+        //[Required(ErrorMessage = "Selecione uma Profissão")]
+        [DisplayName("Profissão")]
+        public Guid ProfissaoId { get; set; }
+
         [Display(Name = "Data de Nascimento")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]

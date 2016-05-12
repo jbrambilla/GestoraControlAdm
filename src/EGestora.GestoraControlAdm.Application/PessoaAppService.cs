@@ -256,6 +256,11 @@ namespace EGestora.GestoraControlAdm.Application
             return pessoaJuridicaViewModel;
         }
 
+        public IEnumerable<ProfissaoViewModel> GetAllProfissoes()
+        {
+            return Mapper.Map<IEnumerable<Profissao>, IEnumerable<ProfissaoViewModel>>(_pessoaService.GetAllProfissoes());
+        }
+
         public void Dispose()
         {
             _pessoaService.Dispose();
@@ -285,5 +290,8 @@ namespace EGestora.GestoraControlAdm.Application
                 }
             }
         }
+
+
+        
     }
 }

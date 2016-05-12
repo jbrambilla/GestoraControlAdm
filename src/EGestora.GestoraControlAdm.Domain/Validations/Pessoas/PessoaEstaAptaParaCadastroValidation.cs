@@ -12,11 +12,9 @@ namespace EGestora.GestoraControlAdm.Domain.Validations.Pessoas
         {
             var cnpjUnico = new PessoaJuridicaDevePossuirCnpjUnicoSpecification(pessoaRepository);
             var cpfUnico = new PessoaFisicaDevePossuirCpfUnicoSpecification(pessoaRepository);
-            var cnaePrincipal = new PessoaCnaePrincipalNaoDeveEstarNaListaDeCnaesSpecification();
 
             base.Add("cnpjUnico", new Rule<Pessoa>(cnpjUnico, "Este CNPJ já está cadastrado."));
             base.Add("cpfUnico", new Rule<Pessoa>(cpfUnico, "Este CPF já está cadastrado."));
-            base.Add("cnaePrincipal", new Rule<Pessoa>(cnaePrincipal, "O Cnae Principal não pode estar na lista de Cnaes."));
         }
     }
 }

@@ -18,6 +18,7 @@ namespace EGestora.GestoraControlAdm.Domain.Validations.Pessoas
             var nome = new PessoaFisicaDeveTerNomeObrigatorioSpecification();
             var razaoSocial = new PessoaJuridicaDeveTerRazaoSocialObrigatorioSpecification();
             var nomeFantasia = new PessoaJuridicaDeveTerNomeFantasiaObrigatorioSpecification();
+            var cnaePrincipal = new PessoaCnaePrincipalNaoDeveEstarNaListaDeCnaesSpecification();
 
             base.Add("cnpj", new Rule<Pessoa>(cnpj, "O CNPJ informado é inválido."));
             base.Add("cpf", new Rule<Pessoa>(cpf, "O CPF informado é inválido."));
@@ -27,6 +28,7 @@ namespace EGestora.GestoraControlAdm.Domain.Validations.Pessoas
             base.Add("nome", new Rule<Pessoa>(nome, "O campo Nome é obrigatório."));
             base.Add("razaoSocial", new Rule<Pessoa>(razaoSocial, "O campo Razão Social é obrigatório."));
             base.Add("nomeFantasia", new Rule<Pessoa>(nomeFantasia, "O campo Nome Fantasia é obrigatório."));
+            base.Add("cnaePrincipal", new Rule<Pessoa>(cnaePrincipal, "O Cnae Principal não pode estar na lista de Cnaes."));
         }
     }
 }

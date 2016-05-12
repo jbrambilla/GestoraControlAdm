@@ -12,6 +12,10 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Pessoas.PJ
     {
         public bool IsSatisfiedBy(Pessoa pessoa)
         {
+            if (pessoa.PessoaJuridica == null)
+            {
+                return true;
+            }
             return !pessoa.PessoaJuridica.CnaeList.Where(c => c.CnaeId == pessoa.PessoaJuridica.CnaeId).Any();
         }
     }

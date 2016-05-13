@@ -32,11 +32,6 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         void RemoveCnae(Guid cnaeId, Guid pessoaId);
         IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id);
 
-        FuncionarioEnderecoViewModel AddFuncionario(FuncionarioEnderecoViewModel funcionarioViewModel);
-        FuncionarioViewModel UpdateFuncionario(FuncionarioViewModel funcionarioViewModel);
-        FuncionarioViewModel GetFuncionarioById(Guid id);
-        void RemoveFuncionario(Guid id);
-
         IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao();
 
         IEnumerable<NaturezaOperacaoViewModel> GetAllNaturezaOperacao();

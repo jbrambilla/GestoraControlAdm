@@ -202,33 +202,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return allCnaes.Except(cliente.CnaeList);
         }
 
-        public Funcionario AddFuncionario(Funcionario funcionario)
-        {
-            if (!funcionario.IsValid())
-            {
-                return funcionario;
-            }
-
-            return _funcionarioRepository.Add(funcionario);
-        }
-
-        public Funcionario UpdateFuncionario(Funcionario funcionario)
-        {
-            UpdatePessoaFisica(funcionario.PessoaFisica);
-            UpdatePessoaJuridica(funcionario.PessoaJuridica);
-            return _funcionarioRepository.Update(funcionario);
-        }
-
-        public Funcionario GetFuncionarioById(Guid id)
-        {
-            return _funcionarioRepository.GetById(id);
-        }
-
-        public void RemoveFuncionario(Guid id)
-        {
-            _funcionarioRepository.Remove(id);
-        }
-
         public IEnumerable<RegimeApuracao> GetAllRegimeApuracao()
         {
             return _regimeApuracaoRepository.GetAll();

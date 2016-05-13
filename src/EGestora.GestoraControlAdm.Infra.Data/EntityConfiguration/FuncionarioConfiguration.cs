@@ -9,10 +9,6 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(f => f.PessoaId);
 
-            HasRequired(f => f.Empresa)
-                .WithMany(e => e.FuncionarioList)
-                .HasForeignKey(f => f.EmpresaId);
-
             ToTable("Funcionarios");
         }
     }

@@ -10,7 +10,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             : base()
         {
             CnaeList = new List<Cnae>();
-            FuncionarioList = new List<Funcionario>();
             NotaServicoList = new List<NotaServico>();
         }
 
@@ -31,7 +30,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual RegimeTributacao RegimeTributacao { get; set; }
         public virtual NaturezaOperacao NaturezaOperacao { get; set; }
         public virtual EnquadramentoServico EnquadramentoServico { get; set; }
-        public virtual ICollection<Funcionario> FuncionarioList { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
         public virtual ICollection<NotaServico> NotaServicoList { get; set; }
     }

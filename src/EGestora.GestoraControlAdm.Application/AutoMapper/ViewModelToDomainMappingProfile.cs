@@ -26,8 +26,6 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<PessoaViewModel, Empresa>();
 
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
-            Mapper.CreateMap<FuncionarioEnderecoViewModel, Funcionario>();
-            Mapper.CreateMap<PessoaViewModel, Funcionario>();
 
             Mapper.CreateMap<EnderecoViewModel, Endereco>();
             Mapper.CreateMap<ClienteEnderecoViewModel, Endereco>();

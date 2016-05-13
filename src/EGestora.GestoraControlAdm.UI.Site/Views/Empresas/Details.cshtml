@@ -25,7 +25,6 @@
                                 <ul class="nav nav-tabs col-md-9 col-lg-9 ">
                                     <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
                                     <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
-                                    <li class=""><a href="#funcionarios" data-toggle="tab" aria-expanded="false">Funcionários</a></li>
                                     <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
                                     <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
                                     <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
@@ -131,11 +130,6 @@
                                     <div class="tab-pane fade in" id="cnae">
                                         <div id="replacetargetCnae">
                                             @Html.Partial("_CnaeList", Model.CnaeList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="funcionarios">
-                                        <div id="replacetargetFuncionario">
-                                            @Html.Partial("_FuncionarioList", Model.FuncionarioList.Where(f => f.Ativo).ToList(), new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="enderecos">

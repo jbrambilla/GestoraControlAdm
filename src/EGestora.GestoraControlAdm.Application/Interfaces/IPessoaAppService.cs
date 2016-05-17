@@ -47,6 +47,11 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         FuncionarioViewModel GetFuncionarioById(Guid id);
         void RemoveFuncionario(Guid id);
 
+        ProprietarioViewModel AddProprietario(ProprietarioViewModel proprietarioViewModel);
+        ProprietarioViewModel UpdateProprietario(ProprietarioViewModel proprietarioViewModel);
+        ProprietarioViewModel GetProprietarioById(Guid id);
+        void RemoveProprietario(Guid id);
+
         IEnumerable<PessoaFisicaViewModel> GetAllPessoaFisica();
         IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridica();
         IEnumerable<CargoViewModel> GetAllCargo();

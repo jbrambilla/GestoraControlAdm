@@ -72,5 +72,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public virtual ICollection<FuncionarioViewModel> FuncionarioList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual ICollection<ProprietarioViewModel> ProprietarioList { get; set; }
     }
 }

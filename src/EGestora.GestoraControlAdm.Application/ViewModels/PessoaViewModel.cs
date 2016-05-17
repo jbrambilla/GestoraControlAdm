@@ -69,5 +69,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public FuncionarioViewModel Funcionario { get; set; }
+
+        [ScaffoldColumn(false)]
+        public ProprietarioViewModel Proprietario { get; set; }
     }
 }

@@ -295,6 +295,40 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
+        public ProprietarioViewModel AddProprietario(ProprietarioViewModel proprietarioViewModel)
+        {
+            var proprietario = Mapper.Map<ProprietarioViewModel, Proprietario>(proprietarioViewModel);
+
+            BeginTransaction();
+            var proprietarioReturn = _pessoaService.AddProprietario(proprietario);
+            proprietarioViewModel = Mapper.Map<Proprietario, ProprietarioViewModel>(proprietarioReturn);
+            Commit();
+            return proprietarioViewModel;
+        }
+
+        public ProprietarioViewModel UpdateProprietario(ProprietarioViewModel proprietarioViewModel)
+        {
+            var proprietario = Mapper.Map<ProprietarioViewModel, Proprietario>(proprietarioViewModel);
+
+            BeginTransaction();
+            var proprietarioReturn = _pessoaService.UpdateProprietario(proprietario);
+            proprietarioViewModel = Mapper.Map<Proprietario, ProprietarioViewModel>(proprietarioReturn);
+            Commit();
+            return proprietarioViewModel;
+        }
+
+        public ProprietarioViewModel GetProprietarioById(Guid id)
+        {
+            return Mapper.Map<Proprietario, ProprietarioViewModel>(_pessoaService.GetProprietarioById(id));
+        }
+
+        public void RemoveProprietario(Guid id)
+        {
+            BeginTransaction();
+            _pessoaService.RemoveFuncionario(id);
+            Commit();
+        }
+
         public IEnumerable<PessoaFisicaViewModel> GetAllPessoaFisica()
         {
             return Mapper.Map<IEnumerable<PessoaFisica>, IEnumerable<PessoaFisicaViewModel>>(_pessoaService.GetAllPessoaFisica());
@@ -310,6 +344,7 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoViewModel>>(_pessoaService.GetAllCargo());
 
         }
+
         public void Dispose()
         {
             _pessoaService.Dispose();
@@ -338,6 +373,6 @@ namespace EGestora.GestoraControlAdm.Application
                     pessoa.AnexoList.Add(anexoEntity);
                 }
             }
-        }      
+        }
     }
 }

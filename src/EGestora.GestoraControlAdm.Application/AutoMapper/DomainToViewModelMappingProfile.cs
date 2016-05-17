@@ -113,6 +113,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<Profissao, ProfissaoViewModel>();
 
             Mapper.CreateMap<Cargo, CargoViewModel>();
+
+            Mapper.CreateMap<Proprietario, ProprietarioViewModel>();
         }
     }
 }

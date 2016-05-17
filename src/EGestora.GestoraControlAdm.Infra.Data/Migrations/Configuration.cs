@@ -78,6 +78,13 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
                 new Profissao() { Nome = "Empresário" },
                 new Profissao() { Nome = "Carpitnteiro" }
             );
+
+            context.Cargo.AddOrUpdate(
+                c => c.Nome,
+                new Cargo() { Nome = "Programmer I" },
+                new Cargo() { Nome = "Programmer II" },
+                new Cargo() { Nome = "Analist" }
+            );
         }
     }
 }

@@ -56,6 +56,7 @@
     <Compile Include="EntityConfiguration\AuditConfiguration.cs" />
     <Compile Include="EntityConfiguration\AuditControllerConfiguration.cs" />
     <Compile Include="EntityConfiguration\BoletoConfiguration.cs" />
+    <Compile Include="EntityConfiguration\CargoConfiguration.cs" />
     <Compile Include="EntityConfiguration\ClienteConfiguration.cs" />
     <Compile Include="EntityConfiguration\ClienteServicoConfiguration.cs" />
     <Compile Include="EntityConfiguration\CnaeConfiguration.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Repository\AuditControllerRepository.cs" />
     <Compile Include="Repository\AuditRepository.cs" />
     <Compile Include="Repository\BoletoRepository.cs" />
+    <Compile Include="Repository\CargoRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\ClienteServicoRepository.cs" />
     <Compile Include="Repository\CnaeRepository.cs" />

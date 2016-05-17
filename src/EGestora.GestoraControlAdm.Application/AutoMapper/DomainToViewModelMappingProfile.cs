@@ -111,6 +111,8 @@ namespace EGestora.GestoraControlAdm.Application.AutoMapper
             Mapper.CreateMap<RegimeImposto, RegimeImpostoViewModel>();
 
             Mapper.CreateMap<Profissao, ProfissaoViewModel>();
+
+            Mapper.CreateMap<Cargo, CargoViewModel>();
         }
     }
 }

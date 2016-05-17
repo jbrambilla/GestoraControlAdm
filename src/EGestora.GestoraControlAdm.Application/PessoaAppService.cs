@@ -261,6 +261,55 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<IEnumerable<Profissao>, IEnumerable<ProfissaoViewModel>>(_pessoaService.GetAllProfissoes());
         }
 
+        public FuncionarioViewModel AddFuncionario(FuncionarioViewModel funcionarioViewModel)
+        {
+            var funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
+
+            BeginTransaction();
+            var funcionarioReturn = _pessoaService.AddFuncionario(funcionario);
+            funcionarioViewModel = Mapper.Map<Funcionario, FuncionarioViewModel>(funcionarioReturn);
+            Commit();
+            return funcionarioViewModel;
+        }
+
+        public FuncionarioViewModel UpdateFuncionario(FuncionarioViewModel funcionarioViewModel)
+        {
+            var funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
+
+            BeginTransaction();
+            var funcionarioReturn = _pessoaService.UpdateFuncionario(funcionario);
+            funcionarioViewModel = Mapper.Map<Funcionario, FuncionarioViewModel>(funcionarioReturn);
+            Commit();
+            return funcionarioViewModel;
+        }
+
+        public FuncionarioViewModel GetFuncionarioById(Guid id)
+        {
+            return Mapper.Map<Funcionario, FuncionarioViewModel>(_pessoaService.GetFuncionarioById(id));
+        }
+
+        public void RemoveFuncionario(Guid id)
+        {
+            BeginTransaction();
+            _pessoaService.RemoveFuncionario(id);
+            Commit();
+        }
+
+        public IEnumerable<PessoaFisicaViewModel> GetAllPessoaFisica()
+        {
+            return Mapper.Map<IEnumerable<PessoaFisica>, IEnumerable<PessoaFisicaViewModel>>(_pessoaService.GetAllPessoaFisica());
+        }
+
+        public IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridica()
+        {
+            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_pessoaService.GetAllPessoaJuridica());
+        }
+
+        public IEnumerable<CargoViewModel> GetAllCargo()
+        {
+            return Mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoViewModel>>(_pessoaService.GetAllCargo());
+
+        }
         public void Dispose()
         {
             _pessoaService.Dispose();
@@ -289,9 +338,6 @@ namespace EGestora.GestoraControlAdm.Application
                     pessoa.AnexoList.Add(anexoEntity);
                 }
             }
-        }
-
-
-        
+        }      
     }
 }

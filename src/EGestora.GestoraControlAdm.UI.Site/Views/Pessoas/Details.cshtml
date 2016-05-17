@@ -29,6 +29,7 @@
                                     @if (Model.PessoaJuridica != null)
                                     { 
                                         <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
+                                        <li class=""><a href="#funcionarios" data-toggle="tab" aria-expanded="false">Funcionários</a></li>
                                     }
                                     <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
                                     <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
@@ -92,6 +93,12 @@
                                         <div class="tab-pane fade in" id="cnae">
                                             <div id="replacetargetCnae">
                                                 @Html.Partial("_CnaeList", Model.PessoaJuridica, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="tab-pane fade in" id="funcionarios">
+                                            <div id="replacetargetFuncionarios">
+                                                @Html.Partial("_FuncionarioList", Model.PessoaJuridica, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
                                             </div>
                                         </div>
                                     }

@@ -33,7 +33,7 @@ function bindForm(dialog) {
                     } else if (result.replaceTarget == "servico") {
                         $('#replacetargetServico').load(result.url);
                     } else if (result.replaceTarget == "funcionario") {
-                        $('#replacetargetFuncionario').load(result.url);
+                        $('#replacetargetFuncionarios').load(result.url);
                     } else if (result.replaceTarget == "revenda") {
                         $('#replacetargetRevenda').load(result.url);
                     } else if (result.replaceTarget == "anexo") {

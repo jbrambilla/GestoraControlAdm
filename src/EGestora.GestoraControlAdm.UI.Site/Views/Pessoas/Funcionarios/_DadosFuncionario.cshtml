@@ -1,0 +1,21 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel
+
+
+<dl class="dl-horizontal">
+    @if (Model.Pessoa.PessoaJuridica != null)
+    { 
+        @Html.Partial("_DadosPessoaJuridica", Model.Pessoa.PessoaJuridica)
+    }
+    else
+    {
+        @Html.Partial("_DadosPessoaFisica", Model.Pessoa.PessoaFisica)
+    }
+    <dt>
+        @Html.DisplayNameFor(model => model.CargoId)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Cargo.Nome)
+    </dd>
+
+</dl>

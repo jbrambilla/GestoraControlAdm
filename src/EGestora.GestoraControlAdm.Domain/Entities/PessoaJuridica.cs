@@ -9,6 +9,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         {
             PessoaId = Guid.NewGuid();
             CnaeList = new List<Cnae>();
+            FuncionarioList = new List<Funcionario>();
         }
 
         public Guid PessoaId { get; set; }
@@ -25,8 +26,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual RegimeImposto RegimeImposto { get; set; }
         public virtual Cnae Cnae { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
-
-        //funcionarios
+        public virtual ICollection<Funcionario> FuncionarioList { get; set; }
         //proprietarios
     }
 }

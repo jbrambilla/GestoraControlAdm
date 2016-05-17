@@ -66,5 +66,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<AnexoViewModel> AnexoList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public FuncionarioViewModel Funcionario { get; set; }
     }
 }

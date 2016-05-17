@@ -439,6 +439,17 @@
     <Content Include="Views\Pessoas\Edit.cshtml" />
     <Content Include="Views\Pessoas\Index.cshtml" />
     <Content Include="Views\Shared\Pessoa\Cnae\_AlterarCnaePrincipal.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_FuncionarioList.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_AdicionarFuncionario.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_AtualizarFuncionario.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_RemoverFuncionario.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_Funcionario.cshtml" />
+    <Content Include="Views\Pessoas\PessoaPartial\_PessoaFisicaList.cshtml" />
+    <Content Include="Views\Pessoas\PessoaPartial\_PessoaJuridicaList.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_DadosFuncionario.cshtml" />
+    <Content Include="Views\Pessoas\PessoaPartial\_DadosPessoaJuridica.cshtml" />
+    <Content Include="Views\Pessoas\PessoaPartial\_DadosPessoaFisica.cshtml" />
+    <Content Include="Views\Pessoas\Funcionarios\_DetalhesFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

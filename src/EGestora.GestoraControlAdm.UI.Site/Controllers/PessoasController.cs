@@ -469,6 +469,111 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "cnae" });
         }
 
+        //FUNCIONARIOS
+
+        public ActionResult ListarFuncionarios(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_FuncionarioList", _pessoaAppService.GetById(id).PessoaJuridica);
+        }
+
+        [Route("adicionar-funcionario")]
+        public ActionResult AdicionarFuncionario(Guid id)
+        {
+            LoadViewBagsFuncionarios(id);
+            return PartialView("_AdicionarFuncionario");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarFuncionario(FuncionarioViewModel funcionarioViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _pessoaAppService.AddFuncionario(funcionarioViewModel);
+
+                //if (!enderecoViewModel.ValidationResult.IsValid)
+                //{
+                //    foreach (var erro in enderecoViewModel.ValidationResult.Erros)
+                //    {
+                //        ModelState.AddModelError(string.Empty, erro.Message);
+                //    }
+
+                //    return PartialView("_AdicionarEndereco", enderecoViewModel);
+                //}
+
+                string url = Url.Action("ListarFuncionarios", "Pessoas", new { id = funcionarioViewModel.PessoaJuridicaId });
+                return Json(new { success = true, url = url, replaceTarget = "funcionario" });
+            }
+            LoadViewBagsFuncionarios(funcionarioViewModel.PessoaId);
+            return PartialView("_AdicionarFuncionario", funcionarioViewModel);
+        }
+
+        public ActionResult AtualizarFuncionario(Guid id)
+        {
+            var funcionarioViewModel = _pessoaAppService.GetFuncionarioById(id);
+            LoadViewBagsFuncionarios(funcionarioViewModel.PessoaJuridicaId);
+            return PartialView("_AtualizarFuncionario", funcionarioViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizarFuncionario(FuncionarioViewModel funcionarioViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _pessoaAppService.UpdateFuncionario(funcionarioViewModel);
+
+                string url = Url.Action("ListarFuncionarios", "Pessoas", new { id = funcionarioViewModel.PessoaJuridicaId });
+                return Json(new { success = true, url = url, replaceTarget = "funcionario" });
+            }
+            LoadViewBagsFuncionarios(funcionarioViewModel.PessoaJuridicaId);
+            return PartialView("_AtualizarFuncionario", funcionarioViewModel);
+        }
+
+        public ActionResult RemoverFuncionario(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var funcionarioViewModel = _pessoaAppService.GetFuncionarioById(id.Value);
+            if (funcionarioViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_RemoverFuncionario", funcionarioViewModel);
+        }
+
+        // POST: Pessoas/Delete/5
+
+        [HttpPost, ActionName("RemoverFuncionario")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoverFuncionarioConfirmed(Guid id)
+        {
+            var pessoaJuridicaId = _pessoaAppService.GetFuncionarioById(id).PessoaJuridicaId;
+            _pessoaAppService.RemoveFuncionario(id);
+
+            string url = Url.Action("ListarFuncionarios", "Pessoas", new { id = pessoaJuridicaId });
+            return Json(new { success = true, url = url, replaceTarget = "funcionario" });
+        }
+
+        public ActionResult DetalhesFuncionario(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var funcionarioViewModel = _pessoaAppService.GetFuncionarioById(id.Value);
+            if (funcionarioViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            return PartialView("_DetalhesFuncionario", funcionarioViewModel);
+        }
+
         public ActionResult ObterImagemPessoa(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.PESSOAS_IMAGE_PATH);
@@ -479,6 +584,14 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             }
 
             return File(foto, "image/jpeg");
+        }
+
+        private void LoadViewBagsFuncionarios(Guid id)
+        {
+            ViewBag.PessoaJuridicaId = id;
+            ViewBag.PessoaJuridicaList = new SelectList(_pessoaAppService.GetAllPessoaJuridica().Where(pf => pf.PessoaId != id).OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            ViewBag.PessoaFisicaList = new SelectList(_pessoaAppService.GetAllPessoaFisica().Where(pf => pf.PessoaId != id).OrderBy(c => c.Nome), "PessoaId", "Nome");
+            ViewBag.CargoList = new SelectList(_pessoaAppService.GetAllCargo().OrderBy(c => c.Nome), "CargoId", "Nome");
         }
 
         private void loadViewBags()

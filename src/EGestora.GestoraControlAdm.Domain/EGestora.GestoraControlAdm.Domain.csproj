@@ -41,6 +41,7 @@
     <Compile Include="Entities\AuditAction.cs" />
     <Compile Include="Entities\AuditController.cs" />
     <Compile Include="Entities\Boleto.cs" />
+    <Compile Include="Entities\Cargo.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Interfaces\Repository\IAuditControllerRepository.cs" />
     <Compile Include="Interfaces\Repository\IAuditRepository.cs" />
     <Compile Include="Interfaces\Repository\IBoletoRepository.cs" />
+    <Compile Include="Interfaces\Repository\ICargoRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repository\IClienteServicoRepository.cs" />
     <Compile Include="Interfaces\Repository\ICnaeRepository.cs" />

@@ -1,0 +1,59 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel
+
+<div class="form-group">
+    <label class="control-label col-md-2">Pessoa Jurídica</label>
+    <div class="col-md-10">
+        @Html.DropDownList("PessoaId", (IEnumerable<SelectListItem>)ViewBag.PessoaJuridicaList, String.Empty, new { @class = "form-control", id = "pj" })
+        @Html.ValidationMessageFor(model => model.PessoaId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label col-md-2">Pessoa Física</label>
+    <div class="col-md-10">
+        @Html.DropDownList("PessoaId", (IEnumerable<SelectListItem>)ViewBag.PessoaFisicaList, String.Empty, new { @class = "form-control", id = "pf" })
+        @Html.ValidationMessageFor(model => model.PessoaId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.CargoId, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("CargoId", (IEnumerable<SelectListItem>)ViewBag.CargoList, String.Empty, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CargoId, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        if ($('#pj').val() == "")
+        {
+            $("#pj").prop("disabled", true);
+            $("#pf").prop("disabled", false);
+        }
+        else
+        {
+            $("#pj").prop("disabled", false);
+            $("#pf").prop("disabled", true);
+        }
+        
+        $('#fisica').change(function () {
+
+            $("#pj").prop("disabled", true);
+            $("#pf").prop("disabled", false);
+
+        });
+        $('#juridica').change(function () {
+            $("#pf").prop("disabled", true);
+            $("#pj").prop("disabled", false);
+        });
+    });
+</script>

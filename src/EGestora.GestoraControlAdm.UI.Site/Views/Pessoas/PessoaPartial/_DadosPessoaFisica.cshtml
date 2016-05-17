@@ -1,0 +1,34 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaFisicaViewModel
+
+<dt>
+    @Html.DisplayNameFor(model => model.Nome)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.Nome)
+</dd>
+<dt>
+    @Html.DisplayNameFor(model => model.Apelido)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.Apelido)
+</dd>
+<dt>
+    @Html.DisplayNameFor(model => model.Cpf)
+</dt>
+
+<dd>
+    @Html.DisplayFor(model => model.Cpf)
+</dd>
+
+<dt>
+    @Html.DisplayNameFor(model => model.Nascimento)
+</dt>
+
+<dd>
+    @Model.Nascimento.ToString("d")
+</dd>
+
+
+

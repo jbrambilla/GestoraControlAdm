@@ -39,5 +39,15 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<RegimeImposto> GetAllRegimeImpostos();
 
         IEnumerable<Profissao> GetAllProfissoes();
+
+        Funcionario AddFuncionario(Funcionario funcionario);
+        Funcionario UpdateFuncionario(Funcionario funcionario);
+        Funcionario GetFuncionarioById(Guid id);
+        void RemoveFuncionario(Guid id);
+
+        IEnumerable<PessoaFisica> GetAllPessoaFisica();
+        IEnumerable<PessoaJuridica> GetAllPessoaJuridica();
+
+        IEnumerable<Cargo> GetAllCargo();
     }
 }

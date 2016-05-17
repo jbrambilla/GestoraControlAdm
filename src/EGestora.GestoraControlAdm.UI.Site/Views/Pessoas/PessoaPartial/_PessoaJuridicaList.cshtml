@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel>
+
+@if (Model.Any())
+{
+    <div class="tab-pane fade in active " id="pjList">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                    <th>
+                        Razão Social
+                    </th>
+                    <th>
+                        Nome Fantasia
+                    </th>
+                    <th>
+                        Cnpj
+                    </th>
+                    <th>
+                        Cargo
+                    </th>
+                    <th>
+                        Data de Aniversário
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = item.PessoaId })" alt="@item.PessoaId" class="img-circle" height="34" width="34" /></td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.RazaoSocial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.NomeFantasia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.Cnpj)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cargo.Nome)
+                        </td>
+                        <td>
+                            @item.Pessoa.PessoaJuridica.DataAniversario.ToString("d")
+                        </td>
+                        <td>
+                            <a href="@Url.Action("AtualizarFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="btn btn-default btn-circle">
+                                <span title="Editar" class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="@Url.Action("DetalhesFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="btn btn-default btn-circle">
+                                <span title="Editar" class="glyphicon glyphicon-search"></span>
+                            </a>
+                            <a href="@Url.Action("RemoverFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="btn btn-danger btn-circle">
+                                <span title="Excluir" class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="tab-pane fade in active " id="pjList">
+        <table class="table">
+            <tr>
+                <th>
+                    Nenhum Funcionário Cadastrado.
+                </th>
+            </tr>
+        </table>
+    </div>
+}
+

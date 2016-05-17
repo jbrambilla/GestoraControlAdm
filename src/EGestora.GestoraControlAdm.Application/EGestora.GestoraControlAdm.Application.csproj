@@ -82,6 +82,7 @@
     <Compile Include="ViewModels\AuditControllerViewModel.cs" />
     <Compile Include="ViewModels\AuditViewModel.cs" />
     <Compile Include="ViewModels\BoletoViewModel.cs" />
+    <Compile Include="ViewModels\CargoViewModel.cs" />
     <Compile Include="ViewModels\ClienteEnderecoViewModel.cs" />
     <Compile Include="ViewModels\ClienteServicoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />

@@ -21,6 +21,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly ICnaeRepository _cnaeRepository;
         private readonly IRegimeImpostoRepository _regimeImpostoRepository;
         private readonly IProfissaoRepository _profissaoRepository;
+        private readonly IFuncionarioRepository _funcionarioRepository;
+        private readonly ICargoRepository _cargoRepository;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
@@ -32,7 +34,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IAnexoRepository anexoRepository,
             ICnaeRepository cnaeRepository,
             IRegimeImpostoRepository regimeImpostoRepository,
-            IProfissaoRepository profissaoRepository)
+            IProfissaoRepository profissaoRepository,
+            IFuncionarioRepository funcionarioRepository,
+            ICargoRepository cargoRepository)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
@@ -44,6 +48,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _cnaeRepository = cnaeRepository;
             _regimeImpostoRepository = regimeImpostoRepository;
             _profissaoRepository = profissaoRepository;
+            _funcionarioRepository = funcionarioRepository;
+            _cargoRepository = cargoRepository;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -212,11 +218,45 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _profissaoRepository.GetAll();
         }
 
+        public Funcionario AddFuncionario(Funcionario funcionario)
+        {
+            return _funcionarioRepository.Add(funcionario);
+        }
+
+        public Funcionario UpdateFuncionario(Funcionario funcionario)
+        {
+            return _funcionarioRepository.Update(funcionario);
+        }
+
+        public Funcionario GetFuncionarioById(Guid id)
+        {
+            return _funcionarioRepository.GetById(id);
+        }
+
+        public void RemoveFuncionario(Guid id)
+        {
+            _funcionarioRepository.Remove(id);
+        }
+
+        public IEnumerable<PessoaFisica> GetAllPessoaFisica()
+        {
+            return _pessoaFisicaRepository.GetAll();
+        }
+
+        public IEnumerable<PessoaJuridica> GetAllPessoaJuridica()
+        {
+            return _pessoaJuridicaRepository.GetAll();
+        }
+
+        public IEnumerable<Cargo> GetAllCargo()
+        {
+            return _cargoRepository.GetAll();
+        }
+
         public void Dispose()
         {
             _pessoaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

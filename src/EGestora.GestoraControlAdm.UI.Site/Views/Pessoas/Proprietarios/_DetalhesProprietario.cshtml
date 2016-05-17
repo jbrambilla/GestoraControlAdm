@@ -1,0 +1,30 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ProprietarioViewModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title">Detalhes do Proprietário</h4>
+</div>
+
+<div class="modal-body">
+    <div class="form-horizontal">
+        @Html.Partial("_DadosProprietario")
+        <br />
+        <h3>Endereços</h3>
+        <div class="jumbotron">
+            
+            @Html.Partial("_EnderecoList", Model.Pessoa.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+        </div>
+        <br />
+        <h3>Contatos</h3>
+        <div class="jumbotron">
+            
+            @Html.Partial("_ContatoList", Model.Pessoa.ContatoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+        </div>
+        </div>
+</div>
+
+<div class="modal-footer">
+    <input type="button" class="btn btn-default" data-dismiss="modal" value="Fechar" />
+</div>

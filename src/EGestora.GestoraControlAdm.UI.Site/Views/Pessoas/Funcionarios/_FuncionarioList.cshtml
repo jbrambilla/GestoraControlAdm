@@ -2,12 +2,12 @@
 
 <br />
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#pjList" data-toggle="tab" aria-expanded="true">Pessoa Jurídica</a></li>
-    <li class=""><a href="#pfList" data-toggle="tab" aria-expanded="false">Pessoa Física</a></li>
+    <li class="active"><a href="#pjFuncionarioList" data-toggle="tab" aria-expanded="true">Pessoa Jurídica</a></li>
+    <li class=""><a href="#pfFuncionarioList" data-toggle="tab" aria-expanded="false">Pessoa Física</a></li>
 </ul>
 <div class="tab-content">
-    @Html.Partial("_PessoaJuridicaList", Model.FuncionarioList.Where(f => f.Pessoa.PessoaJuridica != null).ToList())
-    @Html.Partial("_PessoaFisicaList", Model.FuncionarioList.Where(f => f.Pessoa.PessoaFisica != null).ToList())
+    @Html.Partial("_PessoaJuridicaFuncionarioList", Model.FuncionarioList.Where(f => f.Pessoa.PessoaJuridica != null).ToList())
+    @Html.Partial("_PessoaFisicaFuncionarioList", Model.FuncionarioList.Where(f => f.Pessoa.PessoaFisica != null).ToList())
 </div>
 
 <div class="form-group">

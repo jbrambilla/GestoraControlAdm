@@ -1,0 +1,18 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaJuridicaViewModel
+
+<br />
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#pjProprietarioList" data-toggle="tab" aria-expanded="true">Pessoa Jurídica</a></li>
+    <li class=""><a href="#pfProprietarioList" data-toggle="tab" aria-expanded="false">Pessoa Física</a></li>
+</ul>
+<div class="tab-content">
+    @Html.Partial("_PessoaJuridicaProprietarioList", Model.ProprietarioList.Where(f => f.Pessoa.PessoaJuridica != null).ToList())
+    @Html.Partial("_PessoaFisicaProprietarioList", Model.ProprietarioList.Where(f => f.Pessoa.PessoaFisica != null).ToList())
+</div>
+
+<div class="form-group">
+    <a href="@Url.Action("AdicionarProprietario", "Pessoas", new { id = ViewBag.PessoaId }, "")" class="btn btn-success btn-circle" data-modal="">
+        <i title="Adicionar" class="fa fa-plus"></i>
+    </a>
+</div>
+

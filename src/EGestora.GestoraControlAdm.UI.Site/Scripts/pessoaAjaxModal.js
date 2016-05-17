@@ -44,6 +44,8 @@ function bindForm(dialog) {
                         $('#replacetargetDebito').load(result.url);
                     } else if (result.replaceTarget == "imagem") {
                         $('#imagemCliente').attr('src', result.url);
+                    } else if (result.replaceTarget == "proprietario") {
+                        $('#replacetargetProprietarios').load(result.url);
                     } else {
                         $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
                     }

@@ -574,6 +574,101 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return PartialView("_DetalhesFuncionario", funcionarioViewModel);
         }
 
+        //PROPRIETÁRIOS
+
+        public ActionResult ListarProprietarios(Guid id)
+        {
+            ViewBag.PessoaId = id;
+            return PartialView("_ProprietarioList", _pessoaAppService.GetById(id).PessoaJuridica);
+        }
+
+        [Route("adicionar-proprietario")]
+        public ActionResult AdicionarProprietario(Guid id)
+        {
+            LoadViewBagsFuncionarios(id);
+            return PartialView("_AdicionarProprietario");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AdicionarProprietario(ProprietarioViewModel proprietarioViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _pessoaAppService.AddProprietario(proprietarioViewModel);
+
+                string url = Url.Action("ListarProprietarios", "Pessoas", new { id = proprietarioViewModel.PessoaJuridicaId });
+                return Json(new { success = true, url = url, replaceTarget = "proprietario" });
+            }
+            LoadViewBagsFuncionarios(proprietarioViewModel.PessoaId);
+            return PartialView("_AdicionarProprietario", proprietarioViewModel);
+        }
+
+        public ActionResult AtualizarProprietario(Guid id)
+        {
+            var proprietarioViewModel = _pessoaAppService.GetProprietarioById(id);
+            LoadViewBagsFuncionarios(proprietarioViewModel.PessoaJuridicaId);
+            return PartialView("_AtualizarProprietario", proprietarioViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtualizarProprietario(ProprietarioViewModel proprietarioViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _pessoaAppService.UpdateProprietario(proprietarioViewModel);
+
+                string url = Url.Action("ListarProprietarios", "Pessoas", new { id = proprietarioViewModel.PessoaJuridicaId });
+                return Json(new { success = true, url = url, replaceTarget = "proprietario" });
+            }
+            LoadViewBagsFuncionarios(proprietarioViewModel.PessoaJuridicaId);
+            return PartialView("_AtualizarProprietario", proprietarioViewModel);
+        }
+
+        public ActionResult RemoverProprietario(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var proprietarioViewModel = _pessoaAppService.GetProprietarioById(id.Value);
+            if (proprietarioViewModel == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_RemoverProprietario", proprietarioViewModel);
+        }
+
+        // POST: Pessoas/Delete/5
+
+        [HttpPost, ActionName("RemoverProprietario")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoverProprietarioConfirmed(Guid id)
+        {
+            var pessoaJuridicaId = _pessoaAppService.GetProprietarioById(id).PessoaJuridicaId;
+            _pessoaAppService.RemoveProprietario(id);
+
+            string url = Url.Action("ListarProprietarios", "Pessoas", new { id = pessoaJuridicaId });
+            return Json(new { success = true, url = url, replaceTarget = "proprietario" });
+        }
+
+        public ActionResult DetalhesProprietario(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var proprietarioViewModel = _pessoaAppService.GetProprietarioById(id.Value);
+            if (proprietarioViewModel == null)
+            {
+                return HttpNotFound();
+            }
+
+            return PartialView("_DetalhesProprietario", proprietarioViewModel);
+        }
+
         public ActionResult ObterImagemPessoa(Guid id)
         {
             var foto = ImagemUtil.ObterImagem(id, FilePathConstants.PESSOAS_IMAGE_PATH);

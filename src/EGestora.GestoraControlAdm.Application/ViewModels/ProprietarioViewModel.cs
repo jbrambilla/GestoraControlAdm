@@ -37,6 +37,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public DateTime CriadoEm { get; set; }
 
         [ScaffoldColumn(false)]
-        public DateTime AtualizadoEm { get; set; }
+        public DateTime AlteradoEm { get; set; }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ProprietarioViewModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span><span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title">Novo Proprietário</h4>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Hidden("PessoaJuridicaId", (Guid?)ViewBag.PessoaJuridicaId)
+
+            <div class="form-group">
+                <label class="control-label col-md-2"></label>
+                <div class="col-md-5">
+                    <label>
+                        <input type="radio" name="FlagIsPessoaJuridica" id="fisica" value="false" checked="">
+                        Pessoa Física
+                    </label>
+                </div>
+                <div class="col-md-5">
+                    <label>
+                        <input type="radio" name="FlagIsPessoaJuridica" id="juridica" value="true">
+                        Pessoa Jurídica
+                    </label>
+                </div>
+            </div>
+
+            @Html.Partial("_Proprietario")
+
+            <div class="modal-footer">
+                <input type="submit" value="Adicionar" class="btn btn-success" />
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Fechar" />
+            </div>
+        </div>
+    </div>
+}

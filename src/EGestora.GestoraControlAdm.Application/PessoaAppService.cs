@@ -325,7 +325,7 @@ namespace EGestora.GestoraControlAdm.Application
         public void RemoveProprietario(Guid id)
         {
             BeginTransaction();
-            _pessoaService.RemoveFuncionario(id);
+            _pessoaService.RemoveProprietario(id);
             Commit();
         }
 

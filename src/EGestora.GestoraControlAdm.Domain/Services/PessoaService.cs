@@ -23,6 +23,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IProfissaoRepository _profissaoRepository;
         private readonly IFuncionarioRepository _funcionarioRepository;
         private readonly ICargoRepository _cargoRepository;
+        private readonly IProprietarioRepository _proprietarioRepository;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
@@ -36,7 +37,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IRegimeImpostoRepository regimeImpostoRepository,
             IProfissaoRepository profissaoRepository,
             IFuncionarioRepository funcionarioRepository,
-            ICargoRepository cargoRepository)
+            ICargoRepository cargoRepository,
+            IProprietarioRepository proprietarioRepository)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
@@ -50,6 +52,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _profissaoRepository = profissaoRepository;
             _funcionarioRepository = funcionarioRepository;
             _cargoRepository = cargoRepository;
+            _proprietarioRepository = proprietarioRepository;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -238,6 +241,26 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _funcionarioRepository.Remove(id);
         }
 
+        public Proprietario AddProprietario(Proprietario proprietario)
+        {
+            return _proprietarioRepository.Add(proprietario);
+        }
+
+        public Proprietario UpdateProprietario(Proprietario proprietario)
+        {
+            return _proprietarioRepository.Update(proprietario);
+        }
+
+        public Proprietario GetProprietarioById(Guid id)
+        {
+            return _proprietarioRepository.GetById(id);
+        }
+
+        public void RemoveProprietario(Guid id)
+        {
+            _proprietarioRepository.Remove(id);
+        }
+
         public IEnumerable<PessoaFisica> GetAllPessoaFisica()
         {
             return _pessoaFisicaRepository.GetAll();
@@ -258,5 +281,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _pessoaRepository.Dispose();
             GC.SuppressFinalize(this);
         }
+
     }
 }

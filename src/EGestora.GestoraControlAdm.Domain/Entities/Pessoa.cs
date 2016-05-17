@@ -26,6 +26,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual PessoaJuridica PessoaJuridica { get; set; }
         public virtual PessoaFisica PessoaFisica { get; set; }
         public virtual Funcionario Funcionario { get; set; }
+        public virtual Proprietario Proprietario { get; set; }
         public virtual ICollection<Endereco> EnderecoList { get; set; }
         public virtual ICollection<Contato> ContatoList { get; set; }
         public virtual ICollection<Anexo> AnexoList { get; set; }

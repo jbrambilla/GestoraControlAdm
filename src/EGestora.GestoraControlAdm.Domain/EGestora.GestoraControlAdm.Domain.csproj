@@ -60,6 +60,7 @@
     <Compile Include="Entities\PessoaFisica.cs" />
     <Compile Include="Entities\PessoaJuridica.cs" />
     <Compile Include="Entities\Profissao.cs" />
+    <Compile Include="Entities\Proprietario.cs" />
     <Compile Include="Entities\RegimeApuracao.cs" />
     <Compile Include="Entities\RegimeImposto.cs" />
     <Compile Include="Entities\RegimeTributacao.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Interfaces\Repository\IPessoaComplexaRepository.cs" />
     <Compile Include="Interfaces\Repository\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repository\IProfissaoRepository.cs" />
+    <Compile Include="Interfaces\Repository\IProprietarioRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeApuracaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeImpostoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRegimeTributacaoRepository.cs" />

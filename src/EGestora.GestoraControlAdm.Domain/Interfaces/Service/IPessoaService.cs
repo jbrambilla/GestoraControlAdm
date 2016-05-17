@@ -45,6 +45,11 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Funcionario GetFuncionarioById(Guid id);
         void RemoveFuncionario(Guid id);
 
+        Proprietario AddProprietario(Proprietario proprietario);
+        Proprietario UpdateProprietario(Proprietario proprietario);
+        Proprietario GetProprietarioById(Guid id);
+        void RemoveProprietario(Guid id);
+
         IEnumerable<PessoaFisica> GetAllPessoaFisica();
         IEnumerable<PessoaJuridica> GetAllPessoaJuridica();
 

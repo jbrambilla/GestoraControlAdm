@@ -27,6 +27,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public virtual Cnae Cnae { get; set; }
         public virtual ICollection<Cnae> CnaeList { get; set; }
         public virtual ICollection<Funcionario> FuncionarioList { get; set; }
-        //proprietarios
+        public virtual ICollection<Proprietario> ProprietarioList { get; set; }
     }
 }

@@ -80,17 +80,32 @@ Use search to find needed section.
 -->
 <body class="">
 
-    @Html.Partial("_Header")
+    @{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
 
-    @Html.Partial("_Aside")
+    @if (Request.IsAuthenticated)
+    {
+        @Html.Partial("_Aside")
+    }
 
-    @RenderBody()
+    <div id="main" role="main">
+        @if (Request.IsAuthenticated)
+        {
+            @Html.Partial("_Ribbon")
+        }
+        <div id="content">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
 
-    @Html.Partial("_Footer")
+    @if (Request.IsAuthenticated)
+    {
+        @Html.Partial("_Footer")
+        @Html.Partial("_Tiles")
+    }   
 
-    @Html.Partial("_Tiles")
-
-    @Html.Partial("_Scripts")
+    @{ Html.RenderPartial("_Scripts", RenderSection("validation", false)); }
 
 </body>
 

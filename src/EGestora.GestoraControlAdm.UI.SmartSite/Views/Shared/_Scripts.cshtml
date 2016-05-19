@@ -1,7 +1,10 @@
 ﻿
 <!--================================================== -->
 <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
-<script data-pace-options='{ "restartOnRequestAfter": true }' src="~/Scripts/plugin/pace/pace.min.js"></script>
+@if (Request.IsAuthenticated)
+{
+    <script data-pace-options='{ "restartOnRequestAfter": true }' src="~/Scripts/plugin/pace/pace.min.js"></script>
+}
 
 <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -133,13 +136,17 @@
              *
              * loadScript(".../plugin.js", run_after_loaded);
              */
+            
 
         })
-
+    
 </script>
-
+@if (@Model is HelperResult)
+{
+    @Model
+}
 <!-- Your GOOGLE ANALYTICS CODE Below -->
-<script type="text/javascript">
+@*<script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
         _gaq.push(['_trackPageview']);
@@ -153,4 +160,4 @@
             s.parentNode.insertBefore(ga, s);
         })();
 
-</script>
+</script>*@

@@ -57,16 +57,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Pessoa Add(Pessoa pessoa)
         {
-            if (!pessoa.IsValid())
-            {
-                return pessoa;
-            }
+            //if (!pessoa.IsValid())
+            //{
+            //    return pessoa;
+            //}
 
-            pessoa.ValidationResult = new PessoaEstaAptaParaCadastroValidation(_pessoaRepository).Validate(pessoa);
-            if (!pessoa.ValidationResult.IsValid)
-            {
-                return pessoa;
-            }
+            //pessoa.ValidationResult = new PessoaEstaAptaParaCadastroValidation(_pessoaRepository).Validate(pessoa);
+            //if (!pessoa.ValidationResult.IsValid)
+            //{
+            //    return pessoa;
+            //}
 
             return _pessoaRepository.Add(pessoa);
         }

@@ -10,9 +10,6 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(p => p.PessoaId);
 
-            Property(p => p.Email)
-                .IsRequired();
-
             Property(p => p.Ativo)
                 .IsRequired();
 

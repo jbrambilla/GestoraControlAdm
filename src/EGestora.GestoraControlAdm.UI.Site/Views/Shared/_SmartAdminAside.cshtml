@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNet.Identity
+<aside id="left-panel">
+
+    <!-- User info -->
+    <div class="login-info">
+        <span>
+            <!-- User image size is adjusted inside CSS, it should stay as it -->
+
+            <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+                <img src="~/Content/smartadmin/img/avatars/sunny.png" alt="me" class="online" />
+                <span>
+                    @User.Identity.GetUserName()
+                </span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+
+        </span>
+    </div>
+    <!-- end user info -->
+
+    <nav>
+        <!--
+        NOTE: Notice the gaps after each icon usage <i></i>..
+        Please note that these links work a bit different than
+        traditional href="" links. See documentation for details.
+        -->
+
+        <ul>
+            <li>
+                <a href="#" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+            </li>
+            <li>
+                <a href="#" title="Empresa"><i class="fa fa-lg fa-fw fa-building txt-color-blue"></i> <span class="menu-item-parent">A Empresa</span></a>
+            </li>
+            <li class="top-menu-invisible">
+                <a href="#"><i class="fa fa-lg fa-fw fa-cogs"></i> <span class="menu-item-parent">Gerenciar</span></a>
+                <ul>
+                    <li class="">
+                        <a href="@Url.Action("Index", "Pessoas")" title="Pessoas"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Pessoas</span></a>
+                    </li>
+                    <li class="">
+                        <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Clientes</span></a>
+                    </li>
+                    <li class="">
+                        <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-truck"></i> <span class="menu-item-parent">Fornecedores</span></a>
+                    </li>
+                    <li class="">
+                        <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-share-alt"></i> <span class="menu-item-parent">Revendas</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+
+    <span class="minifyme" data-action="minifyMenu">
+        <i class="fa fa-arrow-circle-left hit"></i>
+    </span>
+
+</aside>
+

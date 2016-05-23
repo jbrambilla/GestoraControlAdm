@@ -22,6 +22,22 @@ namespace EGestora.GestoraControlAdm.Application
             _pessoaService = pessoaService;
         }
 
+        public PessoaViewModel Add(PessoaViewModel pessoaViewModel)
+        {
+            var pessoa = Mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
+            pessoa.Email = "email@email.com";
+            pessoa.Ativo = true;
+
+            BeginTransaction();
+            
+            var pessoaReturn = _pessoaService.Add(pessoa);
+            pessoaViewModel = Mapper.Map<Pessoa, PessoaViewModel>(pessoaReturn);
+                      
+            Commit();
+
+            return pessoaViewModel;
+        }
+
         public PessoaEnderecoViewModel Add(PessoaEnderecoViewModel pessoaEnderecoViewModel)
         {
             var pessoa = Mapper.Map<PessoaEnderecoViewModel, Pessoa>(pessoaEnderecoViewModel);

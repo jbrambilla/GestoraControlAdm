@@ -10,7 +10,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [Key]
         public Guid PessoaId { get; set; }
 
-        [Required(ErrorMessage = "Selecione um Regime de Imposto")]
+        //[Required(ErrorMessage = "Selecione um Regime de Imposto")]
         [DisplayName("Regime de Imposto")]
         public Guid RegimeImpostoId { get; set; }
 
@@ -18,42 +18,42 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Cnae Principal")]
         public Guid CnaeId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Razão Social")]
+        //[Required(ErrorMessage = "Preencha o campo Razão Social")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Razão Social")]
         public string RazaoSocial { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Nome Fantasia")]
+        //[Required(ErrorMessage = "Preencha o campo Nome Fantasia")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Nome Fantasia")]
         public string NomeFantasia { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo CNPJ")]
+        //[Required(ErrorMessage = "Preencha o campo CNPJ")]
         [MaxLength(18, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("CNPJ")]
         public string Cnpj { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Inscrição Municipal")]
+        //[Required(ErrorMessage = "Preencha o campo Inscrição Municipal")]
         [MaxLength(14, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Inscrição Municipal")]
         public string InscricaoMunicipal { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Inscrição Estadual")]
+        //[Required(ErrorMessage = "Preencha o campo Inscrição Estadual")]
         [MaxLength(14, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Inscrição Estadual")]
         public string InscricaoEstadual { get; set; }
 
-        [Display(Name = "Data de Fundação")]
+        //[Display(Name = "Data de Fundação")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataFundacao { get; set; }
 
-        [Display(Name = "Data de Aniversário")]
+        //[Display(Name = "Data de Aniversário")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime DataAniversario { get; set; }

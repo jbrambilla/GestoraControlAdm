@@ -42,6 +42,47 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return View(pessoaViewModel);
         }
 
+        public ActionResult Create2()
+        {
+            loadViewBags();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create2(PessoaViewModel pessoaViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                pessoaViewModel = _pessoaAppService.Add(pessoaViewModel);
+
+                //if (!pessoaViewModel.ValidationResult.IsValid)
+                //{
+                //    foreach (var erro in pessoaViewModel.ValidationResult.Erros)
+                //    {
+                //        ModelState.AddModelError(string.Empty, erro.Message);
+                //    }
+                //    loadViewBags();
+                //    return View(pessoaViewModel);
+                //}
+
+                return RedirectToAction("Index");
+            }
+            loadViewBags();
+            return View(pessoaViewModel);
+        }
+        public ActionResult Create3()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create3(PessoaViewModel pessoaViewModel)
+        {
+            return View(pessoaViewModel);
+        }
+
         // GET: Pessoas/Create
         public ActionResult Create()
         {

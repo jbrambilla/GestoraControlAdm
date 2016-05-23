@@ -1,31 +1,22 @@
-﻿var formPessoaJuridica = "<div id='formPessoaJuridica'>" + $('#formPessoaJuridica').html() + "</div>";
-var formPessoaFisica = "<div id='formPessoaFisica'>" + $('#formPessoaFisica').html() + "</div>";
+﻿var formPessoaJuridica = "<fieldset id='formPessoaJuridica'>" + $('#formPessoaJuridica').html() + "</fieldset>";
+var formPessoaFisica = "<fieldset id='formPessoaFisica'>" + $('#formPessoaFisica').html() + "</fieldset>";
 
 $(document).ready(function () {
     $('#formPessoaJuridica').remove();
     $('#formPessoaFisica').remove();
-    $('#panelRadioGroup').after(formPessoaFisica);
-    ColocarMascaras();
+    $('#fieldsetRadio').after(formPessoaFisica);
 });
 
 $('#fisica').change(function () {
-    $('#panelRadioGroup').after(formPessoaFisica);
+    $('#fieldsetRadio').after(formPessoaFisica);
     $('#formPessoaJuridica').remove();
-    ColocarMascaras();
 });
 
 $('#juridica').change(function () {
-    $('#panelRadioGroup').after(formPessoaJuridica);
+    $('#fieldsetRadio').after(formPessoaJuridica);
     $('#formPessoaFisica').remove();
-    ColocarMascaras();
+    $('#cnaeid').select2();
+    $('#cnaelist').select2({
+        placeholder: "Lista de Cnaes secundários"
+    });
 });
-
-function ColocarMascaras()
-{
-    $('[name="Cpf"]').mask('000.000.000-00', { reverse: true });
-    $('[name="Cnpj"]').mask('00.000.000/0000-00', { reverse: true });
-    $('[name="Rg"]').mask('00.000.000-0', { reverse: true });
-    $('[name="CEP"]').mask('00000-000');
-    $('#SelectedCnaeList').select2();
-    $('#CnaeId').select2();
-}

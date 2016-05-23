@@ -8,6 +8,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
     public interface IPessoaAppService : IDisposable 
     {
         PessoaEnderecoViewModel Add(PessoaEnderecoViewModel pessoaEnderecoViewModel);
+        PessoaViewModel Add(PessoaViewModel pessoaViewModel);
         PessoaViewModel GetById(Guid id);
         IEnumerable<PessoaViewModel> GetAll();
         PessoaViewModel Update(PessoaViewModel pessoaViewModel);

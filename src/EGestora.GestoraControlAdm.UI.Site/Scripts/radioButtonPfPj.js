@@ -5,11 +5,13 @@ $(document).ready(function () {
     $('#formPessoaJuridica').remove();
     $('#formPessoaFisica').remove();
     $('#fieldsetRadio').after(formPessoaFisica);
+    mascaras();
 });
 
 $('#fisica').change(function () {
     $('#fieldsetRadio').after(formPessoaFisica);
     $('#formPessoaJuridica').remove();
+    mascaras();
 });
 
 $('#juridica').change(function () {
@@ -19,4 +21,13 @@ $('#juridica').change(function () {
     $('#cnaelist').select2({
         placeholder: "Lista de Cnaes secundários"
     });
+    mascaras();
 });
+
+function mascaras()
+{
+    $(".date").mask("99/99/9999");
+    $(".cpf").mask("999.999.999-99");
+    $(".rg").mask("99.999.999-9");
+    $(".cnpj").mask("99.999.999/9999-99");
+}

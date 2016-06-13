@@ -20,6 +20,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(e => e.ValidationResult);
 
+            Ignore(e => e.EnderecoCompleto);
+
             ToTable("Enderecos");
         }
     }

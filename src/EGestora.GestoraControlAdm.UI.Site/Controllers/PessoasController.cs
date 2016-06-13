@@ -20,13 +20,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             _pessoaAppService = pessoaAppService;
         }        
 
-        // GET: Pessoas
         public ActionResult Index()
         {
-            return View(_pessoaAppService.GetAll());
+            return View("Index2", _pessoaAppService.GetAll());
         }
 
-        // GET: Pessoas/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -38,83 +36,36 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PessoaId = id.Value;
-            return View(pessoaViewModel);
+            return View("Details2", pessoaViewModel);
         }
 
-        public ActionResult Create2()
-        {
-            loadViewBags();
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create2(PessoaViewModel pessoaViewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                pessoaViewModel = _pessoaAppService.Add(pessoaViewModel);
-
-                //if (!pessoaViewModel.ValidationResult.IsValid)
-                //{
-                //    foreach (var erro in pessoaViewModel.ValidationResult.Erros)
-                //    {
-                //        ModelState.AddModelError(string.Empty, erro.Message);
-                //    }
-                //    loadViewBags();
-                //    return View(pessoaViewModel);
-                //}
-
-                return RedirectToAction("Index");
-            }
-            loadViewBags();
-            return View(pessoaViewModel);
-        }
-        public ActionResult Create3()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create3(PessoaViewModel pessoaViewModel)
-        {
-            return View(pessoaViewModel);
-        }
-
-        // GET: Pessoas/Create
         public ActionResult Create()
         {
             loadViewBags();
             return View();
         }
 
-        // POST: Pessoas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PessoaEnderecoViewModel pessoaEnderecoViewModel)
+        public ActionResult Create(PessoaViewModel pessoaViewModel)
         {
             if (ModelState.IsValid)
             {
-                pessoaEnderecoViewModel = _pessoaAppService.Add(pessoaEnderecoViewModel);
+                pessoaViewModel = _pessoaAppService.Add(pessoaViewModel);
 
-                if (!pessoaEnderecoViewModel.ValidationResult.IsValid)
+                if (!pessoaViewModel.ValidationResult.IsValid)
                 {
-                    foreach (var erro in pessoaEnderecoViewModel.ValidationResult.Erros)
+                    foreach (var erro in pessoaViewModel.ValidationResult.Erros)
                     {
                         ModelState.AddModelError(string.Empty, erro.Message);
                     }
                     loadViewBags();
-                    return View(pessoaEnderecoViewModel);
+                    return View(pessoaViewModel);
                 }
-
                 return RedirectToAction("Index");
             }
             loadViewBags();
-            return View(pessoaEnderecoViewModel);
+            return View(pessoaViewModel);
         }
 
         // GET: Pessoas/Edit/5

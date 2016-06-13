@@ -35,5 +35,14 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         {
             return true;
         }
+
+        public string EnderecoCompleto
+        {
+            get
+            {
+                return string.Format("{0}, {1} {2} - {3} | {4} - {5}", Logradouro, Numero, Complemento, Bairro, Cidade, Estado);
+            }
+            private set { }
+        }
     }
 }

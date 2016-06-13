@@ -1,37 +1,33 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaFisicaViewModel
 
-<tr>
-    <td>Apelido</td>
-    <td>@Model.Apelido</td>
-</tr>
-
-<tr>
-    <td>CPF</td>
-    <td>@Model.Cpf</td>
-</tr>
-
-<tr>
-    <td>RG</td>
-    <td>@Model.Rg - @Model.OrgaoEmissor</td>
-</tr>
-
-<tr>
-    <td>Genero</td>
-    <td>@Model.Genero</td>
-</tr>
-
-<tr>
-    <td>Estado Civil</td>
-    <td>@Model.EstadoCivil</td>
-</tr>
-
-<tr>
-    <td>Profissao</td>
-    <td>@Model.Profissao.Nome</td>
-</tr>
-
-<tr>
-    <td>Data de Nascimento</td>
-    <td>@Model.Nascimento.ToString("d")</td>
-</tr>
-
+<li>
+    <p class="text-muted">
+        <i class="fa fa-list-alt"></i>&nbsp;&nbsp;<span class="txt-color-darken"><strong>CPF</strong> @Model.Cpf</span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-list-alt"></i>&nbsp;&nbsp;<span class="txt-color-darken"><strong>RG</strong> @Model.Rg |<i>@Model.OrgaoEmissor</i> </span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-male"></i>&nbsp;&nbsp;<span class="txt-color-darken">Masculino</span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-briefcase"></i>&nbsp;&nbsp;<span class="txt-color-darken">Carpinteiro</span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+        <span class="txt-color-darken">
+            Nascimento
+            <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">
+                @DateTime.Now.ToString("d")
+            </a>
+        </span>
+    </p>
+</li>

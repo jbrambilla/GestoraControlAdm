@@ -70,5 +70,15 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string EnderecoCompleto
+        {
+            get
+            {
+                return string.Format("{0}, {1} {2} - {3} | {4} - {5}", Logradouro, Numero, Complemento, Bairro, Cidade, Estado);
+            }
+            private set { }
+        }
     }
 }

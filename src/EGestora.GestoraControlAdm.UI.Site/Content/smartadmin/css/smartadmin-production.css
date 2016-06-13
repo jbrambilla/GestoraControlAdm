@@ -8096,6 +8096,13 @@ textarea.clone {
 	 * SMART FORMS
 	 */
 
+.smart-form *, .smart-form :after, .smart-form :before {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+}
+
 .smart-form .btn {
   box-sizing: border-box;
   -moz-box-sizing: border-box;

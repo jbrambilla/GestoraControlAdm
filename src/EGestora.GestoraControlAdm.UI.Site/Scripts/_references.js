@@ -341,3 +341,4 @@
 /// <reference path="smartadmin/plugin/x-editable/x-editable.min.js" />
 /// <reference path="enderecoaddremove.js" />
 /// <reference path="contatoaddremove.js" />
+/// <reference path="wizardformsetupvalidation.js" />

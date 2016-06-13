@@ -1,0 +1,85 @@
+﻿<div class="tab-pane" id="tab2">
+    <br>
+    <h3><strong>Passo 2</strong> - Informação de Endereço</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="javascript:void(0);" class="btn btn-default btn-circle" onclick="adicionarEndereco()"><i class="glyphicon glyphicon-plus-sign"></i></a>
+            <a href="javascript:void(0);" class="btn btn-default btn-circle" onclick="removerEndereco()"><i class="glyphicon glyphicon-minus-sign"></i></a>
+        </div>
+    </div>
+    <br />
+
+    <fieldset name="endereco">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Logradouro" class="form-control input-lg" placeholder="Logradouro" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Numero" class="form-control input-lg" placeholder="Número" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Complemento" class="form-control input-lg" placeholder="Complemento" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Bairro" class="form-control input-lg" placeholder="Bairro" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Cidade" class="form-control input-lg" placeholder="Cidade" />
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Estado" class="form-control input-lg" placeholder="Estado" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Cep" class="form-control input-lg" placeholder="CEP" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Descricao" class="form-control input-lg" placeholder="Descrição" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <label class="checkbox checkbox-inline">
+                    <input class="checkbox" id="fisica" type="checkbox" name="">
+                    <span>Principal</span>
+                </label>
+            </div>
+            <div class="col-md-1">
+                <label class="checkbox checkbox-inline">
+                    <input class="checkbox" id="juridica" type="checkbox" name="">
+                    <span>Entrega</span>
+                </label>
+            </div>
+            <div class="col-md-1">
+                <label class="checkbox checkbox-inline">
+                    <input class="checkbox" id="juridica" type="checkbox" name="">
+                    <span>Cobrança</span>
+                </label>
+            </div>
+        </div>
+        <hr />
+    </fieldset>
+</div>

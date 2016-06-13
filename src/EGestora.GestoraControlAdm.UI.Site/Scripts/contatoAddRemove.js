@@ -2,6 +2,12 @@
 var countContato = 1;
 $(document).ready(function () {
     newContatoInput = "<fieldset name='contato'>" + $('fieldset[name="contato"]').clone().html() + "</fieldset>";
+
+    $("select[name='ContatoList[0].TipoContatoId']")
+        .change(function () {
+            var mask = $("option:selected", this).attr("mask");
+            $("input[name='ContatoList[0].InformacaoContato").mask(mask);
+        });
 });
 
 function adicionarContato() {

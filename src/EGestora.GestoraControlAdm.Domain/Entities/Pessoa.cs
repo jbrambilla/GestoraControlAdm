@@ -34,8 +34,9 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public ValidationResult ValidationResult { get; set; }
         public bool IsValid()
         {
-            ValidationResult = new PessoaEstaConsistenteValidation().Validate(this);
-            return ValidationResult.IsValid;
+            return true;
+            //ValidationResult = new PessoaEstaConsistenteValidation().Validate(this);
+            //return ValidationResult.IsValid;
         }
 
         public bool IsPessoaFisica 

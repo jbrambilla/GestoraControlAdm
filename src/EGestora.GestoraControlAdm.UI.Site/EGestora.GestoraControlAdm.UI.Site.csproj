@@ -203,6 +203,7 @@
     <Compile Include="ViewEngine\GestoraControlAdmViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\A9435A06-1A29-452B-9D51-68919A1627AF.jpg" />
     <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -1239,6 +1240,7 @@
     <Content Include="Scripts\smartadmin\smart-chat-ui\smart.chat.ui.min.js" />
     <Content Include="Scripts\smartadmin\smartwidgets\jarvis.widget.min.js" />
     <Content Include="Scripts\smartadmin\speech\voicecommand.min.js" />
+    <Content Include="Scripts\wizardFormSetupValidation.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1385,7 +1387,7 @@
     <Content Include="Views\Audit\_DetailsHistory.cshtml" />
     <Content Include="Views\Clientes\Imagem\_AlterarImagem.cshtml" />
     <Content Include="Views\Clientes\Imagem\_ImagemCliente.cshtml" />
-    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\CreateX.cshtml" />
     <Content Include="Views\Pessoas\Delete.cshtml" />
     <Content Include="Views\Pessoas\Details.cshtml" />
     <Content Include="Views\Pessoas\Edit.cshtml" />
@@ -1432,7 +1434,13 @@
     <Content Include="Scripts\smartadmin\plugin\ckeditor\skins\moono\readme.md" />
     <Content Include="Views\Pessoas\Create2.cshtml" />
     <Content Include="Views\Shared\Pessoa\Endereco\_EnderecoList2.cshtml" />
-    <Content Include="Views\Pessoas\Create3.cshtml" />
+    <Content Include="Views\Pessoas\Create.cshtml" />
+    <Content Include="Views\Pessoas\_CreatePjPf.cshtml" />
+    <Content Include="Views\Pessoas\_CreateEndereco.cshtml" />
+    <Content Include="Views\Pessoas\_CreateContato.cshtml" />
+    <Content Include="Views\Pessoas\Index2.cshtml" />
+    <Content Include="Views\Pessoas\Details2.cshtml" />
+    <Content Include="Views\Shared\PageHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

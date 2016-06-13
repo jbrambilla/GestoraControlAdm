@@ -67,9 +67,18 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public ICollection<AnexoViewModel> AnexoList { get; set; }
 
         [ScaffoldColumn(false)]
+        public IEnumerable<HttpPostedFileBase> AnexoListFromPost { get; set; }
+
+        [ScaffoldColumn(false)]
         public FuncionarioViewModel Funcionario { get; set; }
 
         [ScaffoldColumn(false)]
         public ProprietarioViewModel Proprietario { get; set; }
+
+        [ScaffoldColumn(false)]
+        public IEnumerable<Guid> SelectedCnaeList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
     }
 }

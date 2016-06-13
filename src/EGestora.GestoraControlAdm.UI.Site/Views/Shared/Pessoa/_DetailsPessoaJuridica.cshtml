@@ -1,37 +1,39 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaJuridicaViewModel
 
-<tr>
-    <td>Nome Fantasia</td>
-    <td>@Model.NomeFantasia</td>
-</tr>
-
-<tr>
-    <td>CNPJ</td>
-    <td>@Model.Cnpj</td>
-</tr>
-
-<tr>
-    <td>Inscrição Municipal</td>
-    <td>@Model.InscricaoMunicipal</td>
-</tr>
-
-<tr>
-    <td>Inscrição Estadual</td>
-    <td>@Model.InscricaoEstadual</td>
-</tr>
-
-<tr>
-    <td>Regime de Imposto</td>
-    <td>@Model.RegimeImposto.Descricao</td>
-</tr>
-
-
-<tr>
-    <td>Data de Fundação</td>
-    <td>@Model.DataFundacao.ToString("d")</td>
-</tr>
-
-<tr>
-    <td>Data de Aniversário</td>
-    <td>@Model.DataAniversario.ToString("d")</td>
-</tr>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-list-alt"></i>&nbsp;&nbsp;<span class="txt-color-darken"><strong>CNPJ</strong> @Model.Cnpj</span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-list-alt"></i>&nbsp;&nbsp;<span class="txt-color-darken"><strong>Insc. Municipal</strong> @Model.InscricaoMunicipal </span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-list-alt"></i>&nbsp;&nbsp;<span class="txt-color-darken"><strong>Insc. Estadual</strong> @Model.InscricaoEstadual </span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+        <span class="txt-color-darken">
+            Fundação
+            <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">
+                @Model.DataFundacao.ToString("d")
+            </a>
+        </span>
+    </p>
+</li>
+<li>
+    <p class="text-muted">
+        <i class="fa fa-calendar"></i>&nbsp;&nbsp;
+        <span class="txt-color-darken">
+            Aniversário
+            <a href="javascript:void(0);" rel="tooltip" title="" data-placement="top" data-original-title="Create an Appointment">
+                @Model.DataAniversario.ToString("d")
+            </a>
+        </span>
+    </p>
+</li>

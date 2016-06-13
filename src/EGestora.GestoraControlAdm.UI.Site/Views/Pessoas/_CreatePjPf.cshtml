@@ -1,0 +1,219 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaViewModel
+
+<div class="tab-pane active" id="tab1">
+    <br>
+    <h3><strong>Passo 1 </strong> - Informações Básicas</h3>
+
+    <fieldset id="fieldsetRadio">
+        <div class="row">
+            <div class="col-md-1">
+                <label class="radio radio-inline">
+                    <input class="radiobox" id="fisica" type="radio" name="radio-inline" checked="">
+                    <span>Pessoa Física</span>
+                </label>
+            </div>
+            <div class="col-md-2">
+                <label class="radio radio-inline">
+                    <input class="radiobox" id="juridica" type="radio" name="radio-inline">
+                    <span> Pessoa Jurídica </span>
+                </label>
+            </div>
+        </div>
+        <br />
+    </fieldset>
+
+    <fieldset id="formPessoaFisica">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaFisica.Nome, new { @class = "form-control input-lg", placeholder = "Nome" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaFisica.Apelido, new { @class = "form-control input-lg", placeholder = "Apelido" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaFisica.Rg, new { @class = "form-control input-lg rg", placeholder = "RG" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    
+                        @Html.TextBoxFor(m => m.PessoaFisica.OrgaoEmissor, new { @class = "form-control input-lg", placeholder = "Orgão Emissor" })
+                    
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaFisica.Cpf, new { @class = "form-control input-lg cpf", placeholder = "CPF" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaFisica.Nascimento, new { @class = "form-control input-lg date", placeholder = "Data de Nascimento" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-suitcase fa-lg fa-fw"></i></span>
+                        @Html.Raw(Html.DropDownList("PessoaFisica.ProfissaoId", (IEnumerable<SelectListItem>)ViewBag.ProfissaoList, "Profissão", new { @class = "form-control input-lg" }).ToHtmlString().Replace("<option value=\"\">Profiss", "<option disabled selected>Profiss"))
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                        <select name="@Html.NameFor(m => m.PessoaFisica.Genero)" class="form-control input-lg">
+                            <option value="" disabled selected="selected">Selecione o Gênero</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Indefinido">Indefinido</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    
+                    <select name="@Html.NameFor(m => m.PessoaFisica.EstadoCivil)" class="form-control input-lg">
+                        <option value="" disabled selected="selected">Selecione o Estado Civil</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Divorciado">Divorciado</option>
+                        <option value="Viúvo">Viúvo</option>
+                    </select>
+                   
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    
+
+    <fieldset id="formPessoaJuridica">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.RazaoSocial, new { @class = "form-control input-lg", placeholder = "Razão Social" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.NomeFantasia, new { @class = "form-control input-lg", placeholder = "Nome Fantasia" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.Cnpj, new { @class = "form-control input-lg cnpj", placeholder = "CNPJ" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.InscricaoMunicipal, new { @class = "form-control input-lg", placeholder = "Inscrição Municipal" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.InscricaoEstadual, new { @class = "form-control input-lg", placeholder = "Inscrição Estadual" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.DataFundacao, new { @class = "form-control input-lg date", placeholder = "Data de Fundação" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                        @Html.TextBoxFor(m => m.PessoaJuridica.DataAniversario, new { @class = "form-control input-lg date", placeholder = "Data de Aniversário" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.DropDownList("PessoaJuridica.CnaeId", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaeid" })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    @Html.DropDownList("SelectedCnaeList", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaelist", multiple = "" })
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <hr />
+    <fieldset id="Dados comuns">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-paperclip fa-lg fa-fw"></i></span>
+                        <input class="form-control input-lg" type="file" name="AnexoListFromPost" multiple>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-comment fa-lg fa-fw"></i></span>
+                        @Html.TextAreaFor(m => m.Observacao, new { @class = "form-control input-lg", placeholder = "Observação" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

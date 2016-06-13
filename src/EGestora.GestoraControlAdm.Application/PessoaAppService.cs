@@ -25,11 +25,12 @@ namespace EGestora.GestoraControlAdm.Application
         public PessoaViewModel Add(PessoaViewModel pessoaViewModel)
         {
             var pessoa = Mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
-            pessoa.Email = "email@email.com";
-            pessoa.Ativo = true;
 
             BeginTransaction();
-            
+
+            AddAnexoList(pessoa, pessoaViewModel.AnexoListFromPost);
+            AddCnaeList(pessoa.PessoaJuridica, pessoaViewModel.SelectedCnaeList);
+
             var pessoaReturn = _pessoaService.Add(pessoa);
             pessoaViewModel = Mapper.Map<Pessoa, PessoaViewModel>(pessoaReturn);
                       

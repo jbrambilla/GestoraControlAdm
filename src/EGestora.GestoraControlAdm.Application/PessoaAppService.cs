@@ -33,6 +33,11 @@ namespace EGestora.GestoraControlAdm.Application
 
             var pessoaReturn = _pessoaService.Add(pessoa);
             pessoaViewModel = Mapper.Map<Pessoa, PessoaViewModel>(pessoaReturn);
+
+            if (!ImagemUtil.SalvarImagem(pessoaViewModel.Foto, pessoaViewModel.PessoaId, FilePathConstants.PESSOAS_IMAGE_PATH))
+            {
+                //pessoaViewModel.ValidationResult.Message = "Pessoa salva sem foto";
+            }
                       
             Commit();
 

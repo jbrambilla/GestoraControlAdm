@@ -46,7 +46,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         [HttpPost]
-
         [ValidateAntiForgeryToken]
         public ActionResult Create(PessoaViewModel pessoaViewModel)
         {

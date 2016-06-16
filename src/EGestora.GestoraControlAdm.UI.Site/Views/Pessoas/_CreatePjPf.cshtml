@@ -184,7 +184,11 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     @Html.DropDownList("PessoaJuridica.CnaeId", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaeid" })
+                    <div class="note">
+                        <strong>Cnae Principal</strong> selecione um cnae principal a partir da lista a cima.
+                    </div>
                 </div>
+                
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
@@ -202,7 +206,9 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-paperclip fa-lg fa-fw"></i></span>
                         <input class="form-control input-lg" type="file" name="AnexoListFromPost" multiple>
-
+                    </div>
+                    <div class="note">
+                        Lista de Anexos
                     </div>
                 </div>
             </div>
@@ -211,6 +217,17 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-comment fa-lg fa-fw"></i></span>
                         @Html.TextAreaFor(m => m.Observacao, new { @class = "form-control input-lg", placeholder = "Observação" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                        <input class="form-control input-lg" type="file" name="Foto">
+                    </div>
+                    <div class="note">
+                        Foto do perfil
                     </div>
                 </div>
             </div>

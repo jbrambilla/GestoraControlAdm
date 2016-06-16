@@ -46,6 +46,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         [HttpPost]
+
         [ValidateAntiForgeryToken]
         public ActionResult Create(PessoaViewModel pessoaViewModel)
         {
@@ -53,15 +54,15 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 pessoaViewModel = _pessoaAppService.Add(pessoaViewModel);
 
-                if (!pessoaViewModel.ValidationResult.IsValid)
-                {
-                    foreach (var erro in pessoaViewModel.ValidationResult.Erros)
-                    {
-                        ModelState.AddModelError(string.Empty, erro.Message);
-                    }
-                    loadViewBags();
-                    return View(pessoaViewModel);
-                }
+                //if (!pessoaViewModel.ValidationResult.IsValid)
+                //{
+                //    foreach (var erro in pessoaViewModel.ValidationResult.Erros)
+                //    {
+                //        ModelState.AddModelError(string.Empty, erro.Message);
+                //    }
+                //    loadViewBags();
+                //    return View(pessoaViewModel);
+                //}
                 return RedirectToAction("Index");
             }
             loadViewBags();
@@ -204,7 +205,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         // POST: Pessoas/Delete/5
-
         [HttpPost, ActionName("DeletarEndereco")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletarEnderecoConfirmed(Guid id)

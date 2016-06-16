@@ -71,12 +71,17 @@
                                             </li>*@
                                             <li>
                                                 <p class="text-muted">
-                                                    <a class="txt-color-grayDark" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">313</span>) <span class="txt-color-darken">464</span> - <span class="txt-color-darken">6473</span></a>
+                                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">313</span>) <span class="txt-color-darken">464</span> - <span class="txt-color-darken">6473</span>
+                                                    <a class="" href="#" data-toggle="modal" data-target="#myModal">&nbsp; <span class="label label-default"> ver mais...</span></a>
                                                 </p>
                                             </li>
                                             <li>
                                                 <p class="text-muted">
-                                                   <i class="fa fa-home"></i>&nbsp;&nbsp;<span class="txt-color-darken">@(Model.EnderecoList.Any(e => e.Principal) ? @Model.EnderecoList.FirstOrDefault(e => e.Principal).EnderecoCompleto : "")</span><a class="txt-color-grayDark" href="#" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;| ver mais...</a>
+                                                   <i class="fa fa-home"></i>&nbsp;&nbsp;
+                                                    <span class="txt-color-darken">
+                                                        @(Model.EnderecoList.Any(e => e.Principal) ? @Model.EnderecoList.FirstOrDefault(e => e.Principal).EnderecoCompleto : "")
+                                                    </span>
+                                                    <a class="" href="#" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver mais...</span></a>
                                                 </p>
                                             </li>
                                             @*<li>
@@ -97,10 +102,10 @@
                                         <p>
                                             @Model.Observacao
                                         </p>
-                                        <br>
+                                        @*<br>
                                         <a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i> Send Message</a>
                                         <br>
-                                        <br>
+                                        <br>*@
 
                                     </div>
                                     <div class="col-sm-3">
@@ -136,66 +141,16 @@
 
                                     <ul class="nav nav-tabs">
                                         <li class="active">
-                                            <a href="#a1" data-toggle="tab">Recent Articles</a>
-                                        </li>
-                                        <li>
                                             <a href="#funcionarios" data-toggle="tab">Funcionários<span class="badge bg-color-blue txt-color-white">@*@Model.PessoaJuridica.FuncionarioList.Count*@</span></a>
                                         </li>
+                                        <li >
+                                            <a href="#enderecos" data-toggle="tab">Endereços</a>
+                                        </li>
+                                        
                                     </ul>
 
                                     <div class="tab-content padding-top-10">
-                                        <div class="tab-pane fade in active" id="a1">
-
-                                            <div class="row">
-
-                                                <div class="col-xs-2 col-sm-1">
-                                                    <time datetime="2014-09-20" class="icon">
-                                                        <strong>Jan</strong>
-                                                        <span>10</span>
-                                                    </time>
-                                                </div>
-
-                                                <div class="col-xs-10 col-sm-11">
-                                                    <h6 class="no-margin"><a href="javascript:void(0);">Allice in Wonderland</a></h6>
-                                                    <p>
-                                                        Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi Nam eget dui.
-                                                        Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero,
-                                                        sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel.
-                                                    </p>
-                                                </div>
-
-                                                <div class="col-sm-12">
-
-                                                    <hr>
-
-                                                </div>
-
-                                                <div class="col-xs-2 col-sm-1">
-                                                    <time datetime="2014-09-20" class="icon">
-                                                        <strong>Jan</strong>
-                                                        <span>10</span>
-                                                    </time>
-                                                </div>
-
-                                                <div class="col-xs-10 col-sm-11">
-                                                    <h6 class="no-margin"><a href="javascript:void(0);">World Report</a></h6>
-                                                    <p>
-                                                        Morning our be dry. Life also third land after first beginning to evening cattle created let subdue you'll winged don't Face firmament.
-                                                        You winged you're was Fruit divided signs lights i living cattle yielding over light life life sea, so deep.
-                                                        Abundantly given years bring were after. Greater you're meat beast creeping behold he unto She'd doesn't. Replenish brought kind gathering Meat.
-                                                    </p>
-                                                </div>
-
-                                                <div class="col-sm-12">
-
-                                                    <br>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="tab-pane fade" id="funcionarios">
+                                        <div class="tab-pane fade in active" id="funcionarios">
 
                                             <div class="alert alert-info fade in">
                                                 <button class="close" data-dismiss="alert">
@@ -297,7 +252,19 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div><!-- end tab -->
+                                        </div>
+                                        <div class="tab-pane fade" id="enderecos">
+
+                                            <div class="row">
+
+                                                <div id="replacetarget" class="col-md-12">
+                                                    @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- end tab -->
                                     </div>
                                 </div>
                             </div>

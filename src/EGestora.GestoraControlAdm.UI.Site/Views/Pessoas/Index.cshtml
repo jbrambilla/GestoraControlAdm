@@ -1,172 +1,289 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.PessoaViewModel>
 
 @{
-    ViewBag.Title = "Lista de Pessoas";
+    ViewBag.PageHeader = "Lista";
+    ViewBag.SubTitle = "Pessoa";
 }
+@Html.Partial("PageHeader")
+<section id="widget-grid">
+    <div class="row">
+        <article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
 
-<div class="row">
-    <div class="col-lg-12">
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-7" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false" role="widget">
+                <header role="heading">
+                    <div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-delete-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Delete"><i class="fa fa-times"></i></a></div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
+                    <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                    <h2>Standard Data Tables </h2>
 
-        <h2 class="page-header">Gestão de Pessoas</h2>
+                    <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+                </header>
 
-        <div class="form-group">
-            @Html.ActionLink("Nova Pessoa", "Create", "Pessoas", null, new { @class = "btn btn-primary" })
-        </div>
+                <!-- widget div-->
+                <div role="content">
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Lista de Pessoas
-            </div>
-            <div class="panel-body">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#pjList" data-toggle="tab" aria-expanded="true">Pessoa Jurídica</a></li>
-                    <li class=""><a href="#pfList" data-toggle="tab" aria-expanded="false">Pessoa Física</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade in active " id="pjList">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th></th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.PessoaJuridica.RazaoSocial)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.PessoaJuridica.NomeFantasia)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.PessoaJuridica.Cnpj)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoEstadual)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.PessoaJuridica.InscricaoMunicipal)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Ativo)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Email)
-                                    </th>
-                                    <th></th>
-                                </tr>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
 
-                                @foreach (var item in Model)
-                                {
-                                    if (item.PessoaFisica == null)
-                                    {
-                                        <tr>
-                                            <td><img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = item.PessoaId })" alt="@item.PessoaJuridica.RazaoSocial" class="img-circle" height="34" width="34" /></td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)
-                                            </td>
-                                            <td>
-                                                @if (item.Ativo)
-                                                {
-                                                    <div class="text-success"><strong>Sim</strong></div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="text-danger"><strong>Não</strong></div>
-                                                }
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Email)
-                                            </td>
-                                            <td>
-                                                <a href="@Url.Action("Edit", "Pessoas", new {id = item.PessoaId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
-                                                <a href="@Url.Action("Details", "Pessoas", new { id = item.PessoaId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
-                                                <a href="@Url.Action("Delete", "Pessoas", new { id = item.PessoaId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-
-                            </table>
-                        </div>
                     </div>
-                        <div class="tab-pane fade" id="pfList">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tr>
-                                        <th></th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.PessoaFisica.Nome)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.PessoaFisica.Rg)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.PessoaFisica.Cpf)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.PessoaFisica.Genero)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.PessoaFisica.Nascimento)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Ativo)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.Email)
-                                        </th>
-                                        <th></th>
-                                    </tr>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body">
 
-                                    @foreach (var item in Model)
-                                    {
-                                        if (item.PessoaJuridica == null)
-                                        {
-                                            <tr>
-                                                <td><img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = item.PessoaId })" alt="@item.PessoaFisica.Nome" class="img-circle" height="34" width="34" /></td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Nome)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Rg)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Genero)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.PessoaFisica.Nascimento)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Ativo)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.Email)
-                                                </td>
-                                                <td>
-                                                    <a href="@Url.Action("Edit", "Pessoas", new {id = item.PessoaId})" class="btn btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
-                                                    <a href="@Url.Action("Details", "Pessoas", new { id = item.PessoaId })" class="btn btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
-                                                    <a href="@Url.Action("Delete", "Pessoas", new { id = item.PessoaId })" class="btn btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
-                                                </td>
+                        <div class="tab-content">
+
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#iss1" data-toggle="tab" aria-expanded="false">Pessoa Jurídica</a>
+                                </li>
+                                <li class="">
+                                    <a href="#iss2" data-toggle="tab" aria-expanded="false">Pessoa Física</a>
+                                </li>
+                                <li class="pull-right">
+                                    <a href="@Url.Action("Create", "Pessoas")" class="" style=""><strong class="txt-color-blue"><u>Nova Pessoa</u></strong></a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content padding-10">
+
+                                <div class="tab-pane fade active in" id="iss1">
+                                    <table id="dt_basic" class="dtbasic table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                                        <thead>
+                                            <tr role="row">
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" RazaoSocial: activate to sort column ascending"
+                                                    style="width: 310px;">
+                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    Razão Social
+                                                </th>
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" NomeFantasia: activate to sort column ascending"
+                                                    style="width: 300px;">
+                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    Nome Fantasia
+                                                </th>
+                                                <th data-hide="phone"
+                                                    class="sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" CNPJ: activate to sort column ascending"
+                                                    style="width: 124px;">
+                                                    <i class="fa fa-fw fa-list-alt text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    CNPJ
+                                                </th>
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="InscriçãoMunicipal: activate to sort column ascending"
+                                                    style="width: 100px;">
+                                                    Inscrição Municipal
+                                                </th>
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="InscriçãoEstadual: activate to sort column ascending"
+                                                    style="width: 80px;">
+                                                    Inscrição Estadual
+                                                </th>
+                                                @*<th data-hide="phone,tablet"
+                                                    class="sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label=" Zip: activate to sort column ascending"
+                                                    style="width: 83px;">
+                                                        <i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>
+                                                        Zip
+                                                </th>*@
+                                                <th data-hide="phone,tablet"
+                                                    data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" Date: activate to sort column ascending"
+                                                    style="width: 72px;">
+                                                    <i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>
+                                                    Criado em
+                                                </th>
+                                                <th style="width: 80px;">
+                                                </th>
                                             </tr>
-                                        }
-                                    }
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                if (item.PessoaFisica == null)
+                                                {
+                                                    <tr role="row" class="odd">
+                                                        <td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)</td>
+                                                        <td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)</td>
+                                                        <td>@item.CriadoEm.ToString("d")</td>
+                                                        <td>
+                                                            <a href="@Url.Action("Edit", "Pessoas", new {id = item.PessoaId})" class="btn btn-xs btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                            <a href="@Url.Action("Details", "Pessoas", new { id = item.PessoaId })" class="btn btn-xs btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                            <a href="@Url.Action("Delete", "Pessoas", new { id = item.PessoaId })" class="btn btn-xs btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="iss2">
+                                    <table id="dt_basic2" class="dtbasic table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
+                                        <thead>
+                                            <tr role="row">
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" RazaoSocial: activate to sort column ascending"
+                                                    style="width: 310px;">
+                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    Nome
+                                                </th>
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" NomeFantasia: activate to sort column ascending"
+                                                    style="width: 300px;">
+                                                    <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    Apelido
+                                                </th>
+                                                <th data-hide="phone"
+                                                    class="sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" CNPJ: activate to sort column ascending"
+                                                    style="width: 124px;">
+                                                    <i class="fa fa-fw fa-list-alt text-muted hidden-md hidden-sm hidden-xs"></i>
+                                                    CPF
+                                                </th>
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="InscriçãoMunicipal: activate to sort column ascending"
+                                                    style="width: 315px;">
+                                                    Gênero
+                                                </th>
+                                                <th data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label="InscriçãoEstadual: activate to sort column ascending"
+                                                    style="width: 315px;">
+                                                    Profissão
+                                                </th>
+                                                @*<th data-hide="phone,tablet"
+                                                    class="sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label=" Zip: activate to sort column ascending"
+                                                    style="width: 83px;">
+                                                        <i class="fa fa-fw fa-map-marker txt-color-blue hidden-md hidden-sm hidden-xs"></i>
+                                                        Zip
+                                                </th>*@
+                                                <th 
+                                                    data-class="expand"
+                                                    class="expand sorting"
+                                                    tabindex="0"
+                                                    aria-controls="dt_basic"
+                                                    rowspan="1"
+                                                    colspan="1"
+                                                    aria-label=" Date: activate to sort column ascending"
+                                                    style="width: 100px;">
+                                                    <i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>
+                                                    Nascimento
+                                                </th>
+                                                <th style="width: 80px;">
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                if (item.PessoaJuridica == null)
+                                                {
+                                                    <tr role="row" class="odd">
+                                                        <td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.PessoaFisica.Nome)</td>
+                                                        <td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.PessoaFisica.Apelido)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.PessoaFisica.Genero)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.PessoaFisica.Profissao.Nome)</td>
+                                                        <td>@item.PessoaFisica.Nascimento.ToString("d")</td>
+                                                        <td>
+                                                            <a href="@Url.Action("Edit", "Pessoas", new {id = item.PessoaId})" class="btn btn-xs btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                            <a href="@Url.Action("Details", "Pessoas", new { id = item.PessoaId })" class="btn btn-xs btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                            <a href="@Url.Action("Delete", "Pessoas", new { id = item.PessoaId })" class="btn btn-xs btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
+
                         </div>
+
                     </div>
+                    <!-- end widget content -->
+
                 </div>
+                <!-- end widget div -->
+
             </div>
-        </div>
+            <!-- end widget -->
+
+        </article>
     </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+            
+            $('.dtbasic').dataTable();
+
+        });
+    </script>
+}

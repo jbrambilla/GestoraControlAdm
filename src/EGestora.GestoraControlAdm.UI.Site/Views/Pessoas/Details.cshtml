@@ -1,163 +1,187 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaViewModel
 
 @{
-    ViewBag.Title = "Detalhes de Pessoa";
+    ViewBag.PageHeader = "Detalhes";
+    ViewBag.SubTitle = "Pessoa";
 
-    var Titulo = Model.IsPessoaFisica ? Model.PessoaFisica.Nome : Model.PessoaJuridica.RazaoSocial;
+    var nome = "";
+    var nome2 = "";
+    if (Model.IsPessoaFisica)
+    {
+        nome = Model.PessoaFisica.Nome;
+        nome2 = Model.PessoaFisica.Apelido;
+    }
+    else
+    {
+        nome = Model.PessoaJuridica.RazaoSocial;
+        nome2 = Model.PessoaJuridica.NomeFantasia;
+    }
+    
 }
-
+@Html.Partial("PageHeader")
 <div class="row">
-    <div class="col-lg-12">
 
-        <div class="container">
-            <h2>Detalhes de Pessoa</h2>
+    <div class="col-sm-12">
+
+
+        <div class="well well-sm">
 
             <div class="row">
-                <div class="">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h4 class="panel-title"> @Titulo </h4>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3 col-lg-3 " align="center">
-                                    <img id="imagemPessoa" src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="" class="img-circle img-responsive">
-                                </div>
-                                <ul class="nav nav-tabs col-md-9 col-lg-9 ">
-                                    <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
-                                    @*<li class=""><a href="#servico" data-toggle="tab" aria-expanded="false">Serviços</a></li>*@
-                                    @if (Model.PessoaJuridica != null)
-                                    { 
-                                        <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
-                                        <li class=""><a href="#proprietarios" data-toggle="tab" aria-expanded="false">Proprietários</a></li>
-                                        <li class=""><a href="#funcionarios" data-toggle="tab" aria-expanded="false">Funcionários</a></li>
-                                    }
-                                    <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
-                                    <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
-                                    @*<li class=""><a href="#revenda" data-toggle="tab" aria-expanded="false">Revenda</a></li>*@
-                                    <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
-                                    @*<li class=""><a href="#debitos" data-toggle="tab" aria-expanded="false">Debitos</a></li>
-                                    <li class=""><a href="#codigoSegurancas" data-toggle="tab" aria-expanded="false">Códigos de Segurança</a></li>*@
-                                </ul>
-                                <div class="tab-content col-md-9 col-lg-9 ">
-                                    <div class="tab-pane fade in active " id="infoBasica">
-                                        <div class="">
-                                            <table class="table table-user-information">
-                                                <tbody>
 
-                                                    @if (Model.IsPessoaJuridica)
-                                                    {
-                                                        @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
-                                                    }
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="well well-light well-sm no-margin no-padding">
 
-                                                    <tr>
-                                                        <td>E-mail:</td>
-                                                        <td><a href="mailto:@Model.Email">@Model.Email</a></td>
-                                                    </tr>
+                        <div class="row">
 
-                                                    <tr>
-                                                        <td>Ativo</td>
-                                                        <td> 
-                                                            @if (Model.Ativo) {
-                                                                 <div class="text-success"><strong>Sim</strong></div>
-                                                            } else {
-                                                                <div class="text-danger"><strong>Não</strong></div>
-                                                            }
-                                                        </td>
-                                                    </tr>
+                            <div class="col-sm-10">
 
-                                                    <tr>
-                                                        <td>Data de Cadastro</td>
-                                                        <td>@Model.CriadoEm.ToString("d")</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Observação</td>
-                                                        <td>@Model.Observacao</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
+                                <div class="row">
+                                    <br /><br />
+                                    <div class="col-sm-3 profile-pic">
+                                        <img id="imagemPessoa" src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="demo user" class="img-circle img-responsive">
+                                        <div class="padding-10">
+                                            <h4 class="font-md">
+                                                <strong>@Model.CriadoEm.ToString("d")</strong>
+                                                <br>
+                                                <small>Data de Criação</small>
+                                            </h4>
+  
                                         </div>
                                     </div>
-                                    @*<div class="tab-pane fade in" id="servico">
-                                        <div id="replacetargetServico">
-                                            @Html.Partial("_ServicoList", Model.ClienteServicoList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>*@
-                                    @if (Model.PessoaJuridica != null)
-                                    { 
-                                        <div class="tab-pane fade in" id="cnae">
-                                            <div id="replacetargetCnae">
-                                                @Html.Partial("_CnaeList", Model.PessoaJuridica, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="tab-pane fade in" id="proprietarios">
-                                            <div id="replacetargetProprietarios">
-                                                @Html.Partial("_ProprietarioList", Model.PessoaJuridica, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="tab-pane fade in" id="funcionarios">
-                                            <div id="replacetargetFuncionarios">
-                                                @Html.Partial("_FuncionarioList", Model.PessoaJuridica, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
-                                            </div>
-                                        </div>
-                                    }
-                                    <div class="tab-pane fade in" id="enderecos">
-                                        <div id="replacetarget">
-                                            @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
-                                        </div>
+                                    <div class="col-sm-6">
+                                        <h1>
+                                             @nome
+                                            <br>
+                                            <small> @nome2</small>
+                                        </h1>
+
+                                        <ul class="list-unstyled">
+                                            @if (Model.IsPessoaJuridica)
+                                            {
+                                                @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
+                                            }
+                                            else
+                                            {
+                                                @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
+                                            }
+                                            <li>
+                                                <p class="text-muted">
+                                                    <i class="fa fa-phone"></i>&nbsp;&nbsp;
+                                                    <span class="txt-color-darken">
+                                                        @(Model.ContatoList.Any() ? Model.ContatoList.FirstOrDefault().InformacaoContato : "")
+                                                    </span> 
+                                                    <a class="" href="@Url.Action("ListaSimplesContato", "Pessoas", new { id = Model.PessoaId })" data-modal="">&nbsp; <span class="label label-default"> ver mais...</span></a>
+                                                </p>
+                                            </li>
+                                            <li>
+                                                <p class="text-muted">
+                                                   <i class="fa fa-home"></i>&nbsp;&nbsp;
+                                                    <span class="txt-color-darken">
+                                                        @(Model.EnderecoList.Any(e => e.Principal) ? @Model.EnderecoList.FirstOrDefault(e => e.Principal).EnderecoCompleto : "")
+                                                    </span>
+                                                    <a class="" href="@Url.Action("ListaSimplesEndereco", "Pessoas", new { id = Model.PessoaId })" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver mais...</span></a>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <br>
+                                        <p class="font-md">
+                                            <i>Observação</i>
+                                        </p>
+                                        <p>
+                                            @Model.Observacao
+                                        </p>
+                                        @*<br>
+                                        <a href="javascript:void(0);" class="btn btn-default btn-xs"><i class="fa fa-envelope-o"></i> Send Message</a>
+                                        <br>
+                                        <br>*@
+
                                     </div>
-                                    <div class="tab-pane fade in" id="contatos">
-                                        <div id="replacetargetContato">
-                                            @Html.Partial("_ContatoList", Model.ContatoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
-                                        </div>
+                                    <div class="col-sm-3">
+                                        <h1><small>Anexos</small></h1>
+                                        <ul class="list-inline friends-list">
+                                            <li>
+                                                arquivo 1
+                                            </li>
+                                        </ul>
+
+                                        <h1><small>Recent visitors</small></h1>
+                                        <ul class="list-inline friends-list">
+                                            <li>
+                                                teste
+                                            </li>
+                                        </ul>
+
                                     </div>
-                                    @*<div class="tab-pane fade in" id="revenda">
-                                        <div id="replacetargetRevenda">
-                                            @Html.Partial("_RevendaList", Model.Revenda, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>*@
-                                    <div class="tab-pane fade in" id="anexos">
-                                        <div id="replacetargetAnexo">
-                                            @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>@*
-                                    <div class="tab-pane fade in" id="debitos">
-                                        <div id="replacetargetDebito">
-                                            @Html.Partial("_DebitoList", Model.DebitoList)
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="codigoSegurancas">
-                                        <div id="replacetargetCodigoSeguranca">
-                                            @Html.Partial("_CodigoSegurancaList", Model.CodigoSegurancaList)
-                                        </div>
-                                    </div>*@
+
                                 </div>
 
                             </div>
+
                         </div>
-                        <div class="panel-footer">
-                            <a href="@Url.Action("Edit", "Pessoas", new {id = Model.PessoaId})" class="btn btn-primary">
-                                <span title="Editar" class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                            <a href="@Url.Action("Delete", "Pessoas", new { id = Model.PessoaId })" class="btn btn-danger">
-                                <span title="Excluir" class="glyphicon glyphicon-trash"></span>
-                            </a>
-                            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-default" })
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+
+                                <hr>
+
+                                <div class="padding-10">
+
+                                    <ul class="nav nav-tabs">
+                                        @if (Model.PessoaJuridica != null)
+                                        { 
+                                            <li class="active">
+                                                <a href="#funcionarios" data-toggle="tab">Funcionários<span class="badge bg-color-blue txt-color-white">@*@Model.PessoaJuridica.FuncionarioList.Count*@</span></a>
+                                            </li>
+                                        }
+                                        <li >
+                                            <a href="#enderecos" data-toggle="tab">Endereços</a>
+                                        </li>
+                                        
+                                    </ul>
+
+                                    <div class="tab-content padding-top-10">
+                                        @if (Model.PessoaJuridica != null)
+                                        { 
+                                            <div class="tab-pane fade in active" id="funcionarios">
+                                                <div id="replacetargetFuncionario">
+                                                    @Html.Partial("_FuncionarioList", Model.PessoaJuridica.FuncionarioList)
+                                                </div>
+                                            </div>
+                                        }
+                                        <div class="tab-pane fade" id="enderecos">
+
+                                            <div class="row">
+
+                                                <div id="replacetarget" class="col-md-12">
+                                                    @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <!-- end tab -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- end row -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalEndereco" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <div id="myModal" class="modal fade in">
     <div class="modal-dialog">
@@ -167,8 +191,7 @@
     </div>
 </div>
 
-@*@section Scripts{
-    @Scripts.Render("~/bundles/jquerymask")
-    <script src="~/Scripts/contatoMascaraDinamica.js"></script>
+@section Scripts{
+
     <script src="~/Scripts/pessoaAjaxModal.js"></script>
-}*@
+}

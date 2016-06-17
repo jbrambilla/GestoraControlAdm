@@ -22,7 +22,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         public ActionResult Index()
         {
-            return View("Index2", _pessoaAppService.GetAll());
+            return View(_pessoaAppService.GetAll());
         }
 
         public ActionResult Details(Guid? id)
@@ -36,7 +36,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 return HttpNotFound();
             }
-            return View("Details2", pessoaViewModel);
+            return View(pessoaViewModel);
         }
 
         public ActionResult Create()

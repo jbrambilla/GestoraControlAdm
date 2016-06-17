@@ -9,7 +9,7 @@ $(function () {
                 /*backdrop: 'static',*/
                 keyboard: true
             }, 'show');
-            MascaraContato();
+
             bindForm(this);
         });
         return false;

@@ -127,7 +127,10 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
 
         //Endereço
-
+        public ActionResult ListaSimplesEndereco(Guid id)
+        {
+            return PartialView("_EnderecoListSimple", _pessoaAppService.GetById(id).EnderecoList);
+        }
 
         public ActionResult ListarEnderecos(Guid id)
         {
@@ -216,6 +219,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         //Contato
+        public ActionResult ListaSimplesContato(Guid id)
+        {
+            return PartialView("_ContatoListSimple", _pessoaAppService.GetById(id).ContatoList);
+        }
+
         public ActionResult ListarContatos(Guid id)
         {
             ViewBag.PessoaId = id;

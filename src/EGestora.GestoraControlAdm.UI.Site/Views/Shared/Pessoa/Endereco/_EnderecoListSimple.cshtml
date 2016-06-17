@@ -1,0 +1,70 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.EnderecoViewModel>
+
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Endereços</h4>
+</div>
+<div class="modal-body">
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Logradouro</th>
+                    <th>Numero</th>
+                    <th>Complemento</th>
+                    <th>Bairro</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Cep</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Descricao</td>
+                        <td>@item.Logradouro</td>
+                        <td>@item.Numero</td>
+                        <td>@item.Complemento</td>
+                        <td>@item.Bairro</td>
+                        <td>@item.Cidade</td>
+                        <td>@item.Estado</td>
+                        <td>@item.CEP</td>
+                        <td>
+                            @if (item.Principal)
+                            {
+                                <span class="label label-primary">Principal</span>
+                            }
+                            @if (item.Entrega)
+                            {
+                                <span class="label label-info">Entrega</span>
+                            }
+                            @if (item.Cobranca)
+                            {
+                                <span class="label label-success">Cobrança</span>
+                            }
+                            @if (!item.Principal && !item.Entrega && !item.Cobranca)
+                            {
+                                <span class="label label-default">Comum</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+        Fechar
+    </button>
+</div>

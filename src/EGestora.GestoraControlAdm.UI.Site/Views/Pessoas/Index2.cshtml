@@ -40,9 +40,13 @@
                                 <li class="">
                                     <a href="#iss2" data-toggle="tab" aria-expanded="false">Pessoa Física</a>
                                 </li>
+                                <li class="pull-right">
+                                    <a href="@Url.Action("Create", "Pessoas")" class="" style=""><strong class="txt-color-blue"><u>Nova Pessoa</u></strong></a>
+                                </li>
 
                             </ul>
                             <div class="tab-content padding-10">
+
                                 <div class="tab-pane fade active in" id="iss1">
                                     <table id="dt_basic" class="dtbasic table table-striped table-bordered table-hover dataTable no-footer" width="100%" role="grid" aria-describedby="dt_basic_info" style="width: 100%;">
                                         <thead>
@@ -160,7 +164,7 @@
                                                     rowspan="1"
                                                     colspan="1"
                                                     aria-label=" RazaoSocial: activate to sort column ascending"
-                                                    style="width: 80px;">
+                                                    style="width: 310px;">
                                                     <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
                                                     Nome
                                                 </th>
@@ -171,7 +175,7 @@
                                                     rowspan="1"
                                                     colspan="1"
                                                     aria-label=" NomeFantasia: activate to sort column ascending"
-                                                    style="width: 80px;">
+                                                    style="width: 300px;">
                                                     <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
                                                     Apelido
                                                 </th>
@@ -226,7 +230,9 @@
                                                     aria-label=" Date: activate to sort column ascending"
                                                     style="width: 100px;">
                                                     <i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>
-                                                    Data de Nascimento
+                                                    Nascimento
+                                                </th>
+                                                <th style="width: 80px;">
                                                 </th>
                                             </tr>
                                         </thead>
@@ -240,8 +246,13 @@
                                                         <td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.PessoaFisica.Apelido)</td>
                                                         <td>@Html.DisplayFor(modelItem => item.PessoaFisica.Cpf)</td>
                                                         <td>@Html.DisplayFor(modelItem => item.PessoaFisica.Genero)</td>
-                                                        <td>@item.PessoaFisica.Nascimento.ToString("d")</td>
                                                         <td>@Html.DisplayFor(modelItem => item.PessoaFisica.Profissao.Nome)</td>
+                                                        <td>@item.PessoaFisica.Nascimento.ToString("d")</td>
+                                                        <td>
+                                                            <a href="@Url.Action("Edit", "Pessoas", new {id = item.PessoaId})" class="btn btn-xs btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                            <a href="@Url.Action("Details", "Pessoas", new { id = item.PessoaId })" class="btn btn-xs btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                            <a href="@Url.Action("Delete", "Pessoas", new { id = item.PessoaId })" class="btn btn-xs btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                                        </td>
                                                     </tr>
                                                 }
                                             }

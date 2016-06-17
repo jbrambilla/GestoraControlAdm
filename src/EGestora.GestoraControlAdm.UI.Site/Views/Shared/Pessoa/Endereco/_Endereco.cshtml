@@ -67,27 +67,27 @@
 </div>
 
 <div class="form-group">
-    <label class="col-lg-2 control-label">Tipo</label>
-    <div class="col-lg-10">
-        <div class="radio">
-            <label>
-                @Html.CheckBoxFor(m => m.Principal)
-                Principal
+    <label class="col-lg-2 control-label"></label>
+
+        <div class="col-md-3">
+            <label class="checkbox checkbox-inline">
+                <input class="checkbox" type="checkbox" name="EnderecoList[0].Principal">
+                <span>Principal</span>
             </label>
         </div>
-        <div class="radio">
-            <label>
-                @Html.CheckBoxFor(m => m.Entrega)
-                Entrega
+        <div class="col-md-3">
+            <label class="checkbox checkbox-inline">
+                <input class="checkbox" type="checkbox" name="EnderecoList[0].Entrega">
+                <span>Entrega</span>
             </label>
         </div>
-        <div class="radio">
-            <label>
-                @Html.CheckBoxFor(m => m.Cobranca)
-                Cobrança
+        <div class="col-md-3">
+            <label class="checkbox checkbox-inline">
+                <input class="checkbox" type="checkbox" name="EnderecoList[0].Cobranca">
+                <span>Cobrança</span>
             </label>
         </div>
-    </div>
+  
 </div>
 
 

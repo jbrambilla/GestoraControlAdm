@@ -72,7 +72,7 @@
                                             <li>
                                                 <p class="text-muted">
                                                     <i class="fa fa-phone"></i>&nbsp;&nbsp;(<span class="txt-color-darken">313</span>) <span class="txt-color-darken">464</span> - <span class="txt-color-darken">6473</span>
-                                                    <a class="" href="#" data-toggle="modal" data-target="#myModal">&nbsp; <span class="label label-default"> ver mais...</span></a>
+                                                    <a class="" href="@Url.Action("ListaSimplesContato", "Pessoas", new { id = Model.PessoaId })" data-modal="">&nbsp; <span class="label label-default"> ver mais...</span></a>
                                                 </p>
                                             </li>
                                             <li>
@@ -81,7 +81,7 @@
                                                     <span class="txt-color-darken">
                                                         @(Model.EnderecoList.Any(e => e.Principal) ? @Model.EnderecoList.FirstOrDefault(e => e.Principal).EnderecoCompleto : "")
                                                     </span>
-                                                    <a class="" href="#" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver mais...</span></a>
+                                                    <a class="" href="@Url.Action("ListaSimplesEndereco", "Pessoas", new { id = Model.PessoaId })" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver mais...</span></a>
                                                 </p>
                                             </li>
                                             @*<li>
@@ -140,9 +140,12 @@
                                 <div class="padding-10">
 
                                     <ul class="nav nav-tabs">
-                                        <li class="active">
-                                            <a href="#funcionarios" data-toggle="tab">Funcionários<span class="badge bg-color-blue txt-color-white">@*@Model.PessoaJuridica.FuncionarioList.Count*@</span></a>
-                                        </li>
+                                        @if (Model.PessoaJuridica != null)
+                                        { 
+                                            <li class="active">
+                                                <a href="#funcionarios" data-toggle="tab">Funcionários<span class="badge bg-color-blue txt-color-white">@*@Model.PessoaJuridica.FuncionarioList.Count*@</span></a>
+                                            </li>
+                                        }
                                         <li >
                                             <a href="#enderecos" data-toggle="tab">Endereços</a>
                                         </li>
@@ -150,109 +153,14 @@
                                     </ul>
 
                                     <div class="tab-content padding-top-10">
-                                        <div class="tab-pane fade in active" id="funcionarios">
-
-                                            <div class="alert alert-info fade in">
-                                                <button class="close" data-dismiss="alert">
-                                                    ×
-                                                </button>
-                                                <i class="fa-fw fa fa-info"></i>
-                                                <strong>51 new members </strong>joined today!
-                                            </div>
-
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/female.png" alt="demo user"><a href="javascript:void(0);">Jenn Wilson</a>
-                                                <div class="email">
-                                                    travis@company.com
+                                        @if (Model.PessoaJuridica != null)
+                                        { 
+                                            <div class="tab-pane fade in active" id="funcionarios">
+                                                <div id="replacetargetFuncionario">
+                                                    @Html.Partial("_FuncionarioList", Model.PessoaJuridica.FuncionarioList)
                                                 </div>
                                             </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-                                                <div class="email">
-                                                    marshall@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-                                                <div class="email">
-                                                    joe@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
-                                                <div class="email">
-                                                    mike@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Travis Wilson</a>
-                                                <div class="email">
-                                                    travis@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-                                                <div class="email">
-                                                    marshall@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="Joe Cadena joe@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-                                                <div class="email">
-                                                    joe@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Mike McBride</a>
-                                                <div class="email">
-                                                    mike@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Marshall Hitt</a>
-                                                <div class="email">
-                                                    marshall@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);">Joe Cadena</a>
-                                                <div class="email">
-                                                    joe@company.com
-                                                </div>
-                                            </div>
-                                            <div class="user" title="email@company.com">
-                                                <img src="~/Content/img/avatars/male.png" alt="demo user"><a href="javascript:void(0);"> Mike McBride</a>
-                                                <div class="email">
-                                                    mike@company.com
-                                                </div>
-                                            </div>
-
-                                            <div class="text-center">
-                                                <ul class="pagination pagination-sm">
-                                                    <li class="disabled">
-                                                        <a href="javascript:void(0);">Prev</a>
-                                                    </li>
-                                                    <li class="active">
-                                                        <a href="javascript:void(0);">1</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">2</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">3</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">...</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">99</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0);">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        }
                                         <div class="tab-pane fade" id="enderecos">
 
                                             <div class="row">
@@ -279,122 +187,23 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Contatos</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="table-responsive">
-
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Tipo do Contato</th>
-                                <th>Informação do Contato</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.ContatoList)
-                            {
-                                <tr>
-                                    <td><i class="fa fa-mobile-phone"></i></td>
-                                    <td>@item.TipoContato.Nome</td>
-                                    <td>@item.InformacaoContato</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Fechar
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<!-- Modal -->
 <div class="modal fade" id="ModalEndereco" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Endereços</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="table-responsive">
-
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Logradouro</th>
-                                <th>Numero</th>
-                                <th>Complemento</th>
-                                <th>Bairro</th>
-                                <th>Cidade</th>
-                                <th>Estado</th>
-                                <th>Cep</th>
-                                <th>Tipo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.EnderecoList)
-                            {
-                                <tr>
-                                    <td>@item.Descricao</td>
-                                    <td>@item.Logradouro</td>
-                                    <td>@item.Numero</td>
-                                    <td>@item.Complemento</td>
-                                    <td>@item.Bairro</td>
-                                    <td>@item.Cidade</td>
-                                    <td>@item.Estado</td>
-                                    <td>@item.CEP</td>
-                                    <td>
-                                        @if (item.Principal)
-                                        { 
-                                            <span class="label label-primary">Principal</span>
-                                        }
-                                        @if (item.Entrega)
-                                        {
-                                            <span class="label label-info">Entrega</span>
-                                        }
-                                        @if (item.Cobranca)
-                                        {
-                                            <span class="label label-success">Cobrança</span>
-                                        }
-                                        @if (!item.Principal && !item.Entrega && !item.Cobranca)
-                                        {
-                                            <span class="label label-default">Comum</span>
-                                        }
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Fechar
-                </button>
-            </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/Scripts/pessoaAjaxModal.js"></script>
+}

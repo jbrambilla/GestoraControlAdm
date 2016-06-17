@@ -1441,6 +1441,8 @@
     <Content Include="Views\Pessoas\Index2.cshtml" />
     <Content Include="Views\Pessoas\Details2.cshtml" />
     <Content Include="Views\Shared\PageHeader.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Contato\_ContatoListSimple.cshtml" />
+    <Content Include="Views\Shared\Pessoa\Endereco\_EnderecoListSimple.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ContatoViewModel>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times;
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Contatos</h4>
+</div>
+<div class="modal-body">
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tipo do Contato</th>
+                    <th>Informação do Contato</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><i class="fa fa-mobile-phone"></i></td>
+                        <td>@item.TipoContato.Nome</td>
+                        <td>@item.InformacaoContato</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">
+        Fechar
+    </button>
+</div>

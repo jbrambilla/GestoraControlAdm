@@ -9,7 +9,7 @@ function adicionarEndereco() {
     $('fieldset[name="endereco"]').last().find("h4").text("Endereço " + (countEndereco + 1));
     $('fieldset[name="endereco"]')
         .last()
-        .find('input:text, input:password, input:file, select, textarea')
+        .find('input:checkbox, input:text, input:password, input:file, select, textarea')
         .each(function () {
             var attrName = $(this).attr('name');
             var attrNameReplaced = attrName.replace("[0]", "[" + countEndereco + "]");

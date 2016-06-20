@@ -48,6 +48,7 @@ function bindForm(dialog) {
                         $('#replacetargetProprietarios').load(result.url);
                     } else {
                         $('#replacetarget').load(result.url); // Carrega o resultado HTML para a div demarcada
+                        $('#spanEnderecoPrincipal').html(result.principal);
                     }
                 } else {
                     $('#myModalContent').html(result);

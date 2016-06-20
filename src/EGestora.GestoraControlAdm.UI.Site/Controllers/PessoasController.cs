@@ -184,8 +184,10 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             {
                 _pessoaAppService.UpdateEndereco(enderecoViewModel);
 
+                var enderecoPrincipal = _pessoaAppService.GetById(enderecoViewModel.PessoaId).EnderecoList.FirstOrDefault(e => e.Principal);
+                var enderecoPrincipalCompleto = enderecoPrincipal != null ? enderecoPrincipal.EnderecoCompleto : "";
                 string url = Url.Action("ListarEnderecos", "Pessoas", new { id = enderecoViewModel.PessoaId });
-                return Json(new { success = true, url = url });
+                return Json(new { success = true, url = url, principal = enderecoPrincipalCompleto });
             }
 
             return PartialView("_AtualizarEndereco", enderecoViewModel);
@@ -473,7 +475,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         public ActionResult ListarFuncionarios(Guid id)
         {
             ViewBag.PessoaId = id;
-            return PartialView("_FuncionarioList", _pessoaAppService.GetById(id).PessoaJuridica);
+            return PartialView("_FuncionarioList", _pessoaAppService.GetById(id).PessoaJuridica.FuncionarioList);
         }
 
         [Route("adicionar-funcionario")]
@@ -674,7 +676,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
             if (foto == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return File("~/Content/img/avatars/male.png", "image/jpeg");
             }
 
             return File(foto, "image/jpeg");

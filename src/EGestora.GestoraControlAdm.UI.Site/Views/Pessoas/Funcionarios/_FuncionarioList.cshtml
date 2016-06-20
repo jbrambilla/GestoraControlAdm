@@ -1,30 +1,44 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.FuncionarioViewModel>
 
-
 <div class="form-group">
-    <a href="@Url.Action("AdicionarFuncionario", "Pessoas", new {  })" data-modal="" class="btn btn-xs btn-success"><span title="Adicionar" class="glyphicon glyphicon-plus"></span></a>
+    <a href="@Url.Action("AdicionarFuncionario", "Pessoas", new { id = ViewData["PessoaId"] })" data-modal="" class="btn btn-xs btn-success"><span title="Adicionar" class="glyphicon glyphicon-plus"></span></a>
 </div>
 @foreach (var item in Model)
 {
     <div class="user" title="">
         <img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = item.PessoaId })" alt="demo user">
-        <a href="javascript:void(0);">
-            @(item.Pessoa.PessoaFisica == null ? item.Pessoa.PessoaJuridica.RazaoSocial : item.Pessoa.PessoaFisica.Nome)
-        </a>
-        <a href="@Url.Action("EditarFuncionario", "Pessoas", new {  })" data-modal="" class="txt-color-grayDark"><span title="Adicionar" class="glyphicon glyphicon-pencil"></span></a>
+
+        @if (item.Pessoa.PessoaFisica == null)
+        {
+            <a href="@Url.Action("DetalhesFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" title="@item.Pessoa.PessoaJuridica.RazaoSocial">
+                @item.Pessoa.PessoaJuridica.NomeFantasia
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("DetalhesFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" title="@item.Pessoa.PessoaFisica.Nome">
+                @item.Pessoa.PessoaFisica.Apelido
+            </a>
+        }
+        
         @if (item.Pessoa.ContatoList.Any(c => c.TipoContato.Nome == "Email"))
         {
             <div class="email">
                 @item.Pessoa.ContatoList.FirstOrDefault(c => c.TipoContato.Nome == "Email").InformacaoContato
+                <a href="@Url.Action("AtualizarFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="txt-colo
+                   r-grayDark"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
             </div>
         }
         else
         {
             <div class="email">
                 @item.Pessoa.ContatoList.FirstOrDefault().InformacaoContato
+                <a href="@Url.Action("AtualizarFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="txt-color-grayDark"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
             </div>
         }
-
+        <div class="email">
+            <i class="fa fa-suitcase"></i><span>&nbsp;@item.Cargo.Nome</span>
+        </div>
     </div>
 }
 

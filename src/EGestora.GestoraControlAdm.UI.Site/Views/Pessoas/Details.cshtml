@@ -76,7 +76,7 @@
                                             <li>
                                                 <p class="text-muted">
                                                    <i class="fa fa-home"></i>&nbsp;&nbsp;
-                                                    <span class="txt-color-darken">
+                                                    <span id="spanEnderecoPrincipal" class="txt-color-darken">
                                                         @(Model.EnderecoList.Any(e => e.Principal) ? @Model.EnderecoList.FirstOrDefault(e => e.Principal).EnderecoCompleto : "")
                                                     </span>
                                                     <a class="" href="@Url.Action("ListaSimplesEndereco", "Pessoas", new { id = Model.PessoaId })" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver mais...</span></a>
@@ -144,8 +144,8 @@
                                         @if (Model.PessoaJuridica != null)
                                         { 
                                             <div class="tab-pane fade in active" id="funcionarios">
-                                                <div id="replacetargetFuncionario">
-                                                    @Html.Partial("_FuncionarioList", Model.PessoaJuridica.FuncionarioList)
+                                                <div id="replacetargetFuncionarios">
+                                                    @Html.Partial("_FuncionarioList", Model.PessoaJuridica.FuncionarioList, new ViewDataDictionary { { "PessoaId", Model.PessoaId.ToString() } })
                                                 </div>
                                             </div>
                                         }

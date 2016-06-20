@@ -296,6 +296,7 @@
     <Content Include="Content\img\dropzone\spritemap%402x.png" />
     <Content Include="Content\img\dropzone\spritemap.png" />
     <Content Include="Content\img\favicon\1favicon.ico" />
+    <Content Include="Content\img\favicon\egestora.ico" />
     <Content Include="Content\img\favicon\favicon.ico" />
     <Content Include="Content\img\favicon\favicon.png" />
     <Content Include="Content\img\flags\de.png" />

@@ -7,7 +7,15 @@
     </dt>
 
     <dd>
-        @Html.DisplayFor(model => model.TipoContato)
+        @Html.DisplayFor(model => model.TipoContato.Nome)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.DescricaoContato)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DescricaoContato)
     </dd>
 
     <dt>

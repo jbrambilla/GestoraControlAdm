@@ -70,7 +70,7 @@
                                                     <span class="txt-color-darken">
                                                         @(Model.ContatoList.Any() ? Model.ContatoList.FirstOrDefault().InformacaoContato : "")
                                                     </span> 
-                                                    <a class="" href="@Url.Action("ListaSimplesContato", "Pessoas", new { id = Model.PessoaId })" data-modal="">&nbsp; <span class="label label-default"> ver mais...</span></a>
+                                                    <a class="" href="@Url.Action("ListaSimplesContato", "Pessoas", new { id = Model.PessoaId })" data-modal="">&nbsp; <span class="label label-default"> ver todos...</span></a>
                                                 </p>
                                             </li>
                                             <li>
@@ -79,7 +79,7 @@
                                                     <span id="spanEnderecoPrincipal" class="txt-color-darken">
                                                         @(Model.EnderecoList.Any(e => e.Principal) ? @Model.EnderecoList.FirstOrDefault(e => e.Principal).EnderecoCompleto : "")
                                                     </span>
-                                                    <a class="" href="@Url.Action("ListaSimplesEndereco", "Pessoas", new { id = Model.PessoaId })" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver mais...</span></a>
+                                                    <a class="" href="@Url.Action("ListaSimplesEndereco", "Pessoas", new { id = Model.PessoaId })" data-toggle="modal" data-target="#ModalEndereco">&nbsp;&nbsp;<span class="label label-default">ver todos...</span></a>
                                                 </p>
                                             </li>
                                         </ul>
@@ -97,19 +97,19 @@
 
                                     </div>
                                     <div class="col-sm-3">
-                                        <h1><small>Anexos</small></h1>
-                                        <ul class="list-inline friends-list">
-                                            <li>
-                                                arquivo 1
-                                            </li>
-                                        </ul>
-
-                                        <h1><small>Recent visitors</small></h1>
-                                        <ul class="list-inline friends-list">
-                                            <li>
-                                                teste
-                                            </li>
-                                        </ul>
+                                        <h1><span><small>Anexos</small></span>&nbsp;<a href="@Url.Action("AdicionarAnexo", "Pessoas", new { id = Model.PessoaId })" data-modal="" class="btn btn-default btn-xs"><i class="fa fa-upload"></i></a></h1>
+                                        <div id="replacetargetAnexo">
+                                            @Html.Partial("_AnexoList", Model.AnexoList)
+                                        </div>
+                                        @if (Model.PessoaJuridica != null)
+                                        { 
+                                            <h1><small>Cnae Principal</small></h1>
+                                            <ul class="list-inline friends-list">
+                                                <li>
+                                                    @Model.PessoaJuridica.Cnae.Display
+                                                </li>
+                                            </ul>
+                                        }
 
                                     </div>
 
@@ -134,8 +134,11 @@
                                                 <a href="#funcionarios" data-toggle="tab">Funcionários<span class="badge bg-color-blue txt-color-white">@*@Model.PessoaJuridica.FuncionarioList.Count*@</span></a>
                                             </li>
                                         }
-                                        <li >
+                                        <li>
                                             <a href="#enderecos" data-toggle="tab">Endereços</a>
+                                        </li>
+                                        <li>
+                                            <a href="#contatos" data-toggle="tab">Contatos</a>
                                         </li>
                                         
                                     </ul>
@@ -155,6 +158,18 @@
 
                                                 <div id="replacetarget" class="col-md-12">
                                                     @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="tab-pane fade" id="contatos">
+
+                                            <div class="row">
+
+                                                <div id="replacetargetContato" class="col-md-12">
+                                                    @Html.Partial("_ContatoList", Model.ContatoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
                                                 </div>
 
                                             </div>

@@ -1,25 +1,70 @@
 ﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.AnexoViewModel>
-@{
-    var Controller = @ViewData["_controller"].ToString();
+
+@*<ul class="list-inline friends-list">
+    @foreach (var item in Model)
+    {
+        <li>
+            @if (item.ContentType.Contains("pdf"))
+            {
+                <i class="fa fa-2x fa-file-pdf-o"></i>
+            }
+            else if (item.ContentType.Contains("text"))
+            {
+                <i class="fa fa-2x fa-file-text-o"></i>
+            }
+            else if (item.ContentType.Contains("image"))
+            {
+                <i class="fa fa-2x fa-file-picture-o"></i>
+            }
+                        
+            <p>
+                <a href="@Url.Action("BaixarAnexo", "Pessoas", new { id = item.AnexoId })" class="text-muted">@item.FileName</a>
+                <a href="@Url.Action("RemoverAnexo", "Pessoas", new { id = item.AnexoId })" data-modal="" class="txt-color-red"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+            </p>
+        </li>
+    }
+</ul>*@
+
+@if (Model != null)
+{
+   <div class="table-responsive">
+        <table class="table table-hover table-condensed">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if (item.ContentType.Contains("pdf"))
+                        {
+                            <i class="fa fa-file-pdf-o" title="Email"></i>
+                        }
+                        else if (item.ContentType.Contains("text"))
+                        {
+                            <i class="fa fa-file-text-o" title="Skype"></i>
+                        }
+                        else if (item.ContentType.Contains("image"))
+                        {
+                            <i class="fa fa-file-image-o" title="Celular"></i>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("BaixarAnexo", "Pessoas", new { id = item.AnexoId })" class="btn btn-xs btn-default"><span title="Baixar" class="fa fa-download"></span></a>                       
+                        <a href="@Url.Action("DeletarAnexo", "Pessoas", new { id = item.AnexoId })" data-modal="" class="txt-color-red"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 }
-<table class="table table-user-information">
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.FileName <a href="@Url.Action("BaixarAnexo", Controller, new { id = item.AnexoId })" class="text-muted"><span title="Baixar" class="fa fa-arrow-circle-o-down"></span></a></td>
-                <td>@item.ContentType</td>
-                <td><a href="@Url.Action("DeletarAnexo", Controller, new { id = item.AnexoId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
-            </tr>
-        }
+else
+{
+    <table class="table">
         <tr>
-            <td>
-                <a href="@Url.Action("AdicionarAnexo", Controller, new { id = ViewBag.PessoaId })" class="btn btn-success btn-circle" data-modal="">
-                    <i title="Adicionar" class="fa fa-plus"></i>
-                </a>
-            </td>
-            <td></td>
-            <td></td>
+            <th>
+                Nenhum anexo foi registrado.
+            </th>
         </tr>
-    </tbody>
-</table>
+    </table>
+}

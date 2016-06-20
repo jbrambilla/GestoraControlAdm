@@ -21,12 +21,13 @@
             </a>
         }
         
+        
         @if (item.Pessoa.ContatoList.Any(c => c.TipoContato.Nome == "Email"))
         {
             <div class="email">
                 @item.Pessoa.ContatoList.FirstOrDefault(c => c.TipoContato.Nome == "Email").InformacaoContato
-                <a href="@Url.Action("AtualizarFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="txt-colo
-                   r-grayDark"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                <a href="@Url.Action("AtualizarFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="txt-color-grayDark"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                
             </div>
         }
         else
@@ -38,6 +39,7 @@
         }
         <div class="email">
             <i class="fa fa-suitcase"></i><span>&nbsp;@item.Cargo.Nome</span>
+            <a href="@Url.Action("RemoverFuncionario", "Pessoas", new { id = item.FuncionarioId })" data-modal="" class="txt-color-red"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
         </div>
     </div>
 }

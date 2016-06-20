@@ -11,16 +11,14 @@
     <div class="form-horizontal">
         @Html.Partial("_DadosFuncionario")
         <br />
-        <h3>Endereços</h3>
         <div class="jumbotron">
             
-            @Html.Partial("_EnderecoList", Model.Pessoa.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+            @Html.Partial("_EnderecoListSimple", Model.Pessoa.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
         </div>
         <br />
-        <h3>Contatos</h3>
         <div class="jumbotron">
             
-            @Html.Partial("_ContatoList", Model.Pessoa.ContatoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+            @Html.Partial("_ContatoListSimple", Model.Pessoa.ContatoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
         </div>
         </div>
 </div>

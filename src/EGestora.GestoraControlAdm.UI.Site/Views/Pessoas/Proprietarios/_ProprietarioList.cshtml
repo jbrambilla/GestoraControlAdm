@@ -1,18 +1,45 @@
-﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaJuridicaViewModel
-
-<br />
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#pjProprietarioList" data-toggle="tab" aria-expanded="true">Pessoa Jurídica</a></li>
-    <li class=""><a href="#pfProprietarioList" data-toggle="tab" aria-expanded="false">Pessoa Física</a></li>
-</ul>
-<div class="tab-content">
-    @Html.Partial("_PessoaJuridicaProprietarioList", Model.ProprietarioList.Where(f => f.Pessoa.PessoaJuridica != null).ToList())
-    @Html.Partial("_PessoaFisicaProprietarioList", Model.ProprietarioList.Where(f => f.Pessoa.PessoaFisica != null).ToList())
-</div>
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.ProprietarioViewModel>
 
 <div class="form-group">
-    <a href="@Url.Action("AdicionarProprietario", "Pessoas", new { id = ViewBag.PessoaId }, "")" class="btn btn-success btn-circle" data-modal="">
-        <i title="Adicionar" class="fa fa-plus"></i>
-    </a>
+    <a href="@Url.Action("AdicionarProprietario", "Pessoas", new { id = ViewData["PessoaId"] })" data-modal="" class="btn btn-xs btn-success"><span title="Adicionar" class="glyphicon glyphicon-plus"></span></a>
 </div>
+@foreach (var item in Model)
+{
+    <div class="user" title="">
+        <img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = item.PessoaId })" alt="demo user">
 
+        @if (item.Pessoa.PessoaFisica == null)
+        {
+            <a href="@Url.Action("DetalhesProprietario", "Pessoas", new { id = item.ProprietarioId })" data-modal="" title="@item.Pessoa.PessoaJuridica.RazaoSocial">
+                @item.Pessoa.PessoaJuridica.NomeFantasia
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("DetalhesProprietario", "Pessoas", new { id = item.ProprietarioId })" data-modal="" title="@item.Pessoa.PessoaFisica.Nome">
+                @item.Pessoa.PessoaFisica.Apelido
+            </a>
+        }
+
+
+        @if (item.Pessoa.ContatoList.Any(c => c.TipoContato.Nome == "Email"))
+        {
+            <div class="email">
+                @item.Pessoa.ContatoList.FirstOrDefault(c => c.TipoContato.Nome == "Email").InformacaoContato
+                <a href="@Url.Action("AtualizarProprietario", "Pessoas", new { id = item.ProprietarioId })" data-modal="" class="txt-color-grayDark"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+
+            </div>
+        }
+        else
+        {
+            <div class="email">
+                @item.Pessoa.ContatoList.FirstOrDefault().InformacaoContato
+                <a href="@Url.Action("AtualizarProprietario", "Pessoas", new { id = item.ProprietarioId })" data-modal="" class="txt-color-grayDark"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+            </div>
+        }
+        <div class="email">
+            <i class="fa fa-money"></i><span>&nbsp;@item.PorcentagemParticipacao %</span>
+            <a href="@Url.Action("RemoverProprietario", "Pessoas", new { id = item.ProprietarioId })" data-modal="" class="txt-color-red"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+        </div>
+    </div>
+}

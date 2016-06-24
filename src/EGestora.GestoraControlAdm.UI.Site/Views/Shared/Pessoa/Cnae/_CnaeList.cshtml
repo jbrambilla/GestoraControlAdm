@@ -1,32 +1,52 @@
-﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaJuridicaViewModel
+﻿@model IEnumerable<EGestora.GestoraControlAdm.Application.ViewModels.CnaeViewModel>
 
-<h3>Cnae Principal</h3>
-<table class="table table-user-information">
-    <tbody>
-        <tr>
-            <td>@Model.Cnae.Display</td>
-            <td><a href="@Url.Action("AlterarCnaePrincipal", new { id = ViewBag.PessoaId })" class="btn btn-primary btn-circle" data-modal=""><span title="Alterar" class="glyphicon glyphicon-pencil"></span></a></td>
-        </tr>
-    </tbody>
-</table>
+@{
+    var PessoaId = ViewBag.PessoaId;
+}
 
-<h3>Cnaes Secundários</h3>
-<table class="table table-user-information">
-    <tbody>
-        @foreach (var cnae in Model.CnaeList)
-        {
+
+@if (Model != null)
+{
+    <div class="form-group">
+        <a href="@Url.Action("AdicionarCnae", "Pessoas", new { id = PessoaId })" data-modal="" class="btn btn-xs btn-success"><span title="Adicionar" class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
             <tr>
-                <td>@cnae.Display</td>
-                <td><a href="@Url.Action("DeletarCnae", new { id = cnae.CnaeId, pessoaId = ViewBag.PessoaId })" class="btn btn-danger btn-circle" data-modal=""><span title="Excluir" class="glyphicon glyphicon-trash"></span></a></td>
+                <th width="100px">
+                    #
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+
+                <th></th>
             </tr>
-        }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DeletarCnae", "Pessoas", new { id = item.CnaeId, pessoaId = PessoaId })" data-modal="" class="btn btn-xs btn-danger"><span title="Remover" class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+}
+else
+{
+    <table class="table">
         <tr>
-            <td>
-                <a href="@Url.Action("AdicionarCnae", new { id = ViewBag.PessoaId })" class="btn btn-success btn-circle" data-modal="">
-                    <i title="Adicionar" class="fa fa-plus"></i>
-                </a>
-            </td>
-            <td></td>
+            <th>
+                Nenhum cnae foi registrado.
+            </th>
         </tr>
-    </tbody>
-</table>
+    </table>
+}

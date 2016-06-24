@@ -380,7 +380,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         {
             ViewBag.PessoaId = id;
 
-            return PartialView("_CnaeList", _pessoaAppService.GetById(id).PessoaJuridica);
+            return PartialView("_CnaeList", _pessoaAppService.GetById(id).PessoaJuridica.CnaeList);
         }
 
         [Route("alterar-cnae-principal")]

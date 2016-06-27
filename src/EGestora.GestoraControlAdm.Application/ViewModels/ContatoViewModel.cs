@@ -35,6 +35,12 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Contato")]
         public string InformacaoContato { get; set; }
 
+        public bool Newsletter { get; set; }
+
+        public bool Nfse { get; set; }
+
+        public bool Boleto { get; set; }
+
         [ScaffoldColumn(false)]
         public DateTime CriadoEm { get; set; }
 

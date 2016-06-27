@@ -31,29 +31,33 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-9" name="infoContato[0]">
                 <div class="form-group">
                     <input type="text" name="ContatoList[0].InformacaoContato" class="form-control input-lg" placeholder="Informação do contato" />
                 </div>
             </div>
-            <div class="col-md-1">
-                <label class="checkbox checkbox-inline">
-                    <input class="checkbox" id="newsletter" type="checkbox" name="ContatoList[0].Newsletter">
-                    <span>Newsletter</span>
-                </label>
+            <div id="emailCheckbox" name="emailCheckbox[0]">
+                <div class="col-md-1">
+                    <label class="checkbox checkbox-inline">
+                        <input class="checkbox" id="newsletter" type="checkbox" name="">
+                        @Html.CheckBox("ContatoList[0].Newsletter")
+                        <span>Newsletter</span>
+                    </label>
+                </div>
+                <div class="col-md-1">
+                    <label class="checkbox checkbox-inline">
+                        @Html.CheckBox("ContatoList[0].Nfse")
+                        <span>NFSe</span>
+                    </label>
+                </div>
+                <div class="col-md-1">
+                    <label class="checkbox checkbox-inline">
+                        @Html.CheckBox("ContatoList[0].Boleto")
+                        <span>Boleto</span>
+                    </label>
+                </div>
             </div>
-            <div class="col-md-1">
-                <label class="checkbox checkbox-inline">
-                    <input class="checkbox" id="nfse" type="checkbox" name="ContatoList[0].Nfse">
-                    <span>NFSe</span>
-                </label>
-            </div>
-            <div class="col-md-1">
-                <label class="checkbox checkbox-inline">
-                    <input class="checkbox" id="boleto" type="checkbox" name="ContatoList[0].Boleto">
-                    <span>Boleto</span>
-                </label>
-            </div>
+
         </div>
         <hr />
     </fieldset>

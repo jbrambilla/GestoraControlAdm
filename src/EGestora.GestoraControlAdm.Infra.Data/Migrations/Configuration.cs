@@ -31,8 +31,9 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Migrations
 
             context.TipoContato.AddOrUpdate(
                 tc => tc.Nome,
-                new TipoContato() { Nome = "Telefone", Mascara = "(00) 0000-0000" },
-                new TipoContato() { Nome = "Celular", Mascara = "(00) 00000-0000" }
+                new TipoContato() { Nome = "Telefone", Mascara = "(99) 9999-9999" },
+                new TipoContato() { Nome = "Celular", Mascara = "(99) 99999-9999" },
+                new TipoContato() { Nome = "Email", Mascara = "" }
             );
 
             context.RegimeTributacao.AddOrUpdate(

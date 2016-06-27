@@ -14,6 +14,9 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Guid TipoContatoId { get; set; }
         public string DescricaoContato { get; set; }
         public string InformacaoContato { get; set; }
+        public bool Newsletter { get; set; }
+        public bool Nfse { get; set; }
+        public bool Boleto { get; set; }
         public DateTime CriadoEm { get; set; }
         public DateTime AlteradoEm { get; set; }
         public virtual Pessoa Pessoa { get; set; }

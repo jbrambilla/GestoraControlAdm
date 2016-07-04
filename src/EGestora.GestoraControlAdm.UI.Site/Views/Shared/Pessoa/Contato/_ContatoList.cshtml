@@ -9,7 +9,7 @@
 @if (Model != null)
 {
     <div class="form-group">
-        <a href="@Url.Action("AdicionarContato", "Pessoas", new { id = PessoaId })" data-modal="" class="btn btn-xs btn-success"><span title="Adicionar" class="glyphicon glyphicon-plus"></span></a>
+        <a id="contatoListAddLink" href="@Url.Action("AdicionarContato", "Pessoas", new { id = PessoaId })" data-modal="" class="btn btn-xs btn-success"><span title="Adicionar" class="glyphicon glyphicon-plus"></span></a>
     </div>
     <div class="table-responsive">
         <table class="table table-hover">

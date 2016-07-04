@@ -3,12 +3,19 @@ $(function () {
     $.ajaxSetup({ cache: false });
 
     $(document).on('click', 'a[data-modal]', function (e) {
-        
+        var modalTarget = this.id;
         $('#myModalContent').load(this.href, function () {
             $('#myModal').modal({
                 /*backdrop: 'static',*/
                 keyboard: true
             }, 'show');
+            
+            if (modalTarget == "enderecoListAddLink"){
+                Endereco();
+            }
+            if (modalTarget == "contatoListAddLink") {
+                Contato();
+            }
 
             bindForm(this);
         });
@@ -60,31 +67,29 @@ function bindForm(dialog) {
     });
 }
 
-function MascaraContato()
+function Endereco()
 {
-    var SPMaskBehavior = function (val) {
-        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-    },
-        spOptions = {
-            onKeyPress: function (val, e, field, options) {
-                field.mask(SPMaskBehavior.apply({}, arguments), options);
-            }
-        };
-
-    colocarMascara();
-    $('#TipoContatoId').change(function () {
-        colocarMascara();
-    });
+    $('#CEP').mask('99999-999');
 }
 
+function Contato()
+{
+    maskContato();
+    $('#TipoContatoId').change(function () {
+        maskContato(this);
+    });
+}
+function maskContato(select) {
+    $('#checkboxEmailModal').hide();
 
-function colocarMascara() {
-    var mascara = $("#TipoContatoId option:selected").attr('mascara');
-    var text = $("#TipoContatoId option:selected").text();
-    if (text.indexOf("Celular") >= 0) {
-        $('#InformacaoContato').mask(SPMaskBehavior, spOptions);
+    $('#InformacaoContato').removeAttr("type");
+    $('#InformacaoContato').unmask();
+    $('#InformacaoContato').val("");
+    if ($("option:selected", select).html().toLowerCase().indexOf("mail") >= 0) {
+        $('#checkboxEmailModal').show();
     }
     else {
-        $('#InformacaoContato').mask(mascara);
+        var mask = $("#TipoContatoId option:selected").attr('mascara');
+        $('#InformacaoContato').mask(mask);
     }
 }

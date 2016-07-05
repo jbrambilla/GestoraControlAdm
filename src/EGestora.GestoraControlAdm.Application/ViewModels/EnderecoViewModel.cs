@@ -53,6 +53,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         public string Estado { get; set; }
 
+        [Required(ErrorMessage = "Preencha o campo Ibge")]
+        public int Ibge { get; set; }
+
         [DisplayName("Cobrança")]
         public bool Cobranca { get; set; }
 
@@ -70,6 +73,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool Erro { get; set; }
 
         [ScaffoldColumn(false)]
         public string EnderecoCompleto

@@ -6,6 +6,7 @@ using EGestora.GestoraControlAdm.Domain.Validations.Pessoas;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using EGestora.GestoraControlAdm.Domain.Interfaces.Cep;
 
 namespace EGestora.GestoraControlAdm.Domain.Services
 {
@@ -24,6 +25,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         private readonly IFuncionarioRepository _funcionarioRepository;
         private readonly ICargoRepository _cargoRepository;
         private readonly IProprietarioRepository _proprietarioRepository;
+        private readonly ICepService _cepService;
 
         public PessoaService(
             IPessoaRepository pessoaRepository,
@@ -38,7 +40,8 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             IProfissaoRepository profissaoRepository,
             IFuncionarioRepository funcionarioRepository,
             ICargoRepository cargoRepository,
-            IProprietarioRepository proprietarioRepository)
+            IProprietarioRepository proprietarioRepository,
+            ICepService cepService)
         {
             _pessoaRepository = pessoaRepository;
             _pessoaFisicaRepository = pessoaFisicaRepository;
@@ -53,6 +56,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             _funcionarioRepository = funcionarioRepository;
             _cargoRepository = cargoRepository;
             _proprietarioRepository = proprietarioRepository;
+            _cepService = cepService;
         }
 
         public Pessoa Add(Pessoa pessoa)
@@ -282,5 +286,9 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             GC.SuppressFinalize(this);
         }
 
+        public Endereco ObterEnderecoPeloCep(string cep)
+        {
+            return _cepService.GetAddressByCep(cep);
+        }
     }
 }

@@ -54,5 +54,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<PessoaJuridica> GetAllPessoaJuridica();
 
         IEnumerable<Cargo> GetAllCargo();
+
+        Endereco ObterEnderecoPeloCep(string cep);
     }
 }

@@ -94,6 +94,10 @@
       <Project>{dbcb082f-ba54-4858-bb3c-6991f95b688b}</Project>
       <Name>EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EGestora.GestoraControlAdm.AntiCorruption.Cep\EGestora.GestoraControlAdm.AntiCorruption.Cep.csproj">
+      <Project>{16613910-cad1-4407-8e9b-3433e37e5642}</Project>
+      <Name>EGestora.GestoraControlAdm.AntiCorruption.Cep</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService\EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.csproj">
       <Project>{8fe6f8f7-a080-430b-9ae7-6ceefbabc834}</Project>
       <Name>EGestora.GestoraControlAdm.AntiCorruption.NfseWebService</Name>

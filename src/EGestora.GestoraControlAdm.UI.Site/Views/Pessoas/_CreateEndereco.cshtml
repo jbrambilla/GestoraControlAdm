@@ -11,6 +11,20 @@
     <br />
 
     <fieldset name="endereco">
+
+        <input type="hidden" name="EnderecoList[0].Ibge" />
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" onkeyup="LoadAddress(this, 0)" name="EnderecoList[0].Cep" class="form-control input-lg" placeholder="CEP" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <input type="text" name="EnderecoList[0].Descricao" class="form-control input-lg" placeholder="Descrição" />
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-8">
                 <div class="form-group">
@@ -44,19 +58,6 @@
             <div class="col-sm-4">
                 <div class="form-group">
                     <input type="text" name="EnderecoList[0].Estado" class="form-control input-lg" placeholder="Estado" />
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <input type="text" name="EnderecoList[0].Cep" class="form-control input-lg" placeholder="CEP" />
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <input type="text" name="EnderecoList[0].Descricao" class="form-control input-lg" placeholder="Descrição" />
                 </div>
             </div>
         </div>

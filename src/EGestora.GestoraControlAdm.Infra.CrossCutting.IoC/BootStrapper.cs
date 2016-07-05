@@ -1,10 +1,12 @@
 ﻿using EGestora.GestoraControlAdm.AntiCorruption.BoletoNetLayer;
+using EGestora.GestoraControlAdm.AntiCorruption.Cep;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao;
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Interfaces;
 using EGestora.GestoraControlAdm.Application;
 using EGestora.GestoraControlAdm.Application.Interfaces;
 using EGestora.GestoraControlAdm.Domain.Interfaces.BoletoNet;
+using EGestora.GestoraControlAdm.Domain.Interfaces.Cep;
 using EGestora.GestoraControlAdm.Domain.Interfaces.MailService;
 using EGestora.GestoraControlAdm.Domain.Interfaces.NfseWebServices;
 using EGestora.GestoraControlAdm.Domain.Interfaces.Repository;
@@ -110,6 +112,7 @@ namespace EGestora.GestoraControlAdm.Infra.CrossCutting.IoC
             container.RegisterPerWebRequest<INovaNfse, NovaNfse>();
             container.RegisterPerWebRequest<IValoresServicoNfse, ValoresServicoNfse>();
             container.RegisterPerWebRequest<IBoletoNetService, BoletoNetService>();
+            container.RegisterPerWebRequest<ICepService, CepService>();
 
             //Email
             container.RegisterPerWebRequest<IEmailService, EGestora.GestoraControlAdm.Infra.Data.MailService.EmailService>();

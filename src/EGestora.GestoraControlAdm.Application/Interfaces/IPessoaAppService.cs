@@ -56,5 +56,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         IEnumerable<PessoaFisicaViewModel> GetAllPessoaFisica();
         IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridica();
         IEnumerable<CargoViewModel> GetAllCargo();
+
+        EnderecoViewModel ObterEnderecoPeloCep(string cep);
     }
 }

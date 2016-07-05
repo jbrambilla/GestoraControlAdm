@@ -46,6 +46,7 @@
     <Compile Include="Entities\ClienteServico.cs" />
     <Compile Include="Entities\Cnae.cs" />
     <Compile Include="Entities\CodigoSeguranca.cs" />
+    <Compile Include="Entities\ConsultaEndereco.cs" />
     <Compile Include="Entities\Contato.cs" />
     <Compile Include="Entities\Debito.cs" />
     <Compile Include="Entities\Empresa.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Entities\TipoContato.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Interfaces\BoletoNet\IBoletoNetService.cs" />
+    <Compile Include="Interfaces\Cep\ICepService.cs" />
     <Compile Include="Interfaces\MailService\IEmailService.cs" />
     <Compile Include="Interfaces\NfseWebServices\INotaServicoNfseWebService.cs" />
     <Compile Include="Interfaces\Repository\IAnexoRepository.cs" />

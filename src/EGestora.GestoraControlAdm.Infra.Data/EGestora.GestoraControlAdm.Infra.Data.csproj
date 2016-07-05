@@ -61,6 +61,7 @@
     <Compile Include="EntityConfiguration\ClienteServicoConfiguration.cs" />
     <Compile Include="EntityConfiguration\CnaeConfiguration.cs" />
     <Compile Include="EntityConfiguration\CodigoSegurancaConfiguration.cs" />
+    <Compile Include="EntityConfiguration\ConsultaEnderecoConfiguration.cs" />
     <Compile Include="EntityConfiguration\ContatoConfiguration.cs" />
     <Compile Include="EntityConfiguration\DebitoConfiguration.cs" />
     <Compile Include="EntityConfiguration\EmpresaConfiguration.cs" />

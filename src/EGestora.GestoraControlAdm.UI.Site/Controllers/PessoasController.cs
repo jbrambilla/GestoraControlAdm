@@ -127,6 +127,18 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
 
         //Endereço
+        public ActionResult ObterEnderecoPeloCep(string cep)
+        {
+            var endereco = _pessoaAppService.ObterEnderecoPeloCep(cep);
+
+            if (endereco.Erro)
+            {
+                return Json(new { success = false, message = "Ocorreu um erro ao obter o endereço pelo cep informado." }, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success = true, address = endereco }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult ListaSimplesEndereco(Guid id)
         {
             return PartialView("_EnderecoListSimple", _pessoaAppService.GetById(id).EnderecoList);

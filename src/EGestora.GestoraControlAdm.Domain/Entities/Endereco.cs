@@ -23,11 +23,13 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public string Cep { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
+        public int Ibge { get; set; }
         public bool Cobranca { get; set; }
         public bool Entrega { get; set; }
         public bool Principal { get; set; }
         public string Descricao { get; set; }
         public virtual Pessoa Pessoa { get; set; }
+        public bool Erro { get; set; }
 
         public ValidationResult ValidationResult { get; set; }
 

@@ -367,6 +367,11 @@ namespace EGestora.GestoraControlAdm.Application
 
         }
 
+        public EnderecoViewModel ObterEnderecoPeloCep(string cep)
+        {
+            return Mapper.Map<Endereco, EnderecoViewModel>(_pessoaService.ObterEnderecoPeloCep(cep));
+        }
+
         public void Dispose()
         {
             _pessoaService.Dispose();
@@ -396,5 +401,6 @@ namespace EGestora.GestoraControlAdm.Application
                 }
             }
         }
+        
     }
 }

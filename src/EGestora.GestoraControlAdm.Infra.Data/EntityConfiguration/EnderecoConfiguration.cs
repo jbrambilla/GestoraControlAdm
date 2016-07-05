@@ -22,6 +22,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(e => e.EnderecoCompleto);
 
+            Ignore(e => e.Erro);
+
             ToTable("Enderecos");
         }
     }

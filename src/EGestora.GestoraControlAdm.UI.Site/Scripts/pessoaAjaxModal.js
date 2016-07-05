@@ -70,6 +70,33 @@ function bindForm(dialog) {
 function Endereco()
 {
     $('#CEP').mask('99999-999');
+    $('#CEP').keyup(function () {
+        var cep = this.value.replace(/_/g, '').replace('-', '');
+
+        if (cep.length == 8) {
+            $.ajax({
+                dataType: 'json',
+                url: '/Pessoas/ObterEnderecoPeloCep',
+                type: "GET",
+                data: { cep: cep },
+                cache: false,
+                success: function (result) {
+                    if (result.success) {
+                        var endereco = result.address;
+                        $('#Cidade').val(endereco.Cidade);
+                        $('#Estado').val(endereco.Estado);
+                        $('#Bairro').val(endereco.Bairro);
+                        $('#Logradouro').val(endereco.Logradouro);
+                        $('#Complemento').val(endereco.Complemento);
+                        $('#Ibge').val(endereco.Ibge);
+                    } else {
+                        alert(result.message);
+                    }
+                }
+            });
+        }
+    });
+   
 }
 
 function Contato()

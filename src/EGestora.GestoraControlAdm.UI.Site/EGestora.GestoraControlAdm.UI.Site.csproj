@@ -787,8 +787,10 @@
     </None>
     <None Include="Properties\PublishProfiles\GestoraAdm.pubxml" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\cnpjValidation.js" />
     <Content Include="Scripts\contatoAddRemove.js" />
     <Content Include="Scripts\contatoMascaraDinamica.js" />
+    <Content Include="Scripts\cpfValidation.js" />
     <Content Include="Scripts\createAudit.js" />
     <Content Include="Scripts\enderecoAddRemove.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

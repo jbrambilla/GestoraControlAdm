@@ -1,5 +1,5 @@
-﻿var $validator = $("#wizard-1").validate({
-
+﻿
+var $validator = $("#wizard-1").validate({
     rules: {
         "PessoaFisica.Nome": {
             required: true
@@ -15,7 +15,8 @@
         },
         "PessoaFisica.Cpf": {
             required: true,
-            minlength: 4
+            cpfexistente: true,
+            cpfvalido: true
         },
         "PessoaFisica.Nascimento": {
             required: true,
@@ -37,7 +38,9 @@
             required: true
         },
         "PessoaJuridica.Cnpj": {
-            required: true
+            required: true,
+            cnpjexistente: true,
+            cnpjvalido: true
         },
         "PessoaJuridica.InscricaoMunicipal": {
             required: true
@@ -60,11 +63,11 @@
 
     messages: {
         //PF
-        "PessoaFisica.Nome": "Campo obrigatório.",
+        "PessoaFisica.Nome": { required: "Campo obrigatório." },
         "PessoaFisica.Apelido": "Campo obrigatório.",
         "PessoaFisica.Rg": "Campo obrigatório.",
         "PessoaFisica.OrgaoEmissor": "Campo obrigatório.",
-        "PessoaFisica.Cpf": "Campo obrigatório.",
+        "PessoaFisica.Cpf": {required: "Campo obrigatório." },
         "PessoaFisica.Nascimento": "Campo obrigatório.",
         "PessoaFisica.ProfissaoId": "Campo obrigatório.",
         "PessoaFisica.Genero": "Campo obrigatório.",
@@ -73,7 +76,7 @@
         //PJ
         "PessoaJuridica.RazaoSocial": "Campo obrigatório.",
         "PessoaJuridica.NomeFantasia": "Campo obrigatório.",
-        "PessoaJuridica.Cnpj": "Campo obrigatório.",
+        "PessoaJuridica.Cnpj": { required: "Campo obrigatório." },
         "PessoaJuridica.InscricaoMunicipal": "Campo obrigatório.",
         "PessoaJuridica.InscricaoEstadual": "Campo obrigatório.",
         "PessoaJuridica.DataFundacao": "Campo obrigatório.",

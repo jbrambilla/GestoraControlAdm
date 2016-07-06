@@ -10,6 +10,8 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         PessoaEnderecoViewModel Add(PessoaEnderecoViewModel pessoaEnderecoViewModel);
         PessoaViewModel Add(PessoaViewModel pessoaViewModel);
         PessoaViewModel GetById(Guid id);
+        PessoaViewModel GetByCpf(string cpf);
+        PessoaViewModel GetByCnpj(string cnpj);
         IEnumerable<PessoaViewModel> GetAll();
         PessoaViewModel Update(PessoaViewModel pessoaViewModel);
         void Remove(Guid id);

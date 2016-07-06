@@ -372,6 +372,30 @@ namespace EGestora.GestoraControlAdm.Application
             return Mapper.Map<Endereco, EnderecoViewModel>(_pessoaService.ObterEnderecoPeloCep(cep));
         }
 
+        public PessoaViewModel GetByCpf(string cpf)
+        {
+            var pessoa = _pessoaService.GetByCpf(cpf);
+
+            if (pessoa == null)
+            {
+                return null;
+            }
+
+            return Mapper.Map<Pessoa, PessoaViewModel>(pessoa);
+        }
+
+        public PessoaViewModel GetByCnpj(string cnpj)
+        {
+            var pessoa = _pessoaService.GetByCnpj(cnpj);
+
+            if (pessoa == null)
+            {
+                return null;
+            }
+
+            return Mapper.Map<Pessoa, PessoaViewModel>(pessoa);
+        }
+
         public void Dispose()
         {
             _pessoaService.Dispose();
@@ -401,6 +425,6 @@ namespace EGestora.GestoraControlAdm.Application
                 }
             }
         }
-        
+
     }
 }

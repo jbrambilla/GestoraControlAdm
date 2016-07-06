@@ -125,18 +125,32 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult VerificarCpfExistente(string cpf)
+        {
+            var pessoa = _pessoaAppService.GetByCpf(cpf);
+
+            return pessoa == null ?
+                Json(new { cpfValido = true }, JsonRequestBehavior.AllowGet) :
+                Json(new { cpfValido = false }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult VerificarCnpjExistente(string cnpj)
+        {
+            var pessoa = _pessoaAppService.GetByCnpj(cnpj);
+
+            return pessoa == null ?
+                Json(new { cnpjValido = true }, JsonRequestBehavior.AllowGet) :
+                Json(new { cnpjValido = false }, JsonRequestBehavior.AllowGet);
+        }
 
         //Endereço
         public ActionResult ObterEnderecoPeloCep(string cep)
         {
             var endereco = _pessoaAppService.ObterEnderecoPeloCep(cep);
 
-            if (endereco.Erro)
-            {
-                return Json(new { success = false, message = "Ocorreu um erro ao obter o endereço pelo cep informado." }, JsonRequestBehavior.AllowGet);
-            }
-
-            return Json(new { success = true, address = endereco }, JsonRequestBehavior.AllowGet);
+             return endereco.Erro ? 
+                Json(new { success = false, message = "Ocorreu um erro ao obter o endereço pelo cep informado." }, JsonRequestBehavior.AllowGet) :
+                Json(new { success = true, address = endereco }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ListaSimplesEndereco(Guid id)

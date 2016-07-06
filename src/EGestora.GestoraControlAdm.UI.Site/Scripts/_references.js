@@ -342,3 +342,5 @@
 /// <reference path="enderecoaddremove.js" />
 /// <reference path="contatoaddremove.js" />
 /// <reference path="wizardformsetupvalidation.js" />
+/// <reference path="cpfvalidation.js" />
+/// <reference path="cnpjvalidation.js" />

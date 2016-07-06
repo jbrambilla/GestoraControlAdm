@@ -290,5 +290,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         {
             return _cepService.GetAddressByCep(cep);
         }
+
+
+        public Pessoa GetByCpf(string cpf)
+        {
+            return _pessoaRepository.GetByCpf(cpf);
+        }
+
+        public Pessoa GetByCnpj(string cnpj)
+        {
+            return _pessoaRepository.GetByCnpj(cnpj);
+        }
     }
 }

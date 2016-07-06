@@ -9,6 +9,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Pessoa Add(Pessoa pessoa);
         Pessoa GetById(Guid id);
         IEnumerable<Pessoa> GetAll();
+        Pessoa GetByCpf(string cpf);
+        Pessoa GetByCnpj(string cnpj);
         Pessoa Update(Pessoa pessoa);
         void Remove(Guid id);
 

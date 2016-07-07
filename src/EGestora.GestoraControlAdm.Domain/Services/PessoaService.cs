@@ -207,6 +207,12 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             pessoa.PessoaJuridica.CnaeList.Remove(cnae);
         }
 
+        public void RemoveAllCnae(Guid id)
+        {
+            var pessoa = _pessoaRepository.GetById(id);
+            pessoa.PessoaJuridica.CnaeList.Clear();
+        }
+
         public IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id)
         {
             var pessoa = _pessoaRepository.GetById(id);

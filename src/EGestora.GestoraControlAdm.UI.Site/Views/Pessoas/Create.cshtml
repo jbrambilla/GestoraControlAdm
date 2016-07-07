@@ -45,6 +45,7 @@
                 <div class="row">
                     @using (Html.BeginForm("Create", "Pessoas", FormMethod.Post, new { enctype = "multipart/form-data", id="wizard-1", novalidate="novalidate" }))
                     {
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
                         @Html.AntiForgeryToken();
                         <div id="bootstrap-wizard-1" class="col-sm-12">
                             <div class="form-bootstrapWizard">

@@ -35,6 +35,7 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         IEnumerable<Cnae> GetAllCnae();
         Cnae GetCnaeById(Guid id);
         void RemoveCnae(Guid id, Guid pessoaId);
+        void RemoveAllCnae(Guid id);
         bool AddCnae(Guid id, Guid pessoaId);
         IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
 

@@ -19,8 +19,7 @@ var $validator = $("#wizard-1").validate({
             cpfvalido: true
         },
         "PessoaFisica.Nascimento": {
-            required: true,
-            date: "invalid format"
+            required: true
         },
         "PessoaFisica.ProfissaoId": {
             required: true
@@ -49,12 +48,10 @@ var $validator = $("#wizard-1").validate({
             required: true
         },
         "PessoaJuridica.DataFundacao": {
-            required: true,
-            date: "formato de data inválido"
+            required: true
         },
         "PessoaJuridica.DataAniversario": {
-            required: true,
-            date: "formato de data inválido"
+            required: true
         },
         "PessoaJuridica.CnaeId": {
             required: true

@@ -71,7 +71,8 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
-                        @Html.TextBoxFor(m => m.PessoaFisica.Nascimento, new { @class = "form-control input-lg date", placeholder = "Data de Nascimento" })
+                        @*<input type="date" class="form-control input-lg" placeholder="Data de Nascimento" />*@
+                        @Html.TextBoxFor(m => m.PessoaFisica.Nascimento, new { @class = "form-control input-lg", placeholder = "Data de Nascimento", type = "date" })
                     </div>
                 </div>
             </div>
@@ -167,7 +168,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
-                        @Html.TextBoxFor(m => m.PessoaJuridica.DataFundacao, new { @class = "form-control input-lg date", placeholder = "Data de Fundação" })
+                        @Html.TextBoxFor(m => m.PessoaJuridica.DataFundacao, new { @class = "form-control input-lg", placeholder = "Data de Fundação", type = "date" })
                     </div>
                 </div>
             </div>
@@ -175,7 +176,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
-                        @Html.TextBoxFor(m => m.PessoaJuridica.DataAniversario, new { @class = "form-control input-lg date", placeholder = "Data de Aniversário" })
+                        @Html.TextBoxFor(m => m.PessoaJuridica.DataAniversario, new { @class = "form-control input-lg", placeholder = "Data de Aniversário", type = "date" })
                     </div>
                 </div>
             </div>

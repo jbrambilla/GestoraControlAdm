@@ -1,0 +1,434 @@
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaViewModel
+           @using EGestora.GestoraControlAdm.Application.ViewModels
+@{
+    ViewBag.PageHeader = "Editar";
+    ViewBag.SubTitle = "Pessoa";
+}
+
+@Html.Partial("PageHeader")
+<article class="col-sm-12 col-md-12 col-lg-12 sortable-grid ui-sortable">
+
+    <!-- Widget ID (each widget will need unique ID)-->
+    <div class="jarviswidget jarviswidget-color-darken jarviswidget-sortable" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false" role="widget">
+        <!-- widget options:
+        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+        data-widget-colorbutton="false"
+        data-widget-editbutton="false"
+        data-widget-togglebutton="false"
+        data-widget-deletebutton="false"
+        data-widget-fullscreenbutton="false"
+        data-widget-custombutton="false"
+        data-widget-collapsed="true"
+        data-widget-sortable="false"
+
+        -->
+        <header role="heading">
+            <div class="jarviswidget-ctrls" role="menu">   <a href="javascript:void(0);" class="button-icon jarviswidget-toggle-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Collapse"><i class="fa fa-minus "></i></a> <a href="javascript:void(0);" class="button-icon jarviswidget-fullscreen-btn" rel="tooltip" title="" data-placement="bottom" data-original-title="Fullscreen"><i class="fa fa-expand "></i></a> </div><div class="widget-toolbar" role="menu"><a data-toggle="dropdown" class="dropdown-toggle color-box selector" href="javascript:void(0);"></a><ul class="dropdown-menu arrow-box-up-right color-select pull-right"><li><span class="bg-color-green" data-widget-setstyle="jarviswidget-color-green" rel="tooltip" data-placement="left" data-original-title="Green Grass"></span></li><li><span class="bg-color-greenDark" data-widget-setstyle="jarviswidget-color-greenDark" rel="tooltip" data-placement="top" data-original-title="Dark Green"></span></li><li><span class="bg-color-greenLight" data-widget-setstyle="jarviswidget-color-greenLight" rel="tooltip" data-placement="top" data-original-title="Light Green"></span></li><li><span class="bg-color-purple" data-widget-setstyle="jarviswidget-color-purple" rel="tooltip" data-placement="top" data-original-title="Purple"></span></li><li><span class="bg-color-magenta" data-widget-setstyle="jarviswidget-color-magenta" rel="tooltip" data-placement="top" data-original-title="Magenta"></span></li><li><span class="bg-color-pink" data-widget-setstyle="jarviswidget-color-pink" rel="tooltip" data-placement="right" data-original-title="Pink"></span></li><li><span class="bg-color-pinkDark" data-widget-setstyle="jarviswidget-color-pinkDark" rel="tooltip" data-placement="left" data-original-title="Fade Pink"></span></li><li><span class="bg-color-blueLight" data-widget-setstyle="jarviswidget-color-blueLight" rel="tooltip" data-placement="top" data-original-title="Light Blue"></span></li><li><span class="bg-color-teal" data-widget-setstyle="jarviswidget-color-teal" rel="tooltip" data-placement="top" data-original-title="Teal"></span></li><li><span class="bg-color-blue" data-widget-setstyle="jarviswidget-color-blue" rel="tooltip" data-placement="top" data-original-title="Ocean Blue"></span></li><li><span class="bg-color-blueDark" data-widget-setstyle="jarviswidget-color-blueDark" rel="tooltip" data-placement="top" data-original-title="Night Sky"></span></li><li><span class="bg-color-darken" data-widget-setstyle="jarviswidget-color-darken" rel="tooltip" data-placement="right" data-original-title="Night"></span></li><li><span class="bg-color-yellow" data-widget-setstyle="jarviswidget-color-yellow" rel="tooltip" data-placement="left" data-original-title="Day Light"></span></li><li><span class="bg-color-orange" data-widget-setstyle="jarviswidget-color-orange" rel="tooltip" data-placement="bottom" data-original-title="Orange"></span></li><li><span class="bg-color-orangeDark" data-widget-setstyle="jarviswidget-color-orangeDark" rel="tooltip" data-placement="bottom" data-original-title="Dark Orange"></span></li><li><span class="bg-color-red" data-widget-setstyle="jarviswidget-color-red" rel="tooltip" data-placement="bottom" data-original-title="Red Rose"></span></li><li><span class="bg-color-redLight" data-widget-setstyle="jarviswidget-color-redLight" rel="tooltip" data-placement="bottom" data-original-title="Light Red"></span></li><li><span class="bg-color-white" data-widget-setstyle="jarviswidget-color-white" rel="tooltip" data-placement="right" data-original-title="Purity"></span></li><li><a href="javascript:void(0);" class="jarviswidget-remove-colors" data-widget-setstyle="" rel="tooltip" data-placement="bottom" data-original-title="Reset widget color to default">Remove</a></li></ul></div>
+            <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+            <h2>Very Basic Wizard Example </h2>
+
+            <span class="jarviswidget-loader"><i class="fa fa-refresh fa-spin"></i></span>
+        </header>
+
+        <!-- widget div-->
+        <div role="content">
+
+            <!-- widget edit box -->
+            <div class="jarviswidget-editbox">
+                <!-- This area used as dropdown edit box -->
+
+            </div>
+            <!-- end widget edit box -->
+            <!-- widget content -->
+            <div class="widget-body">
+
+                <div class="row">
+                    @using (Html.BeginForm("Edit", "Pessoas", FormMethod.Post, new { enctype = "multipart/form-data", id = "wizard-1", novalidate = "novalidate" }))
+                    {
+                        @Html.HiddenFor(model => model.PessoaId)
+                        @Html.AntiForgeryToken();
+                        <div id="bootstrap-wizard-1" class="col-sm-12">
+                            <div class="form-bootstrapWizard">
+                                <ul class="bootstrapWizard form-wizard">
+                                    <li class="active" data-target="#step1">
+                                        <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Informações Básicas</span> </a>
+                                    </li>
+                                    <li data-target="#step2">
+                                        <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Informações de Endereços e Contatos</span> </a>
+                                    </li>
+                                    <li data-target="#step3">
+                                        <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Informações de Funcionários e Proprietários</span> </a>
+                                    </li>
+                                    <li data-target="#step4">
+                                        <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Salvar Formulário</span> </a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab1">
+                                    <br>
+                                    <h3><strong>Passo 1 </strong> - Informações Básicas</h3>
+                                    <br />
+                                    @*<div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <img id="imagemPessoa" src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="demo user" class="img-circle img-responsive">
+                                                <br />
+                                                <input id="files" class="" type="file" name="files">
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                    @if (Model.PessoaFisica != null)
+                                    {
+                                        @Html.HiddenFor(model => model.PessoaFisica.PessoaId)
+                                        @Html.HiddenFor(model => model.PessoaFisica.Cpf)
+                                        <fieldset id="formPessoaFisica">
+
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaFisica.Nome, new { @class = "form-control input-lg", placeholder = "Nome" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaFisica.Apelido, new { @class = "form-control input-lg", placeholder = "Apelido" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaFisica.Rg, new { @class = "form-control input-lg rg", placeholder = "RG" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+
+                                                        @Html.TextBoxFor(m => m.PessoaFisica.OrgaoEmissor, new { @class = "form-control input-lg", placeholder = "Orgão Emissor" })
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaFisica.Cpf, new { @class = "form-control input-lg cpf", placeholder = "CPF", disabled="" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                                            @Html.EditorFor(m => m.PessoaFisica.Nascimento, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-suitcase fa-lg fa-fw"></i></span>
+                                                            @Html.Raw(Html.DropDownList("PessoaFisica.ProfissaoId", (IEnumerable<SelectListItem>)ViewBag.ProfissaoList, "Profissão", new { @class = "form-control input-lg" }).ToHtmlString().Replace("<option value=\"\">Profiss", "<option disabled selected>Profiss"))
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                                            <select name="@Html.NameFor(m => m.PessoaFisica.Genero)" class="form-control input-lg">
+                                                                <option value="" disabled selected="selected">Selecione o Gênero</option>
+                                                                <option @(Model.PessoaFisica.Genero == "Masculino" ? "selected" : "") value="Masculino">Masculino</option>
+                                                                <option @(Model.PessoaFisica.Genero == "Feminino" ? "selected" : "") value="Feminino">Feminino</option>
+                                                                <option @(Model.PessoaFisica.Genero == "Indefinido" ? "selected" : "") value="Indefinido">Indefinido</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+
+                                                        <select name="@Html.NameFor(m => m.PessoaFisica.EstadoCivil)" class="form-control input-lg">
+                                                            <option value="" disabled selected="selected">Selecione o Estado Civil</option>
+                                                            <option @(Model.PessoaFisica.EstadoCivil == "Solteiro" ? "selected" : "") value="Solteiro">Solteiro</option>
+                                                            <option @(Model.PessoaFisica.EstadoCivil == "Casado" ? "selected" : "") value="Casado">Casado</option>
+                                                            <option @(Model.PessoaFisica.EstadoCivil == "Divorciado" ? "selected" : "") value="Divorciado">Divorciado</option>
+                                                            <option @(Model.PessoaFisica.EstadoCivil == "Viúvo" ? "selected" : "") value="Viúvo">Viúvo</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    }
+                                    @if (Model.PessoaJuridica != null)
+                                    {
+                                        @Html.HiddenFor(model => model.PessoaJuridica.PessoaId)
+                                        @Html.HiddenFor(model => model.PessoaJuridica.Cnpj)
+                                        @Html.HiddenFor(m => m.PessoaJuridica.RegimeImpostoId)
+                                        <fieldset id="formPessoaJuridica">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaJuridica.RazaoSocial, new { @class = "form-control input-lg", placeholder = "Razão Social" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaJuridica.NomeFantasia, new { @class = "form-control input-lg", placeholder = "Nome Fantasia" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaJuridica.Cnpj, new { @class = "form-control input-lg cnpj", placeholder = "CNPJ", disabled="" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaJuridica.InscricaoMunicipal, new { @class = "form-control input-lg", placeholder = "Inscrição Municipal" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
+                                                            @Html.TextBoxFor(m => m.PessoaJuridica.InscricaoEstadual, new { @class = "form-control input-lg", placeholder = "Inscrição Estadual" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                                            @Html.EditorFor(m => m.PessoaJuridica.DataFundacao, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="fa fa-calendar fa-lg fa-fw"></i></span>
+                                                            @Html.EditorFor(m => m.PessoaJuridica.DataAniversario, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        @Html.DropDownList("PessoaJuridica.CnaeId", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaeid" })
+                                                        <div class="note">
+                                                            <strong>Cnae Principal</strong> selecione um cnae principal a partir da lista a cima.
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        @*@Html.DropDownList("SelectedCnaeList", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaelist", multiple = "" })*@
+                                                        @*<select name="SelectedCnaeList" class="select2" style="width: 100%" id="cnaelist" multiple="">
+                        @foreach (CnaeViewModel item in ViewBag.CnaeListToEdit)
+                        {
+                            <option @(Model.PessoaJuridica.CnaeList.Any(c => c.CnaeId == item.CnaeId) ? "selected" : "") value="@item.CnaeId">@item.Display</option>
+                        }
+                </select>*@
+
+                                                        <div id="replacetargetCnae">
+                                                            @Html.Partial("_CnaeList", Model.PessoaJuridica.CnaeList, new ViewDataDictionary { { "PessoaId", Model.PessoaId.ToString() } })
+                                                            <div class="note">
+                                                                <strong>Cnaes Secundarios</strong> adicione ou remova cnaes.
+                                                            </div>
+                                                        </div>
+                                                        
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </fieldset>
+                                    }
+                                    <hr />
+                                    <fieldset id="Dados comuns">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <h4><a href="@Url.Action("AdicionarAnexo", "Pessoas", new { id = Model.PessoaId })" data-modal="" class="btn btn-default btn-xs"><i class="fa fa-upload"></i></a> &nbsp;<span><small>Anexos</small></span></h4>
+                                                    <div id="replacetargetAnexo">
+                                                        @Html.Partial("_AnexoList", Model.AnexoList)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <h4>&nbsp;</h4>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-comment fa-lg fa-fw"></i></span>
+                                                        @Html.TextAreaFor(m => m.Observacao, new { @class = "form-control input-lg", placeholder = "Observação" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="tab-pane" id="tab2">
+                                    <br>
+                                    <h3><strong>Passo 2</strong> - Informação de Endereço e Contato</h3>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div id="replacetarget" class="col-md-12">
+                                                @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    <fieldset>
+                                        <div class="row">
+                                            <div id="replacetargetContato" class="col-md-12">
+                                                @Html.Partial("_ContatoList", Model.ContatoList, new ViewDataDictionary { { "_controller", "Pessoas" }, { "PessoaId", Model.PessoaId.ToString() } })
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="tab-pane" id="tab3">
+                                    <br>
+                                    @if (Model.PessoaFisica == null)
+                                    {   
+                                        <h3><strong>Passo 3</strong> - Informações de Funcionários e Proprietários</h3>
+                                    
+                                        <h3>Funcionários</h3>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="replacetargetFuncionarios">
+                                                        @Html.Partial("_FuncionarioList", Model.PessoaJuridica.FuncionarioList, new ViewDataDictionary { { "PessoaId", Model.PessoaId.ToString() } })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <hr />
+                                        <h3>Proprietários</h3>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div id="replacetargetProprietarios">
+                                                        @Html.Partial("_ProprietarioList", Model.PessoaJuridica.ProprietarioList, new ViewDataDictionary { { "PessoaId", Model.PessoaId.ToString() } })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    }
+                                    else
+                                    {
+                                        <h3><strong>Passo 3</strong> - <div class="text-warning">Somenete Pessoa Jurídica possui funcionários e/ou proprietários.</div></h3>
+                                    }
+                                </div>
+
+                                @*@Html.Partial("_CreateEndereco")
+
+                                @Html.Partial("_CreateContato")*@
+                                <div class="tab-pane" id="tab4">
+                                    <br>
+                                    <h3><strong>Step 4</strong> - Save Form</h3>
+                                    <br>
+                                    <h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Complete</strong></h1>
+                                    <h4 class="text-center"><a class="btn btn-default" href="#" onclick="document.getElementById('wizard-1').submit()">Finalizar</a></h4>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <ul class="pager wizard no-margin no-steps-container">
+                                                <!--<li class="previous first disabled">
+                                                <a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+                                                </li>-->
+                                                <li class="previous disabled">
+                                                    <a href="javascript:void(0);" class="btn btn-lg btn-default"> Previous </a>
+                                                </li>
+                                                <!--<li class="next last">
+                                                <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+                                                </li>-->
+                                                <li class="next">
+                                                    <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Next </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+            <!-- end widget content -->
+
+        </div>
+        <!-- end widget div -->
+
+    </div>
+    <!-- end widget -->
+
+</article>
+
+<div id="myModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="myModalContent"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/pessoaAjaxModal.js"></script>
+    <script src="~/Scripts/cpfValidation.js"></script>
+    <script src="~/Scripts/cnpjValidation.js"></script>
+    <script src="~/Scripts/wizardFormSetupValidation.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.date').mask('99/99/9999');
+
+        });
+    </script>
+}

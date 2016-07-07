@@ -104,9 +104,12 @@ namespace EGestora.GestoraControlAdm.Application
             var pessoa = Mapper.Map<PessoaViewModel, Pessoa>(pessoaViewModel);
 
             BeginTransaction();
+
             var pessoaResult = _pessoaService.Update(pessoa);
             pessoaViewModel = Mapper.Map<Pessoa, PessoaViewModel>(pessoaResult);
-            Commit();
+
+            Commit();        
+
             return pessoaViewModel;
         }
 
@@ -404,7 +407,7 @@ namespace EGestora.GestoraControlAdm.Application
 
         private void AddCnaeList(PessoaJuridica pessoaJuridica, IEnumerable<Guid> selectedCnaeList)
         {
-            if (pessoaJuridica != null)
+            if (pessoaJuridica != null && selectedCnaeList !=null)
             {
                 foreach (var CnaeId in selectedCnaeList)
                 {

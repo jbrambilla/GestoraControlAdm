@@ -28,7 +28,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [FileTypes("jpg,jpeg,png")]
         public HttpPostedFileBase Foto { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Observação")]
         [MaxLength(150, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         [DisplayName("Observação")]

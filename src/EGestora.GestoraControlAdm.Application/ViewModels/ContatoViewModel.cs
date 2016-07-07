@@ -23,7 +23,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Tipo do Contato")]
         public Guid TipoContatoId { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Descrição")]
+        [Required(ErrorMessage = "Preencha o campo Descrição para o contato")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {0} caracteres")]
         [DisplayName("Descrição")]

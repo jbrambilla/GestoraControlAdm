@@ -53,7 +53,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         public string Estado { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Ibge")]
+        [Required(ErrorMessage = "Preencha o campo Ibge (Entre com o CEP para preencher este campo)")]
         public int Ibge { get; set; }
 
         [DisplayName("Cobrança")]
@@ -65,7 +65,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Principal")]
         public bool Principal { get; set; }
 
-        [Required(ErrorMessage = "Preencha o campo Descrição")]
+        [Required(ErrorMessage = "Preencha o campo Descrição para o endereço")]
         [MaxLength(100, ErrorMessage = "Máximo {1} caracteres")]
         [MinLength(2, ErrorMessage = "Mínimo {1} caracteres")]
         [DisplayName("Descrição")]

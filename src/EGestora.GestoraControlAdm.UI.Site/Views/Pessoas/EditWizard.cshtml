@@ -1,5 +1,5 @@
 ﻿@model EGestora.GestoraControlAdm.Application.ViewModels.PessoaViewModel
-           @using EGestora.GestoraControlAdm.Application.ViewModels
+@using EGestora.GestoraControlAdm.Application.ViewModels
 @{
     ViewBag.PageHeader = "Editar";
     ViewBag.SubTitle = "Pessoa";
@@ -72,14 +72,14 @@
                                     <h3><strong>Passo 1 </strong> - Informações Básicas</h3>
                                     <br />
                                     @*<div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <img id="imagemPessoa" src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="demo user" class="img-circle img-responsive">
-                                                <br />
-                                                <input id="files" class="" type="file" name="files">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <img id="imagemPessoa" src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="demo user" class="img-circle img-responsive">
+                                                    <br />
+                                                    <input id="files" class="" type="file" name="files">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>*@
+                                        </div>*@
                                     @if (Model.PessoaFisica != null)
                                     {
                                         @Html.HiddenFor(model => model.PessoaFisica.PessoaId)
@@ -124,7 +124,7 @@
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
-                                                            @Html.TextBoxFor(m => m.PessoaFisica.Cpf, new { @class = "form-control input-lg cpf", placeholder = "CPF", disabled="" })
+                                                            @Html.TextBoxFor(m => m.PessoaFisica.Cpf, new { @class = "form-control input-lg cpf", placeholder = "CPF", disabled = "" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -206,7 +206,7 @@
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="fa fa-list-alt fa-lg fa-fw"></i></span>
-                                                            @Html.TextBoxFor(m => m.PessoaJuridica.Cnpj, new { @class = "form-control input-lg cnpj", placeholder = "CNPJ", disabled="" })
+                                                            @Html.TextBoxFor(m => m.PessoaJuridica.Cnpj, new { @class = "form-control input-lg cnpj", placeholder = "CNPJ", disabled = "" })
                                                         </div>
                                                     </div>
                                                 </div>
@@ -256,29 +256,40 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </div>
-                                            <hr />
-                                            <div class="row">
                                                 <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        @*@Html.DropDownList("SelectedCnaeList", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaelist", multiple = "" })*@
-                                                        @*<select name="SelectedCnaeList" class="select2" style="width: 100%" id="cnaelist" multiple="">
-                        @foreach (CnaeViewModel item in ViewBag.CnaeListToEdit)
-                        {
-                            <option @(Model.PessoaJuridica.CnaeList.Any(c => c.CnaeId == item.CnaeId) ? "selected" : "") value="@item.CnaeId">@item.Display</option>
-                        }
-                </select>*@
+                                                    <div class="panel-group smart-accordion-default" id="accordion">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="collapsed"> <i class="fa fa-lg fa-angle-down pull-right"></i> <i class="fa fa-lg fa-angle-up pull-right"></i> Lista de Cnaes secundários </a></h4>
+                                                            </div>
+                                                            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false">
+                                                                <div class="panel-body no-padding">
 
-                                                        <div id="replacetargetCnae">
-                                                            @Html.Partial("_CnaeList", Model.PessoaJuridica.CnaeList, new ViewDataDictionary { { "PessoaId", Model.PessoaId.ToString() } })
-                                                            <div class="note">
-                                                                <strong>Cnaes Secundarios</strong> adicione ou remova cnaes.
+                                                                    <div class="form-group">
+
+                                                                        @*@Html.DropDownList("SelectedCnaeList", (IEnumerable<SelectListItem>)ViewBag.CnaeList, String.Empty, new { @class = "select2", style = "width: 100%", id = "cnaelist", multiple = "" })*@
+                                                                        @*<select name="SelectedCnaeList" class="select2" style="width: 100%" id="cnaelist" multiple="">
+                                        @foreach (CnaeViewModel item in ViewBag.CnaeListToEdit)
+                                        {
+                                            <option @(Model.PessoaJuridica.CnaeList.Any(c => c.CnaeId == item.CnaeId) ? "selected" : "") value="@item.CnaeId">@item.Display</option>
+                                        }
+                                </select>*@
+
+                                                                        <div id="replacetargetCnae">
+                                                                            @Html.Partial("_CnaeList", Model.PessoaJuridica.CnaeList, new ViewDataDictionary { { "PessoaId", Model.PessoaId.ToString() } })
+                                                                            <div class="note">
+                                                                                <strong>Cnaes Secundarios</strong> adicione ou remova cnaes.
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        
-
                                                     </div>
+
+
                                                 </div>
                                             </div>
 
@@ -329,9 +340,9 @@
                                 <div class="tab-pane" id="tab3">
                                     <br>
                                     @if (Model.PessoaFisica == null)
-                                    {   
+                                    {
                                         <h3><strong>Passo 3</strong> - Informações de Funcionários e Proprietários</h3>
-                                    
+
                                         <h3>Funcionários</h3>
                                         <fieldset>
                                             <div class="row">
@@ -362,7 +373,7 @@
 
                                 @*@Html.Partial("_CreateEndereco")
 
-                                @Html.Partial("_CreateContato")*@
+                                    @Html.Partial("_CreateContato")*@
                                 <div class="tab-pane" id="tab4">
                                     <br>
                                     <h3><strong>Step 4</strong> - Save Form</h3>

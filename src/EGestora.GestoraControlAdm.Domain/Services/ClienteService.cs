@@ -54,16 +54,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Cliente Add(Cliente cliente)
         {
-            if (!cliente.IsValid())
-            {
-                return cliente;
-            }
+            //if (!cliente.IsValid())
+            //{
+            //    return cliente;
+            //}
 
-            cliente.ValidationResult = new ClienteEstaAptoParaCadastroValidation().Validate(cliente);
-            if (!cliente.ValidationResult.IsValid)
-            {
-                return cliente;
-            }
+            //cliente.ValidationResult = new ClienteEstaAptoParaCadastroValidation().Validate(cliente);
+            //if (!cliente.ValidationResult.IsValid)
+            //{
+            //    return cliente;
+            //}
 
             return _clienteRepository.Add(cliente);
         }
@@ -90,8 +90,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public Cliente Update(Cliente cliente)
         {
-            UpdatePessoaFisica(cliente.PessoaFisica);
-            UpdatePessoaJuridica(cliente.PessoaJuridica);
             return _clienteRepository.Update(cliente);
         }
 

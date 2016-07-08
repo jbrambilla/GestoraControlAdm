@@ -5,11 +5,11 @@ using System.Collections.Generic;
 
 namespace EGestora.GestoraControlAdm.Domain.Entities
 {
-    public class Cliente : Pessoa
+    public class Cliente
     {
         public Cliente()
-            : base()
         {
+            ClienteId = Guid.NewGuid();
             CnaeList = new List<Cnae>();
             ClienteServicoList = new List<ClienteServico>();
             NotaServicoList = new List<NotaServico>();
@@ -18,6 +18,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
             DebitoList = new List<Debito>();
         }
 
+        public Guid ClienteId { get; set; }
         public Guid? RevendaId { get; set; }
         public Guid RegimeApuracaoId { get; set; }
         public Guid CnaeId { get; set; }
@@ -26,6 +27,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public decimal Repasse { get; set; }
         public bool RepassePercentual { get; set; }
 
+        public virtual Pessoa Pessoa { get; set; }
         public virtual Cnae Cnae { get; set; }
         public virtual Revenda Revenda { get; set; }
         public virtual RegimeApuracao RegimeApuracao { get; set; }

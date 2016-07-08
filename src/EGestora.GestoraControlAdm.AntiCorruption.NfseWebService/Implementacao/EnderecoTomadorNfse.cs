@@ -10,7 +10,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
     {
         public tcEndereco GetEnderecoTomador(NotaServico notaServico)
         {
-            Endereco endereco = notaServico.Cliente.EnderecoList.FirstOrDefault();
+            Endereco endereco = notaServico.Cliente.Pessoa.EnderecoList.FirstOrDefault();
 
             var enderecoTomador = new tcEndereco();
             enderecoTomador.Endereco = endereco.Logradouro;

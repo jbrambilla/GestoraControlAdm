@@ -45,10 +45,10 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
-            cliente.PessoaFisica = pf;
-            cliente.PessoaJuridica = pj;
-            cliente.EnderecoList.Add(endereco);
-            cliente.ContatoList.Add(contato);
+            cliente.Pessoa.PessoaFisica = pf;
+            cliente.Pessoa.PessoaJuridica = pj;
+            cliente.Pessoa.EnderecoList.Add(endereco);
+            cliente.Pessoa.ContatoList.Add(contato);
 
             AddCnaeList(cliente, selectedCnaeList);
 
@@ -79,7 +79,7 @@ namespace EGestora.GestoraControlAdm.Application
                 var anexoEntity = AnexoUtil.GetEntityFromHttpPostedFileBase(anexo);
                 if (anexoEntity != null)
                 {
-                    cliente.AnexoList.Add(anexoEntity);
+                    cliente.Pessoa.AnexoList.Add(anexoEntity);
                 }
             }
             /** FIM Adicionando ANEXOS **/
@@ -306,7 +306,7 @@ namespace EGestora.GestoraControlAdm.Application
             BeginTransaction();
 
             var cliente = _clienteService.GetById(PessoaId);
-            cliente.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
+            cliente.Pessoa.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
             _clienteService.Update(cliente);
 
             Commit();

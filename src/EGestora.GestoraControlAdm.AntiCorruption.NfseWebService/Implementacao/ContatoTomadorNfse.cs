@@ -2,6 +2,7 @@
 using EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Simpliss;
 using EGestora.GestoraControlAdm.Domain.Entities;
 using System;
+using System.Linq;
 
 namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
 {
@@ -10,7 +11,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
         public tcContato GetContatoTomador(NotaServico notaServico)
         {
             var contato = new tcContato();
-            contato.Email = notaServico.Cliente.Email;
+            contato.Email = notaServico.Cliente.Pessoa.ContatoList.FirstOrDefault(c => c.TipoContato.Nome.Contains("mail")).InformacaoContato;
             contato.Telefone = "18981451508";
 
             return contato;

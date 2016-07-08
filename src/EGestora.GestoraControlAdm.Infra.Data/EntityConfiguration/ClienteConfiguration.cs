@@ -12,7 +12,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
     {
         public ClienteConfiguration()
         {
-            HasKey(c => c.PessoaId);
+            HasKey(c => c.ClienteId);
 
             Property(p => p.VencimentoBoleto)
                 .IsRequired();

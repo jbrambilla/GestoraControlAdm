@@ -99,7 +99,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             {
                 var notaServico = new NotaServico()
                 {
-                    ClienteId = cliente.PessoaId,
+                    ClienteId = cliente.ClienteId,
                     Cliente = cliente,
                     DiscriminacaoServico = "discriminacao",
                     Emitir = true,
@@ -115,7 +115,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 {
                     loteFaturamento.ValidationResult.Add(
                         new ValidationError(
-                            "A note de serviço referente ao cliente " + cliente.PessoaJuridica.RazaoSocial + " não é válida"
+                            "A note de serviço referente ao cliente " + cliente.Pessoa.PessoaJuridica.RazaoSocial + " não é válida"
                         )
                     );
 
@@ -124,7 +124,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
                 var debito = new Debito()
                 {
-                    ClienteId = cliente.PessoaId,
+                    ClienteId = cliente.ClienteId,
                     CodigoSeguranca = "",
                     Detalhes = "Débito gerado em lote.",
                     ValorLiquido = notaServico.ValorLiquido,
@@ -136,7 +136,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 {
                     loteFaturamento.ValidationResult.Add(
                         new ValidationError(
-                            "O débito referente ao cliente " + cliente.PessoaJuridica.RazaoSocial + " não é válida"
+                            "O débito referente ao cliente " + cliente.Pessoa.PessoaJuridica.RazaoSocial + " não é válida"
                         )
                     );
 
@@ -150,7 +150,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                     foreach (var erro in notaServico.ValidationResult.Erros)
      
                     {
-                        loteFaturamento.ValidationResult.Add(new ValidationError("Problema na emissão da nota do cliente: " + cliente.PessoaJuridica.RazaoSocial + ". " + erro.Message));
+                        loteFaturamento.ValidationResult.Add(new ValidationError("Problema na emissão da nota do cliente: " + cliente.Pessoa.PessoaJuridica.RazaoSocial + ". " + erro.Message));
                     }
 
                     return loteFaturamento;

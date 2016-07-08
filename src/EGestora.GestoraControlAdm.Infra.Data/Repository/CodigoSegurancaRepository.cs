@@ -17,7 +17,7 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
         {
             var diffDataAtual = DateTime.Now.Subtract(DateTime.Parse("29/05/2000")).Days.ToString().PadLeft(4,'0');
             var diffDataTrava = codigoSeguranca.DataTrava.Subtract(DateTime.Parse("29/05/2000")).Days.ToString().PadLeft(4, '0');
-            var cnpj = codigoSeguranca.Cliente.PessoaJuridica.Cnpj.Replace(".", "").Replace("-", "").Replace("/", "").PadLeft(14, '0');
+            var cnpj = codigoSeguranca.Cliente.Pessoa.PessoaJuridica.Cnpj.Replace(".", "").Replace("-", "").Replace("/", "").PadLeft(14, '0');
 
             var primeiroTotal = 0;
             var segundoTotal = 0;

@@ -24,19 +24,6 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             Property(p => p.ComNota)
                 .IsRequired();
 
-            HasRequired(c => c.Cnae)
-                .WithMany()
-                .HasForeignKey(c => c.CnaeId);
-
-            HasMany(f => f.CnaeList)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaId");
-                    me.MapRightKey("CnaeId");
-                    me.ToTable("ClienteCnae");
-                });
-
             HasMany(c => c.ClienteServicoList)
                 .WithRequired(cs => cs.Cliente)
                 .HasForeignKey(cs => cs.PessoaId);

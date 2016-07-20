@@ -1,4 +1,4 @@
-﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ClienteEnderecoViewModel
+﻿@model EGestora.GestoraControlAdm.Application.ViewModels.ClienteViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -21,6 +21,38 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2"></label>
+                                        <div class="col-md-5">
+                                            <label>
+                                                <input type="radio" name="FlagIsPessoaJuridica" id="fisica" value="false" checked="">
+                                                Pessoa Física
+                                            </label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>
+                                                <input type="radio" name="FlagIsPessoaJuridica" id="juridica" value="true">
+                                                Pessoa Jurídica
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Pessoa Jurídica</label>
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("PessoaId", (IEnumerable<SelectListItem>)ViewBag.PessoaJuridicaList, String.Empty, new { @class = "form-control", id = "pj" })
+                                            @Html.ValidationMessageFor(model => model.PessoaId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Pessoa Física</label>
+                                        <div class="col-md-10">
+                                            @Html.DropDownList("PessoaId", (IEnumerable<SelectListItem>)ViewBag.PessoaFisicaList, String.Empty, new { @class = "form-control", id = "pf" })
+                                            @Html.ValidationMessageFor(model => model.PessoaId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.ComNota, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -74,11 +106,27 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jquerymask")
-    <script src="~/Scripts/radioButtonPfPj.js"></script>
-    <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
-    <script src="~/Scripts/select2.full.min.js"></script>
     <script>
-        $('#SelectedCnaeList').select2();
+        $(document).ready(function () {
+            if ($('#pj').val() == "") {
+                $("#pj").prop("disabled", true);
+                $("#pf").prop("disabled", false);
+            }
+            else {
+                $("#pj").prop("disabled", false);
+                $("#pf").prop("disabled", true);
+            }
+
+            $('#fisica').change(function () {
+
+                $("#pj").prop("disabled", true);
+                $("#pf").prop("disabled", false);
+
+            });
+            $('#juridica').change(function () {
+                $("#pf").prop("disabled", true);
+                $("#pj").prop("disabled", false);
+            });
+        });
     </script>
 }

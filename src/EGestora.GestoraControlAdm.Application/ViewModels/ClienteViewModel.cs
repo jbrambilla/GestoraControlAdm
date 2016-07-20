@@ -10,7 +10,7 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public ClienteViewModel()
             : base()
         {
-            CnaeList = new List<CnaeViewModel>();
+            ClienteId = Guid.NewGuid();
             ClienteServicoList = new List<ClienteServicoViewModel>();
             DebitoList = new List<DebitoViewModel>();
             NotaServicoList = new List<NotaServicoViewModel>();
@@ -31,10 +31,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayName("Regime de Apuração")]
         public Guid RegimeApuracaoId { get; set; }
 
-        [Required(ErrorMessage = "Selecione um Cnae principal.")]
-        [DisplayName("Cnae Principal")]
-        public Guid CnaeId { get; set; }
-
         [Required]
         [DisplayName("Com Nota")]
         public bool ComNota { get; set; }
@@ -43,10 +39,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
         public DateTime VencimentoBoleto { get; set; }
-
-
-        [ScaffoldColumn(false)]
-        public ICollection<CnaeViewModel> CnaeList { get; set; }
 
         [ScaffoldColumn(false)]
         public ICollection<ClienteServicoViewModel> ClienteServicoList { get; set; }
@@ -65,9 +57,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public RevendaViewModel Revenda { get; set; }
-
-        [ScaffoldColumn(false)]
-        public CnaeViewModel Cnae { get; set; }
 
         [ScaffoldColumn(false)]
         public RegimeApuracaoViewModel RegimeApuracao { get; set; }

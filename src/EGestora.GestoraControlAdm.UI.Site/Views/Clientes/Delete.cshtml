@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Delete";
 
-    var Titulo = Model.IsPessoaFisica ? Model.PessoaFisica.Nome : Model.PessoaJuridica.RazaoSocial;
+    var Titulo = Model.Pessoa.IsPessoaFisica ? Model.Pessoa.PessoaFisica.Nome : Model.Pessoa.PessoaJuridica.RazaoSocial;
 }
 
 <div class="row">
@@ -20,33 +20,18 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemCliente", new { id = Model.PessoaId })" alt="@Titulo" class="img-circle img-responsive"> </div>
+                                <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="@Titulo" class="img-circle img-responsive"> </div>
 
                                 <div class=" col-md-9 col-lg-9 ">
                                     <table class="table table-user-information">
                                         <tbody>
 
-                                            @if (Model.IsPessoaJuridica)
+                                            @if (Model.Pessoa.IsPessoaJuridica)
                                             {
-                                                @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
+                                                @Html.Partial("_DetailsPessoaJuridica", Model.Pessoa.PessoaJuridica)
                                             } else {
-                                                @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
+                                                @Html.Partial("_DetailsPessoaFisica", Model.Pessoa.PessoaFisica)
                                             }
-
-                                            <tr>
-                                                <td>E-mail:</td>
-                                                <td><a href="mailto:@Model.Email">@Model.Email</a></td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Data de Cadastro</td>
-                                                <td>@Model.CriadoEm.ToString("d")</td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                <td>Ativo</td>
-                                                <td>@Html.CheckBoxFor(model => model.Ativo, new { disabled = "" })</td>
-                                            </tr>
 
                                             <tr>
                                                 <td>Cliente com nota?</td>

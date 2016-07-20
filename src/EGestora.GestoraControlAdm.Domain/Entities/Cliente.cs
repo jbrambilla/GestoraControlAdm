@@ -10,7 +10,6 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Cliente()
         {
             ClienteId = Guid.NewGuid();
-            CnaeList = new List<Cnae>();
             ClienteServicoList = new List<ClienteServico>();
             NotaServicoList = new List<NotaServico>();
             LoteFaturamentoList = new List<LoteFaturamento>();
@@ -22,17 +21,14 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         public Guid PessoaId { get; set; }
         public Guid? RevendaId { get; set; }
         public Guid RegimeApuracaoId { get; set; }
-        public Guid CnaeId { get; set; }
         public bool ComNota { get; set; }
         public DateTime VencimentoBoleto { get; set; }
         public decimal Repasse { get; set; }
         public bool RepassePercentual { get; set; }
 
         public virtual Pessoa Pessoa { get; set; }
-        public virtual Cnae Cnae { get; set; }
         public virtual Revenda Revenda { get; set; }
         public virtual RegimeApuracao RegimeApuracao { get; set; }
-        public virtual ICollection<Cnae> CnaeList { get; set; }
         public virtual ICollection<ClienteServico> ClienteServicoList { get; set; }
         public virtual ICollection<NotaServico> NotaServicoList { get; set; }
         public virtual ICollection<LoteFaturamento> LoteFaturamentoList { get; set; }

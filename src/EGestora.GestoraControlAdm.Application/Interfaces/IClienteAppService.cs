@@ -7,7 +7,7 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 {
     public interface IClienteAppService : IDisposable
     {
-        ClienteEnderecoViewModel Add(ClienteEnderecoViewModel clienteEnderecoViewModel);
+        ClienteViewModel Add(ClienteViewModel clienteEnderecoViewModel);
         ClienteViewModel GetById(Guid id);
         ClienteViewModel GetByCnpj(string cnpj);
         ClienteViewModel GetByCpf(string cpf);
@@ -24,12 +24,6 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel);
         ContatoViewModel GetContatoById(Guid id);
         void RemoveContato(Guid id);
-
-        IEnumerable<CnaeViewModel> GetAllCnae();
-        CnaeViewModel GetCnaeById(Guid id);
-        bool AddCnae(Guid id, Guid pessoaId);
-        void RemoveCnae(Guid cnaeId, Guid pessoaId);
-        IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id);
 
         IEnumerable<ServicoViewModel> GetAllServicos();
         IEnumerable<ServicoViewModel> GetAllServicosOutPessoa(Guid id);
@@ -53,5 +47,8 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         DebitoViewModel GetDebitoById(Guid id);
         DebitoViewModel AdicionarDebito(DebitoViewModel debitoViewModel);
         DebitoViewModel AtualizarDebito(DebitoViewModel debitoViewModel);
+
+        IEnumerable<PessoaFisicaViewModel> GetAllPessoaFisica();
+        IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridica();
     }
 }

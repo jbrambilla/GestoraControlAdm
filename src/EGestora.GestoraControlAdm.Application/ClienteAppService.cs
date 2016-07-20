@@ -23,77 +23,27 @@ namespace EGestora.GestoraControlAdm.Application
             _clienteService = clienteService;
         }
 
-        public ClienteEnderecoViewModel Add(ClienteEnderecoViewModel clienteEnderecoViewModel)
+        public ClienteViewModel Add(ClienteViewModel clienteViewModel)
         {
-            var cliente = Mapper.Map<ClienteEnderecoViewModel, Cliente>(clienteEnderecoViewModel);
-            var pf = Mapper.Map<ClienteEnderecoViewModel, PessoaFisica>(clienteEnderecoViewModel);
-            var pj = Mapper.Map<ClienteEnderecoViewModel, PessoaJuridica>(clienteEnderecoViewModel);
-            var endereco = Mapper.Map<ClienteEnderecoViewModel, Endereco>(clienteEnderecoViewModel);
-            var contato = Mapper.Map<ClienteEnderecoViewModel, Contato>(clienteEnderecoViewModel);
-            var selectedCnaeList = clienteEnderecoViewModel.SelectedCnaeList;
-            var foto = clienteEnderecoViewModel.Foto;
-            var anexoList = clienteEnderecoViewModel.Anexos;
-
-            if (clienteEnderecoViewModel.FlagIsPessoaJuridica)
-            {
-                pf = null;
-            }
-            else
-            {
-                pj = null;
-            }
+            var cliente = Mapper.Map<ClienteViewModel, Cliente>(clienteViewModel);
 
             BeginTransaction();
 
-            cliente.Pessoa.PessoaFisica = pf;
-            cliente.Pessoa.PessoaJuridica = pj;
-            cliente.Pessoa.EnderecoList.Add(endereco);
-            cliente.Pessoa.ContatoList.Add(contato);
-
-            AddCnaeList(cliente, selectedCnaeList);
-
-            AddAnexoList(cliente, anexoList);
-
             var clienteReturn = _clienteService.Add(cliente);
-            clienteEnderecoViewModel = Mapper.Map<Cliente, ClienteEnderecoViewModel>(clienteReturn);
+            clienteViewModel = Mapper.Map<Cliente, ClienteViewModel>(clienteReturn);
 
-            if (!clienteEnderecoViewModel.ValidationResult.IsValid)
-            {
-                return clienteEnderecoViewModel;
-            }
+            //if (!clienteViewModel.ValidationResult.IsValid)
+            //{
+            //    return clienteEnderecoViewModel;
+            //}
 
-            if (!ImagemUtil.SalvarImagem(foto, clienteEnderecoViewModel.PessoaId, FilePathConstants.CLIENTES_IMAGE_PATH))
-            {
-                clienteEnderecoViewModel.ValidationResult.Message = "Cliente salvo sem foto";
-            }
+            //if (!ImagemUtil.SalvarImagem(foto, clienteEnderecoViewModel.PessoaId, FilePathConstants.CLIENTES_IMAGE_PATH))
+            //{
+            //    clienteEnderecoViewModel.ValidationResult.Message = "Cliente salvo sem foto";
+            //}
 
             Commit();
-            return clienteEnderecoViewModel;
-        }
-
-        private static void AddAnexoList(Cliente cliente, IEnumerable<HttpPostedFileBase> anexoList)
-        {
-            /** Adicionando ANEXOS **/
-            foreach (var anexo in anexoList)
-            {
-                var anexoEntity = AnexoUtil.GetEntityFromHttpPostedFileBase(anexo);
-                if (anexoEntity != null)
-                {
-                    cliente.Pessoa.AnexoList.Add(anexoEntity);
-                }
-            }
-            /** FIM Adicionando ANEXOS **/
-        }
-
-        private void AddCnaeList(Cliente cliente, IEnumerable<Guid> selectedCnaeList)
-        {
-            /** Adicionando CNAES **/
-            foreach (var CnaeId in selectedCnaeList)
-            {
-                var cnae = _clienteService.GetCnaeById(CnaeId);
-                cliente.CnaeList.Add(cnae);
-            }
-            /** FIM Adicionando CNAES **/
+            return clienteViewModel;
         }
 
         public ClienteViewModel GetById(Guid id)
@@ -200,36 +150,6 @@ namespace EGestora.GestoraControlAdm.Application
             BeginTransaction();
             _clienteService.RemoveContato(id);
             Commit();
-        }
-
-        public IEnumerable<CnaeViewModel> GetAllCnae()
-        {
-            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_clienteService.GetAllCnae());
-        }
-
-        public CnaeViewModel GetCnaeById(Guid id)
-        {
-            return Mapper.Map<Cnae, CnaeViewModel>(_clienteService.GetCnaeById(id));
-        }
-
-        public bool AddCnae(Guid id, Guid pessoaId)
-        {
-            BeginTransaction();
-            var retorno = _clienteService.AddCnae(id, pessoaId);
-            Commit();
-            return retorno;
-        }
-
-        public void RemoveCnae(Guid cnaeId, Guid pessoaId)
-        {
-            BeginTransaction();
-            _clienteService.RemoveCnae(cnaeId, pessoaId);
-            Commit();
-        }
-
-        public IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id)
-        {
-            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_clienteService.GetAllCnaeOutPessoa(id));
         }
 
         public IEnumerable<ServicoViewModel> GetAllServicos()
@@ -361,11 +281,21 @@ namespace EGestora.GestoraControlAdm.Application
             return debitoViewModel;
         }
 
+        public IEnumerable<PessoaFisicaViewModel> GetAllPessoaFisica()
+        {
+            return Mapper.Map<IEnumerable<PessoaFisica>, IEnumerable<PessoaFisicaViewModel>>(_clienteService.GetAllPessoaFisica());
+        }
+
+        public IEnumerable<PessoaJuridicaViewModel> GetAllPessoaJuridica()
+        {
+            return Mapper.Map<IEnumerable<PessoaJuridica>, IEnumerable<PessoaJuridicaViewModel>>(_clienteService.GetAllPessoaJuridica());
+        }
+
         public void Dispose()
         {
             _clienteService.Dispose();
             GC.SuppressFinalize(this);
         }
-        
+
     }
 }

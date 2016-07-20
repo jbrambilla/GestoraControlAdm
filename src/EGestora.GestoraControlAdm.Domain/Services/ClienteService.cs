@@ -156,45 +156,6 @@ namespace EGestora.GestoraControlAdm.Domain.Services
             return _pessoaJuridicaRepository.Update(pessoaJuridica);
         }
 
-        public IEnumerable<Cnae> GetAllCnae()
-        {
-            return _cnaeRepository.GetAll();
-        }
-
-        public Cnae GetCnaeById(Guid id)
-        {
-            return _cnaeRepository.GetById(id);
-        }
-
-        public bool AddCnae(Guid id, Guid pessoaId)
-        {
-            var cliente = _clienteRepository.GetById(pessoaId);
-
-            if (cliente.CnaeId == id)
-            {
-                return false;
-            }
-
-            var cnae = _cnaeRepository.GetById(id);
-            cliente.CnaeList.Add(cnae);
-            return true;
-        }
-
-        public void RemoveCnae(Guid id, Guid pessoaId)
-        {
-            var cliente = _clienteRepository.GetById(pessoaId);
-            var cnae = _cnaeRepository.GetById(id);
-            cliente.CnaeList.Remove(cnae);
-        }
-
-        public IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id)
-        {
-            var cliente = _clienteRepository.GetById(id);
-            var allCnaes = _cnaeRepository.GetAll();
-
-            return allCnaes.Except(cliente.CnaeList);
-        }
-
         public Servico GetServicoById(Guid id)
         {
             return _servicoRepository.GetById(id);
@@ -309,6 +270,16 @@ namespace EGestora.GestoraControlAdm.Domain.Services
         public Debito AtualizarDebito(Debito debito)
         {
             return _debitoRepository.Update(debito);
+        }
+
+        public IEnumerable<PessoaFisica> GetAllPessoaFisica()
+        {
+            return _pessoaFisicaRepository.GetAll();
+        }
+
+        public IEnumerable<PessoaJuridica> GetAllPessoaJuridica()
+        {
+            return _pessoaJuridicaRepository.GetAll();
         }
 
         public void Dispose()

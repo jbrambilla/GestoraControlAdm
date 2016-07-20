@@ -56,26 +56,26 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ClienteEnderecoViewModel clienteEnderecoViewModel)
+        public ActionResult Create(ClienteViewModel clienteViewModel)
         {
             if (ModelState.IsValid)
             {
-                clienteEnderecoViewModel = _clienteAppService.Add(clienteEnderecoViewModel);
+                clienteViewModel = _clienteAppService.Add(clienteViewModel);
 
-                if (!clienteEnderecoViewModel.ValidationResult.IsValid)
-                {
-                    foreach (var erro in clienteEnderecoViewModel.ValidationResult.Erros)
-                    {
-                        ModelState.AddModelError(string.Empty, erro.Message);
-                    }
-                    loadViewBags();
-                    return View(clienteEnderecoViewModel);
-                }
+                //if (!clienteEnderecoViewModel.ValidationResult.IsValid)
+                //{
+                //    foreach (var erro in clienteEnderecoViewModel.ValidationResult.Erros)
+                //    {
+                //        ModelState.AddModelError(string.Empty, erro.Message);
+                //    }
+                //    loadViewBags();
+                //    return View(clienteEnderecoViewModel);
+                //}
 
                 return RedirectToAction("Index");
             }
             loadViewBags();
-            return View(clienteEnderecoViewModel);
+            return View(clienteViewModel);
         }
 
         // GET: Clientes/Edit/5
@@ -282,74 +282,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             return Json(new { success = true, url = url, replaceTarget = "contato" });
         }
 
-        //CNAE
-
-        public ActionResult ListarCnaes(Guid id)
-        {
-            ViewBag.PessoaId = id;
-
-            return PartialView("_CnaeList", _clienteAppService.GetById(id).CnaeList);
-        }
-
-        [Route("adicionar-cnae")]
-        public ActionResult AdicionarCnae(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ViewBag.PessoaId = id.Value;
-            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(id.Value).OrderBy(c => c.Codigo), "CnaeId", "Display");
-            return PartialView("_AdicionarCnae");
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult AdicionarCnae(Guid PessoaId, Guid CnaeId)
-        {
-            if (ModelState.IsValid)
-            {
-                if (!_clienteAppService.AddCnae(CnaeId, PessoaId))
-                {
-                    ModelState.AddModelError(string.Empty, "Não é possível adicionar um Cnae igual ao Principal.");
-                    ViewBag.PessoaId = PessoaId;
-                    ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
-                    return PartialView("_AdicionarCnae");
-                }
-
-                string url = Url.Action("ListarCnaes", "Clientes", new { id = PessoaId});
-                return Json(new { success = true, url = url, replaceTarget = "cnae" });
-            }
-            ViewBag.PessoaId = PessoaId;
-            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnaeOutPessoa(PessoaId).OrderBy(c => c.Codigo), "CnaeId", "Display");
-            return PartialView("_AdicionarCnae");
-        }
-
-        public ActionResult DeletarCnae(Guid? id, Guid? pessoaId)
-        {
-            if (id == null || pessoaId == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var cnaeViewModel = _clienteAppService.GetCnaeById(id.Value);
-            if (cnaeViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.PessoaId = pessoaId;
-            return PartialView("_DeletarCnae", cnaeViewModel);
-        }
-
-        [HttpPost, ActionName("DeletarCnae")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeletarCnaeConfirmed(Guid id, Guid pessoaId)
-        {
-            _clienteAppService.RemoveCnae(id, pessoaId);
-
-            string url = Url.Action("ListarCnaes", "Clientes", new { id = pessoaId });
-            return Json(new { success = true, url = url, replaceTarget = "cnae" });
-        }
 
         //SERVIÇOS
 
@@ -705,10 +637,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         private void loadViewBags()
         {
-            ViewBag.CnaeList = new SelectList(_clienteAppService.GetAllCnae().OrderBy(c => c.Codigo), "CnaeId", "Display");
             ViewBag.ServicoList = new SelectList(_clienteAppService.GetAllServicos().OrderBy(c => c.Descricao), "ServicoId", "Descricao");
             ViewBag.RevendaList = new SelectList(_clienteAppService.GetAllPessoaJuridicaDeRevendas().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
             ViewBag.RegimeApuracaoList = new SelectList(_clienteAppService.GetAllRegimeApuracao().OrderBy(c => c.Descricao), "RegimeApuracaoId", "Descricao");
+            ViewBag.PessoaJuridicaList = new SelectList(_clienteAppService.GetAllPessoaJuridica().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            ViewBag.PessoaFisicaList = new SelectList(_clienteAppService.GetAllPessoaFisica().OrderBy(c => c.Nome), "PessoaId", "Nome");
         }
 
         protected override void Dispose(bool disposing)

@@ -46,7 +46,7 @@
                                                     aria-label=" RazaoSocial: activate to sort column ascending"
                                                     style="width: 310px;">
                                                     <i class="fa fa-fw fa-user text-muted hidden-md hidden-sm hidden-xs"></i>
-                                                    Email
+                                                    Nome
                                                 </th>
                                                 @*<th data-class="expand"
                                                     class="expand sorting"
@@ -119,7 +119,7 @@
                                         <tbody>
                                             @foreach (var item in Model)
                                             {
-                                                if (item.Pessoa != null && item.Pessoa.PessoaFisica != null)
+                                                if (item.Pessoa.PessoaFisica != null)
                                                 {
                                                     <tr role="row" class="odd">
                                                     
@@ -136,7 +136,24 @@
                                                         </td>
                                                     </tr>
                                                 }
-                                                
+                                                else
+                                                {
+                                                    <tr role="row" class="odd">
+
+                                                        <td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.RazaoSocial)</td>
+                                                        @*<td class=" expand"><span class="responsiveExpander"></span>@Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoMunicipal)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.PessoaJuridica.InscricaoEstadual)</td>
+                                                            <td>@item.CriadoEm.ToString("d")</td>*@
+                                                        <td>
+                                                            <a href="@Url.Action("Edit", "Clientes", new {id = item.ClienteId})" class="btn btn-xs btn-default"><span title="Editar" class="glyphicon glyphicon-pencil"></span></a>
+                                                            <a href="@Url.Action("Details", "Clientes", new { id = item.ClienteId })" class="btn btn-xs btn-default"><span title="Detalhes" class="glyphicon glyphicon-search"></span></a>
+                                                            <a href="@Url.Action("Delete", "Clientes", new { id = item.ClienteId })" class="btn btn-xs btn-danger"><span title="Excluir" class="glyphicon glyphicon-trash"></span></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+
                                             }
                                         </tbody>
                                     </table>

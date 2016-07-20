@@ -27,12 +27,6 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         PessoaFisica UpdatePessoaFisica(PessoaFisica pessoaFisica);
         PessoaJuridica UpdatePessoaJuridica(PessoaJuridica pessoaJuridica);
 
-        IEnumerable<Cnae> GetAllCnae();
-        Cnae GetCnaeById(Guid id);
-        void RemoveCnae(Guid id, Guid pessoaId);
-        bool AddCnae(Guid id, Guid pessoaId);
-        IEnumerable<Cnae> GetAllCnaeOutPessoa(Guid id);
-
         Servico GetServicoById(Guid id);
         IEnumerable<Servico> GetAllServicos();
         IEnumerable<Servico> GetAllServicosOutPessoa(Guid id);
@@ -56,5 +50,8 @@ namespace EGestora.GestoraControlAdm.Domain.Interfaces.Service
         Debito AtualizarDebito(Debito debito);
         Debito AdicionarDebito(Debito debito);
         void GerarBoletos(Debito debito);
+
+        IEnumerable<PessoaFisica> GetAllPessoaFisica();
+        IEnumerable<PessoaJuridica> GetAllPessoaJuridica();
     }
 }

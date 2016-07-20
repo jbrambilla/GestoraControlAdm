@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Detalhes de Cliente";
 
-    var Titulo = Model.IsPessoaFisica ? Model.PessoaFisica.Nome : Model.PessoaJuridica.RazaoSocial;
+    var Titulo = Model.Pessoa.IsPessoaFisica ? Model.Pessoa.PessoaFisica.Nome : Model.Pessoa.PessoaJuridica.RazaoSocial;
 }
 
 <div class="row">
@@ -40,35 +40,14 @@
                                             <table class="table table-user-information">
                                                 <tbody>
 
-                                                    @if (Model.IsPessoaJuridica)
+                                                    @if (Model.Pessoa.IsPessoaJuridica)
                                                     {
-                                                        @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
+                                                        @Html.Partial("_DetailsPessoaJuridica", Model.Pessoa.PessoaJuridica)
                                                     }
                                                     else
                                                     {
-                                                        @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
+                                                        @Html.Partial("_DetailsPessoaFisica", Model.Pessoa.PessoaFisica)
                                                     }
-
-                                                    <tr>
-                                                        <td>E-mail:</td>
-                                                        <td><a href="mailto:@Model.Email">@Model.Email</a></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Cnae Principal</td>
-                                                        <td>@Model.Cnae.Display</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Ativo</td>
-                                                        <td> 
-                                                            @if (Model.Ativo) {
-                                                                 <div class="text-success"><strong>Sim</strong></div>
-                                                            } else {
-                                                                <div class="text-danger"><strong>Não</strong></div>
-                                                            }
-                                                        </td>
-                                                    </tr>
 
                                                     <tr>
                                                         <td>Cliente com nota?</td>
@@ -87,11 +66,6 @@
                                                         <td>@Model.VencimentoBoleto.ToString("d")</td>
                                                     </tr>
 
-                                                    <tr>
-                                                        <td>Data de Cadastro</td>
-                                                        <td>@Model.CriadoEm.ToString("d")</td>
-                                                    </tr>
-
                                                 </tbody>
                                             </table>
                                         </div>
@@ -101,29 +75,9 @@
                                             @Html.Partial("_ServicoList", Model.ClienteServicoList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade in" id="cnae">
-                                        <div id="replacetargetCnae">
-                                            @Html.Partial("_CnaeList", Model.CnaeList, new ViewDataDictionary { {"PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="enderecos">
-                                        <div id="replacetarget">
-                                            @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId.ToString() } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="contatos">
-                                        <div id="replacetargetContato">
-                                            @Html.Partial("_ContatoList", Model.ContatoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId.ToString() } })
-                                        </div>
-                                    </div>
                                     <div class="tab-pane fade in" id="revenda">
                                         <div id="replacetargetRevenda">
                                             @Html.Partial("_RevendaList", Model.Revenda, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="anexos">
-                                        <div id="replacetargetAnexo">
-                                            @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "_controller", "Clientes" }, { "PessoaId", Model.PessoaId } })
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="debitos">

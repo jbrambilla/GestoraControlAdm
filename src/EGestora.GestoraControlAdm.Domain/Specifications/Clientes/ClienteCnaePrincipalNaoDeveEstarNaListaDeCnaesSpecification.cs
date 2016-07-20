@@ -8,7 +8,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Clientes
     {
         public bool IsSatisfiedBy(Cliente cliente)
         {
-            return !cliente.CnaeList.Where(c => c.CnaeId == cliente.CnaeId).Any();
+            return true;
         }
     }
 }

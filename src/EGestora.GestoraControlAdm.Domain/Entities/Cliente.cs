@@ -19,6 +19,7 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         }
 
         public Guid ClienteId { get; set; }
+        public Guid PessoaId { get; set; }
         public Guid? RevendaId { get; set; }
         public Guid RegimeApuracaoId { get; set; }
         public Guid CnaeId { get; set; }

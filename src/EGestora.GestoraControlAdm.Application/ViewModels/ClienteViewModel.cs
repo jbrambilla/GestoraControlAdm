@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
-    public class ClienteViewModel : PessoaViewModel
+    public class ClienteViewModel
     {
         public ClienteViewModel()
             : base()
@@ -16,6 +16,13 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
             NotaServicoList = new List<NotaServicoViewModel>();
             CodigoSegurancaList = new List<CodigoSegurancaViewModel>();
         }
+
+        [Key]
+        public Guid ClienteId { get; set; }
+
+        [Required(ErrorMessage = "Selecione uma Pessoa.")]
+        [DisplayName("Regime de Apuração")]
+        public Guid PessoaId { get; set; }
 
         [DisplayName("Revenda")]
         public Guid? RevendaId { get; set; }
@@ -52,6 +59,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public ICollection<CodigoSegurancaViewModel> CodigoSegurancaList { get; set; }
+
+        [ScaffoldColumn(false)]
+        public PessoaViewModel Pessoa { get; set; }
 
         [ScaffoldColumn(false)]
         public RevendaViewModel Revenda { get; set; }

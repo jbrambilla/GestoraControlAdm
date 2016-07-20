@@ -139,12 +139,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         //Endereço
 
 
-        public ActionResult ListarEnderecos(Guid id)
-        {
-            ViewBag.PessoaId = id;
-            ViewData["_controller"] = "Clientes";
-            return PartialView("_EnderecoList", _clienteAppService.GetById(id).EnderecoList);
-        }
 
         [Route("adicionar-endereco")]
         public ActionResult AdicionarEndereco(Guid id)
@@ -217,12 +211,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         //Contato
-        public ActionResult ListarContatos(Guid id)
-        {
-            ViewBag.PessoaId = id;
-            ViewData["_controller"] = "Clientes";
-            return PartialView("_ContatoList", _clienteAppService.GetById(id).ContatoList);
-        }
 
         [Route("adicionar-contato")]
         public ActionResult AdicionarContato(Guid id)
@@ -497,13 +485,6 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         }
 
         //ANEXOS
-
-        public ActionResult ListarAnexos(Guid id)
-        {
-            ViewBag.PessoaId = id;
-            ViewData["_controller"] = "Clientes";
-            return PartialView("_AnexoList", _clienteAppService.GetById(id).AnexoList);
-        }
 
         [Route("adicionar-anexo")]
         public ActionResult AdicionarAnexo(Guid? id)

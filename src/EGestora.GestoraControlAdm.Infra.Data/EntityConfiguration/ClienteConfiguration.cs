@@ -14,6 +14,10 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
         {
             HasKey(c => c.ClienteId);
 
+            HasRequired(c => c.Pessoa)
+                .WithMany()
+                .HasForeignKey(c => c.PessoaId);
+
             Property(p => p.VencimentoBoleto)
                 .IsRequired();
 

@@ -59,5 +59,15 @@ namespace EGestora.GestoraControlAdm.Domain.Entities
         {
             return DebitoList.OrderByDescending(c => c.CriadoEm).FirstOrDefault();
         }
+
+        public string Nome
+        {
+            get
+            {
+                if (Pessoa == null)
+                    return "";
+                return Pessoa.IsPessoaFisica ? Pessoa.PessoaFisica.Nome : Pessoa.PessoaJuridica.RazaoSocial;
+            }
+        }
     }
 }

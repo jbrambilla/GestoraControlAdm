@@ -54,16 +54,7 @@
                                                 <tr>
                                                     <th></th>
                                                     <th>
-                                                        Razão Social
-                                                    </th>
-                                                    <th>
-                                                        Nome Fantasia
-                                                    </th>
-                                                    <th>
-                                                        CNPJ
-                                                    </th>
-                                                    <th>
-                                                        E-mail
+                                                        Nome
                                                     </th>
                                                     <th>
                                                         Vencimento do Boleto
@@ -78,19 +69,10 @@
                                                 {
                                                     <tr>
                                                         <td>
-                                                            <input type="checkbox" id="gerar" name="gerar" value="@item.PessoaId" />
+                                                            <input type="checkbox" id="gerar" name="gerar" value="@item.ClienteId" />
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                            @Html.DisplayFor(modelItem => item.Nome)
                                                         </td>
                                                         <td>
                                                             @item.VencimentoBoleto.ToString("d")

@@ -19,12 +19,13 @@
                     <ul>
                         @foreach (var item in ultimosRegistros)
                         {
-                            <li>@item.Cliente.PessoaJuridica.RazaoSocial @Html.ActionLink(item.Codigo, "Details", new { id = item.CodigoSegurancaId, target = "_parent" })</li>
+                            <li>@item.Cliente.Pessoa.PessoaJuridica.RazaoSocial @Html.ActionLink(item.Codigo, "Details", new { id = item.CodigoSegurancaId, target = "_parent" })</li>
                         }
                     </ul>
 
             </div>
         }
+        
         
         <h2 class="page-header">Gestão de Códigos de Segurança</h2>
 
@@ -58,9 +59,9 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr>
-                                        <td><img src="@Url.Action("ObterImagemCliente", "Clientes", new { id = item.ClienteId })" alt="cliente" class="img-circle" height="34" width="34" /></td>
+                                        <td><img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = item.ClienteId })" alt="cliente" class="img-circle" height="34" width="34" /></td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Cliente.PessoaJuridica.RazaoSocial)
+                                            @Html.DisplayFor(modelItem => item.Cliente.Pessoa.PessoaJuridica.RazaoSocial)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Codigo)

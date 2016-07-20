@@ -25,11 +25,6 @@ namespace EGestora.GestoraControlAdm.Infra.Data.Repository
             return Search(c => c.Pessoa.PessoaFisica.Cpf == cpf).FirstOrDefault();
         }
 
-        public override IEnumerable<Cliente> GetAll()
-        {
-            return Db.Clientes.Where(c => c.Pessoa.Ativo).ToList();
-        }
-
         public override void Remove(Guid id)
         {
             var cliente = GetById(id);

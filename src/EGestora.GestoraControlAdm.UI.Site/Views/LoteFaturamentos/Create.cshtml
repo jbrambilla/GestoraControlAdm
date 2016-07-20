@@ -91,22 +91,22 @@
                                                             <input type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.RazaoSocial)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.NomeFantasia)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.Cnpj)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.Email)
                                                         </td>
                                                         <td>
                                                             @item.VencimentoBoleto.ToString("d")
                                                         </td>
                                                         <td>
-                                                            <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
+                                                            <a href="@Url.Action("ServicoDetails", new { id = item.ClienteId })" data-modal=""> @item.DiscriminacaoServicos </a>
                                                         </td>
                                                         <td>
                                                             @item.ValorTotalServicos
@@ -154,22 +154,22 @@
                                                             <input type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @false, this)" />
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.RazaoSocial)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.NomeFantasia)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.Cnpj)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.Email)
                                                         </td>
                                                         <td>
                                                             @item.VencimentoBoleto.ToString("d")
                                                         </td>
                                                         <td>
-                                                            <a href="@Url.Action("ServicoDetails", new { id = item.PessoaId })" data-modal=""> @item.DiscriminacaoServicos </a>
+                                                            <a href="@Url.Action("ServicoDetails", new { id = item.ClienteId })" data-modal=""> @item.DiscriminacaoServicos </a>
                                                         </td>
                                                         <td>
                                                             @item.ValorTotalServicos

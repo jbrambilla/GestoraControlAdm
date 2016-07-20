@@ -39,7 +39,7 @@
                         <a href="@Url.Action("Index", "Pessoas")" title="Pessoas"><i class="fa fa-lg fa-fw fa-group"></i> <span class="menu-item-parent">Pessoas</span></a>
                     </li>
                     <li class="">
-                        <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Clientes</span></a>
+                        <a href="@Url.Action("Index", "Clientes")" title="Dashboard"><i class="fa fa-lg fa-fw fa-user"></i> <span class="menu-item-parent">Clientes</span></a>
                     </li>
                     <li class="">
                         <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-truck"></i> <span class="menu-item-parent">Fornecedores</span></a>
@@ -48,6 +48,18 @@
                         <a href="skins.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-share-alt"></i> <span class="menu-item-parent">Revendas</span></a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Debitos")" title="Debitos"><i class="fa fa-lg fa-fw fa-dollar"></i> <span class="menu-item-parent">Débitos</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "NotaServicos")" title="Notas de Serviço"><i class="fa fa-lg fa-fw fa-file-o"></i> <span class="menu-item-parent">Nota de Serviço</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "LoteFaturamentos")" title="Lotes de Faturamento"><i class="fa fa-lg fa-fw fa-files-o"></i> <span class="menu-item-parent">Lotes de Faturamento</span></a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "CodigoSegurancas")" title="Códigos de SEgurança"><i class="fa fa-lg fa-fw fa-lock"></i> <span class="menu-item-parent">Código de Segurança</span></a>
             </li>
         </ul>
     </nav>

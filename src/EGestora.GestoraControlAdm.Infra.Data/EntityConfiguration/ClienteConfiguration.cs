@@ -40,6 +40,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
 
             Ignore(c => c.DiscriminacaoServicos);
 
+            Ignore(c => c.Nome);
+
             ToTable("Clientes");
         }
     }

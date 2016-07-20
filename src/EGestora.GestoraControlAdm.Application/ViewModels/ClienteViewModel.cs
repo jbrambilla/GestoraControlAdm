@@ -66,5 +66,8 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public decimal ValorTotalServicos { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string Nome { get; set; }
     }
 }

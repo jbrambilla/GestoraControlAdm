@@ -14,10 +14,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
     public class DebitosController : Controller
     {
         private readonly IDebitoAppService _debitoAppService;
+        private readonly IClienteAppService _clienteAppService;
 
-        public DebitosController(IDebitoAppService debitoAppService)
+        public DebitosController(IDebitoAppService debitoAppService, IClienteAppService clienteAppService)
         {
             _debitoAppService = debitoAppService;
+            _clienteAppService = clienteAppService;
         }
 
         // GET: Debitos
@@ -181,7 +183,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         public void LoadViewBags()
         {
-            ViewBag.ClienteList = new SelectList(_debitoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            ViewBag.ClienteList = new SelectList(_clienteAppService.GetAll(), "ClienteId", "Nome");
         }
 
         protected override void Dispose(bool disposing)

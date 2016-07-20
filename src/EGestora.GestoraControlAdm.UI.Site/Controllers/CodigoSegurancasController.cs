@@ -14,10 +14,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
     public class CodigoSegurancasController : Controller
     {
         private readonly ICodigoSegurancaAppService _codigoSegurancaAppService;
+        private readonly IClienteAppService _clienteAppService;
 
-        public CodigoSegurancasController(ICodigoSegurancaAppService codigoSegurancaAppService)
+        public CodigoSegurancasController(ICodigoSegurancaAppService codigoSegurancaAppService, IClienteAppService clienteAppService)
         {
             _codigoSegurancaAppService = codigoSegurancaAppService;
+            _clienteAppService = clienteAppService;
         }
 
         // GET: CodigoSegurancas
@@ -156,7 +158,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
 
         private void LoadViewBags()
         {
-            ViewBag.ClienteList = _codigoSegurancaAppService.GetAllClientes();
+            ViewBag.ClienteList = _clienteAppService.GetAll();
         }
 
         protected override void Dispose(bool disposing)

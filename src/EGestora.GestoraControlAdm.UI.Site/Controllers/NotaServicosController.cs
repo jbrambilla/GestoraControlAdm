@@ -15,10 +15,12 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
     public class NotaServicosController : Controller
     {
         private readonly INotaServicoAppService _notaServicoAppService;
+        private readonly IClienteAppService _clienteAppService;
 
-        public NotaServicosController(INotaServicoAppService notaServicoAppService)
+        public NotaServicosController(INotaServicoAppService notaServicoAppService, IClienteAppService clienteAppService)
         {
             _notaServicoAppService = notaServicoAppService;
+            _clienteAppService = clienteAppService;
         }
 
         // GET: Cnaes
@@ -156,7 +158,7 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
             var empresaList = new List<EmpresaViewModel>();
             empresaList.Add(empresa);
 
-            ViewBag.ClienteList = new SelectList(_notaServicoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
+            ViewBag.ClienteList = new SelectList(_clienteAppService.GetAll().OrderBy(c => c.Nome), "ClienteId", "Nome");
             ViewBag.Empresa = new SelectList(empresaList, "EmpresaId", "Nome", _notaServicoAppService.GetEmpresaAtiva().EmpresaId);
             ViewBag.Aliquota = empresa.Aliquota;
         }

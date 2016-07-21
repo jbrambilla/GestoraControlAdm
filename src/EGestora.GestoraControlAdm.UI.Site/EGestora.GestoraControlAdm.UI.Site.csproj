@@ -792,6 +792,7 @@
     <Content Include="Scripts\contatoMascaraDinamica.js" />
     <Content Include="Scripts\cpfValidation.js" />
     <Content Include="Scripts\createAudit.js" />
+    <Content Include="Scripts\EnableDisablePjPf.js" />
     <Content Include="Scripts\enderecoAddRemove.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

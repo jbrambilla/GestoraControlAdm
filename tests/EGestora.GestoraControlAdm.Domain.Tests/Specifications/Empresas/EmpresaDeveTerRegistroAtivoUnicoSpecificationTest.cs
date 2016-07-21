@@ -29,7 +29,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Empresas
         public void Empresa_RegistroAtivoUnico_TrueWhenThereIsListButNotActiveEmpresas()
         {
             Empresa = new Empresa();
-            var list = new List<Empresa>() { new Empresa() { Ativo = false } };
+            var list = new List<Empresa>() { new Empresa() { Pessoa = new Pessoa() {Ativo = false} } };
 
             var stubRepo = MockRepository.GenerateStub<IEmpresaRepository>();
             stubRepo.Stub(s => s.GetAll()).Return(list);
@@ -42,7 +42,7 @@ namespace EGestora.GestoraControlAdm.Domain.Tests.Specifications.Empresas
         public void Empresa_RegistroAtivoUnico_False()
         {
             Empresa = new Empresa();
-            var list = new List<Empresa>() { new Empresa() { Ativo = true } };
+            var list = new List<Empresa>() { new Empresa() { Pessoa = new Pessoa() { Ativo = true } } };
 
             var stubRepo = MockRepository.GenerateStub<IEmpresaRepository>();
             stubRepo.Stub(s => s.GetAll()).Return(list);

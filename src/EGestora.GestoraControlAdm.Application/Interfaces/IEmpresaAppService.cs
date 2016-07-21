@@ -7,30 +7,12 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
 {
     public interface IEmpresaAppService : IDisposable
     {
-        EmpresaEnderecoViewModel Add(EmpresaEnderecoViewModel empresaEnderecoViewModel);
+        EmpresaViewModel Add(EmpresaViewModel empresaViewModel);
         EmpresaViewModel GetById(Guid id);
-        EmpresaViewModel GetByCnpj(string cnpj);
-        EmpresaViewModel GetByCpf(string cpf);
         EmpresaViewModel GetEmpresaAtiva();
         IEnumerable<EmpresaViewModel> GetAll();
         EmpresaViewModel Update(EmpresaViewModel empresaViewModel);
         void Remove(Guid id);
-
-        EnderecoViewModel AddEndereco(EnderecoViewModel enderecoViewModel);
-        EnderecoViewModel UpdateEndereco(EnderecoViewModel enderecoViewModel);
-        EnderecoViewModel GetEnderecoById(Guid id);
-        void RemoveEndereco(Guid id);
-
-        ContatoViewModel AddContato(ContatoViewModel contatoViewModel);
-        ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel);
-        ContatoViewModel GetContatoById(Guid id);
-        void RemoveContato(Guid id);
-
-        IEnumerable<CnaeViewModel> GetAllCnae();
-        CnaeViewModel GetCnaeById(Guid id);
-        bool AddCnae(Guid id, Guid pessoaId);
-        void RemoveCnae(Guid cnaeId, Guid pessoaId);
-        IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id);
 
         IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao();
 
@@ -39,9 +21,5 @@ namespace EGestora.GestoraControlAdm.Application.Interfaces
         IEnumerable<RegimeTributacaoViewModel> GetAllRegimeTributacao();
 
         IEnumerable<EnquadramentoServicoViewModel> GetAllEnquadramentoServico();
-
-        void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo);
-        AnexoViewModel GetAnexoById(Guid id);
-        void RemoveAnexo(Guid id);
     }
 }

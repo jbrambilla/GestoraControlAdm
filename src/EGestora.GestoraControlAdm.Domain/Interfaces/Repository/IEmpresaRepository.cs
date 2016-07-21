@@ -2,7 +2,7 @@
 
 namespace EGestora.GestoraControlAdm.Domain.Interfaces.Repository
 {
-    public interface IEmpresaRepository : IPessoaComplexaRepository<Empresa>
+    public interface IEmpresaRepository : IRepositoryBase<Empresa>
     {
         Empresa GetEmpresaAtiva();
     }

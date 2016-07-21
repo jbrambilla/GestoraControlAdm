@@ -14,8 +14,8 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
         public tcIdentificacaoPrestador GetIdentificacaoPrestador(NotaServico notaServico)
         {
             var prestador = new tcIdentificacaoPrestador();
-            prestador.Cnpj = notaServico.Empresa.PessoaJuridica.Cnpj;
-            prestador.InscricaoMunicipal = notaServico.Empresa.PessoaJuridica.InscricaoMunicipal;
+            prestador.Cnpj = notaServico.Empresa.Pessoa.PessoaJuridica.Cnpj;
+            prestador.InscricaoMunicipal = notaServico.Empresa.Pessoa.PessoaJuridica.InscricaoMunicipal;
 
             return prestador;
         }

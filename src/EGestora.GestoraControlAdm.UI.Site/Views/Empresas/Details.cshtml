@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "Detalhes de Empresa";
-
-    var Titulo = Model.IsPessoaFisica ? Model.PessoaFisica.Nome : Model.PessoaJuridica.RazaoSocial;
 }
 
 <div class="row">
@@ -16,143 +14,86 @@
                 <div class="">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h4 class="panel-title"> @Titulo </h4>
+                            <h4 class="panel-title"> @Model.Nome </h4>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemEmpresa", "Empresas", new { id = Model.PessoaId })" alt="@Titulo" class="img-circle img-responsive"> </div>
-
-                                <ul class="nav nav-tabs col-md-9 col-lg-9 ">
-                                    <li class="active"><a href="#infoBasica" data-toggle="tab" aria-expanded="true">Informações Básicas</a></li>
-                                    <li class=""><a href="#cnae" data-toggle="tab" aria-expanded="false">Cnaes</a></li>
-                                    <li class=""><a href="#enderecos" data-toggle="tab" aria-expanded="false">Endereços</a></li>
-                                    <li class=""><a href="#contatos" data-toggle="tab" aria-expanded="false">Contatos</a></li>
-                                    <li class=""><a href="#anexos" data-toggle="tab" aria-expanded="false">Anexos</a></li>
-                                </ul>
+                                <div class="col-md-3 col-lg-3 " align="center"> <img src="@Url.Action("ObterImagemPessoa", "Pessoas", new { id = Model.PessoaId })" alt="@Model.Nome" class="img-circle img-responsive"> </div>
                                 <div class="tab-content col-md-9 col-lg-9 ">
-                                    <div class="tab-pane fade in active " id="infoBasica">
-                                        <div class="">
-                                            <table class="table table-user-information">
-                                                <tbody>
+                                    <table class="table table-user-information">
+                                        <tbody>
 
-                                                    @if (Model.IsPessoaJuridica)
-                                                    {
-                                                        @Html.Partial("_DetailsPessoaJuridica", Model.PessoaJuridica)
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.Partial("_DetailsPessoaFisica", Model.PessoaFisica)
-                                                    }
+                                            @if (Model.Pessoa.IsPessoaJuridica)
+                                            {
+                                                @Html.Partial("_DetailsPessoaJuridica", Model.Pessoa.PessoaJuridica)
+                                            }
+                                            else
+                                            {
+                                                @Html.Partial("_DetailsPessoaFisica", Model.Pessoa.PessoaFisica)
+                                            }
 
-                                                    <tr>
-                                                        <td>E-mail:</td>
-                                                        <td><a href="mailto:@Model.Email">@Model.Email</a></td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Alíquota</td>
+                                                <td>@Html.DisplayFor(model => model.Aliquota)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Cnae Principal</td>
-                                                        <td>@Model.Cnae.Display</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Optante Simples Nacional</td>
+                                                <td>@Html.DisplayFor(model => model.OptanteSimplesNacional)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Ativo</td>
-                                                        <td>
-                                                            @if (Model.Ativo)
-                                                            {
-                                                                <div class="text-success"><strong>Sim</strong></div>
-                                                            }
-                                                            else
-                                                            {
-                                                                <div class="text-danger"><strong>Não</strong></div>
-                                                            }
-                                                        </td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Regime de Apuração</td>
+                                                <td>@Html.DisplayFor(model => model.RegimeApuracao.Display)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Alíquota</td>
-                                                        <td>@Html.DisplayFor(model => model.Aliquota)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Regime de Tributação</td>
+                                                <td>@Html.DisplayFor(model => model.RegimeTributacao.Display)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Optante Simples Nacional</td>
-                                                        <td>@Html.DisplayFor(model => model.OptanteSimplesNacional)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Natureza da Operação</td>
+                                                <td>@Html.DisplayFor(model => model.NaturezaOperacao.Display)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Regime de Apuração</td>
-                                                        <td>@Html.DisplayFor(model => model.RegimeApuracao.Display)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Enquadramento de Serviço</td>
+                                                <td>@Html.DisplayFor(model => model.EnquadramentoServico.Display)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Regime de Tributação</td>
-                                                        <td>@Html.DisplayFor(model => model.RegimeTributacao.Display)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Login ISS</td>
+                                                <td>@Html.DisplayFor(model => model.LoginIss)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Natureza da Operação</td>
-                                                        <td>@Html.DisplayFor(model => model.NaturezaOperacao.Display)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Senha ISS</td>
+                                                <td>@Html.DisplayFor(model => model.SenhaIss)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Enquadramento de Serviço</td>
-                                                        <td>@Html.DisplayFor(model => model.EnquadramentoServico.Display)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>WebService de Homologacao</td>
+                                                <td>@Html.DisplayFor(model => model.WebServiceHomologacao)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Login ISS</td>
-                                                        <td>@Html.DisplayFor(model => model.LoginIss)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>WebService de Producao</td>
+                                                <td>@Html.DisplayFor(model => model.WebServiceProducao)</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>Senha ISS</td>
-                                                        <td>@Html.DisplayFor(model => model.SenhaIss)</td>
-                                                    </tr>
+                                            <tr>
+                                                <td>Data de Cadastro</td>
+                                                <td>@Model.Pessoa.CriadoEm.ToString("d")</td>
+                                            </tr>
 
-                                                    <tr>
-                                                        <td>WebService de Homologacao</td>
-                                                        <td>@Html.DisplayFor(model => model.WebServiceHomologacao)</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>WebService de Producao</td>
-                                                        <td>@Html.DisplayFor(model => model.WebServiceProducao)</td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>Data de Cadastro</td>
-                                                        <td>@Model.CriadoEm.ToString("d")</td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="cnae">
-                                        <div id="replacetargetCnae">
-                                            @Html.Partial("_CnaeList", Model.CnaeList, new ViewDataDictionary { { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="enderecos">
-                                        <div id="replacetarget">
-                                            @Html.Partial("_EnderecoList", Model.EnderecoList, new ViewDataDictionary { { "_controller", "Empresas" }, { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="contatos">
-                                        <div id="replacetargetContato">
-                                            @Html.Partial("_ContatoList", Model.ContatoList, new ViewDataDictionary { { "_controller", "Empresas" }, { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade in" id="anexos">
-                                        <div id="replacetargetAnexo">
-                                            @Html.Partial("_AnexoList", Model.AnexoList, new ViewDataDictionary { { "_controller", "Empresas" }, { "PessoaId", Model.PessoaId } })
-                                        </div>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                 </div>
-
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <a href="@Url.Action("Edit", "Empresas", new {id = Model.PessoaId})" class="btn btn-primary">
+                            <a href="@Url.Action("Edit", "Empresas", new {id = Model.EmpresaId })" class="btn btn-primary">
                                 <span title="Editar" class="glyphicon glyphicon-pencil"></span>
                             </a>
                             <a href="@Url.Action("Delete", "Empresas", new { id = Model.PessoaId })" class="btn btn-danger">

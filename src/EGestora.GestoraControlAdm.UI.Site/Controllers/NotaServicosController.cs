@@ -153,11 +153,11 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
         private void LoadViewBags()
         {
             var empresa = _notaServicoAppService.GetEmpresaAtiva();
-            var empresaList = new List<PessoaJuridicaViewModel>();
-            empresaList.Add(empresa.PessoaJuridica);
+            var empresaList = new List<EmpresaViewModel>();
+            empresaList.Add(empresa);
 
             ViewBag.ClienteList = new SelectList(_notaServicoAppService.GetAllClientes().OrderBy(c => c.RazaoSocial), "PessoaId", "RazaoSocial");
-            ViewBag.Empresa = new SelectList(empresaList, "PessoaId", "RazaoSocial", _notaServicoAppService.GetEmpresaAtiva().PessoaId);
+            ViewBag.Empresa = new SelectList(empresaList, "EmpresaId", "Nome", _notaServicoAppService.GetEmpresaAtiva().EmpresaId);
             ViewBag.Aliquota = empresa.Aliquota;
         }
 

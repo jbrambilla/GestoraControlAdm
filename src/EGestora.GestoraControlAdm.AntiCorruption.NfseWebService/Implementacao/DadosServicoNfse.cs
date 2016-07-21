@@ -11,7 +11,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
         public tcDadosServico GetDadosServico(NotaServico notaServico)
         {
             var dados = new tcDadosServico();
-            dados.CodigoCnae = Convert.ToInt32(notaServico.Empresa.Cnae.Codigo.Replace("-", "").Replace("/", ""));
+            dados.CodigoCnae = Convert.ToInt32(notaServico.Empresa.Pessoa.PessoaJuridica.Cnae.Codigo.Replace("-", "").Replace("/", ""));
             dados.CodigoCnaeSpecified = true;
             dados.CodigoMunicipio = 3541406;
             dados.CodigoTributacaoMunicipio = "";

@@ -344,3 +344,4 @@
 /// <reference path="wizardformsetupvalidation.js" />
 /// <reference path="cpfvalidation.js" />
 /// <reference path="cnpjvalidation.js" />
+/// <reference path="enabledisablepjpf.js" />

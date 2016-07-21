@@ -5,17 +5,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EGestora.GestoraControlAdm.Application.ViewModels
 {
-    public class EmpresaViewModel : PessoaViewModel
+    public class EmpresaViewModel
     {
         public EmpresaViewModel()
-            : base()
         {
-            CnaeList = new List<CnaeViewModel>();
+            EmpresaId = Guid.NewGuid();
         }
 
-        [Required(ErrorMessage = "Selecione um Cnae principal.")]
-        [DisplayName("Cnae Principal")]
-        public Guid CnaeId { get; set; }
+        [Key]
+        public Guid EmpresaId { get; set; }
+
+        [Required(ErrorMessage = "Seleciona uma pessoa.")]
+        [DisplayName("Regime de Apuração")]
+        public Guid PessoaId { get; set; }
 
         [Required(ErrorMessage = "Seleciona o Regime de Apuração.")]
         [DisplayName("Regime de Apuração")]
@@ -66,6 +68,9 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public bool OptanteSimplesNacional { get; set; }
 
         [ScaffoldColumn(false)]
+        public PessoaViewModel Pessoa { get; set; }
+
+        [ScaffoldColumn(false)]
         public RegimeApuracaoViewModel RegimeApuracao { get; set; }
 
         [ScaffoldColumn(false)]
@@ -78,9 +83,6 @@ namespace EGestora.GestoraControlAdm.Application.ViewModels
         public EnquadramentoServicoViewModel EnquadramentoServico { get; set; }
 
         [ScaffoldColumn(false)]
-        public CnaeViewModel Cnae { get; set; }
-
-        [ScaffoldColumn(false)]
-        public ICollection<CnaeViewModel> CnaeList { get; set; }
+        public string Nome { get; set; }
     }
 }

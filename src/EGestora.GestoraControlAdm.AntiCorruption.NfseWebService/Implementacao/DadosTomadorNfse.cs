@@ -10,7 +10,7 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
         public tcDadosTomador GetDadosTomador(NotaServico notaServico)
         {
             var tomador = new tcDadosTomador();
-            tomador.RazaoSocial = notaServico.Cliente.Pessoa.PessoaJuridica.RazaoSocial;
+            tomador.RazaoSocial = notaServico.Cliente.Nome;
             tomador.IdentificacaoTomador = new tcIdentificacaoTomador();
             tomador.IdentificacaoTomador.CpfCnpj = new tcCpfCnpj();
             tomador.IdentificacaoTomador.CpfCnpj.Item = notaServico.Cliente.Pessoa.PessoaJuridica.Cnpj;

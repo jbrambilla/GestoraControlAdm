@@ -22,7 +22,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Empresas
             {
                 return true;
             }
-            return !empresas.Any(e => e.Ativo);
+            return !empresas.Any(e => e.Pessoa.Ativo);
         }
     }
 }

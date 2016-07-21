@@ -22,75 +22,34 @@ namespace EGestora.GestoraControlAdm.Application
             _empresaService = empresaService;
         }
 
-        public EmpresaEnderecoViewModel Add(EmpresaEnderecoViewModel empresaEnderecoViewModel)
+        public EmpresaViewModel Add(EmpresaViewModel empresaViewModel)
         {
-            var empresa = Mapper.Map<EmpresaEnderecoViewModel, Empresa>(empresaEnderecoViewModel);
-            var pf = Mapper.Map<EmpresaEnderecoViewModel, PessoaFisica>(empresaEnderecoViewModel);
-            var pj = Mapper.Map<EmpresaEnderecoViewModel, PessoaJuridica>(empresaEnderecoViewModel);
-            var endereco = Mapper.Map<EmpresaEnderecoViewModel, Endereco>(empresaEnderecoViewModel);
-            var contato = Mapper.Map<EmpresaEnderecoViewModel, Contato>(empresaEnderecoViewModel);
-            var selectedCnaeList = empresaEnderecoViewModel.SelectedCnaeList;
-            var foto = empresaEnderecoViewModel.Foto;
-
-            if (empresaEnderecoViewModel.FlagIsPessoaJuridica)
-            {
-                pf = null;
-            }
-            else
-            {
-                pj = null;
-            }
+            var empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
 
             BeginTransaction();
 
-            /** Adicionando PF, PJ e ENDEREÇO **/
-            empresa.PessoaFisica = pf;
-            empresa.PessoaJuridica = pj;
-            empresa.EnderecoList.Add(endereco);
-            empresa.ContatoList.Add(contato);
-            /** FIM Adicionando PF, PJ e ENDEREÇO **/
-
-            /** Adicionando CNAES **/
-            foreach (var CnaeId in selectedCnaeList)
-            {
-                var cnae = _empresaService.GetCnaeById(CnaeId);
-                empresa.CnaeList.Add(cnae);
-            }
-            /** FIM Adicionando CNAES **/
-
             var empresaReturn = _empresaService.Add(empresa);
-            empresaEnderecoViewModel = Mapper.Map<Empresa, EmpresaEnderecoViewModel>(empresaReturn);
+            empresaViewModel = Mapper.Map<Empresa, EmpresaViewModel>(empresaReturn);
 
-            if (!empresaEnderecoViewModel.ValidationResult.IsValid)
-            {
-                return empresaEnderecoViewModel;
-            }
+            //if (!empresaEnderecoViewModel.ValidationResult.IsValid)
+            //{
+            //    return empresaEnderecoViewModel;
+            //}
 
-            if (!ImagemUtil.SalvarImagem(foto, empresaEnderecoViewModel.PessoaId, FilePathConstants.EMPRESAS_IMAGE_PATH))
-            {
-                // Tomada de decisão caso a imagem não seja gravada.
-                empresaEnderecoViewModel.ValidationResult.Message = "Empresa salva sem foto";
-            }
+            //if (!ImagemUtil.SalvarImagem(foto, empresaEnderecoViewModel.PessoaId, FilePathConstants.EMPRESAS_IMAGE_PATH))
+            //{
+            //    // Tomada de decisão caso a imagem não seja gravada.
+            //    empresaEnderecoViewModel.ValidationResult.Message = "Empresa salva sem foto";
+            //}
 
             Commit();
-            return empresaEnderecoViewModel;
+            return empresaViewModel;
         }
 
         public EmpresaViewModel GetById(Guid id)
         {
             return Mapper.Map<Empresa, EmpresaViewModel>(_empresaService.GetById(id));
         }
-
-        public EmpresaViewModel GetByCnpj(string cnpj)
-        {
-            return Mapper.Map<Empresa, EmpresaViewModel>(_empresaService.GetByCnpj(cnpj));
-        }
-
-        public EmpresaViewModel GetByCpf(string cpf)
-        {
-            return Mapper.Map<Empresa, EmpresaViewModel>(_empresaService.GetByCpf(cpf));
-        }
-
 
         public EmpresaViewModel GetEmpresaAtiva()
         {
@@ -120,104 +79,6 @@ namespace EGestora.GestoraControlAdm.Application
             Commit();
         }
 
-        public EnderecoViewModel AddEndereco(EnderecoViewModel enderecoViewModel)
-        {
-            var endereco = Mapper.Map<EnderecoViewModel, Endereco>(enderecoViewModel);
-
-            BeginTransaction();
-            _empresaService.AddEndereco(endereco);
-            Commit();
-
-            return enderecoViewModel;
-        }
-
-        public EnderecoViewModel UpdateEndereco(EnderecoViewModel enderecoViewModel)
-        {
-            var endereco = Mapper.Map<EnderecoViewModel, Endereco>(enderecoViewModel);
-
-            BeginTransaction();
-            _empresaService.UpdateEndereco(endereco);
-            Commit();
-
-            return enderecoViewModel;
-        }
-
-        public EnderecoViewModel GetEnderecoById(Guid id)
-        {
-            return Mapper.Map<Endereco, EnderecoViewModel>(_empresaService.GetEnderecoById(id));
-        }
-
-        public void RemoveEndereco(Guid id)
-        {
-            BeginTransaction();
-            _empresaService.RemoveEndereco(id);
-            Commit();
-        }
-
-        public ContatoViewModel AddContato(ContatoViewModel contatoViewModel)
-        {
-            var contato = Mapper.Map<ContatoViewModel, Contato>(contatoViewModel);
-
-            BeginTransaction();
-            _empresaService.AddContato(contato);
-            Commit();
-
-            return contatoViewModel;
-        }
-
-        public ContatoViewModel UpdateContato(ContatoViewModel contatoViewModel)
-        {
-            var contato = Mapper.Map<ContatoViewModel, Contato>(contatoViewModel);
-
-            BeginTransaction();
-            _empresaService.UpdateContato(contato);
-            Commit();
-
-            return contatoViewModel;
-        }
-
-        public ContatoViewModel GetContatoById(Guid id)
-        {
-            return Mapper.Map<Contato, ContatoViewModel>(_empresaService.GetContatoById(id));
-        }
-
-        public void RemoveContato(Guid id)
-        {
-            BeginTransaction();
-            _empresaService.RemoveContato(id);
-            Commit();
-        }
-
-        public IEnumerable<CnaeViewModel> GetAllCnae()
-        {
-            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_empresaService.GetAllCnae());
-        }
-
-        public CnaeViewModel GetCnaeById(Guid id)
-        {
-            return Mapper.Map<Cnae, CnaeViewModel>(_empresaService.GetCnaeById(id));
-        }
-
-        public bool AddCnae(Guid id, Guid pessoaId)
-        {
-            BeginTransaction();
-            var retorno = _empresaService.AddCnae(id, pessoaId);
-            Commit();
-            return retorno;
-        }
-
-        public void RemoveCnae(Guid cnaeId, Guid pessoaId)
-        {
-            BeginTransaction();
-            _empresaService.RemoveCnae(cnaeId, pessoaId);
-            Commit();
-        }
-
-        public IEnumerable<CnaeViewModel> GetAllCnaeOutPessoa(Guid id)
-        {
-            return Mapper.Map<IEnumerable<Cnae>, IEnumerable<CnaeViewModel>>(_empresaService.GetAllCnaeOutPessoa(id));
-        }
-
         public IEnumerable<RegimeApuracaoViewModel> GetAllRegimeApuracao()
         {
             return Mapper.Map<IEnumerable<RegimeApuracao>, IEnumerable<RegimeApuracaoViewModel>>(_empresaService.GetAllRegimeApuracao());
@@ -236,29 +97,6 @@ namespace EGestora.GestoraControlAdm.Application
         public IEnumerable<EnquadramentoServicoViewModel> GetAllEnquadramentoServico()
         {
             return Mapper.Map<IEnumerable<EnquadramentoServico>, IEnumerable<EnquadramentoServicoViewModel>>(_empresaService.GetAllEnquadramentoServico());
-        }
-
-        public void AddAnexo(Guid PessoaId, HttpPostedFileBase Arquivo)
-        {
-            BeginTransaction();
-
-            var empresa = _empresaService.GetById(PessoaId);
-            empresa.AnexoList.Add(AnexoUtil.GetEntityFromHttpPostedFileBase(Arquivo));
-            _empresaService.Update(empresa);
-
-            Commit();
-        }
-
-        public AnexoViewModel GetAnexoById(Guid id)
-        {
-            return Mapper.Map<Anexo, AnexoViewModel>(_empresaService.GetAnexoById(id));
-        }
-
-        public void RemoveAnexo(Guid id)
-        {
-            BeginTransaction();
-            _empresaService.RemoveAnexo(id);
-            Commit();
         }
 
         public void Dispose()

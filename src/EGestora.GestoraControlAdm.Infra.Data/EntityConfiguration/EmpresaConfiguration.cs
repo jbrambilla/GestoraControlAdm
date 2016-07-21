@@ -7,20 +7,11 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
     {
         public EmpresaConfiguration()
         {
-            HasKey(e => e.PessoaId);
+            HasKey(e => e.EmpresaId);
 
-            HasMany(f => f.CnaeList)
+            HasRequired(e => e.Pessoa)
                 .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaId");
-                    me.MapRightKey("CnaeId");
-                    me.ToTable("EmpresaCnae");
-                });
-
-            HasRequired(e => e.Cnae)
-                .WithMany()
-                .HasForeignKey(e => e.CnaeId);
+                .HasForeignKey(e => e.PessoaId);
 
             HasRequired(e => e.EnquadramentoServico)
                 .WithMany(enq => enq.EmpresaList)
@@ -37,6 +28,8 @@ namespace EGestora.GestoraControlAdm.Infra.Data.EntityConfiguration
             HasRequired(e => e.RegimeTributacao)
                 .WithMany(enq => enq.EmpresaList)
                 .HasForeignKey(e => e.RegimeTributacaoId);
+
+            Ignore(e => e.Nome);
 
             ToTable("Empresas");
         }

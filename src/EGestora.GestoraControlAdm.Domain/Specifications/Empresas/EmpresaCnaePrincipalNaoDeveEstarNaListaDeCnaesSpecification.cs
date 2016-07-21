@@ -8,7 +8,7 @@ namespace EGestora.GestoraControlAdm.Domain.Specifications.Empresas
     {
         public bool IsSatisfiedBy(Empresa empresa)
         {
-            return !empresa.CnaeList.Where(c => c.CnaeId == empresa.CnaeId).Any();
+            return true;
         }
     }
 }

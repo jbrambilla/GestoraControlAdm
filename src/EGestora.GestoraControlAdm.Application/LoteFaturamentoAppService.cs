@@ -27,9 +27,9 @@ namespace EGestora.GestoraControlAdm.Application
 
             BeginTransaction();
 
-            foreach (var PessoaId in clientesParaFaturar)
+            foreach (var ClienteId in clientesParaFaturar)
             {
-                var cliente = _loteFaturamentoService.GetClienteById(Guid.Parse(PessoaId));
+                var cliente = _loteFaturamentoService.GetClienteById(Guid.Parse(ClienteId));
                 loteFaturamento.ClienteList.Add(cliente);
             }
 
@@ -77,6 +77,11 @@ namespace EGestora.GestoraControlAdm.Application
 
             var loteFaturamentoReturn = _loteFaturamentoService.Update(loteFaturamento);
             loteFaturamentoViewModel = Mapper.Map<LoteFaturamento, LoteFaturamentoViewModel>(loteFaturamentoReturn);
+
+            if (!loteFaturamentoViewModel.ValidationResult.IsValid)
+            {
+                return loteFaturamentoViewModel;
+            }
 
             Commit();
 

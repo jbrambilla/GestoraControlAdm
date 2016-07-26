@@ -12,7 +12,6 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService
 {
     public class NotaServicoNfseWebService : INotaServicoNfseWebService
     {
-        
         private readonly INovaNfse _novaNfse;
         private readonly ICredencialNfse _credencialNfse;
         private readonly IDadosTomadorNfse _dadosTomadorNfse;

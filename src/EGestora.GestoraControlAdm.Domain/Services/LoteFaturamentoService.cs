@@ -66,6 +66,21 @@ namespace EGestora.GestoraControlAdm.Domain.Services
 
         public LoteFaturamento Update(LoteFaturamento loteFaturamento)
         {
+            if (!loteFaturamento.IsValid())
+            {
+                return loteFaturamento;
+            }
+
+            if (loteFaturamento.DataFechamento != null)
+            {
+                loteFaturamento = GerarNotaServicos(loteFaturamento);
+
+                if (!loteFaturamento.ValidationResult.IsValid)
+                {
+                    return loteFaturamento;
+                }
+            }
+
             return _loteFaturamentoRepository.Update(loteFaturamento);
         }
 
@@ -132,13 +147,19 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                     Vencimento = loteFaturamento.DataFechamento.Value.AddDays(30)
                 };
 
+                GerarBoletoParaDebito(debito);
+
                 if (!debito.IsValid())
                 {
-                    loteFaturamento.ValidationResult.Add(
-                        new ValidationError(
-                            "O débito referente ao cliente " + cliente.Pessoa.PessoaJuridica.RazaoSocial + " não é válida"
-                        )
-                    );
+                    foreach (var erro in debito.ValidationResult.Erros)
+                    {
+                        loteFaturamento.ValidationResult.Add(erro);
+                    }
+                    //loteFaturamento.ValidationResult.Add(
+                    //    new ValidationError(
+                    //        "O débito referente ao cliente " + cliente.Pessoa.PessoaJuridica.RazaoSocial + " não é válida"
+                    //    )
+                    //);
 
                     return loteFaturamento;
                 }
@@ -190,6 +211,7 @@ namespace EGestora.GestoraControlAdm.Domain.Services
                 debito.BoletoList.Add(boleto);
             }
         }
+
         public void Dispose()
         {
             _loteFaturamentoRepository.Dispose();

@@ -88,26 +88,23 @@
                                                 {
                                                     <tr>
                                                         <td>
-                                                            @if (Model.ClienteList.Any(c => c.PessoaId == item.PessoaId))
+                                                            @if (Model.ClienteList.Any(c => c.ClienteId == item.ClienteId))
                                                             {
-                                                                <input checked type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                                <input checked type="checkbox" id="faturar" name="faturar" value="@item.ClienteId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
                                                             }
                                                             else
                                                             {
-                                                                <input type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                                <input type="checkbox" id="faturar" name="faturar" value="@item.ClienteId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
                                                             }
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                            @Html.DisplayFor(modelItem => item.Nome)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.Cnpj)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.Email)
                                                         </td>
                                                         <td>
                                                             @Html.DisplayFor(modelItem => item.VencimentoBoleto)
@@ -158,26 +155,23 @@
                                                 {
                                                     <tr>
                                                         <td>
-                                                            @if (Model.ClienteList.Any(c => c.PessoaId == item.PessoaId))
+                                                            @if (Model.ClienteList.Any(c => c.ClienteId == item.ClienteId))
                                                             {
-                                                                <input checked type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                                <input checked type="checkbox" id="faturar" name="faturar" value="@item.ClienteId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
                                                             }
                                                             else
                                                             {
-                                                                <input type="checkbox" id="faturar" name="faturar" value="@item.PessoaId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
+                                                                <input type="checkbox" id="faturar" name="faturar" value="@item.ClienteId" onclick="calcularValores(@item.ValorTotalServicos, @true, this)" />
                                                             }
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.RazaoSocial)
+                                                            @Html.DisplayFor(modelItem => item.Nome)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.NomeFantasia)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.PessoaJuridica.Cnpj)
                                                         </td>
                                                         <td>
-                                                            @Html.DisplayFor(modelItem => item.PessoaJuridica.Cnpj)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                            @Html.DisplayFor(modelItem => item.Pessoa.Email)
                                                         </td>
                                                         <td>
                                                             @Html.DisplayFor(modelItem => item.VencimentoBoleto)

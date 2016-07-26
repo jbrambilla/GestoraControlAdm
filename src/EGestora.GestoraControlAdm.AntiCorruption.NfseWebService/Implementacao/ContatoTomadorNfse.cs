@@ -10,8 +10,11 @@ namespace EGestora.GestoraControlAdm.AntiCorruption.NfseWebService.Implementacao
     {
         public tcContato GetContatoTomador(NotaServico notaServico)
         {
+            var contatos = notaServico.Cliente.Pessoa.ContatoList;
+            var email = contatos.Any(c => c.TipoContato.Nome.Contains("mail")) ? contatos.FirstOrDefault(c => c.TipoContato.Nome.Contains("mail")).InformacaoContato : "email@teste.com";
+            
             var contato = new tcContato();
-            contato.Email = notaServico.Cliente.Pessoa.ContatoList.FirstOrDefault(c => c.TipoContato.Nome.Contains("mail")).InformacaoContato;
+            contato.Email = email;
             contato.Telefone = "18981451508";
 
             return contato;

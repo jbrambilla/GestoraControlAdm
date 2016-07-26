@@ -71,7 +71,8 @@ namespace EGestora.GestoraControlAdm.UI.Site.Controllers
                     LoadViewBags();
                     return View(notaServicoDebitoViewModel);
                 }
-
+                if (notaServicoDebitoViewModel.Emitir)
+                    return View("EmitirNota", _notaServicoAppService.GetById(notaServicoDebitoViewModel.NotaServicoId));
                 return RedirectToAction("Index");
             }
 
